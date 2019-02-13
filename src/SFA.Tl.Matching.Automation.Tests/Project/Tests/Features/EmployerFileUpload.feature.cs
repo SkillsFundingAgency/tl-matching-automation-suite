@@ -18,21 +18,21 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Example feature")]
-    public partial class ExampleFeatureFeature
+    [NUnit.Framework.DescriptionAttribute("EmployerFileUpload")]
+    public partial class EmployerFileUploadFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Example.feature"
+#line 1 "EmployerFileUpload.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Example feature", "\tAs a user\r\n\tI want to be able to navigate to DFE home page\r\n\tSo that I can see a" +
-                    "ll department services and information ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "EmployerFileUpload", "\tThis feature is used to upload new Employer data. \r\n\tThe test will verify a Empl" +
+                    "oyer file can be uploaded and the record/s are written to the Employer table. ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,24 +70,40 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User navigate to DFE home page from GOV.UK page")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void UserNavigateToDFEHomePageFromGOV_UKPage()
+        public virtual void FeatureBackground()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User navigate to DFE home page from GOV.UK page", null, new string[] {
-                        "regression"});
+#line 6
 #line 7
- this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 8
-  testRunner.Given("I navigate to GOV.UK home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
-  testRunner.When("I search for Department for Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
-  testRunner.And("I click on DFE link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Upload Employer Data")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void UploadEmployerData()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Upload Employer Data", null, new string[] {
+                        "regression"});
 #line 11
-  testRunner.Then("I should be on DFE home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line 12
+ testRunner.Given("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 13
+ testRunner.And("I Navigate to File Upload Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.And("I have cleared down the Employer table first", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+ testRunner.And("I Upload Employer File", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 16
+ testRunner.When("I press Submit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 17
+ testRunner.Then("the screen should display File Successfully Uploaded Message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 18
+ testRunner.And("the Database should have a new employer named 1066 Enterprise", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

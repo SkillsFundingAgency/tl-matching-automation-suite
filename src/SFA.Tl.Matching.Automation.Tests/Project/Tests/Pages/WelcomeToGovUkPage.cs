@@ -24,7 +24,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         internal SearchResultsPage EnterSearchTextAndSubmit(String searchText)
         {
-            FormCompletionHelper.EnterText(searchField, searchText);
+            //FormCompletionHelper.EnterText(searchField, Configurator.GetConfiguratorInstance.);
             FormCompletionHelper.ClickElement(searchButton);
             return new SearchResultsPage(webDriver);
         }

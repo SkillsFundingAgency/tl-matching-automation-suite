@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -14,6 +15,34 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         {
             PageInteractionHelper.webDriver = webDriver;
         }
+
+
+        public static Boolean VerifyPageURL(String actual, String expected)
+        {
+            if (actual.Contains(expected))
+            {
+                return true;
+            }
+
+            throw new Exception("PageURL verification failed:"
+                + "\n Expected: " + expected + " URL"
+                + "\n Found: " + actual + " URL");
+        }
+
+
+        public static Boolean VerifyLinkIsPresent(By locator, String expected)
+        {
+            String actual = webDriver.FindElement(locator).Text;
+            if (actual.Contains(expected))
+            {
+                return true;
+            }
+
+            throw new Exception("Value verification failed: "
+                + "\n Expected: " + expected
+                + "\n Found: " + actual);
+        }
+
 
         public static Boolean VerifyPageHeading(String actual, String expected)
         {
@@ -76,6 +105,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 + "\n Expected: " + expected
                 + "\n Found: " + actual);
         }
+
 
         public static Boolean VerifyValueAttributeOfAnElement(By locator, String expected)
         {
@@ -188,5 +218,19 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             IWebElement webElement = webDriver.FindElement(locator);
             return webElement.Text;
         }
+
+        public static String GetTextFromField(By locator)
+        {
+            IWebElement webElement = webDriver.FindElement(locator);
+            String text = webElement.GetAttribute("value");
+            return text;
+        }
+
+        public static void AssertText(String expectedText, String actualText)
+        {
+            Assert.AreEqual(expectedText, actualText);
+        }
+
+
     }
 }
