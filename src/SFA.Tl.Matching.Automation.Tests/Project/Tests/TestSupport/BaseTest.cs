@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
-using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
+using System.Collections.Generic;
+using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
 {
@@ -14,10 +15,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
     {
         protected static IWebDriver webDriver;
 
-        [BeforeTestRun]
-        public static void SetUpWebDriver()
+        [Before]
+        public static void SetUp()
         {
             String browser = Configurator.GetConfiguratorInstance().GetBrowser();
+
             switch (browser)
             {
                 case "firefox":
@@ -26,7 +28,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     break;
 
                 case "chrome":
-                    webDriver = new ChromeDriver();
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArguments(new List<string>()
+                        {
+                            "--no-sandbox",
+                        });
+                    webDriver = new ChromeDriver(chromeOptions);
                     break;
 
                 case "ie":
@@ -40,32 +47,40 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                 //    break;
 
                 //case "phantomjs":
-                //    webDriver = new PhantomJSDriver();
-                //    break;
+                //  webDriver = new PhantomJSDriver();
+                //break;
 
                 case "zapProxyChrome":
                     InitialiseZapProxyChrome();
                     break;
 
                 default:
-                    throw new Exception("Driver name - " + browser + " does not match OR this framework does not support the webDriver specified");
+                    throw new Exception("Driver name does not match OR this framework does not support the webDriver specified");
             }
 
             webDriver.Manage().Window.Maximize();
-            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            webDriver.Manage().Cookies.DeleteAllCookies();
             String currentWindow = webDriver.CurrentWindowHandle;
             webDriver.SwitchTo().Window(currentWindow);
-            webDriver.Manage().Cookies.DeleteAllCookies();
-        }
 
-        [Before]
-        public static void SetUpForEachTest()
-        {
-            webDriver.Manage().Cookies.DeleteAllCookies();
+
             PageInteractionHelper.SetDriver(webDriver);
         }
 
         [After]
+        public static void TearDown()
+        {
+            try
+            {
+                TakeScreenshotOnFailure();
+            }
+            finally
+            {
+                webDriver.Dispose();
+            }
+        }
+
         public static void TakeScreenshotOnFailure()
         {
             if (ScenarioContext.Current.TestError != null)
@@ -88,7 +103,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     {
                         Directory.CreateDirectory(screenshotsDirectory);
                     }
-                
+
                     ITakesScreenshot screenshotHandler = webDriver as ITakesScreenshot;
                     Screenshot screenshot = screenshotHandler.GetScreenshot();
                     String screenshotPath = Path.Combine(screenshotsDirectory, failureImageName);
@@ -96,17 +111,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     Console.WriteLine(scenarioTitle
                         + " -- Sceario failed and the screenshot is available at -- "
                         + screenshotPath);
-                } catch (Exception exception)
+                }
+                catch (Exception exception)
                 {
                     Console.WriteLine("Exception occurred while taking screenshot - " + exception);
                 }
-            }            
-        }
-
-        [AfterTestRun]
-        public static void TearDown()
-        {
-            webDriver.Quit();
+            }
         }
 
         private static void InitialiseZapProxyChrome()
