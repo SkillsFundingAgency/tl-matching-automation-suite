@@ -116,22 +116,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                 {
                     Console.WriteLine("Exception occurred while taking screenshot - " + exception);
                 }
-<<<<<<< HEAD
-
-               
             }
-
-           // webDriver.Quit();
-
-        }
-
-        [AfterTestRun]
-        public static void TearDown()
-        {
-            webDriver.Quit();
-=======
-            }
->>>>>>> 6fb26a3... Updated BaseTest to handle the chrome driver properly
         }
 
         private static void InitialiseZapProxyChrome()
