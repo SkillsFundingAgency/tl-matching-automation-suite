@@ -18,21 +18,21 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Error messages on the Placement Information page")]
-    public partial class ErrorMessagesOnThePlacementInformationPageFeature
+    [NUnit.Framework.DescriptionAttribute("Report a provision gap - Error messages on the Placement Information page")]
+    public partial class ReportAProvisionGap_ErrorMessagesOnThePlacementInformationPageFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "PlacementInformation_ErrorMessages.feature"
+#line 1 "ProvisionGap_PlacementInformation_ErrorMessages.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Error messages on the Placement Information page", "\tThis feature is used to confirm the error message on the Find a provider web pag" +
-                    "e when a postcode is not entered. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Report a provision gap - Error messages on the Placement Information page", "\tThis feature is used to confirm the error messages on the Placement information " +
+                    "web page. ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -244,3 +244,4 @@ this.FeatureBackground();
 }
 #pragma warning restore
 #endregion
+

@@ -9,12 +9,33 @@ Background:
 
 @regression
 Scenario: Select Providers - Details entered on the Find Provider page will be displayed in the header on Select Providers page
-	Then the Select Providers page will display the postcode and skill area selected on the Find Providers page
+	Then the provider results returned will match the expected values
+	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
+	
 
 @regression
-Scenario: Select Providers - Search using the Search on the page
+Scenario: Search on Select Providers page and return zero results
 	Given I have entered new Skill Area as "Care services"
-	And Employer postcode as "B20 3HQ"
+	And Employer postcode as "IV12 5XX"
 	And Providers within as "25 miles"
 	And I press the Search again button on the Select Providers page
-	Then the Select Providers page will display the skill area, postcode and radius in the H2 heading
+	Then the Select Providers page will display 0 results, skill area, postcode and radius in the H2 heading
+
+@regression
+Scenario: Validate search results on Select a Provider page where results are returned 1
+    Given I have entered new Skill Area as "Care services"
+	And Employer postcode as "B43 6JN"
+	And Providers within as "25 miles"
+	And I press the Search again button on the Select Providers page
+	Then the provider results returned will match the expected values
+	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
+	Then print the list of results
+
+@regression
+Scenario: Validate search results on Select a Provider page where results are returned 2
+    Given I have entered new Skill Area as "Digital"
+	And Employer postcode as "B43 6JN"
+	And Providers within as "15 miles"
+	And I press the Search again button on the Select Providers page
+	Then the provider results returned will match the expected values
+	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 

@@ -23,19 +23,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             FileUploadPage fileUploadPage = new FileUploadPage(webDriver);
             fileUploadPage.ClickUploadLink();
         }
-        
-        //[Given(@"I select C:/Word\.docx in the browse file selector")]
-        //public void GivenISelectCWord_DocxInTheBrowseFileSelector()
-        //{
-        //   // ScenarioContext.Current.Pending();
-        //}
-        
+
         [Then(@"I should see an Error")]
         public void ThenIShouldSeeAnError()
         {
             ScenarioContext.Current.Pending();
         }
-
 
         [Given(@"I select ""(.*)"" from the dropdown")]
         public void GivenISelectFromTheDropdown(string p0)
@@ -48,8 +41,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void ThenIShouldSeeAnErrorForNoFileSelected()
         {
             FileUploadPage fileUploadPage = new FileUploadPage(webDriver);
-            fileUploadPage.NoFileSelectedErrMsgCheck(); 
-       
+            fileUploadPage.NoFileSelectedErrMsgCheck();        
         }
 
         [Given(@"I select a Word document")]
@@ -72,6 +64,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             FileUploadPage fileUploadPage = new FileUploadPage(webDriver);
             fileUploadPage.SelectJPEGImage();
         }
-
     }
 }

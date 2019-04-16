@@ -2,7 +2,11 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 {
@@ -16,7 +20,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             PageInteractionHelper.webDriver = webDriver;
         }
 
-
         public static Boolean VerifyPageURL(String actual, String expected)
         {
             if (actual.Contains(expected))
@@ -25,10 +28,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             }
 
             throw new Exception("PageURL verification failed:"
-                + "\n Expected: " + expected + " URL"
-                + "\n Found: " + actual + " URL");
+                + "\n Expected URL: " + expected 
+                + "\n Found URL: " + actual);
         }
-
 
         public static Boolean VerifyLinkIsPresent(By locator, String expected)
         {
@@ -43,7 +45,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 + "\n Found: " + actual);
         }
 
-
         public static Boolean VerifyPageHeading(String actual, String expected)
         {
             if (actual.Contains(expected))
@@ -52,8 +53,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             }
 
             throw new Exception("Page verification failed:"
-                + "\n Expected: " + expected + " page"
-                + "\n Found: " + actual + " page");
+                + "\n Expected page: " + expected
+                + "\n Found page: " + actual);
         }
 
         public static Boolean VerifyPageHeading(By locator, String expected)
@@ -65,8 +66,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             }
 
             throw new Exception("Page verification failed:"
-                + "\n Expected: " + expected + " page"
-                + "\n Found: " + actual + " page");
+                + "\n Expected page: " + expected 
+                + "\n Found page: " + actual);
         }
 
         public static Boolean VerifyPageHeading(String actual, String expected1, String expected2)
@@ -93,10 +94,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 + "\n Found: " + actual);
         }
 
-        public static Boolean VerifyText(By locator, String expected)
+        public static Boolean VerifyText(By locator, int expected)
         {
+            String expectedText = Convert.ToString(expected);
             String actual = webDriver.FindElement(locator).Text;
-            if (actual.Contains(expected))
+            
+            if (actual.Contains(expectedText))
             {
                 return true;
             }
@@ -106,6 +109,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 + "\n Found: " + actual);
         }
 
+        public static Boolean VerifyText(By locator, String expected)
+        {
+            String actual = webDriver.FindElement(locator).Text;
+            if (actual.Contains(expected))
+            {
+                Console.WriteLine("Actual" + actual);
+                Console.WriteLine("Expected" + expected);
+                return true;
+            }
+
+            throw new Exception("Text verification failed: "
+                + "\n Expected: " + expected
+                + "\n Found: " + actual);
+        }
 
         public static Boolean VerifyValueAttributeOfAnElement(By locator, String expected)
         {
@@ -231,6 +248,120 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             Assert.AreEqual(expectedText, actualText);
         }
 
+        public static Boolean VerifyProviderPostcodeDisplayed(String expectedPostcode)
+        {
+            if (webDriver.FindElement(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Text.Contains(expectedPostcode))
+            {
+                return true;
+            }
 
+            throw new Exception("Provider verification failed:"
+                + "\n Cannot find expected provider postcode: " + expectedPostcode);
+        }
+
+        public static Boolean VerifyProviderDisplayed(String expectedProvider)
+        {
+
+            if (webDriver.FindElement(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Text.Contains(expectedProvider))
+            {
+                return true;
+            }
+
+            throw new Exception("Provider verification failed:"
+                + "\n Cannot find expected provider: " + expectedProvider);
+        }
+
+        public static Boolean VerifyProviderDisplayedOnCheckAnswersPage(String expectedProvider)
+        {
+            if (webDriver.FindElement(By.XPath("//*[@id='main-content']")).Text.Contains(expectedProvider))
+           // if (webDriver.PageSource.Contains(expectedProvider))
+
+            {
+                return true;
+            }
+
+            throw new Exception("Provider not displayed:"
+                + "\n Cannot find expected provider: " + expectedProvider);
+        }
+
+        public static double Radians(double x)
+        {
+            //Test methods for validating postcode radius
+            const double PIx = 3.141592653589793;
+            return x * PIx / 180;
+        }
+
+        public static double DistanceBetweenPlaces(double lon1, double lat1, double lon2, double lat2)
+        {
+            //Test methods for validating postcode radius
+            const double RADIUS = 6378.16;
+            double dlon = Radians(lon2 - lon1);
+            double dlat = Radians(lat2 - lat1);
+
+            double a = (Math.Sin(dlat / 2) * Math.Sin(dlat / 2)) + Math.Cos(Radians(lat1)) * Math.Cos(Radians(lat2)) * (Math.Sin(dlon / 2) * Math.Sin(dlon / 2));
+            double angle = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            double distance =  angle * RADIUS;
+            return distance * 0.62137; //convert to miles by multiplying by 0.62137
+        }
+
+        public static void ValidateProvidersDisplayed()
+        {
+            var skillArea = ScenarioContext.Current["_provisionGapTypeOfPlacement"];
+            var radius = ScenarioContext.Current["_provisionGapPostcodeRadius"];
+            String postcodeRadius = Convert.ToString(radius);
+            postcodeRadius = Regex.Replace(postcodeRadius, "[^.0-9]", "");
+            int _postcodeRadius = Convert.ToInt32(postcodeRadius);
+          
+            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude from ProviderQualification pq, Qualification q, QualificationRoutePathMapping qrpm, provider p, ProviderVenue pv, path, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.PathId = path.Id and path.RouteId = r.Id and p.[Status] = 1 and r.Name = '" + skillArea + "' and pv.Latitude is not null and pv.Longitude is not null");
+                        
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+
+            String Name;
+            String Postcode;
+            double Latitude;
+            double Longitude;
+            int providerCount = 0;
+
+            foreach (object[] fieldNo in queryResults)
+            {
+                //Assign values to variables from the SQL query run
+                Name = fieldNo[0].ToString();
+                Postcode = (fieldNo[1].ToString());
+                Latitude = Convert.ToDouble(fieldNo[2]);
+                Longitude = Convert.ToDouble(fieldNo[3]);
+
+                //longitude and latitude values for postcode B43 6JN
+                double postcodeLong = -1.93253;
+                double postcodelat = 52.54834;
+                //Calculate the distance of each postcode from postcode B43 6JN
+                double distanceFromPostcode = PageInteractionHelper.DistanceBetweenPlaces(Longitude, Latitude, postcodeLong, postcodelat);
+                
+                //if the postcode is within 25 miles of B43 6JN, verify the provider name and postcode is displayed on screen               
+                if (distanceFromPostcode <= _postcodeRadius)
+                {
+                    Console.WriteLine("Distance is less than " + _postcodeRadius + " miles. Provider name is " + Name + " " + Postcode + " distance is  " + distanceFromPostcode);
+                    providerCount = providerCount +1;
+
+                    VerifyProviderDisplayed(Name);
+                    VerifyProviderPostcodeDisplayed(Postcode);
+                }            
+            }
+            ScenarioContext.Current["SearchResultsCount"] = providerCount;
+        }
+
+        public static void SetProviderNames(By locator1, By locator2)
+        {
+            IWebElement webElement1 = webDriver.FindElement(locator1);
+            String text1 = webElement1.Text.Split('\r')[0];
+            text1 = text1.TrimEnd();
+            Console.WriteLine("Provider 1" + text1);
+            ScenarioContext.Current["_Provider1"] = text1;
+            
+            IWebElement webElement2 = webDriver.FindElement(locator2);
+            String text2 = webElement2.Text.Split('\r')[0];
+            text2 = text2.TrimEnd();
+            Console.WriteLine("Provider 2" + text2);
+            ScenarioContext.Current["_Provider2"] = text2;
+        }
     }
 }

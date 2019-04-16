@@ -12,6 +12,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class FindLocalProvidersPage : BasePage
     {
         private static String PAGE_TITLE = "Find local providers";
+        private By SearchButton = By.ClassName("govuk-button");
+        private By SkillAreaDropdown = By.Id("SelectedRouteId");
+        private By PostcodeField = By.Id("Postcode");
+        private By ActualPostcodeError = By.LinkText("You must enter a postcode");
+        private String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/find-providers";
 
         public FindLocalProvidersPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -21,22 +26,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         protected override bool SelfVerify()
         {
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
-        }
-
-
-
-        private By SearchButton = By.ClassName("govuk-button");
-        private By SkillAreaDropdown = By.Id("SelectedRouteId");
-        private By PostcodeField = By.Id("Postcode");
-        private By ActualPostcodeError = By.LinkText("You must enter a postcode");
-        private String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/find-providers";
-      
+        }      
 
         public void VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
         }
-
 
         public void ClickSearchButton()
         {
@@ -47,7 +42,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
            FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, dropdownValue);
         }
-
                
         public void EnterPostcode(string postcode)
         {
@@ -66,7 +60,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public void AutoPopulateFields()
         {
-            FormCompletionHelper.EnterText(PostcodeField, "B20 3HQ");
+            FormCompletionHelper.EnterText(PostcodeField, "IV12 5XX");
             FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, "Care services");
         }
     }

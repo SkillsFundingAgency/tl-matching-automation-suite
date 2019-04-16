@@ -13,19 +13,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class CheckEmployersDetailsPage : BasePage
     {
         private static String PAGE_TITLE = "Check employer’s details";
-
-        public CheckEmployersDetailsPage(IWebDriver webDriver) : base(webDriver)
-        {
-          //  SelfVerify();
-        }
-
-        protected override bool SelfVerify()
-        {
-            return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
-        }
-
-
-
+        
         private By ConfirmAndContinueButton = By.ClassName("govuk-button");
         private By ContactField = By.Name("EmployerContact");
         private By PhoneNumberField = By.Id("EmployerContactPhone");
@@ -35,13 +23,21 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By EnterPhoneNumberError = By.LinkText("You must enter a contact telephone number for placements");
         private By EnterLongerContactError = By.LinkText("You must enter a contact name using 2 or more characters");
         private By EnterShorterContactError = By.LinkText("You must enter a contact name using 99 characters or less");
-        private By EnterCharactersInContactError = By.LinkText("You must enter a contact name using letters only");
+        private By EnterCharactersInContactError = By.LinkText("You must enter a contact name using only letters, hyphens and apostrophes");
         private By EnterANumber = By.LinkText("You must enter a number");
         private By EnterPhoneNumber7CharactersLong = By.LinkText("You must enter a telephone number that has 7 or more numbers");
-        String employerName = (string)ScenarioContext.Current["_provisionGapEmployerName"];
+        
 
+        public CheckEmployersDetailsPage(IWebDriver webDriver) : base(webDriver)
+        {
+           // SelfVerify();
+        }
 
-
+        protected override bool SelfVerify()
+        {
+            return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
+        }
+                     
         public void ClickConfirmAndContinueButton()
         {
            FormCompletionHelper.ClickElement(ConfirmAndContinueButton);
@@ -59,12 +55,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.EnterText(ContactField, name);
         }
 
-
         public void EnterPhoneNumber(String name)
         {
             FormCompletionHelper.EnterText(PhoneNumberField, name);
         }
-
 
         public void VerifyNoContactNameEnteredError(String expectedErrorMessage)
         {
@@ -80,7 +74,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             FormCompletionHelper.VerifyText(EnterPhoneNumberError, expectedErrorMessage);
         }
-
 
         public void VerifyErrorContactNameTooShort(String expectedErrorMessage)
         {
@@ -109,13 +102,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public void VerifyEmployerDetails()
         {
-
+            String employerName = (string)ScenarioContext.Current["_provisionGapEmployerName"];
             String actualContactName = FormCompletionHelper.GetTextFromField(ContactField);
             String actualEmail = FormCompletionHelper.GetTextFromField(EmailField);
             String actualPhoneNumber = FormCompletionHelper.GetTextFromField(PhoneNumberField);
             String query = ("select companyname, PrimaryContact, phone, email from employer where CompanyName = '"+ employerName + "'");
            
-
             var queryResult = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
 
             foreach (object[] g in queryResult)
@@ -129,8 +121,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 PageInteractionHelper.AssertText(expectedEmail, actualEmail);
                 PageInteractionHelper.AssertText(expectedPhoneNo, actualPhoneNumber);
 
-                }
+                ScenarioContext.Current["_EmployerContactName"] = actualContactName;
             }
-
+        }
     }
 }

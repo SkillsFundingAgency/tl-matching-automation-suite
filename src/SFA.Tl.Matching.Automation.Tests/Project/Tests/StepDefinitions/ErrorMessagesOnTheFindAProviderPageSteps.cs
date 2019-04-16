@@ -8,10 +8,7 @@ namespace SFA.Tl.Matching.Automation.Tests
 {
     [Binding]
     public class ErrorMessagesOnTheFindAProviderPageSteps : BaseTest
-    {
-
-        
-        
+    {             
 
         [Given(@"I navigate to the FindProviders page")]
         public void GivenINavigateToTheFindProvidersPage()
@@ -40,6 +37,5 @@ namespace SFA.Tl.Matching.Automation.Tests
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
             findLocalProvidersPage.VerifyPostcodeError(postcodeError);
         }
-
     }
 }

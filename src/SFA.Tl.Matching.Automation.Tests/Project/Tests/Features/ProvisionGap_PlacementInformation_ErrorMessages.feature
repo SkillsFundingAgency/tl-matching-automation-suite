@@ -1,5 +1,5 @@
-﻿Feature: Error messages on the Placement Information page
-	This feature is used to confirm the error message on the Find a provider web page when a postcode is not entered. 
+﻿Feature: Report a provision gap - Error messages on the Placement Information page
+	This feature is used to confirm the error messages on the Placement information web page. 
 
 
 Background: 

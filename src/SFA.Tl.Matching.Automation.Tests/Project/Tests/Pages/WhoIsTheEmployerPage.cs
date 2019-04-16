@@ -14,6 +14,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class WhoIsTheEmployerPage : BasePage
     {
         private static String PAGE_TITLE = "Who is the employer?";
+        private By BusinessNameField = By.Name("CompanyName");
+        private By ContinueButton = By.Id("tl-continue");
+        private By EnterEmployerError = By.XPath("//*[@id='main-content']/div/div/div/div/ul/li/a");
+        private String _expectedEnterEmployerError = "You must find and choose an employer";
+        private String expectedPageURL = "https://test.industryplacementmatching.education.gov.uk/who-is-employer/";
 
         public WhoIsTheEmployerPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -24,15 +29,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
-
         
-        private By BusinessNameField = By.Name("CompanyName");
-        private By ContinueButton = By.Id("continue");
-        private By EnterEmployerError = By.XPath("//*[@id='main-content']/div/div/div/div/ul/li/a");
-        private String _expectedEnterEmployerError = "You must find and choose an employer";
-
-
-
         public void ClickContinue()
         {
             FormCompletionHelper.ClickElement(ContinueButton);
@@ -52,19 +49,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             FormCompletionHelper.EnterText(BusinessNameField, "Abacus Childrens Nurseries");
             Thread.Sleep(2000);
-            FormCompletionHelper.PressTabKey(BusinessNameField);
-           
+            FormCompletionHelper.PressTabKey(BusinessNameField);           
         }
 
         public void EnterEmployer(String employerName)
         {
             FormCompletionHelper.EnterText(BusinessNameField, employerName);
             Thread.Sleep(2000);
-            FormCompletionHelper.PressTabKey(BusinessNameField);
+            //FormCompletionHelper.PressTabKey(BusinessNameField);
             ScenarioContext.Current["_provisionGapEmployerName"] = employerName;
         }
 
-       
-
+        public void VerifyPageURL()
+        {
+            PageInteractionHelper.VerifyPageURL(webDriver.Url, expectedPageURL);
+        }
     }
 }

@@ -24,8 +24,6 @@ namespace SFA.Tl.Matching.Automation.Tests
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             placementInformationPage.AutoPopulateFields();
             placementInformationPage.ClickContinueButton();
-
-
         }
         
         [Given(@"I clear the job field on the Who is the employer page")]
@@ -46,20 +44,20 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void ThenTheWhoIsTheEmployerPageWillShowAnErrorStating(string errorMessage)
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
-            whoIstheEmployerPage.VerifyNullEmployerError(errorMessage);
-                       
+            whoIstheEmployerPage.VerifyNullEmployerError(errorMessage);                       
         }
 
         [Then(@"I am on Who is the employer page")]
         public void ThenIAmOnWhoIsTheEmployerPage()
         {
-            //
+            WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
+            whoIstheEmployerPage.VerifyPageURL();
         }
 
         [Given(@"I enter an employer name on the Who is the employer page")]
         public void GivenIEnterAnEmployerNameOnTheWhoIsTheEmployerPage()
         {
-            // not used
+            // not used at the moment
         }
 
         [Given(@"I enter an employer name of ""(.*)"" on the Who is the employer page")]
@@ -67,11 +65,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
             whoIstheEmployerPage.EnterEmployer(employerName);
-            Thread.Sleep(2000);
-            
+            Thread.Sleep(4000);            
         }
-
-
-
     }
 }

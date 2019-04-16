@@ -7,7 +7,7 @@ Background:
 	And I navigate to the Who is the employer page
 
 @regression
-Scenario: Who is the employer - Press continue without entering any data
+Scenario: ProvisionGap_Who is the employer - Press continue without entering any data
 	Given I clear the job field on the Who is the employer page
 	And I press Continue on the Who is the employer page
 	Then the Who is the employer page will show an error stating "You must tell us what specific job the placement student would do"

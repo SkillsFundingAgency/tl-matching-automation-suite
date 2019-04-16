@@ -83,11 +83,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Select Providers-Press Continue without entering a postcode")]
+        [NUnit.Framework.DescriptionAttribute("Select Providers page - A postcode must be entered when searching")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void SelectProviders_PressContinueWithoutEnteringAPostcode()
+        public virtual void SelectProvidersPage_APostcodeMustBeEnteredWhenSearching()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Providers-Press Continue without entering a postcode", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Providers page - A postcode must be entered when searching", null, new string[] {
                         "regression"});
 #line 11
 this.ScenarioInitialize(scenarioInfo);
@@ -95,17 +95,61 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 12
- testRunner.Given("I have entered new Skill Area as \"Care services\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I clear the postcode field on the Select providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
- testRunner.And("Employer postcode as \"B20 3HQ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.And("Providers within as \"25 miles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
  testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
- testRunner.And("I click the Report provision gap link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.Then("I am shown an error for blank postcode stating \"You must enter a postcode\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Select Providers page - A real postcode must be entered when searching")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void SelectProvidersPage_ARealPostcodeMustBeEnteredWhenSearching()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Providers page - A real postcode must be entered when searching", null, new string[] {
+                        "regression"});
 #line 17
- testRunner.Then("I am on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line 18
+ testRunner.Given("I enter an invalid postcode on the Select providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 19
+ testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+ testRunner.Then("I am shown an error for invalid postcode stating \"You must enter a real postcode\"" +
+                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Select Providers page - A provider must be selected before pressing Continue")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void SelectProvidersPage_AProviderMustBeSelectedBeforePressingContinue()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Providers page - A provider must be selected before pressing Continue", null, new string[] {
+                        "regression"});
+#line 23
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line 24
+    testRunner.Given("I have entered new Skill Area as \"Care services\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 25
+ testRunner.And("Employer postcode as \"B43 6JN\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
+ testRunner.And("Providers within as \"25 miles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 27
+ testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+ testRunner.Then("I am shown an error for no provider selected stating \"You must select at least on" +
+                    "e provider\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -113,3 +157,4 @@ this.FeatureBackground();
 }
 #pragma warning restore
 #endregion
+

@@ -10,17 +10,18 @@ using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
-    public class CheckAnswersPage : BasePage
+    public class ReferralCheckAnswersPage : BasePage
     {
+        private static String PAGE_TITLE = (" ");
         private By PageHeading = By.XPath("//*[@id='main-content']/div/div/h1");
         private By ConfirmAndSendButton = By.ClassName("govuk-button");
         private By ConfirmationSelected = By.Name("ConfirmationSelected");
-        private By TypeOfPlacement = By.XPath("//*[@id='main-content']//tr[1]/td[1]");
-        private By Postcode = By.XPath("//*[@id='main-content']//tr[2]/td[1]");
-        private By JobRole = By.XPath("//*[@id='main-content']//tr[3]/td[1]");
-        private By NumberOfPlacements = By.XPath("//*[@id='main-content']//tr[4]/td[1]");
+        private By TypeOfPlacement = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[1]/td");
+        private By Postcode = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[2]/td");
+        private By Radius = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[3]/td");
+        private By JobRole = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[4]/td");
+        private By NumberOfPlacements = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[5]/td");
 
-        private static String PAGE_TITLE = (" ");
         //Variables to store values from the database
         private String actualPostcode;
         private String actualSearchRadius;
@@ -39,7 +40,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private String expectedTypeOfPlacement = (string)ScenarioContext.Current["_provisionGapTypeOfPlacement"];
         private String expectedEmployername = (string)ScenarioContext.Current["_provisionGapEmployerName"];
 
-        public CheckAnswersPage(IWebDriver webDriver) : base(webDriver)
+        public ReferralCheckAnswersPage(IWebDriver webDriver) : base(webDriver)
         {
           // SelfVerify();
         }
@@ -47,18 +48,18 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         protected override bool SelfVerify()
         {
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
-        }               
+        }       
 
         public void ClickConfirmAndSendutton()
         {
            FormCompletionHelper.ClickElement(ConfirmAndSendButton);
         }
 
-        public void ClickOptIn()
+        public void ClickConfirmationCheckBox()
         {
             FormCompletionHelper.ClickElement(ConfirmationSelected);
         }
-        
+
         public void VerifyPageHeader()
         {
             String expectedPageTitle = "Check " + expectedEmployername + "'s answers";
@@ -66,14 +67,26 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
             PageInteractionHelper.VerifyPageHeading(actualPageTitle, expectedPageTitle);
         }
-        
+
+        public void VerifyProvidersAreDisplayed()
+        {
+           String provider1 = (string)ScenarioContext.Current["_Provider1"];
+           String provider2 = (string)ScenarioContext.Current["_Provider2"];
+           PageInteractionHelper.VerifyProviderDisplayedOnCheckAnswersPage(provider1);
+           Console.WriteLine(provider1 + "Verified");
+           PageInteractionHelper.VerifyProviderDisplayedOnCheckAnswersPage(provider2);
+           Console.WriteLine(provider2 + "Verified");
+        }
+
+
         public void VerifyEmployersAnswers()
         {        
            String query = ("Select o.postcode, o.searchradius, o.jobtitle, o.PlacementsKnown, o.placements, o.employername, r.Name, o.id from opportunity o, route r where o.RouteId = r.Id and o.ID in (select max(id) from opportunity)");
            Console.WriteLine(query);
 
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+           var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
           
+
             foreach (object[] fieldNo in queryResults)
             {
                 //Assign values to variables from the SQL query run
@@ -87,28 +100,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 OpportunityId = Convert.ToInt32(fieldNo[7]);
                 ScenarioContext.Current["_provisionGapOpportunityID"] = OpportunityId;
 
-                Console.WriteLine(actualNoOfPlacements + " " + expectedNoOfPlacementsKnown);
-                Console.WriteLine(actualPostcode + " " + expectedPostcode);
-                Console.WriteLine(actualSearchRadius + " " + expectedSearchRadius);
-                Console.WriteLine(actualJobtitle + " " + expectedJobType);
-                Console.WriteLine(actualSkillArea + " " + expectedTypeOfPlacement);
-                Console.WriteLine(actualEmployername + " " + expectedEmployername);
-                           
-                //Assert the variables entered in the journey to the actual values written to the opportunity record
+                Console.WriteLine("ActualNoOfPlacements: " + actualNoOfPlacements + "ExpectedNoOfPlacements: " + expectedNoOfPlacementsKnown);
+                Console.WriteLine("ActualPostcode: " + actualPostcode + "ExpectedPostcode: " + expectedPostcode);
+                Console.WriteLine("ActualSearchRadius: " + actualSearchRadius + "ExpectedSearchRadius: " + expectedSearchRadius);
+                Console.WriteLine("ActualJobTitle: " + actualJobtitle + "ExpectedJobTitle: " + expectedJobType);
+                Console.WriteLine("ActualSkillArea: " + actualSkillArea + "ExpectedSkillArea: " + expectedTypeOfPlacement);
+                Console.WriteLine("ActualEmployerName: " + actualEmployername + "ExpectedEmployerName: " + expectedEmployername);
+                
+                //Assert the variables above to the actual values displayed on the screen
                 PageInteractionHelper.AssertText(actualSkillArea, expectedTypeOfPlacement);
                 PageInteractionHelper.AssertText(actualPostcode, expectedPostcode);
                 PageInteractionHelper.AssertText(actualSearchRadius, expectedSearchRadius);
                 PageInteractionHelper.AssertText(actualJobtitle, expectedJobType);
                 PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
             }
-            Console.WriteLine("jobtype: " + expectedJobType);
-            Console.WriteLine("postcode: " + expectedPostcode);
-            Console.WriteLine("no of placements: " + expectedNoOfPlacementsKnown);
-            Console.WriteLine("type of placement: " + expectedTypeOfPlacement);
-            PageInteractionHelper.VerifyText(TypeOfPlacement, expectedTypeOfPlacement);
-            PageInteractionHelper.VerifyText(Postcode, expectedPostcode);
-            PageInteractionHelper.VerifyText(JobRole, expectedJobType);
-            PageInteractionHelper.VerifyText(NumberOfPlacements, expectedNoOfPlacementsKnown);
         }
     }
 }

@@ -24,7 +24,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             WhoIsTheEmployerPage whoIsTheEmployerPage = new WhoIsTheEmployerPage(webDriver);
             whoIsTheEmployerPage.AutoPopulateEmployer();
             whoIsTheEmployerPage.ClickContinue();
-
         }
         
         [Given(@"I have cleared all of the text fields")]
@@ -40,8 +39,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             CheckEmployersDetailsPage checkEmplyerDetailsPage = new CheckEmployersDetailsPage(webDriver);
             checkEmplyerDetailsPage.ClickConfirmAndContinueButton();
-
-
         }
         
         [Then(@"the Check Employer Details page will show an error for Null contact name stating ""(.*)""")]
@@ -112,7 +109,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             CheckEmployersDetailsPage checkEmployerDetailsPage = new CheckEmployersDetailsPage(webDriver);
             checkEmployerDetailsPage.VerifyErrorPhoneNoMustContainNos(errorMessage);
-
         }
 
         [Given(@"I enter a phone number consisting of alphanumeric characters and six numbers only")]
@@ -143,15 +139,24 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             checkEmployerDetailsPage.VerifyErrorContactNameCharactersOnly(errorMessage);
         }
 
-
         [Then(@"the Check employers details page will show the details entered")]
         public void ThenTheCheckEmployersDetailsPageWillShowTheDetailsEntered()
         {
             CheckEmployersDetailsPage checkEmployerDetailsPage = new CheckEmployersDetailsPage(webDriver);
             checkEmployerDetailsPage.VerifyEmployerDetails();
-
         }
 
-
+        [Then(@"the Referral Check employers details page will show the details entered")]
+        public void ThenTheReferralCheckEmployersDetailsPageWillShowTheDetailsEntered()
+        {
+            CheckEmployersDetailsPage checkEmployerDetailsPage = new CheckEmployersDetailsPage(webDriver);
+            checkEmployerDetailsPage.VerifyEmployerDetails();
+        }
+                          
+        [Then(@"I am taken to the Check Employer Details page")]
+        public void ThenIAmTakenToTheCheckEmployerDetailsPage()
+        {
+            //ScenarioContext.Current.Pending();
+        }
     }
 }

@@ -53,20 +53,18 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             selectElement.SelectByValue(value);
         }
 
-
         public static void SelectFromDropDownByValue(By locator, String value)
         {
             IWebElement element = webDriver.FindElement(locator);
             var selectElement = new SelectElement(element);
             selectElement.SelectByValue(value);
         }
-
-
+        
         public static void SelectFromDropDownByText(By locator, String value)
         {
             IWebElement element = webDriver.FindElement(locator);
             var selectElement = new SelectElement(element);
-            selectElement.SelectByText(value);
+            selectElement.SelectByText(value);            
         }
 
         public static void SelectFromDropDownByText(IWebElement element, String text)
@@ -91,7 +89,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             if (radioToSelect != null)
                 ClickElement(radioToSelect);
         }
-
-        
     }
 }

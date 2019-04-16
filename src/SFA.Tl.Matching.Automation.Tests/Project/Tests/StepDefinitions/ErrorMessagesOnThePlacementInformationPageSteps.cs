@@ -19,10 +19,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             findLocalProvidersPage.ClickSearchButton();
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickReportProvisionGapLink();
-
-
         }
-        
+
+        [Given(@"I fill in the values on the Placement Information Page")]
+        public void GivenIFillInTheValuesOnThePlacementInformationPage()
+        {
+            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
+            placementInformationPage.AutoPopulateFields();
+        }
+
         [Given(@"I clear the job field on the Placement Information page")]
         public void GivenIClearTheJobFieldOnThePlacementInformationPage()
         {
@@ -41,14 +46,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void ThenThePlacementInformationPageWillShowAnErrorStating(string errorMessage)
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.VerifyErrorNoJobPlacementEntered(errorMessage);
+            placementInformationPage.VerifyErrorNoJobPlacementEntered(errorMessage);         
         }
 
         [Then(@"the Placement Information page will display a no placement selected error stating ""(.*)""")]
         public void ThenThePlacementInformationPageWillDisplayANoPlacementSelectedErrorStating(string errorMessage)
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.VerifyErrorNoPlacementsSelected(errorMessage);
+            placementInformationPage.VerifyError_PlacementRadioButtonNotSelected(errorMessage);            
         }
 
         [Given(@"I have selected the No radio button")]
@@ -58,14 +63,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             placementInformationPage.SelectNoRadioButton();
         }
 
-
         [Given(@"I have selected the Yes radio button")]
         public void GivenIHaveSelectedTheYesRadioButton()
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             placementInformationPage.SelectYesRadioButton();
         }
-
 
         [Then(@"the Number of Placements field is not displayed")]
         public void ThenTheNumberOfPlacementsFieldIsNotDisplayed()
@@ -166,7 +169,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         [Then(@"I am on the Placement information page")]
         public void ThenIAmOnThePlacementInformationPage()
         {
-           // ScenarioContext.Current.Pending();
+            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
+            placementInformationPage.VerifyPageURL();
         }
 
         [Given(@"I enter a job description of ""(.*)"" on the Placement information page")]
@@ -174,8 +178,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             Thread.Sleep(2000);
-            placementInformationPage.EnterJobRole(jobTitle);
-            
+            placementInformationPage.EnterJobRole(jobTitle);            
         }
 
         [Given(@"I select No for the number of placements known")]
@@ -184,6 +187,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             placementInformationPage.SelectNoRadioButton();
         }
-
     }
 }

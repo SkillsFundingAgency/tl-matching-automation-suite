@@ -13,10 +13,26 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class PlacementInformationPage : BasePage
     {
         private static String PAGE_TITLE = "Placement information";
+        private By ContinueButton = By.ClassName("govuk-button");
+        private By JobTypeField = By.Name("JobTitle");
+        private By YesRadioButton = By.Id("placement-location-yes");
+        private By NoRadioButton = By.Id("placement-location-no");
+        private By PlacementsField = By.Id("Placements");
+
+        //Error message locators
+        private By ActualPlacementRadioButtonNotSelected = By.LinkText("You must tell us whether the employer knows how many placements they want at this location");
+        private By ActualPlacementNumberNullError = By.LinkText("You must estimate how many placements the employer wants at this location");
+        private By ActualPlacementsNumberTooSmallError = By.LinkText("The number of placements must be 1 or more");
+        private By ActualPlacementsNumberTooBigError = By.LinkText("The number of placements must be 999 or less");
+        private By ActualJobTypeTooShortError = By.LinkText("You must enter a job role using 2 or more characters");
+        private By ActualJobTypeTooLongError = By.LinkText("You must enter a job role using 99 characters or less");
+        private By ActualJobTypeNullError = By.LinkText("You must tell us what specific job the placement student would do");
+        private String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/provider-results";
+        private String expectedPageURL = "https://test.industryplacementmatching.education.gov.uk/placement-information/";
 
         public PlacementInformationPage(IWebDriver webDriver) : base(webDriver)
         {
-          //  SelfVerify();
+            SelfVerify();
         }
 
         protected override bool SelfVerify()
@@ -24,66 +40,45 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-
-
-        private By ContinueButton = By.ClassName("govuk-button");
-        private By JobTypeField = By.Name("JobTitle");
-        private By YesRadioButton = By.Id("placement-location-yes");
-        private By NoRadioButton = By.Id("placement-location-no");
-        private By PlacementsField = By.Id("Placements");
-        
-        //Error message locators
-        private By ActualNullPlacementError = By.LinkText("You must estimate how many placements the employer wants at this location");
-        private By ActualPlacementsNumberTooSmallError = By.LinkText("The number of placements must be 1 or more");
-        private By ActualPlacementsNumberTooBigError = By.LinkText("The number of placements must be 999 or less");
-        private By ActualJobTypeTooShortError = By.LinkText("You must enter a job role using 2 or more characters");
-        private By ActualJobTypeTooLongError = By.LinkText("You must enter a job role using 99 characters or less");
-        private By ActualJobTypeNullError = By.LinkText("You must tell us what specific job the placement student would do");
-        private String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/provider-results";
-      
-
         public void VerifyPageURL()
         {
-            PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
+            PageInteractionHelper.VerifyPageURL(webDriver.Url, expectedPageURL);
         }
-
 
         public void ClickContinueButton()
         {
            FormCompletionHelper.ClickElement(ContinueButton);
         }
 
-
         public void ClearJobField()
         {
             FormCompletionHelper.ClearText(JobTypeField);
-
         }
 
         public void VerifyErrorNoJobPlacementEntered(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeNullError, expectedError);
-
         }
 
         public void VerifyErrorNoPlacementsSelected(string expectedError)
         {
-            FormCompletionHelper.VerifyText(ActualNullPlacementError, expectedError);
+            FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
+        }
 
+        public void VerifyError_PlacementRadioButtonNotSelected(string expectedError)
+        {
+            FormCompletionHelper.VerifyText(ActualPlacementRadioButtonNotSelected, expectedError);
         }
 
         public void VerifyErrorJobRoleTooLong(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeTooLongError, expectedError);
-
         }
 
         public void VerifyErrorJobRoleTooShort(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);
-
         }
-
         
         public void AutoPopulateFields()
         {
@@ -99,8 +94,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public void SelectYesRadioButton()
         {
-           FormCompletionHelper.ClickElement(YesRadioButton);
-       
+           FormCompletionHelper.ClickElement(YesRadioButton);       
         }
 
         public void VerifyNumberOfPLacementsIsVisibile()
@@ -111,10 +105,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             if (Displayed == false)
             {
                 throw new Exception("Element verification failed: "
-               + "\n Expected element to be visible: " );
-              
-            }
-            
+               + "\n Expected element to be visible: " );              
+            }            
         }
 
         public void VerifyNumberOfPLacementsIsNotVisibile()
@@ -126,9 +118,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             {
                 throw new Exception("Element verification failed: "
                + "\n Expected element to be visible: ");
-
             }
-
         }
 
         public void EnterJobRole(String jobtype)
@@ -136,7 +126,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.EnterText(JobTypeField, jobtype);
             ScenarioContext.Current["_provisionGapJobType"] = jobtype;
         }
-
 
         public void EnterNumberOfPlacements(int Number)
         {
@@ -148,21 +137,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         public void VerifyErrorPlacementNumberTooSmall(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooSmallError, expectedError);
-
         }
 
         public void VerifyErrorPlacementNumberTooBig(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooBigError, expectedError);
-
         }
 
         public void VerifyErrorPlacementNumberIsNull(string expectedError)
         {
-            FormCompletionHelper.VerifyText(ActualNullPlacementError, expectedError);
-
+            FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
         }
-
-
     }
 }

@@ -117,8 +117,8 @@ this.FeatureBackground();
 #line 20
  testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 21
- testRunner.Given("I enter an employer name of \"Paul Robert Housden\" on the Who is the employer page" +
-                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I enter an employer name of \"Abacus Childrens Nurseries\" on the Who is the employ" +
+                    "er page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
  testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
@@ -141,12 +141,12 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("A provision gap record is created where the user enters the number of placements " +
-            "required and opts in to share tehir details")]
+            "required and opts in to share their details")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void AProvisionGapRecordIsCreatedWhereTheUserEntersTheNumberOfPlacementsRequiredAndOptsInToShareTehirDetails()
+        public virtual void AProvisionGapRecordIsCreatedWhereTheUserEntersTheNumberOfPlacementsRequiredAndOptsInToShareTheirDetails()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A provision gap record is created where the user enters the number of placements " +
-                    "required and opts in to share tehir details", null, new string[] {
+                    "required and opts in to share their details", null, new string[] {
                         "regression"});
 #line 32
 this.ScenarioInitialize(scenarioInfo);
@@ -176,8 +176,7 @@ this.FeatureBackground();
 #line 43
  testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 44
- testRunner.Given("I enter an employer name of \"Paul Robert Housden\" on the Who is the employer page" +
-                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I enter an employer name of \"Abell Chemist\" on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 45
  testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 46
@@ -203,3 +202,4 @@ this.FeatureBackground();
 }
 #pragma warning restore
 #endregion
+

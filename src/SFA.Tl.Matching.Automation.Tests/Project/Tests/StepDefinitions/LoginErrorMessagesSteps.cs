@@ -15,8 +15,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             webDriver.Navigate().GoToUrl(Configurator.GetConfiguratorInstance().GetBaseUrl());
             LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
-            LoginHelpPage.ClickLogin();
-            
+            LoginHelpPage.ClickLogin();            
         }
         
         [Given(@"I only enter the username on the IDAMS login page")]
@@ -32,7 +31,6 @@ namespace SFA.Tl.Matching.Automation.Tests
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             IDAMSLoginPage.IDAMSLoginPasswordOnly("PasswordOnly");
         }
-
 
         [Given(@"I do not enter the user name or password on the IDAMS login page")]
         public void GivenIDoNotEnterTheUserNameOrPasswordOnTheIDAMSLoginPage()
@@ -57,8 +55,8 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Then(@"a warning will be displayed stating ""(.*)""")]
         public void ThenAWarningWillBeDisplayedStating(string WarningMessage)
         {
-            String ActualErrorMessage = webDriver.FindElement(By.XPath("//*[@id='mainContent']/div[2]/div[2]/form/div[1]/ul/li/a")).Text;
-            PageInteractionHelper.VerifyText(ActualErrorMessage, WarningMessage);
-        }
+            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
+            IDAMSLoginPage.VerifyLoginErrorMessage(WarningMessage);
+        }       
     }
 }

@@ -95,7 +95,7 @@ this.FeatureBackground();
 #line 11
  testRunner.Then("I should be on the Start Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 12
- testRunner.And("I should see an option stating \"Upload Employer and Provider Data\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I should see an option stating \"Upload employer and provider data\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -119,7 +119,7 @@ this.FeatureBackground();
 #line 17
  testRunner.Then("I should be on the Start Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 18
- testRunner.And("I should see an option stating \"Upload Employer and Provider Data\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I should see an option stating \"Upload employer and provider data\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -169,3 +169,4 @@ this.FeatureBackground();
 }
 #pragma warning restore
 #endregion
+

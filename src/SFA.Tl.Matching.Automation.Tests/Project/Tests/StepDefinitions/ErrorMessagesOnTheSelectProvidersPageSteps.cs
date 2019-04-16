@@ -18,11 +18,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             startPage.ClickStartButton();
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
             findLocalProvidersPage.EnterPostcode("B43 6JN");
-            ScenarioContext.Current.Add("Postcode", "B43 6JN");
-
+            ScenarioContext.Current.Add("_provisionGapPostcode", "B43 6JN");
             findLocalProvidersPage.SelectFromDropdown("Construction");
-            ScenarioContext.Current.Add("SkillArea", "Construction");
-            
+            ScenarioContext.Current.Add("_provisionGapTypeOfPlacement", "Construction");
+            ScenarioContext.Current.Add("_provisionGapPostcodeRadius", "10 miles");
             findLocalProvidersPage.ClickSearchButton();
         }
         
@@ -53,7 +52,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickReportProvisionGapLink();
         }
-
-
     }
 }

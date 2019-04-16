@@ -13,10 +13,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     class IDAMSLoginPage : BasePage
     {
         private static String PAGE_TITLE = "ESFA Sign in";
+        private By UserNameLocator = By.Id("username");
+        private By PasswordLocator = By.Id("password");
+        private By LoginButton = By.XPath("//*[@id='mainContent']/div[2]/div[2]/form/div[5]/div/button");
+        private By ActualLoginErrorMessage = By.XPath("//*[@class='animate-css-fadeIn-on-enter animate-css-fadeOut-on-leave ng-scope']/a");
 
         public IDAMSLoginPage(IWebDriver webDriver) : base(webDriver)
         {
-           // SelfVerify();
+            SelfVerify();
         }
 
         protected override bool SelfVerify()
@@ -24,27 +28,19 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-
-        private By UserNameLocator = By.Id("username");
-        private By PasswordLocator = By.Id("password");
-        private By LoginButton = By.XPath("//*[@id='mainContent']/div[2]/div[2]/form/div[5]/div/button");
-
         public void IDAMSLogin(String userName, String passWord)
-        {
-        
+        {        
             FormCompletionHelper.EnterText(UserNameLocator, userName);
             FormCompletionHelper.EnterText(PasswordLocator, passWord);
         }
 
         public void IDAMSLoginUsernameOnly(String userName)
-        {
-                    
+        {                    
             FormCompletionHelper.EnterText(UserNameLocator, userName);
         }
 
         public void IDAMSLoginPasswordOnly(String passWord)
-        {
-        
+        {        
             FormCompletionHelper.EnterText(PasswordLocator, passWord);
         }
 
@@ -54,5 +50,19 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             Thread.Sleep(5000);
         }
 
+        public void VerifyLoginErrorMessage(String errorMessage)
+        {
+            PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
+        }
+
+        public void VerifyInvalidLoginDetailsErrorMessage(String errorMessage)
+        {
+            PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
+        }
+
+        public void VerifyMissingUSerIDErrorMessage(String errorMessage)
+        {
+            PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
+        }
     }
 }

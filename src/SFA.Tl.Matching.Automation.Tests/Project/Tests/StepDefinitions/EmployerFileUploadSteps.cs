@@ -25,7 +25,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             StartPage StartPage = new StartPage(webDriver);
             StartPage.ClickUploadLink();
-
         }
 
         [Given(@"I have cleared down the Employer table first")]
@@ -40,17 +39,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             Assert.AreEqual(result[0][0], 0);
         }
 
-
         [Given(@"I Upload Employer File")]
         public void GivenIUploadEmployerFile()
         {
             FileUploadPage FileUploadPage = new FileUploadPage(webDriver);
             FileUploadPage.SelectEmployerFile();
             FileUploadPage.SelectEmployerFromDropdown();
-            Thread.Sleep(3000);
-                     
+            Thread.Sleep(3000);                     
         }
-
         
         [When(@"I press Submit")]
         public void WhenIPressSubmit()
@@ -58,15 +54,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             FileUploadPage FileUploadPage = new FileUploadPage(webDriver);
             FileUploadPage.ClickUploadLink();
             Thread.Sleep(1000);
-        }
-        
+        }        
 
         [Then(@"the screen should display File Successfully Uploaded Message")]
         public void ThenTheScreenShouldDisplayFileSuccessfullyUploadedMessage()
         {
             FileUploadPage FileUploadPage = new FileUploadPage(webDriver);
             FileUploadPage.VerifyUploadSuccessMessage();
-
         }
         
         [Then(@"the Database should have a new employer named 1066 Enterprise")]
@@ -77,16 +71,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             var employer = employerRepository.GetByName("1066 Enterprise");
 
             Console.Write(employer.Email);
-           // Thread.Sleep(10000);
-           //// Assert.IsNotNull(employer);
-           //// Assert.AreEqual(employer.CrmId, "35460a4b-383c-4dad-9305-e43decf239bc1");
-           Assert.AreEqual(employer.AlsoKnownAs, "1066 Enterprise");
-          //  Assert.AreEqual(employer.Email, "stephen.king@ldbgroup.co.uk");
-            //Assert.AreEqual(employer.Owner, "Small Business Team CRM User");
-            //Assert.AreEqual(employer.Phone, "01424205500");
-            //Assert.AreEqual(employer.PostCode, "TN34 1UT");
-            //Assert.AreEqual(employer.PrimaryContact, "IP Stephen King");
-            //Assert.AreEqual(employer.Email, "stephen.king@ldbgroup.co.uk");
+            Thread.Sleep(10000);
+            Assert.AreEqual(employer.AlsoKnownAs, "1066 Enterprise");
         }
     }
 }

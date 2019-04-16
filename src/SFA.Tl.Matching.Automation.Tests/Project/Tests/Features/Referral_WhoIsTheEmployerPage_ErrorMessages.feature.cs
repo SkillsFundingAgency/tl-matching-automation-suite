@@ -18,21 +18,21 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Who is the Employer page error messages")]
-    public partial class WhoIsTheEmployerPageErrorMessagesFeature
+    [NUnit.Framework.DescriptionAttribute("Who is the Employer page error messages in the referral journey")]
+    public partial class WhoIsTheEmployerPageErrorMessagesInTheReferralJourneyFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "WhoIsTheEmployerPage_ErrorMessages.feature"
+#line 1 "Referral_WhoIsTheEmployerPage_ErrorMessages.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Who is the Employer page error messages", "\tThis feature is used to confirm the error messages on the Who is the Employer pa" +
-                    "ge. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Who is the Employer page error messages in the referral journey", "\tThis feature is used to confirm the error messages on the Who is the Employer pa" +
+                    "ge in the referral journey. ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -78,27 +78,39 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 6
  testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
- testRunner.And("I navigate to the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I navigate to the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 8
+ testRunner.Given("I select some providers", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 9
+ testRunner.When("I press the Continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+ testRunner.Then("I am on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
+ testRunner.Given("I fill in the values on the Placement Information Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 12
+ testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
+ testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("ProvisionGap_Who is the employer - Press continue without entering any data")]
+        [NUnit.Framework.DescriptionAttribute("Referral_Who is the employer - Press continue without entering any data")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ProvisionGap_WhoIsTheEmployer_PressContinueWithoutEnteringAnyData()
+        public virtual void Referral_WhoIsTheEmployer_PressContinueWithoutEnteringAnyData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("ProvisionGap_Who is the employer - Press continue without entering any data", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral_Who is the employer - Press continue without entering any data", null, new string[] {
                         "regression"});
-#line 10
+#line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 11
+#line 17
  testRunner.Given("I clear the job field on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
+#line 18
  testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
+#line 19
  testRunner.Then("the Who is the employer page will show an error stating \"You must tell us what sp" +
                     "ecific job the placement student would do\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

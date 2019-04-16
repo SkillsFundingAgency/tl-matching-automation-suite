@@ -16,20 +16,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             return result;
         }
 
-
         public static void ExecuteDeleteSqlCommand(String queryToExecute, String connectionString)
         {
             SqlConnection databaseConnection = new SqlConnection(connectionString);
             SqlDataAdapter adapter = new SqlDataAdapter();
             databaseConnection.Open();
-
             SqlCommand command = new SqlCommand(queryToExecute, databaseConnection);
             adapter.DeleteCommand = new SqlCommand(queryToExecute, databaseConnection);
             adapter.DeleteCommand.ExecuteNonQuery();
-
             command.Dispose();
-            databaseConnection.Close();
-           
+            databaseConnection.Close();           
         }
 
         public static List<object[]> ReadDataFromDataBase(String queryToExecute, String connectionString)

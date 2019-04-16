@@ -14,7 +14,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private static String PAGE_TITLE = "You aren't assigned the 'Find an industry placement User' and/or 'Find an industry placement Administrator' role in the Information Management Services system";
         private String _expectedPageURL = "https://tl-test-mtchui-as.azurewebsites.net/Home/InvalidRole";
 
-
         public InvalidRolePage(IWebDriver webDriver) : base(webDriver)
         {
             SelfVerify();
@@ -29,6 +28,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, _expectedPageURL);
         }
-
      }
 }

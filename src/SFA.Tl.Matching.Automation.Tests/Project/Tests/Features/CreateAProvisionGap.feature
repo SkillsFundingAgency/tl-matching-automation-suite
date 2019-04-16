@@ -18,7 +18,7 @@ Scenario: A provision gap record is created where the user does not enter the nu
 	And I select No for the number of placements known
 	And I press Continue on the Placement Information page
 	Then I am on Who is the employer page
-	Given I enter an employer name of "Paul Robert Housden" on the Who is the employer page
+	Given I enter an employer name of "Abacus Childrens Nurseries" on the Who is the employer page
 	And I press Continue on the Who is the employer page
 	Then the Check employers details page will show the details entered
 	Given I press Continue on the Check Employer Details page
@@ -29,7 +29,7 @@ Scenario: A provision gap record is created where the user does not enter the nu
 	And the Provision Gap Done page is displayed
 	
 	@regression
-Scenario: A provision gap record is created where the user enters the number of placements required and opts in to share tehir details
+Scenario: A provision gap record is created where the user enters the number of placements required and opts in to share their details
 	Given I have entered new Skill Area as "Care services"
 	And Employer postcode as "AB37 9HR"
 	And Providers within as "25 miles"
@@ -41,7 +41,7 @@ Scenario: A provision gap record is created where the user enters the number of 
 	And I enter 6 for the number of placements
 	And I press Continue on the Placement Information page
 	Then I am on Who is the employer page
-	Given I enter an employer name of "Paul Robert Housden" on the Who is the employer page
+	Given I enter an employer name of "Abell Chemist" on the Who is the employer page
 	And I press Continue on the Who is the employer page
 	Then the Check employers details page will show the details entered
 	Given I press Continue on the Check Employer Details page

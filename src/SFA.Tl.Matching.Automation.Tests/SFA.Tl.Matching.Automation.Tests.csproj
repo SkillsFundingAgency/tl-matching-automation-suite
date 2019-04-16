@@ -145,10 +145,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\Tests\Features\Referral_PlacementInformation_ErrorMessages.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Referral_PlacementInformation_ErrorMessages.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\Features\Referral_WhoIsTheEmployerPage_ErrorMessages.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Referral_WhoIsTheEmployerPage_ErrorMessages.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\Features\Referral_CheckEmployerDetailsPage_ErrorMessages.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Referral_CheckEmployerDetailsPage_ErrorMessages.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\Features\CreateAReferral.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateAReferral.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\Features\ValidateSearchResults .feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidateSearchResults .feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\Pages\ReferralDonePage.cs" />
+    <Compile Include="Project\Tests\Pages\ReferralCheckAnswersPage.cs" />
     <Compile Include="Project\Tests\Pages\DonePage.cs" />
     <Compile Include="Project\Tests\StepDefinitions\CheckAnswersPageSteps.cs" />
-    <Compile Include="Project\Tests\Features\PlacementInformation_ErrorMessages.feature.cs">
-      <DependentUpon>PlacementInformation_ErrorMessages.feature</DependentUpon>
+    <Compile Include="Project\Tests\Features\ProvisionGap_PlacementInformation_ErrorMessages.feature.cs">
+      <DependentUpon>ProvisionGap_PlacementInformation_ErrorMessages.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -253,6 +280,7 @@
     <Compile Include="Project\Tests\StepDefinitions\ProviderFileUploadSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\SelectProvidersPage_SearchResultsSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\WhoIsTheEmployerPageSteps.cs" />
+    <Compile Include="Project\Tests\StepDefinitions\ReferralDonePageSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -262,6 +290,7 @@
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
+      <SubType>Designer</SubType>
     </None>
     <None Include="App.Release.config">
       <DependentUpon>App.config</DependentUpon>
@@ -273,9 +302,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>EmployerFileUpload.feature.cs</LastGenOutput>
     </None>
-    <None Include="Project\Tests\Features\PlacementInformation_ErrorMessages.feature">
+    <None Include="Project\Tests\Features\ProvisionGap_PlacementInformation_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>PlacementInformation_ErrorMessages.feature.cs</LastGenOutput>
+      <LastGenOutput>ProvisionGap_PlacementInformation_ErrorMessages.feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\SelectProviders_SearchResults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -308,6 +337,26 @@
     <None Include="Project\Tests\Features\CreateAProvisionGap.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateAProvisionGap.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\Referral_PlacementInformation_ErrorMessages.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Referral_PlacementInformation_ErrorMessages.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\Referral_WhoIsTheEmployerPage_ErrorMessages.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Referral_WhoIsTheEmployerPage_ErrorMessages.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\Referral_CheckEmployerDetailsPage_ErrorMessages.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Referral_CheckEmployerDetailsPage_ErrorMessages.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\CreateAReferral.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateAReferral.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\ValidateSearchResults .feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ValidateSearchResults .feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\WhoIsTheEmployerPage_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

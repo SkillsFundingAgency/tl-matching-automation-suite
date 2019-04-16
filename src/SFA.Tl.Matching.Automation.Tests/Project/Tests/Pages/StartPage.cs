@@ -12,6 +12,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class StartPage : BasePage
     {
         private static String PAGE_TITLE = "Match employers with providers for industry placements";
+        private By UserName = By.Id("username");
+        private By Password = By.Id("password");
+        private By StartNowButton = By.Id("tl-start-now");
+        private By LogoffButton = By.LinkText("Sign out");
+        private By UploadLink = By.Id("tl-upload-link");
+        String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/Start";
 
         public StartPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -23,32 +29,19 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-
-
-        private By UserName = By.Id("username");
-        private By Password = By.Id("password");
-        private By StartNowButton = By.CssSelector("#main-content > div > div > div:nth-child(5) > a");
-        private By LogoffButton = By.LinkText("Sign out");
-        private By UploadLink = By.LinkText("Upload Employer and Provider Data");
-        String ExpectedPageURL = "https://tl-test-mtchui-as.azurewebsites.net/Start";
-      
-
         public void VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
-         }
+        }
 
         public void ClickStartButton()
         {
-           FormCompletionHelper.ClickElement(StartNowButton);
-            
+           FormCompletionHelper.ClickElement(StartNowButton);            
         }
 
         public void ClickUploadLink()
         {
-
             FormCompletionHelper.ClickElement(UploadLink);
-
         }
 
         public void Logoff()
@@ -66,8 +59,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             Boolean Displayed = PageInteractionHelper.IsElementPresent(UploadLink);
             Console.WriteLine(Displayed);
             return Displayed;
-
         }
-
     }
 }

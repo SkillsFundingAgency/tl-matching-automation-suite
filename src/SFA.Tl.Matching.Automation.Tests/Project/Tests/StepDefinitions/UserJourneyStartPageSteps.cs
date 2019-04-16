@@ -22,8 +22,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenIAmNotLoggedIn()
         {
             LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
-            LoginHelpPage.VerifyLoginLinkIsPresent();
-           
+            LoginHelpPage.VerifyLoginLinkIsPresent();           
         }
         
         [Given(@"I am logged in")]
@@ -32,14 +31,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             //Log the user in as an Admin user. 
             LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
             LoginHelpPage.VerifyLoginLinkIsPresent();
-            LoginHelpPage.ClickLogin();
-           
+            LoginHelpPage.ClickLogin();           
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
             IDAMSLoginPage.ClickLoginButton();
-
             Thread.Sleep(10000);
-
         }
         
         [Then(@"I will be shown the Login Help Page")]
@@ -54,8 +50,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             webDriver.Navigate().GoToUrl(Configurator.GetConfiguratorInstance().GetBaseUrl());
             StartPage StartPage = new StartPage(webDriver);
-            StartPage.VerifyPageURL();        
-
+            StartPage.VerifyPageURL();   
         }
     }
 }

@@ -40,7 +40,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         [Then(@"I should be on the Start Page")]
         public void ThenIShouldBeOnTheStartPage()
         {
-            //
+            StartPage startPage = new StartPage(webDriver);
+            startPage.VerifyPageURL();
         }
         
         [Then(@"I should see an option stating ""(.*)""")]
@@ -73,8 +74,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             InvalidRolePage InvalidRolePage = new InvalidRolePage(webDriver);
             InvalidRolePage.VerifyPageURL();
         }
-
-
-
     }
 }
