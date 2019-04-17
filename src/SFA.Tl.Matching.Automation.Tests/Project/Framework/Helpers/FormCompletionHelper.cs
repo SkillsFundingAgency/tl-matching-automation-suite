@@ -41,9 +41,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             element.SendKeys(value.ToString());
         }
 
-        public static void PressTabKey(By locator)
+        public static void PressTabKey()
         {
-            IWebElement element = webDriver.FindElement(locator);
+            IWebElement element = webDriver.FindElement(By.TagName("body"));
             element.SendKeys(Keys.Tab);
         }
 

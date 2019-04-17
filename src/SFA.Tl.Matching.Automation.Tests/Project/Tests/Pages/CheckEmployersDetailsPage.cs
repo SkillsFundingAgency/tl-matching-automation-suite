@@ -103,9 +103,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         public void VerifyEmployerDetails()
         {
             String employerName = (string)ScenarioContext.Current["_provisionGapEmployerName"];
-            String actualContactName = FormCompletionHelper.GetTextFromField(ContactField);
-            String actualEmail = FormCompletionHelper.GetTextFromField(EmailField);
-            String actualPhoneNumber = FormCompletionHelper.GetTextFromField(PhoneNumberField);
+            String actualContactName = FormCompletionHelper.GetValueFromField(ContactField);
+            String actualEmail = FormCompletionHelper.GetValueFromField(EmailField);
+            String actualPhoneNumber = FormCompletionHelper.GetValueFromField(PhoneNumberField);
             String query = ("select companyname, PrimaryContact, phone, email from employer where CompanyName = '"+ employerName + "'");
            
             var queryResult = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());

@@ -27,11 +27,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("PageURL verification failed:"
+            throw new Exception("Page URL verification failed:"
                 + "\n Expected URL: " + expected 
                 + "\n Found URL: " + actual);
         }
 
+        //This is not required
         public static Boolean VerifyLinkIsPresent(By locator, String expected)
         {
             String actual = webDriver.FindElement(locator).Text;
@@ -97,31 +98,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         public static Boolean VerifyText(By locator, int expected)
         {
             String expectedText = Convert.ToString(expected);
-            String actual = webDriver.FindElement(locator).Text;
-            
-            if (actual.Contains(expectedText))
-            {
-                return true;
-            }
-
-            throw new Exception("Text verification failed: "
-                + "\n Expected: " + expected
-                + "\n Found: " + actual);
+            return VerifyText(locator, expectedText);
         }
 
         public static Boolean VerifyText(By locator, String expected)
         {
             String actual = webDriver.FindElement(locator).Text;
-            if (actual.Contains(expected))
-            {
-                Console.WriteLine("Actual" + actual);
-                Console.WriteLine("Expected" + expected);
-                return true;
-            }
-
-            throw new Exception("Text verification failed: "
-                + "\n Expected: " + expected
-                + "\n Found: " + actual);
+            return VerifyText(actual, expected);
         }
 
         public static Boolean VerifyValueAttributeOfAnElement(By locator, String expected)
@@ -236,18 +219,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             return webElement.Text;
         }
 
-        public static String GetTextFromField(By locator)
+        public static String GetValueFromField(By locator)
         {
             IWebElement webElement = webDriver.FindElement(locator);
-            String text = webElement.GetAttribute("value");
-            return text;
+            String value = webElement.GetAttribute("value");
+            return value;
         }
 
+        //This is not required, please use VerifyText method
         public static void AssertText(String expectedText, String actualText)
         {
             Assert.AreEqual(expectedText, actualText);
         }
 
+        //From this point onwards please move all methods to an appropriate place 
         public static Boolean VerifyProviderPostcodeDisplayed(String expectedPostcode)
         {
             if (webDriver.FindElement(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Text.Contains(expectedPostcode))
@@ -261,27 +246,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 
         public static Boolean VerifyProviderDisplayed(String expectedProvider)
         {
-
-            if (webDriver.FindElement(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Text.Contains(expectedProvider))
-            {
-                return true;
-            }
-
-            throw new Exception("Provider verification failed:"
-                + "\n Cannot find expected provider: " + expectedProvider);
+            String actualText = GetText(By.CssSelector(".tl-search-results"));
+            return VerifyText(actualText, expectedProvider);
         }
 
         public static Boolean VerifyProviderDisplayedOnCheckAnswersPage(String expectedProvider)
         {
-            if (webDriver.FindElement(By.XPath("//*[@id='main-content']")).Text.Contains(expectedProvider))
-           // if (webDriver.PageSource.Contains(expectedProvider))
-
-            {
-                return true;
-            }
-
-            throw new Exception("Provider not displayed:"
-                + "\n Cannot find expected provider: " + expectedProvider);
+            return VerifyProviderDisplayed(expectedProvider);
         }
 
         public static double Radians(double x)
@@ -351,17 +322,27 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 
         public static void SetProviderNames(By locator1, By locator2)
         {
-            IWebElement webElement1 = webDriver.FindElement(locator1);
-            String text1 = webElement1.Text.Split('\r')[0];
-            text1 = text1.TrimEnd();
-            Console.WriteLine("Provider 1" + text1);
-            ScenarioContext.Current["_Provider1"] = text1;
+            ScenarioContext.Current["_Provider1"] = GetProviderName(locator1);
+            ScenarioContext.Current["_Provider2"] = GetProviderName(locator2);
+
+            //IWebElement webElement1 = webDriver.FindElement(locator1);
+            //String text1 = webElement1.Text.Split('\r')[0];
+            //text1 = text1.TrimEnd();
+            //Console.WriteLine("Provider 1" + text1);
+            //ScenarioContext.Current["_Provider1"] = text1;
             
-            IWebElement webElement2 = webDriver.FindElement(locator2);
-            String text2 = webElement2.Text.Split('\r')[0];
-            text2 = text2.TrimEnd();
-            Console.WriteLine("Provider 2" + text2);
-            ScenarioContext.Current["_Provider2"] = text2;
+            //IWebElement webElement2 = webDriver.FindElement(locator2);
+            //String text2 = webElement2.Text.Split('\r')[0];
+            //text2 = text2.TrimEnd();
+            //Console.WriteLine("Provider 2" + text2);
+            //ScenarioContext.Current["_Provider2"] = text2;
+        }
+
+        private static String GetProviderName(By locator)
+        {
+            String text = webDriver.FindElement(locator).Text.Split('\r')[0];
+            text = text.TrimEnd();
+            return text;
         }
     }
 }
