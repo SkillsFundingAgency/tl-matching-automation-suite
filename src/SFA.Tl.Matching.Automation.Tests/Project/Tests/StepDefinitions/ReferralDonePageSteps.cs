@@ -9,23 +9,28 @@ namespace SFA.Tl.Matching.Automation.Tests
     public class ReferralDonePageSteps : BaseTest
     {
         [Given(@"the Referral Done page is displayed")]
-        public ReferralDonePage GivenTheReferralDonePageIsDisplayed()
+        public void GivenTheReferralDonePageIsDisplayed()
         {
             ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyWhatHappensNextText();
-            return referralDonePage;
+        
         }
+
+        [Given(@"the Referral Done page is displayed with the correct text")]
+        [Then(@"the Referral Done page is displayed with the correct text")]
+        public void GivenTheReferralDonePageIsDisplayedwithCorrectText()
+        {
+            ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyWhatHappensNextText();
+
+        }
+        
 
         [Given(@"the Opportunity record has recorded the user Opted in")]
-        public ReferralDonePage GivenTheOpportunityRecordHasRecordedTheUserOptedIn()
+        public void GivenTheOpportunityRecordHasRecordedTheUserOptedIn()
         {
             ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyOptInValueRecorded("True");
-            return referralDonePage;
+            
         }
 
-        [Given(@"the Referral Done page displays the correct text in the What happens next section")]
-        public void GivenTheReferralDonePageDisplaysTheCorrectTextInTheWhatHappensNextSection()
-        {
-           // ScenarioContext.Current.Pending();
-        }
+
     }
 }

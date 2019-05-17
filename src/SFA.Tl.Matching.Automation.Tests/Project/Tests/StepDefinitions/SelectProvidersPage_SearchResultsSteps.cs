@@ -84,7 +84,16 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.SelectProviders();
             Thread.Sleep(5000);
-         }
+        }  
+
+        [Given(@"I select a provider and continue to placement information page")]
+        public void GivenISelectSomeProvidersAndClickContinue()
+        {
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.SelectProviders().ClickContinue();
+            Thread.Sleep(5000);
+
+        }
 
         [When(@"I press the Continue button")]
         public void WhenIPressTheContinueButton()

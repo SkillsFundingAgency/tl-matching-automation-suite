@@ -140,13 +140,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new PlacementInformationPage(webDriver);
         }
 
-        public void SelectProviders()
+        public SelectProvidersPage SelectProviders()
         {
             SelectPostcodeRadius(Constants.radius);
             ClickSearchAgain();
             FormCompletionHelper.ClickElement(Provider1Checkbox);
-            FormCompletionHelper.ClickElement(Provider2Checkbox);
+            //FormCompletionHelper.ClickElement(Provider2Checkbox);
             PageInteractionHelper.SetProviderNames(providerName1, providerName2);
+            return new SelectProvidersPage(webDriver);
         }
 
         public void VerifyProviderNotSelectedError(string ExpectedErrorMessage)

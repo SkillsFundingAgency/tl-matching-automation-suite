@@ -22,7 +22,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By JobRole = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[4]/td");
         private By NumberOfPlacements = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[5]/td");
         private By provider1Name = By.XPath("//*[@id='main-content']/div/div/p[1]");
-        private By provider2Name = By.XPath("/*[@id='main-content']/div/div/p[3]");
+       // private By provider2Name = By.XPath("//*[@id='main-content']/div/div/p[3]");
 
         //Variables to store values from the database
         private String actualPostcode;
@@ -60,14 +60,18 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }       
 
-        public void ClickConfirmAndSendutton()
+        public ReferralDonePage ClickConfirmAndSendutton()
         {
            FormCompletionHelper.ClickElement(ConfirmAndSendButton);
+
+            return new ReferralDonePage(webDriver);
         }
 
-        public void ClickConfirmationCheckBox()
+        public ReferralCheckAnswersPage ClickConfirmationCheckBox()
         {
             FormCompletionHelper.ClickElement(ConfirmationSelected);
+            return new ReferralCheckAnswersPage(webDriver);
+
         }
 
         public ReferralCheckAnswersPage VerifyPageHeader()
@@ -76,17 +80,17 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             String actualPageTitle = PageInteractionHelper.GetText(PageHeading);
 
             PageInteractionHelper.VerifyPageHeading(actualPageTitle, expectedPageTitle);
-            return this;
+            return new ReferralCheckAnswersPage(webDriver);
         }
 
         public ReferralCheckAnswersPage VerifyProvidersAreDisplayed()
         {
            String provider1 = (string)ScenarioContext.Current["_Provider1"];
-           String provider2 = (string)ScenarioContext.Current["_Provider2"];
+          // String provider2 = (string)ScenarioContext.Current["_Provider2"];
            PageInteractionHelper.VerifyProviderDisplayed(provider1, provider1Name);
            Console.WriteLine(provider1 + "Verified");
-           PageInteractionHelper.VerifyProviderDisplayed(provider2, provider2Name);
-           Console.WriteLine(provider2 + "Verified");
+           //PageInteractionHelper.VerifyProviderDisplayed(provider2, provider2Name);
+           //Console.WriteLine(provider2 + "Verified");
 
            return new ReferralCheckAnswersPage(webDriver);
         }
@@ -127,7 +131,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 PageInteractionHelper.AssertText(actualJobtitle, expectedJobType);
                 PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
             }
-            return this;
+            return new ReferralCheckAnswersPage(webDriver);
         }
     }
 }

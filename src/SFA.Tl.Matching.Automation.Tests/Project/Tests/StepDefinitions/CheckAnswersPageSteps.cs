@@ -19,17 +19,19 @@ namespace SFA.Tl.Matching.Automation.Tests
         }
 
         [Then(@"the providers selected will be displayed on the Referral Check Answers screen")]
-        public ReferralCheckAnswersPage ThenTheProvidersSelectedWillBeDisplayedOnTheReferralCheckAnswersScreen()
+        public void ThenTheProvidersSelectedWillBeDisplayedOnTheReferralCheckAnswersScreen()
         {
             ReferralCheckAnswersPage checkAnswersPage = new ReferralCheckAnswersPage(webDriver).VerifyProvidersAreDisplayed();
            
-            return checkAnswersPage;
+           // return checkAnswersPage;
         }
 
         [Then(@"the referral Check answers screen will display the referral details entered")]
         public void ThenTheReferralCheckAnswersScreenWillDisplayTheReferralDetailsEntered()
         {
-            ReferralCheckAnswersPage checkAnswersPage = new ReferralCheckAnswersPage(webDriver).VerifyPageHeader().VerifyEmployersAnswers();
+            ReferralCheckAnswersPage checkAnswersPage = new ReferralCheckAnswersPage(webDriver).VerifyPageHeader()
+                .VerifyEmployersAnswers()
+                .VerifyProvidersAreDisplayed();
         }
 
         [Given(@"I press Confirm and Send on the Check answers page")]
@@ -43,7 +45,14 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I press Opt In on the Check answers page")]
         public void GivenIPressOptInOnTheCheckAnswersPage()
         {
-            CheckAnswersPage checkAnswersPage = new CheckAnswersPage(webDriver).ClickOptIn();
+            ReferralCheckAnswersPage ReferralcheckAnswersPage = new ReferralCheckAnswersPage(webDriver).ClickConfirmationCheckBox();
+        }
+        
+        [Given(@"I press Opt In on the Check answers page and click continue")]
+        public void GivenIPressOptInOnTheCheckAnswersPageandContinue()
+        {
+            ReferralDonePage ReferralcheckAnswersPage = new ReferralCheckAnswersPage(webDriver).ClickConfirmationCheckBox()
+                .ClickConfirmAndSendutton();
         }
 
         [Then(@"a Provision gap record will be created")]
@@ -54,10 +63,11 @@ namespace SFA.Tl.Matching.Automation.Tests
         }
 
         [Given(@"referral records are created")]
-        public ReferralDonePage GivenReferralRecordsAreCreated()
+        public void GivenReferralRecordsAreCreated()
         {
-            ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyCountofReferralRecords().VerifyReferralRecordsCreated();
-            return referralDonePage;
+            ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyCountofReferralRecords()
+                .VerifyReferralRecordsCreated();
+            
         }
 
         [Then(@"the Opportunity record will record OPT IN has been selected")]

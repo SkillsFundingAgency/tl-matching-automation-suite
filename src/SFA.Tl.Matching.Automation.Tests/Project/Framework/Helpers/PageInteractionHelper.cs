@@ -329,7 +329,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         public static void SetProviderNames(By locator1, By locator2)
         {
             ScenarioContext.Current["_Provider1"] = GetProviderName(locator1);
-            ScenarioContext.Current["_Provider2"] = GetProviderName(locator2);
+           // ScenarioContext.Current["_Provider2"] = GetProviderName(locator2);
 
             //IWebElement webElement1 = webDriver.FindElement(locator1);
             //String text1 = webElement1.Text.Split('\r')[0];

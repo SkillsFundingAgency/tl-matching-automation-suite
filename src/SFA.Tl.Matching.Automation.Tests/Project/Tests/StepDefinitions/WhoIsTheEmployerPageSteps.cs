@@ -64,7 +64,6 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void IenteredEmployerandPressContinue()
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver).clickContinue();
-            
 
         }
         

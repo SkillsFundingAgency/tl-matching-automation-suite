@@ -44,10 +44,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             {
                 //Assign values to variables from the SQL query run
                 String actualCount = fieldNo[0].ToString();
-                String expectedCount = "2";
+                String expectedCount = "1";
 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(actualCount, expectedCount);
+                PageInteractionHelper.AssertText(expectedCount, actualCount);
             }
             return this;
         }
@@ -78,10 +78,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         public ReferralDonePage VerifyReferralRecordsCreated()
         {
             string provider1 = (string)ScenarioContext.Current["_Provider1"];
-            string provider2 = (string)ScenarioContext.Current["_Provider2"];
+            //string provider2 = (string)ScenarioContext.Current["_Provider2"];
 
             string[] providerArray;
-            providerArray = new string[]{provider1, provider2};
+            providerArray = new string[]{provider1};
 
             foreach (String items in providerArray)
             {
@@ -105,8 +105,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public ReferralDonePage VerifyWhatHappensNextText()
         {
-              String expectedEmployername = (string)ScenarioContext.Current["_provisionGapEmployerName"];
-              String expectedEmployerContact = (string)ScenarioContext.Current["_EmployerContactName"];
+            String expectedEmployername = Constants.employerName;
+            String expectedEmployerContact = (string)ScenarioContext.Current["_EmployerContactName"];
               String expectedWhatHappensNextText = ("We expect the provider will contact " + expectedEmployerContact + " within 2 to 3 working days. The provider will work with " + expectedEmployername + " to arrange the terms and details of each placement.");
 
              PageInteractionHelper.VerifyText(ActualWhatHappensNextText, expectedWhatHappensNextText);

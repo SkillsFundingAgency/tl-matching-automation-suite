@@ -63,11 +63,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }
 
         public WhoIsTheEmployerPage clickContinue()
-        {
+        { 
+       
             FormCompletionHelper.EnterText(BusinessNameField, Constants.employerName);
-            Thread.Sleep(2000);
-            //FormCompletionHelper.PressTabKey(BusinessNameField);
+            Thread.Sleep(6000);
+            //FormCompletionHelper.PressTabKey();
             FormCompletionHelper.ClickElement(ContinueButton);
+
             return this;
         }
 
