@@ -38,9 +38,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
                      
-        public void ClickConfirmAndContinueButton()
+        public CheckAnswersPage ClickConfirmAndContinueButton()
         {
            FormCompletionHelper.ClickElement(ConfirmAndContinueButton);
+            return new CheckAnswersPage(webDriver);
         }
 
         public void ClearFields()
@@ -100,29 +101,42 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.VerifyText(EnterCharactersInContactError, expectedErrorMessage);
         }
 
-        public void VerifyEmployerDetails()
+        public CheckEmployersDetailsPage VerifyEmployerDetails()
         {
-            String employerName = (string)ScenarioContext.Current["_provisionGapEmployerName"];
+            String employerName = Constants.employerName;
             String actualContactName = FormCompletionHelper.GetValueFromField(ContactField);
+            Console.WriteLine("contact name"+actualContactName);
             String actualEmail = FormCompletionHelper.GetValueFromField(EmailField);
+            Console.WriteLine("email name" + actualEmail);
             String actualPhoneNumber = FormCompletionHelper.GetValueFromField(PhoneNumberField);
-            String query = ("select companyname, PrimaryContact, phone, email from employer where CompanyName = '"+ employerName + "'");
-           
-            var queryResult = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+            Console.WriteLine("phone no" + actualPhoneNumber);
 
-            foreach (object[] g in queryResult)
+            List<Object[]> employerInfo = GetEmployerDetails(employerName);
+
+            foreach (object[] employerdetails in employerInfo)
             {
 
-                String expectedContactName = g[1].ToString();
-                String expectedPhoneNo = g[2].ToString();
-                String expectedEmail = g[3].ToString();
+                String expectedContactName = employerdetails[1].ToString();
+                String expectedPhoneNo = employerdetails[2].ToString();
+                String expectedEmail = employerdetails[3].ToString();
 
                 PageInteractionHelper.AssertText(expectedContactName, actualContactName);
                 PageInteractionHelper.AssertText(expectedEmail, actualEmail);
                 PageInteractionHelper.AssertText(expectedPhoneNo, actualPhoneNumber);
 
-                ScenarioContext.Current["_EmployerContactName"] = actualContactName;
+               ScenarioContext.Current["_EmployerContactName"] = actualContactName;
             }
+            return new CheckEmployersDetailsPage(webDriver);
+        }
+
+
+        private List<object[]> GetEmployerDetails(String employerName)
+        {
+            String query = ("select companyname, PrimaryContact, phone, email from employer where CompanyName = '" + employerName + "'");
+
+            var queryResult = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+
+            return queryResult;
         }
     }
 }

@@ -33,19 +33,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
         }
 
-        public void ClickSearchButton()
+        public SelectProvidersPage ClickSearchButton()
         {
            FormCompletionHelper.ClickElement(SearchButton);
+            return new SelectProvidersPage(webDriver);
         }
 
-        public void SelectFromDropdown(String dropdownValue)
+        public FindLocalProvidersPage SelectFromDropdown(String dropdownValue)
         {
            FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, dropdownValue);
+            return this;
         }
-               
-        public void EnterPostcode(string postcode)
+
+        public FindLocalProvidersPage EnterPostcode(string postcode)
         {
             FormCompletionHelper.EnterText(PostcodeField, postcode);
+            return new FindLocalProvidersPage(webDriver);
         }
 
         public void ClearPostcode()

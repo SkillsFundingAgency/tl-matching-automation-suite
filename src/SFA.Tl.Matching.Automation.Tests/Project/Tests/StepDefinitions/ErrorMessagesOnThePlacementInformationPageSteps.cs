@@ -40,6 +40,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             placementInformationPage.ClickContinueButton();
+            
         }
         
         [Then(@"the Placement Information page will show an error stating ""(.*)""")]
@@ -169,23 +170,41 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         [Then(@"I am on the Placement information page")]
         public void ThenIAmOnThePlacementInformationPage()
         {
-            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.VerifyPageURL();
+            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver).VerifyPageURL();
+           
         }
+
+        [Given(@"I entered the placement information and press No then click continue button")]
+        public void IenteredplaceinformationandPressNo()
+        {
+            WhoIsTheEmployerPage whoIsTheEmployerPage = new PlacementInformationPage(webDriver).ClickContinue(); 
+
+        }
+        
 
         [Given(@"I enter a job description of ""(.*)"" on the Placement information page")]
         public void GivenIEnterAJobDescriptionOfOnThePlacementInformationPage(string jobTitle)
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             Thread.Sleep(2000);
-            placementInformationPage.EnterJobRole(jobTitle);            
+            placementInformationPage.EnterJobRole(jobTitle);
+
         }
+
+        [Given(@"I entered the placement information and select yes and enter number of placements then click continue button")]
+        public void GivenIEnterPlaceInfoSelectYes()
+        {
+            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
+            Thread.Sleep(2000);
+            placementInformationPage.SelectYesContinue();
+
+        }        
 
         [Given(@"I select No for the number of placements known")]
         public void GivenISelectNoForTheNumberOfPlacementsKnown()
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.SelectNoRadioButton();
+            placementInformationPage.SelectNoRadioButton();            
         }
     }
 }

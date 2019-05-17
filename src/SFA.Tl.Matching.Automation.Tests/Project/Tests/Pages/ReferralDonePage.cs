@@ -32,7 +32,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
            FormCompletionHelper.ClickElement(FinishButton);
         }
 
-        public void VerifyCountofReferralRecords()
+        public ReferralDonePage VerifyCountofReferralRecords()
         {           
             String query = ("select count(*) from referral where opportunityID = " + opportunityID);
             Console.WriteLine(query);
@@ -49,10 +49,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 //Assert the variables above to the actual values displayed on the screen
                 PageInteractionHelper.AssertText(actualCount, expectedCount);
             }
+            return this;
         }
 
 
-        public void VerifyOptInValueRecorded(String expectectedValue)
+        public ReferralDonePage VerifyOptInValueRecorded(String expectectedValue)
         {
             String query = ("Select ConfirmationSelected from opportunity where id = " + opportunityID);
             Console.WriteLine(query);
@@ -70,9 +71,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 //Assert the variables above to the actual values displayed on the screen
                 PageInteractionHelper.AssertText(actualConfirmationSelected, expectedConfirmationSelected);
             }
+            return this;
+
         }
 
-        public void VerifyReferralRecordsCreated()
+        public ReferralDonePage VerifyReferralRecordsCreated()
         {
             string provider1 = (string)ScenarioContext.Current["_Provider1"];
             string provider2 = (string)ScenarioContext.Current["_Provider2"];
@@ -97,15 +100,17 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                     PageInteractionHelper.AssertText(expectedCount, actualCount);
                 }
             }
+            return this;
         }
 
-        public void VerifyWhatHappensNextText()
+        public ReferralDonePage VerifyWhatHappensNextText()
         {
               String expectedEmployername = (string)ScenarioContext.Current["_provisionGapEmployerName"];
               String expectedEmployerContact = (string)ScenarioContext.Current["_EmployerContactName"];
               String expectedWhatHappensNextText = ("We expect the provider will contact " + expectedEmployerContact + " within 2 to 3 working days. The provider will work with " + expectedEmployername + " to arrange the terms and details of each placement.");
 
-              PageInteractionHelper.VerifyText(ActualWhatHappensNextText, expectedWhatHappensNextText);
+             PageInteractionHelper.VerifyText(ActualWhatHappensNextText, expectedWhatHappensNextText);
+            return this;
         }
     }
 }

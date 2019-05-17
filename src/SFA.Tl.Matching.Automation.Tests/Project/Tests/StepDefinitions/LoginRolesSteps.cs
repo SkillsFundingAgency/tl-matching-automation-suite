@@ -16,17 +16,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenIHaveLoggedInAsAnAdminUser()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
-            IDAMSLoginPage.ClickLoginButton();
-            Thread.Sleep(3000);
+            IDAMSLoginPage.LoginAsAdminUser();
+            Thread.Sleep(3000);           
         }
         
         [Given(@"I have logged in as a dual access user")]
         public void GivenIHaveLoggedInAsADualAccessUser()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetDualUserName(), Configurator.GetConfiguratorInstance().GetDualPassword());
-            IDAMSLoginPage.ClickLoginButton();
+            IDAMSLoginPage.LoginAsDualUser();
         }
         
         [Given(@"I have logged in as an Standard user")]
@@ -34,7 +32,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetStandardUserName(), Configurator.GetConfiguratorInstance().GetStandardPassword());
-            IDAMSLoginPage.ClickLoginButton();
+            IDAMSLoginPage.LoginAsStandardUser();
         }
         
         [Then(@"I should be on the Start Page")]

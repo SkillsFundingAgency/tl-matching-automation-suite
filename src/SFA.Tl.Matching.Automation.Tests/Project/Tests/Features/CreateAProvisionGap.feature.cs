@@ -97,43 +97,27 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line 11
- testRunner.Given("I have entered new Skill Area as \"Care services\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I entered new search criteria and press Search again button on the Select Provide" +
+                    "rs Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 12
- testRunner.And("Employer postcode as \"AB37 9HR\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
- testRunner.And("Providers within as \"25 miles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
  testRunner.And("I press the report provision gap link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
+ testRunner.And("I entered the placement information and press No then click continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.And("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+ testRunner.And("I entered employer name and press continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.Then("I am on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the Check employers details page will show the details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.Given("I enter a job description of \"Builder\" on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("the Check answers screen will display the provision gap details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.And("I select No for the number of placements known", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I press Confirm and Send on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
- testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 21
- testRunner.Given("I enter an employer name of \"Abacus Childrens Nurseries\" on the Who is the employ" +
-                    "er page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
- testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.Then("the Check employers details page will show the details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 24
- testRunner.Given("I press Continue on the Check Employer Details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
- testRunner.Then("the Check answers screen will display the provision gap details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 26
- testRunner.Given("I press Confirm and Send on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
     testRunner.Then("a Provision gap record will be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 28
+#line 20
  testRunner.And("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 29
+#line 21
  testRunner.And("the Provision Gap Done page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -142,58 +126,38 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("A provision gap record is created where the user enters the number of placements " +
             "required and opts in to share their details")]
-        [NUnit.Framework.CategoryAttribute("regression")]
         public virtual void AProvisionGapRecordIsCreatedWhereTheUserEntersTheNumberOfPlacementsRequiredAndOptsInToShareTheirDetails()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A provision gap record is created where the user enters the number of placements " +
-                    "required and opts in to share their details", null, new string[] {
-                        "regression"});
-#line 32
+                    "required and opts in to share their details", null, ((string[])(null)));
+#line 24
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 33
- testRunner.Given("I have entered new Skill Area as \"Care services\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 34
- testRunner.And("Employer postcode as \"AB37 9HR\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
- testRunner.And("Providers within as \"25 miles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
- testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
+#line 25
+   testRunner.Given("I entered new search criteria and press Search again button on the Select Provide" +
+                    "rs Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 26
  testRunner.And("I press the report provision gap link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 38
- testRunner.Then("I am on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 39
- testRunner.Given("I enter a job description of \"Builder\" on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 40
- testRunner.And("I have selected the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 41
- testRunner.And("I enter 6 for the number of placements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 43
- testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 44
- testRunner.Given("I enter an employer name of \"Abell Chemist\" on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 45
- testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 46
- testRunner.Then("the Check employers details page will show the details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 47
- testRunner.Given("I press Continue on the Check Employer Details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 48
- testRunner.Then("the Check answers screen will display the provision gap details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 49
- testRunner.Given("I press Opt In on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 50
- testRunner.Given("I press Confirm and Send on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 51
+#line 27
+ testRunner.And("I entered the placement information and select yes and enter number of placements" +
+                    " then click continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 32
+    testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 33
+    testRunner.And("I entered employer name and press continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 34
+ testRunner.And("the Check employers details page will show the details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 35
+ testRunner.And("the Check answers screen will display the provision gap details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
+ testRunner.When("I press Confirm and Send on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 37
     testRunner.Then("a Provision gap record will be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 52
- testRunner.And("the Opportunity record will record OPT IN has been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 53
+#line 38
+ testRunner.And("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 39
  testRunner.And("the Provision Gap Done page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

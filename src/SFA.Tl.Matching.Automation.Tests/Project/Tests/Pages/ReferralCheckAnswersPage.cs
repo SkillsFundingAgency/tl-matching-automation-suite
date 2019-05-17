@@ -21,6 +21,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By Radius = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[3]/td");
         private By JobRole = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[4]/td");
         private By NumberOfPlacements = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[5]/td");
+        private By provider1Name = By.XPath("//*[@id='main-content']/div/div/p[1]");
+        private By provider2Name = By.XPath("/*[@id='main-content']/div/div/p[3]");
 
         //Variables to store values from the database
         private String actualPostcode;
@@ -33,12 +35,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private int OpportunityId;
 
         //Variables to store values entered in the journey web page
-        private String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
-        private String expectedSearchRadius = (string)ScenarioContext.Current["_provisionGapPostcodeRadius"];
-        private String expectedJobType = (string)ScenarioContext.Current["_provisionGapJobType"];
+ //private String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
+// private String expectedSearchRadius = (string)ScenarioContext.Current["_provisionGapPostcodeRadius"];
+//private String expectedJobType = (string)ScenarioContext.Current["_provisionGapJobType"];
+ //       private String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
+   //     private String expectedTypeOfPlacement = (string)ScenarioContext.Current["_provisionGapTypeOfPlacement"];
+    //    private String expectedEmployername = (string)ScenarioContext.Current["_provisionGapEmployerName"];
+
+        //Variables to store values entered in the journey web page
+        private String expectedPostcode = Constants.postCode;
+        private String expectedSearchRadius = Constants.radius;
+        private String expectedJobType = Constants.jobTitle;
         private String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
-        private String expectedTypeOfPlacement = (string)ScenarioContext.Current["_provisionGapTypeOfPlacement"];
-        private String expectedEmployername = (string)ScenarioContext.Current["_provisionGapEmployerName"];
+        private String expectedTypeOfPlacement = Constants.skillArea;
+        private String expectedEmployername = Constants.employerName;
 
         public ReferralCheckAnswersPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -60,26 +70,29 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.ClickElement(ConfirmationSelected);
         }
 
-        public void VerifyPageHeader()
+        public ReferralCheckAnswersPage VerifyPageHeader()
         {
             String expectedPageTitle = "Check " + expectedEmployername + "'s answers";
             String actualPageTitle = PageInteractionHelper.GetText(PageHeading);
 
             PageInteractionHelper.VerifyPageHeading(actualPageTitle, expectedPageTitle);
+            return this;
         }
 
-        public void VerifyProvidersAreDisplayed()
+        public ReferralCheckAnswersPage VerifyProvidersAreDisplayed()
         {
            String provider1 = (string)ScenarioContext.Current["_Provider1"];
            String provider2 = (string)ScenarioContext.Current["_Provider2"];
-           PageInteractionHelper.VerifyProviderDisplayedOnCheckAnswersPage(provider1);
+           PageInteractionHelper.VerifyProviderDisplayed(provider1, provider1Name);
            Console.WriteLine(provider1 + "Verified");
-           PageInteractionHelper.VerifyProviderDisplayedOnCheckAnswersPage(provider2);
+           PageInteractionHelper.VerifyProviderDisplayed(provider2, provider2Name);
            Console.WriteLine(provider2 + "Verified");
+
+           return new ReferralCheckAnswersPage(webDriver);
         }
 
 
-        public void VerifyEmployersAnswers()
+        public ReferralCheckAnswersPage VerifyEmployersAnswers()
         {        
            String query = ("Select o.postcode, o.searchradius, o.jobtitle, o.PlacementsKnown, o.placements, o.employername, r.Name, o.id from opportunity o, route r where o.RouteId = r.Id and o.ID in (select max(id) from opportunity)");
            Console.WriteLine(query);
@@ -114,6 +127,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 PageInteractionHelper.AssertText(actualJobtitle, expectedJobType);
                 PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
             }
+            return this;
         }
     }
 }

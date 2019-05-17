@@ -11,7 +11,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
     public class LoginHelpPage : BasePage
     {
-        private static String PAGE_TITLE = "Match employers with providers for industry placements";
+        private static String PAGE_TITLE = "How to sign in";
         private By LoginButton = By.Id("tl-login");
         By LoginText = By.LinkText("Login");
         By Logout = By.LinkText("Logout");
@@ -31,9 +31,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyLinkIsPresent(LoginText, "Login");
         }  
                
-        public void ClickLogin()
+        public IDAMSLoginPage ClickLogin()
         {
-            FormCompletionHelper.ClickElement(LoginButton);          
+            FormCompletionHelper.ClickElement(LoginButton);
+            return new IDAMSLoginPage(webDriver);
         }
+
     }
 }

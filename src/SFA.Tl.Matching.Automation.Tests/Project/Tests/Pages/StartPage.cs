@@ -34,9 +34,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
         }
 
-        public void ClickStartButton()
+        public FindLocalProvidersPage ClickStartButton()
         {
-           FormCompletionHelper.ClickElement(StartNowButton);            
+           FormCompletionHelper.ClickElement(StartNowButton);
+            return new FindLocalProvidersPage(webDriver);
         }
 
         public void ClickUploadLink()

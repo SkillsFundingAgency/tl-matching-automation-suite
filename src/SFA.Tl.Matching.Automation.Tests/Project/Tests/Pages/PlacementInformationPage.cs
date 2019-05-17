@@ -40,14 +40,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-        public void VerifyPageURL()
+        public PlacementInformationPage VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, expectedPageURL);
+            return this;
         }
 
-        public void ClickContinueButton()
+        public WhoIsTheEmployerPage ClickContinueButton()
         {
            FormCompletionHelper.ClickElement(ContinueButton);
+           return new WhoIsTheEmployerPage(webDriver);
         }
 
         public void ClearJobField()
@@ -86,10 +88,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.ClickElement(NoRadioButton);
         }
 
-        public void SelectNoRadioButton()
+        public PlacementInformationPage SelectNoRadioButton()
         {
            FormCompletionHelper.ClickElement(NoRadioButton);
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = "at least 1";
+            return this;
         }
 
         public void SelectYesRadioButton()
@@ -121,10 +124,31 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             }
         }
 
-        public void EnterJobRole(String jobtype)
+        public PlacementInformationPage EnterJobRole(String jobtype)
         {
             FormCompletionHelper.EnterText(JobTypeField, jobtype);
             ScenarioContext.Current["_provisionGapJobType"] = jobtype;
+            return new PlacementInformationPage(webDriver);
+        }
+
+
+        public WhoIsTheEmployerPage SelectYesContinue()
+        {
+            FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
+            FormCompletionHelper.ClickElement(YesRadioButton);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacementEntered;
+            FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return new WhoIsTheEmployerPage(webDriver);
+        }
+
+        public WhoIsTheEmployerPage ClickContinue()
+        {
+            FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
+            FormCompletionHelper.ClickElement(NoRadioButton);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacements;
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return new WhoIsTheEmployerPage(webDriver);
         }
 
         public void EnterNumberOfPlacements(int Number)

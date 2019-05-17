@@ -38,7 +38,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenIPressContinueOnTheCheckEmployerDetailsPage()
         {
             CheckEmployersDetailsPage checkEmplyerDetailsPage = new CheckEmployersDetailsPage(webDriver);
-            checkEmplyerDetailsPage.ClickConfirmAndContinueButton();
+             checkEmplyerDetailsPage.ClickConfirmAndContinueButton();
+            
         }
         
         [Then(@"the Check Employer Details page will show an error for Null contact name stating ""(.*)""")]
@@ -140,10 +141,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         }
 
         [Then(@"the Check employers details page will show the details entered")]
+        [Given(@"the Check employers details page will show the details entered")]
         public void ThenTheCheckEmployersDetailsPageWillShowTheDetailsEntered()
         {
             CheckEmployersDetailsPage checkEmployerDetailsPage = new CheckEmployersDetailsPage(webDriver);
-            checkEmployerDetailsPage.VerifyEmployerDetails();
+            CheckAnswersPage checkAnswersPage = checkEmployerDetailsPage.VerifyEmployerDetails().ClickConfirmAndContinueButton();          
         }
 
         [Then(@"the Referral Check employers details page will show the details entered")]

@@ -13,24 +13,31 @@ namespace SFA.Tl.Matching.Automation.Tests
     public class SelectProvidersPage_SearchResultsSteps : BaseTest
     {
         [Given(@"I have entered new Skill Area as ""(.*)""")]
-        public void GivenIHaveEnteredNewSkillAreaAs(string skillArea)
+        public SelectProvidersPage GivenIHaveEnteredNewSkillAreaAs(string skillArea)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.SelectSkillArea(skillArea);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectSkillArea(skillArea);            
+            return selectProvidersPage;
         }
-        
-        [Given(@"Employer postcode as ""(.*)""")]
-        public void GivenEmployerPostcodeAs(string postcode)
+
+        [Given(@"I entered new search criteria and press Search again button on the Select Providers Page")]
+        public void GivenIenteredNewSearchAmdPressSearch()
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.EnterPostcode(postcode);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectSearchAgain();
+            
+        }
+
+        [Given(@"Employer postcode as ""(.*)""")]
+        public SelectProvidersPage GivenEmployerPostcodeAs(string postcode)
+        {
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).EnterPostcode(postcode);
+            return selectProvidersPage;
         }
         
         [Given(@"Providers within as ""(.*)""")]
-        public void GivenProvidersWithinAs(string postcodeRadius)
+        public SelectProvidersPage GivenProvidersWithinAs(string postcodeRadius)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.SelectPostcodeRadius(postcodeRadius);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectPostcodeRadius(postcodeRadius);
+            return selectProvidersPage;
         }
         
         [Then(@"the Select Providers page will display the postcode and skill area selected on the Find Providers page")]
@@ -77,13 +84,14 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.SelectProviders();
             Thread.Sleep(5000);
-        }
+         }
 
         [When(@"I press the Continue button")]
         public void WhenIPressTheContinueButton()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickContinue();
+            
         }
 
         [Given(@"I clear the postcode field on the Select providers page")]

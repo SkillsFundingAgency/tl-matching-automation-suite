@@ -63,7 +63,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
             webDriver.Manage().Cookies.DeleteAllCookies();
             String currentWindow = webDriver.CurrentWindowHandle;
             webDriver.SwitchTo().Window(currentWindow);
-
+            webDriver.Navigate().GoToUrl(Configurator.GetConfiguratorInstance().GetBaseUrl());
 
             PageInteractionHelper.SetDriver(webDriver);
         }

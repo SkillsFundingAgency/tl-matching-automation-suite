@@ -33,8 +33,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             LoginHelpPage.VerifyLoginLinkIsPresent();
             LoginHelpPage.ClickLogin();           
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
-            IDAMSLoginPage.ClickLoginButton();
+            //IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
+            IDAMSLoginPage.LoginAsAdminUser();
             Thread.Sleep(10000);
         }
         

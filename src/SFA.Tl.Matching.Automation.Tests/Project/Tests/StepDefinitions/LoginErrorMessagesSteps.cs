@@ -13,7 +13,6 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I have navigated to the IDAMS login page")]
         public void GivenIHaveNavigatedToTheIDAMSLoginPage()
         {
-            webDriver.Navigate().GoToUrl(Configurator.GetConfiguratorInstance().GetBaseUrl());
             LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
             LoginHelpPage.ClickLogin();            
         }
@@ -22,27 +21,21 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void GivenIOnlyEnterTheUsernameOnTheIDAMSLoginPage()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLoginUsernameOnly("UserNameOnly");
+            IDAMSLoginPage.IDAMSLoginUsernameOnly();
         }
 
         [Given(@"I only enter the password on the IDAMS login page")]
         public void GivenIOnlyEnterThePasswordOnTheIDAMSLoginPage()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLoginPasswordOnly("PasswordOnly");
+            IDAMSLoginPage.IDAMSLoginPasswordOnly();
         }
-
-        [Given(@"I do not enter the user name or password on the IDAMS login page")]
-        public void GivenIDoNotEnterTheUserNameOrPasswordOnTheIDAMSLoginPage()
-        {
-            Console.WriteLine("Enter Nothing");
-        }
-        
+                  
         [Given(@"I enter an invalid username and password on the IDAMS login page")]
         public void GivenIEnterAnInvalidUsernameAndPasswordOnTheIDAMSLoginPage()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLogin("InvalidUser","InvalidPass");
+            IDAMSLoginPage.IDAMSLogin(Constants.InvalidUser,Constants.InvalidPass);
         }
         
         [When(@"I press Login")]

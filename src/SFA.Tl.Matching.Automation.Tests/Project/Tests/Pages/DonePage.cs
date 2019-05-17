@@ -26,39 +26,48 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }                       
 
-        public void ClickFinishbutton()
+        public DonePage ClickFinishbutton()
         {
            FormCompletionHelper.ClickElement(FinishButton);
+
+            return this;
         }
 
-        public void VerifyProvisionGapRecordCreated()
-        {            
+        public DonePage VerifyProvisionGapRecordCreated()
+        {
+
+            List<Object[]> provisionGapCount = GetProvisionGapCount();
+
+
+            foreach (object[] fieldNo in provisionGapCount)
+            {
+                //Assign values to variables from the SQL query run
+                String actualCount = fieldNo[0].ToString();
+                String expectedCount = Constants.expectedCount;
+
+                //Assert the variables above to the actual values displayed on the screen
+                PageInteractionHelper.AssertText(actualCount, expectedCount);
+            }
+
+            return this;
+        }
+
+        private List<Object[]> GetProvisionGapCount()
+        {
             String query = ("select count(*) from ProvisionGap where opportunityID = " + opportunityID);
             Console.WriteLine(query);
             Console.WriteLine("Opportunity ID: " + opportunityID);
 
             var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
-            
-            foreach (object[] fieldNo in queryResults)
-            {
-                //Assign values to variables from the SQL query run
-                String actualCount = fieldNo[0].ToString();
-                String expectedCount = "1";
 
-                //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(actualCount, expectedCount);
-            }
+            return queryResults;
         }
         
-        public void VerifyOptInValueRecorded(String expectectedValue)
+        public DonePage VerifyOptInValueRecorded(String expectectedValue)
         {
-            String query = ("Select ConfirmationSelected from opportunity where id = " + opportunityID);
-            Console.WriteLine(query);
-            Console.WriteLine("Opportunity ID: " + opportunityID);
-          
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
-            
-            foreach (object[] fieldNo in queryResults)
+            List<Object[]> confirmationSelected = GetConfirmationSelected();
+
+            foreach (object[] fieldNo in confirmationSelected)
             {
                 //Assign values to variables from the SQL query run
                 String actualConfirmationSelected = fieldNo[0].ToString();
@@ -68,6 +77,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 //Assert the variables above to the actual values displayed on the screen
                 PageInteractionHelper.AssertText(actualConfirmationSelected, expectedConfirmationSelected);
             }
+
+            return this;
+        }
+
+
+        private List<Object[]> GetConfirmationSelected()
+        {
+            String query = ("Select ConfirmationSelected from opportunity where id = " + opportunityID);
+            Console.WriteLine(query);
+            Console.WriteLine("Opportunity ID: " + opportunityID);
+
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+
+            return queryResults;
         }
     }
 }

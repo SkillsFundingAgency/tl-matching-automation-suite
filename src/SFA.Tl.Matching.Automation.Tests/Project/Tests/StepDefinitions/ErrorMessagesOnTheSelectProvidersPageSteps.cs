@@ -8,6 +8,7 @@ using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
 {
+
     [Binding]
     public class ErrorMessagesOnTheSelectProvidersPageSteps : BaseTest
     {
@@ -15,14 +16,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenINavigateToTheSelectProvidersPage()
         {
             StartPage startPage = new StartPage(webDriver);
-            startPage.ClickStartButton();
-            FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.EnterPostcode("B43 6JN");
-            ScenarioContext.Current.Add("_provisionGapPostcode", "B43 6JN");
-            findLocalProvidersPage.SelectFromDropdown("Construction");
-            ScenarioContext.Current.Add("_provisionGapTypeOfPlacement", "Construction");
-            ScenarioContext.Current.Add("_provisionGapPostcodeRadius", "10 miles");
-            findLocalProvidersPage.ClickSearchButton();
+            startPage.ClickStartButton()
+                .EnterPostcode(Constants.postCode)
+                .SelectFromDropdown(Constants.skillArea)
+                .ClickSearchButton();
+            
         }
         
         [Given(@"I clear the Employer postcode field")]
@@ -30,13 +28,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClearPostcode();
+            
         }
         
         [Given(@"I press the Search again button on the Select Providers page")]
-        public void GivenIPressTheSearchAgainButtonOnTheSelectProvidersPage()
+        public SelectProvidersPage GivenIPressTheSearchAgainButtonOnTheSelectProvidersPage()
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.ClickSearchAgain();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).ClickSearchAgain();
+            return selectProvidersPage;
         }
         
         [Then(@"the Select Providers page will show an error stating ""(.*)""")]
@@ -47,10 +46,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         }
 
         [Given(@"I press the report provision gap link")]
-        public void GivenIPressTheReportProvisionGapLink()
+        public PlacementInformationPage GivenIPressTheReportProvisionGapLink()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.ClickReportProvisionGapLink();
+            PlacementInformationPage placementInformationPage = selectProvidersPage.ClickReportProvisionGapLink();
+            return placementInformationPage;
         }
     }
 }

@@ -32,12 +32,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private int OpportunityId;
 
         //Variables to store values entered in the journey web page
-        private String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
-        private String expectedSearchRadius = (string)ScenarioContext.Current["_provisionGapPostcodeRadius"];
-        private String expectedJobType = (string)ScenarioContext.Current["_provisionGapJobType"];
+        private String expectedPostcode = Constants.postCode;
+        private String expectedSearchRadius = Constants.radius;
+        private String expectedJobType = Constants.jobTitle;
         private String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
-        private String expectedTypeOfPlacement = (string)ScenarioContext.Current["_provisionGapTypeOfPlacement"];
-        private String expectedEmployername = (string)ScenarioContext.Current["_provisionGapEmployerName"];
+        private String expectedTypeOfPlacement = Constants.skillArea;
+        private String expectedEmployername = Constants.employerName;
 
         public CheckAnswersPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -49,32 +49,34 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }               
 
-        public void ClickConfirmAndSendutton()
+        public DonePage ClickConfirmAndSendutton()
         {
            FormCompletionHelper.ClickElement(ConfirmAndSendButton);
+
+            return new DonePage(webDriver);
         }
 
-        public void ClickOptIn()
+        public CheckAnswersPage ClickOptIn()
         {
             FormCompletionHelper.ClickElement(ConfirmationSelected);
+            return new CheckAnswersPage(webDriver);
         }
         
-        public void VerifyPageHeader()
+        public CheckAnswersPage VerifyPageHeader()
         {
             String expectedPageTitle = "Check " + expectedEmployername + "'s answers";
             String actualPageTitle = PageInteractionHelper.GetText(PageHeading);
 
             PageInteractionHelper.VerifyPageHeading(actualPageTitle, expectedPageTitle);
+
+            return new CheckAnswersPage(webDriver);
         }
         
-        public void VerifyEmployersAnswers()
-        {        
-           String query = ("Select o.postcode, o.searchradius, o.jobtitle, o.PlacementsKnown, o.placements, o.employername, r.Name, o.id from opportunity o, route r where o.RouteId = r.Id and o.ID in (select max(id) from opportunity)");
-           Console.WriteLine(query);
-
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
-          
-            foreach (object[] fieldNo in queryResults)
+        public CheckAnswersPage VerifyEmployersAnswers()
+        {
+            List<Object[]> opportunityInfo = GetOpportunityDetails();
+            
+            foreach (object[] fieldNo in opportunityInfo)
             {
                 //Assign values to variables from the SQL query run
                 actualPostcode = fieldNo[0].ToString();
@@ -87,13 +89,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 OpportunityId = Convert.ToInt32(fieldNo[7]);
                 ScenarioContext.Current["_provisionGapOpportunityID"] = OpportunityId;
 
-                Console.WriteLine(actualNoOfPlacements + " " + expectedNoOfPlacementsKnown);
-                Console.WriteLine(actualPostcode + " " + expectedPostcode);
-                Console.WriteLine(actualSearchRadius + " " + expectedSearchRadius);
-                Console.WriteLine(actualJobtitle + " " + expectedJobType);
-                Console.WriteLine(actualSkillArea + " " + expectedTypeOfPlacement);
-                Console.WriteLine(actualEmployername + " " + expectedEmployername);
-                           
+                // checking values against sql record                     
                 //Assert the variables entered in the journey to the actual values written to the opportunity record
                 PageInteractionHelper.AssertText(actualSkillArea, expectedTypeOfPlacement);
                 PageInteractionHelper.AssertText(actualPostcode, expectedPostcode);
@@ -101,14 +97,24 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 PageInteractionHelper.AssertText(actualJobtitle, expectedJobType);
                 PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
             }
-            Console.WriteLine("jobtype: " + expectedJobType);
-            Console.WriteLine("postcode: " + expectedPostcode);
-            Console.WriteLine("no of placements: " + expectedNoOfPlacementsKnown);
-            Console.WriteLine("type of placement: " + expectedTypeOfPlacement);
+            //checking values against UI screen
             PageInteractionHelper.VerifyText(TypeOfPlacement, expectedTypeOfPlacement);
             PageInteractionHelper.VerifyText(Postcode, expectedPostcode);
             PageInteractionHelper.VerifyText(JobRole, expectedJobType);
             PageInteractionHelper.VerifyText(NumberOfPlacements, expectedNoOfPlacementsKnown);
+
+            return new CheckAnswersPage(webDriver);
+        }
+
+
+        private List<Object[]> GetOpportunityDetails()
+        {
+            String query = ("Select o.postcode, o.searchradius, o.jobtitle, o.PlacementsKnown, o.placements, o.employername, r.Name, o.id from opportunity o, route r where o.RouteId = r.Id and o.ID in (select max(id) from opportunity)");
+            Console.WriteLine(query);
+
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+
+            return queryResults;
         }
     }
 }

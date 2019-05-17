@@ -10,7 +10,7 @@ using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
-    class IDAMSLoginPage : BasePage
+    public class IDAMSLoginPage : BasePage
     {
         private static String PAGE_TITLE = "ESFA Sign in";
         private By UserNameLocator = By.Id("username");
@@ -34,21 +34,48 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.EnterText(PasswordLocator, passWord);
         }
 
-        public void IDAMSLoginUsernameOnly(String userName)
+        public void IDAMSLoginUsernameOnly()
         {                    
-            FormCompletionHelper.EnterText(UserNameLocator, userName);
+            FormCompletionHelper.EnterText(UserNameLocator, Configurator.GetConfiguratorInstance().GetAdminUserName());
         }
 
-        public void IDAMSLoginPasswordOnly(String passWord)
+        public void IDAMSLoginPasswordOnly()
         {        
-            FormCompletionHelper.EnterText(PasswordLocator, passWord);
+            FormCompletionHelper.EnterText(PasswordLocator, Configurator.GetConfiguratorInstance().GetAdminPassword());
         }
 
-        public void ClickLoginButton()
+        public StartPage LoginAsAdminUser()
+        {
+            IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
+            FormCompletionHelper.ClickElement(LoginButton);
+            Thread.Sleep(5000);
+            return new StartPage(webDriver);
+        }
+
+        public IDAMSLoginPage ClickLoginButton()
         {
             FormCompletionHelper.ClickElement(LoginButton);
             Thread.Sleep(5000);
+            return new IDAMSLoginPage(webDriver);
+
         }
+
+        public StartPage LoginAsStandardUser()
+        {
+            IDAMSLogin(Configurator.GetConfiguratorInstance().GetStandardUserName(), Configurator.GetConfiguratorInstance().GetStandardPassword());
+            FormCompletionHelper.ClickElement(LoginButton);
+            Thread.Sleep(5000);
+            return new StartPage(webDriver);
+        }
+               
+        public StartPage LoginAsDualUser()
+        {
+            IDAMSLogin(Configurator.GetConfiguratorInstance().GetDualUserName(), Configurator.GetConfiguratorInstance().GetDualPassword());
+            FormCompletionHelper.ClickElement(LoginButton);
+            Thread.Sleep(5000);
+            return new StartPage(webDriver);
+        }
+
 
         public void VerifyLoginErrorMessage(String errorMessage)
         {

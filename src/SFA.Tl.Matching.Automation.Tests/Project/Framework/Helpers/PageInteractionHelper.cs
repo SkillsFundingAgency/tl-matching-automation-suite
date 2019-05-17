@@ -246,7 +246,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 
         public static Boolean VerifyProviderDisplayed(String expectedProvider)
         {
-            String actualText = GetText(By.CssSelector(".tl-search-results"));
+            String actualText = GetText(By.CssSelector(".t1-search-results"));
+            return VerifyText(actualText, expectedProvider);
+        }
+
+        public static Boolean VerifyProviderDisplayed(String expectedProvider,By providerName)
+        {
+            String actualText = GetText(providerName);
             return VerifyText(actualText, expectedProvider);
         }
 

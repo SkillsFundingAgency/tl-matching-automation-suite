@@ -8,50 +8,35 @@ Background:
 
 @regression
 Scenario: A provision gap record is created where the user does not enter the number of placements required
-	Given I have entered new Skill Area as "Care services"
-	And Employer postcode as "AB37 9HR"
-	And Providers within as "25 miles"
-	And I press the Search again button on the Select Providers page
+	Given I entered new search criteria and press Search again button on the Select Providers Page
 	And I press the report provision gap link
-	Then I am on the Placement information page
-	Given I enter a job description of "Builder" on the Placement information page
-	And I select No for the number of placements known
-	And I press Continue on the Placement Information page
-	Then I am on Who is the employer page
-	Given I enter an employer name of "Abacus Childrens Nurseries" on the Who is the employer page
-	And I press Continue on the Who is the employer page
-	Then the Check employers details page will show the details entered
-	Given I press Continue on the Check Employer Details page
-	Then the Check answers screen will display the provision gap details entered
-	Given I press Confirm and Send on the Check answers page
+	And I entered the placement information and press No then click continue button
+	And I am on Who is the employer page
+	And I entered employer name and press continue 
+	And the Check employers details page will show the details entered
+	And the Check answers screen will display the provision gap details entered
+	When I press Confirm and Send on the Check answers page
     Then a Provision gap record will be created
 	And the Opportunity record will record OPT IN has not been selected
 	And the Provision Gap Done page is displayed
 	
-	@regression
-Scenario: A provision gap record is created where the user enters the number of placements required and opts in to share their details
-	Given I have entered new Skill Area as "Care services"
-	And Employer postcode as "AB37 9HR"
-	And Providers within as "25 miles"
-	And I press the Search again button on the Select Providers page
-	And I press the report provision gap link
-	Then I am on the Placement information page
-	Given I enter a job description of "Builder" on the Placement information page
-	And I have selected the Yes radio button
-	And I enter 6 for the number of placements
-	And I press Continue on the Placement Information page
-	Then I am on Who is the employer page
-	Given I enter an employer name of "Abell Chemist" on the Who is the employer page
-	And I press Continue on the Who is the employer page
-	Then the Check employers details page will show the details entered
-	Given I press Continue on the Check Employer Details page
-	Then the Check answers screen will display the provision gap details entered
-	Given I press Opt In on the Check answers page
-	Given I press Confirm and Send on the Check answers page
-    Then a Provision gap record will be created
-	And the Opportunity record will record OPT IN has been selected
-	And the Provision Gap Done page is displayed
-
 	
+Scenario: A provision gap record is created where the user enters the number of placements required and opts in to share their details
+   Given I entered new search criteria and press Search again button on the Select Providers Page
+	And I press the report provision gap link
+	And I entered the placement information and select yes and enter number of placements then click continue button
+    #Given I enter a job description of "Builder" on the Placement information page
+    #And I have selected the Yes radio button
+    #And I enter 6 for the number of placements
+    #And I press Continue on the Placement Information page
+    Then I am on Who is the employer page
+    And I entered employer name and press continue 
+	And the Check employers details page will show the details entered
+	And the Check answers screen will display the provision gap details entered
+	When I press Confirm and Send on the Check answers page
+    Then a Provision gap record will be created
+	And the Opportunity record will record OPT IN has not been selected
+	And the Provision Gap Done page is displayed
+    
 
 	

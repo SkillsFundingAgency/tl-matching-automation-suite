@@ -30,9 +30,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
         
-        public void ClickContinue()
+        public CheckEmployersDetailsPage ClickContinue()
         {
             FormCompletionHelper.ClickElement(ContinueButton);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
         public void ClearBusinessField()
@@ -49,15 +50,25 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             FormCompletionHelper.EnterText(BusinessNameField, "Abacus Childrens Nurseries");
             Thread.Sleep(2000);
-            FormCompletionHelper.PressTabKey(BusinessNameField);           
+            FormCompletionHelper.PressTabKey();           
         }
 
-        public void EnterEmployer(String employerName)
+        public WhoIsTheEmployerPage EnterEmployer(String employerName)
         {
             FormCompletionHelper.EnterText(BusinessNameField, employerName);
             Thread.Sleep(2000);
             //FormCompletionHelper.PressTabKey(BusinessNameField);
             ScenarioContext.Current["_provisionGapEmployerName"] = employerName;
+            return this;
+        }
+
+        public WhoIsTheEmployerPage clickContinue()
+        {
+            FormCompletionHelper.EnterText(BusinessNameField, Constants.employerName);
+            Thread.Sleep(2000);
+            //FormCompletionHelper.PressTabKey(BusinessNameField);
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return this;
         }
 
         public void VerifyPageURL()

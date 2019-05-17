@@ -38,9 +38,12 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
             whoIstheEmployerPage.ClickContinue();
+            
+
         }
         
         [Then(@"the Who is the employer page will show an error stating ""(.*)""")]
+        [Given(@"the Who is the employer page will show an error stating ""(.*)""")]
         public void ThenTheWhoIsTheEmployerPageWillShowAnErrorStating(string errorMessage)
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
@@ -48,11 +51,23 @@ namespace SFA.Tl.Matching.Automation.Tests
         }
 
         [Then(@"I am on Who is the employer page")]
+        [Given(@"I am on Who is the employer page")]
         public void ThenIAmOnWhoIsTheEmployerPage()
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
             whoIstheEmployerPage.VerifyPageURL();
+           
         }
+
+        [Then(@"I entered employer name and press continue")]
+        [Given(@"I entered employer name and press continue")]
+        public void IenteredEmployerandPressContinue()
+        {
+            WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver).clickContinue();
+            
+
+        }
+        
 
         [Given(@"I enter an employer name on the Who is the employer page")]
         public void GivenIEnterAnEmployerNameOnTheWhoIsTheEmployerPage()

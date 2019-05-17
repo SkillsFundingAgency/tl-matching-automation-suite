@@ -136,10 +136,8 @@ this.FeatureBackground();
 #line 4
 this.FeatureBackground();
 #line 21
- testRunner.Given("I do not enter the user name or password on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
  testRunner.When("I press Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
+#line 22
  testRunner.Then("a warning will be displayed stating \"Please enter your user ID or email address a" +
                     "nd your password\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -153,16 +151,16 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Attempt to login with invalid user credentials", null, new string[] {
                         "regression"});
-#line 26
+#line 25
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 27
+#line 26
  testRunner.Given("I enter an invalid username and password on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 28
+#line 27
  testRunner.When("I press Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 29
+#line 28
  testRunner.Then("a warning will be displayed stating \"Invalid user ID, email address or password\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

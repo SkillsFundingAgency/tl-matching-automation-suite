@@ -18,7 +18,6 @@ Background:
 
 	@regression
 	Scenario: Attempt to login but do not enter the username and password
-	Given I do not enter the user name or password on the IDAMS login page
 	When I press Login
 	Then a warning will be displayed stating "Please enter your user ID or email address and your password"
 
