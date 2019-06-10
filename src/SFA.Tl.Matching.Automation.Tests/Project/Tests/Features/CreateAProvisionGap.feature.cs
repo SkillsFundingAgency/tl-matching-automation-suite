@@ -126,10 +126,12 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("A provision gap record is created where the user enters the number of placements " +
             "required and opts in to share their details")]
+        [NUnit.Framework.CategoryAttribute("regression")]
         public virtual void AProvisionGapRecordIsCreatedWhereTheUserEntersTheNumberOfPlacementsRequiredAndOptsInToShareTheirDetails()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A provision gap record is created where the user enters the number of placements " +
-                    "required and opts in to share their details", null, ((string[])(null)));
+                    "required and opts in to share their details", null, new string[] {
+                        "regression"});
 #line 24
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();

@@ -29,7 +29,7 @@ Scenario: Validate search results on Select a Provider page where results are re
 	And I press the Search again button on the Select Providers page
 	Then the provider results returned will match the expected values
 	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
-	Then print the list of results
+	
 
 @regression
 Scenario: Validate search results on Select a Provider page where results are returned 2

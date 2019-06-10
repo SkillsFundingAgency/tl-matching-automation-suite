@@ -63,7 +63,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public void AutoPopulateFields()
         {
-            FormCompletionHelper.EnterText(PostcodeField, "IV12 5XX");
+            FormCompletionHelper.EnterText(PostcodeField, "B43 6JN");
             FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, "Care services");
         }
     }

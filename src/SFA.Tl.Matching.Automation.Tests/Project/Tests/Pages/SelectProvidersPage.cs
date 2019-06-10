@@ -103,23 +103,26 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.VerifyText(ActualPostcodeError, ExpectedErrorMessage);
         }
 
-        public void VerifyPostcodeDisplayed()
+        public SelectProvidersPage VerifyPostcodeDisplayed()
         {
             String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
             FormCompletionHelper.VerifyText(ActualPostcodeDisplayed, expectedPostcode);
+            return new SelectProvidersPage(webDriver);
         }
 
-        public void VerifySkillsetDisplayed()
+        public SelectProvidersPage VerifySkillsetDisplayed()
         {
             String expectedJobType = ((string)ScenarioContext.Current["_provisionGapTypeOfPlacement"]).ToLower();
             Console.WriteLine(expectedJobType);
             FormCompletionHelper.VerifyText(ActualSkillsetDisplayed, expectedJobType);
+            return new SelectProvidersPage(webDriver);
         }
 
-        public void VerifyResultsCount()
+        public SelectProvidersPage VerifyResultsCount()
         {
              int expResultsCount = (Int32)ScenarioContext.Current["SearchResultsCount"];
              PageInteractionHelper.VerifyText(ActualResultsCount, expResultsCount);
+             return new SelectProvidersPage(webDriver);
         }
 
         public void VerifyZeroResultsCount()
@@ -128,10 +131,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyText(ActualNumberResultsDisplayed, expResultsCount);
         }
 
-        public void VerifySearchRadius()
+        public SelectProvidersPage VerifySearchRadius()
         {
             String expSearchRadius = (String)ScenarioContext.Current["_provisionGapPostcodeRadius"];
             PageInteractionHelper.VerifyText(ActualSearchRadiusDisplayed, expSearchRadius);
+            return new SelectProvidersPage(webDriver);
         }
 
         public PlacementInformationPage ClickContinue()

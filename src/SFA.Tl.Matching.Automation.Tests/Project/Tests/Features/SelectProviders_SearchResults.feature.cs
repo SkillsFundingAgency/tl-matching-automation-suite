@@ -157,8 +157,6 @@ this.FeatureBackground();
 #line 31
  testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
                     " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
- testRunner.Then("print the list of results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

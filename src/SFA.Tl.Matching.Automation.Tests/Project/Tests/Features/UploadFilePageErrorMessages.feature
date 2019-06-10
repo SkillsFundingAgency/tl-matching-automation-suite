@@ -8,13 +8,13 @@ Background:
 
 @regression
     Scenario: Attempt to upload a file without selecting a file
-	Given I select "Provider" from the dropdown
+	Given I select "Employer" from the dropdown
 	And I press Upload
 	Then I should see an Error for no file selected 
 
 @regression
     Scenario: Attempt to upload a Word document
-	Given I select "Provider" from the dropdown
+	Given I select "Employer" from the dropdown
 	And I select a Word document
 	And I press Upload
 	Then I should see an Error for invalid file selected

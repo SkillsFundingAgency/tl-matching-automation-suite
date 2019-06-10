@@ -35,7 +35,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private String expectedPostcode = Constants.postCode;
         private String expectedSearchRadius = Constants.radius;
         private String expectedJobType = Constants.jobTitle;
-        private String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
+        //  private String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
+        //private String expectedNoOfPlacementsKnown = Constants.NoofPlacements;
         private String expectedTypeOfPlacement = Constants.skillArea;
         private String expectedEmployername = Constants.employerName;
 
@@ -74,6 +75,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         
         public CheckAnswersPage VerifyEmployersAnswers()
         {
+
             List<Object[]> opportunityInfo = GetOpportunityDetails();
             
             foreach (object[] fieldNo in opportunityInfo)
@@ -98,6 +100,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
             }
             //checking values against UI screen
+            String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
             PageInteractionHelper.VerifyText(TypeOfPlacement, expectedTypeOfPlacement);
             PageInteractionHelper.VerifyText(Postcode, expectedPostcode);
             PageInteractionHelper.VerifyText(JobRole, expectedJobType);

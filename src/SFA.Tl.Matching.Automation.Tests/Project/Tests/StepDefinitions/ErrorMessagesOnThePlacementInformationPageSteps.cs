@@ -39,7 +39,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenIPressContinueOnThePlacementInformationPage()
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.ClickContinueButton();
+            placementInformationPage.ClickContinueExpectingErrors();
             
         }
         

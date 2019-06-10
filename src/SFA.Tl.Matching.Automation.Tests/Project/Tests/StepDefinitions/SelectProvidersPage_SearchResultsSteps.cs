@@ -15,7 +15,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I have entered new Skill Area as ""(.*)""")]
         public SelectProvidersPage GivenIHaveEnteredNewSkillAreaAs(string skillArea)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectSkillArea(skillArea);            
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectSkillArea(Constants.skillArea);            
             return selectProvidersPage;
         }
 
@@ -29,14 +29,14 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"Employer postcode as ""(.*)""")]
         public SelectProvidersPage GivenEmployerPostcodeAs(string postcode)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).EnterPostcode(postcode);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).EnterPostcode(Constants.postCode);
             return selectProvidersPage;
         }
         
         [Given(@"Providers within as ""(.*)""")]
         public SelectProvidersPage GivenProvidersWithinAs(string postcodeRadius)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectPostcodeRadius(postcodeRadius);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectPostcodeRadius(Constants.radius);
             return selectProvidersPage;
         }
         
@@ -62,11 +62,11 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Then(@"the Select Providers page will display the count, skill area, postcode and radius in the H(.*) heading")]
         public void ThenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeAndRadiusInTheHHeading(int p0)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.VerifyPostcodeDisplayed();
-            selectProvidersPage.VerifySkillsetDisplayed();
-            selectProvidersPage.VerifyResultsCount();
-            selectProvidersPage.VerifySearchRadius();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
+                .VerifyPostcodeDisplayed()
+                .VerifySkillsetDisplayed()
+                .VerifyResultsCount()
+                .VerifySearchRadius();
         }
 
         [Then(@"the provider results returned will match the expected values")]

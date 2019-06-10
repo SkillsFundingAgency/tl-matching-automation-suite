@@ -49,8 +49,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         public void AutoPopulateEmployer()
         {
             FormCompletionHelper.EnterText(BusinessNameField, "Abacus Childrens Nurseries");
-            Thread.Sleep(2000);
-            FormCompletionHelper.PressTabKey();           
+            Thread.Sleep(4000);
+            FormCompletionHelper.PressTabKey();
+            Thread.Sleep(4000);
         }
 
         public WhoIsTheEmployerPage EnterEmployer(String employerName)

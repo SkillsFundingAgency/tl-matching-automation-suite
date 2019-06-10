@@ -95,7 +95,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 4
 this.FeatureBackground();
 #line 11
- testRunner.Given("I select \"Provider\" from the dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I select \"Employer\" from the dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 12
  testRunner.And("I press Upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
@@ -117,7 +117,7 @@ this.FeatureBackground();
 #line 4
 this.FeatureBackground();
 #line 17
- testRunner.Given("I select \"Provider\" from the dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I select \"Employer\" from the dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
  testRunner.And("I select a Word document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19

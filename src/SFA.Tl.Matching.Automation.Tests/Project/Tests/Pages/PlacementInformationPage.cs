@@ -52,6 +52,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
            return new WhoIsTheEmployerPage(webDriver);
         }
 
+        public PlacementInformationPage ClickContinueExpectingErrors()
+        {
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return this;
+        }
+
         public void ClearJobField()
         {
             FormCompletionHelper.ClearText(JobTypeField);

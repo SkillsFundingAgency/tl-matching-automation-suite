@@ -20,7 +20,7 @@ Scenario: A provision gap record is created where the user does not enter the nu
 	And the Opportunity record will record OPT IN has not been selected
 	And the Provision Gap Done page is displayed
 	
-	
+@regression
 Scenario: A provision gap record is created where the user enters the number of placements required and opts in to share their details
    Given I entered new search criteria and press Search again button on the Select Providers Page
 	And I press the report provision gap link
