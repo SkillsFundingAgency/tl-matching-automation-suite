@@ -1,7 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
-using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
-using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
+﻿using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
 
@@ -61,7 +58,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         [Given(@"I select a JPEG image")]
         public void GivenISelectAJPEGImage()
         {
-            FileUploadPage fileUploadPage = new FileUploadPage(webDriver);
+            FileUploadPage fileUploadPage = new FileUploadPage(webDriver);            
             fileUploadPage.SelectJPEGImage();
         }
     }

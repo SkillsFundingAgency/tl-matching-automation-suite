@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,12 +14,12 @@ using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
     public class FileUploadPage : BasePage
-    {
+    {        
         private static String PAGE_TITLE = "Data Import";
         private String EmployerFileLocation = "C:/EmployersDataFile.xlsx";
         private String ProviderFileLocation = "C:/ProviderData.xlsx";
-        private String WordDocumentLocation = "C:/Word.docx";
-        private String JPEGImageLocation = "C:/Image.jpg";
+        private String WordDocumentLocation = Directory.GetCurrentDirectory() + "/Word.docx";
+        private String JPEGImageLocation = Directory.GetCurrentDirectory() + "/Image.jpeg";
         private String ExpectedPageURL = "https://tl-test-mtchui-as.azurewebsites.net/Search/Start";
         String ExpectedSuccessTitle = "File uploaded successfully";
         private By ActualSuccessTitle = By.ClassName("das-notification__body");
@@ -31,7 +32,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By ActualErrNoFileSelected = By.LinkText("You must select a file");
         String ExpectedErrNoFileSelected = "You must select a file";
         String ExpectedErrWrongFiletypeSelected = "You must upload an Excel file with the XLSX file extension";
-
 
         public FileUploadPage(IWebDriver webDriver) : base(webDriver)
         {
