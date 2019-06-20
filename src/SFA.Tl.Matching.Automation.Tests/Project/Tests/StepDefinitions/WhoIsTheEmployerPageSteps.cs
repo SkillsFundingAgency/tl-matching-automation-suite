@@ -17,13 +17,13 @@ namespace SFA.Tl.Matching.Automation.Tests
             StartPage startPage = new StartPage(webDriver);
             startPage.ClickStartButton();
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.AutoPopulateFields();
-            findLocalProvidersPage.ClickSearchButton();
+            findLocalProvidersPage.AutoPopulateFields()
+            .ClickSearchButton();
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickReportProvisionGapLink();
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.AutoPopulateFields();
-            placementInformationPage.ClickContinueButton();
+            placementInformationPage.AutoPopulateFields()
+            .ClickContinueButton();            
         }
         
         [Given(@"I clear the job field on the Who is the employer page")]
@@ -39,7 +39,6 @@ namespace SFA.Tl.Matching.Automation.Tests
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);
             whoIstheEmployerPage.ClickContinue();
             
-
         }
         
         [Then(@"the Who is the employer page will show an error stating ""(.*)""")]
@@ -67,14 +66,7 @@ namespace SFA.Tl.Matching.Automation.Tests
 
         }
         
-
-        [Given(@"I enter an employer name on the Who is the employer page")]
-        public void GivenIEnterAnEmployerNameOnTheWhoIsTheEmployerPage()
-        {
-            // not used at the moment
-        }
-
-        [Given(@"I enter an employer name of ""(.*)"" on the Who is the employer page")]
+         [Given(@"I enter an employer name of ""(.*)"" on the Who is the employer page")]
         public void GivenIEnterAnEmployerNameOfOnTheWhoIsTheEmployerPage(string employerName)
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver);

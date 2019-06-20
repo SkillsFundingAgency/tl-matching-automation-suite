@@ -26,9 +26,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-       public void VerifyLoginLinkIsPresent()
+       public LoginHelpPage VerifyLoginLinkIsPresent()
         {
             PageInteractionHelper.VerifyLinkIsPresent(LoginText, "Login");
+            return this;
         }  
                
         public IDAMSLoginPage ClickLogin()

@@ -21,7 +21,7 @@ Scenario: Select Providers page - A real postcode must be entered when searching
 
 @regression
 Scenario: Select Providers page - A provider must be selected before pressing Continue
-    Given I have entered new Skill Area as "Care services"
+   	Given I have entered new Skill Area in dropdown
 	And Employer postcode as "B43 6JN"
 	And Providers within as "25 miles"
 	And I press the Search again button on the Select Providers page

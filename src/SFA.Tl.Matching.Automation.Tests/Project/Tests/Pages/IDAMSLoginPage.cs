@@ -28,20 +28,23 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-        public void IDAMSLogin(String userName, String passWord)
+        public IDAMSLoginPage IDAMSLogin(String userName, String passWord)
         {        
             FormCompletionHelper.EnterText(UserNameLocator, userName);
             FormCompletionHelper.EnterText(PasswordLocator, passWord);
+            return this;
         }
 
-        public void IDAMSLoginUsernameOnly()
+        public IDAMSLoginPage IDAMSLoginUsernameOnly()
         {                    
             FormCompletionHelper.EnterText(UserNameLocator, Configurator.GetConfiguratorInstance().GetAdminUserName());
+            return this;
         }
 
-        public void IDAMSLoginPasswordOnly()
+        public IDAMSLoginPage IDAMSLoginPasswordOnly()
         {        
             FormCompletionHelper.EnterText(PasswordLocator, Configurator.GetConfiguratorInstance().GetAdminPassword());
+            return this;
         }
 
         public StartPage LoginAsAdminUser()
@@ -77,19 +80,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }
 
 
-        public void VerifyLoginErrorMessage(String errorMessage)
+        public IDAMSLoginPage VerifyLoginErrorMessage(String errorMessage)
         {
             PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
+            return this;
         }
 
-        public void VerifyInvalidLoginDetailsErrorMessage(String errorMessage)
+        public IDAMSLoginPage VerifyInvalidLoginDetailsErrorMessage(String errorMessage)
         {
             PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
+            return this;
         }
 
-        public void VerifyMissingUSerIDErrorMessage(String errorMessage)
+        public IDAMSLoginPage VerifyMissingUSerIDErrorMessage(String errorMessage)
         {
             PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
+            return this;
         }
     }
 }

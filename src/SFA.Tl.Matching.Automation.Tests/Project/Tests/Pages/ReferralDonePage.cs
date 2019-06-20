@@ -27,9 +27,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }                       
 
-        public void ClickFinishbutton()
+        public ReferralDonePage ClickFinishbutton()
         {
            FormCompletionHelper.ClickElement(FinishButton);
+            return this;
         }
 
         public ReferralDonePage VerifyCountofReferralRecords()

@@ -30,7 +30,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             selectProvidersPage.ClearPostcode();
             
         }
-        
+
+        [When(@"I press the Search again button on the Select Providers page")]
         [Given(@"I press the Search again button on the Select Providers page")]
         public SelectProvidersPage GivenIPressTheSearchAgainButtonOnTheSelectProvidersPage()
         {

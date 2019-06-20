@@ -53,8 +53,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void ThenIShouldNotSeeALinkToUploadEmployerData()
         {
             StartPage StartPage = new StartPage(webDriver);
-            Boolean LinkDisplayed = StartPage.VerifyElementNotPresent();
-            Assert.False(LinkDisplayed);
+            StartPage.VerifyElementNotPresent();
+            
         }
 
         [Given(@"I have attempted to log in as an non authorised IDAMS user")]
@@ -62,8 +62,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             Thread.Sleep(2000);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserName(), Configurator.GetConfiguratorInstance().GetNonAuthorisedUserPassword());
-            IDAMSLoginPage.ClickLoginButton();
+            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserName(), Configurator.GetConfiguratorInstance().GetNonAuthorisedUserPassword())
+            .ClickLoginButton();
         }
 
         [Then(@"I should be on the Invalid Role Page")]

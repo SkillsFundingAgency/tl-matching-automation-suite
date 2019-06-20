@@ -44,61 +44,72 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new CheckAnswersPage(webDriver);
         }
 
-        public void ClearFields()
+        public CheckEmployersDetailsPage ClearFields()
         {
             FormCompletionHelper.ClearText(ContactField);
             FormCompletionHelper.ClearText(PhoneNumberField);
             FormCompletionHelper.ClearText(EmailField);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void EnterContactName(String name)
+        public CheckEmployersDetailsPage EnterContactName(String name)
         {
             FormCompletionHelper.EnterText(ContactField, name);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void EnterPhoneNumber(String name)
+        public CheckEmployersDetailsPage EnterPhoneNumber(String name)
         {
             FormCompletionHelper.EnterText(PhoneNumberField, name);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyNoContactNameEnteredError(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyNoContactNameEnteredError(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterContactNameError, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyNoEmailEnteredError(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyNoEmailEnteredError(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterEmailError, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyNoPhoneEnteredError(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyNoPhoneEnteredError(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterPhoneNumberError, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyErrorContactNameTooShort(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyErrorContactNameTooShort(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterLongerContactError, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyErrorContactNameTooLong(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyErrorContactNameTooLong(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterShorterContactError, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyErrorPhoneNoMustContainNos(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyErrorPhoneNoMustContainNos(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterANumber, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyErrorPhoneNoMustBeSevenChars(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyErrorPhoneNoMustBeSevenChars(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterPhoneNumber7CharactersLong, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void VerifyErrorContactNameCharactersOnly(String expectedErrorMessage)
+        public CheckEmployersDetailsPage VerifyErrorContactNameCharactersOnly(String expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterCharactersInContactError, expectedErrorMessage);
+            return new CheckEmployersDetailsPage(webDriver);
         }
 
         public CheckEmployersDetailsPage VerifyEmployerDetails()

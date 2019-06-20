@@ -22,8 +22,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void ThenTheProvidersSelectedWillBeDisplayedOnTheReferralCheckAnswersScreen()
         {
             ReferralCheckAnswersPage checkAnswersPage = new ReferralCheckAnswersPage(webDriver).VerifyProvidersAreDisplayed();
-           
-           // return checkAnswersPage;
+         
         }
 
         [Then(@"the referral Check answers screen will display the referral details entered")]
@@ -67,7 +66,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyCountofReferralRecords()
                 .VerifyReferralRecordsCreated();
-            
+         
         }
 
         [Then(@"the Opportunity record will record OPT IN has been selected")]

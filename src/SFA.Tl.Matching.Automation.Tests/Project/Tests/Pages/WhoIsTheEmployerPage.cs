@@ -36,22 +36,25 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new CheckEmployersDetailsPage(webDriver);
         }
 
-        public void ClearBusinessField()
+        public WhoIsTheEmployerPage ClearBusinessField()
         {
             FormCompletionHelper.ClearText(BusinessNameField);
+            return this;
         }
 
-        public void VerifyNullEmployerError(string ExpectedErrorMessage)
+        public WhoIsTheEmployerPage VerifyNullEmployerError(string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(EnterEmployerError, _expectedEnterEmployerError);
+            return this;
         }
 
-        public void AutoPopulateEmployer()
+        public WhoIsTheEmployerPage AutoPopulateEmployer()
         {
             FormCompletionHelper.EnterText(BusinessNameField, "Abacus Childrens Nurseries");
             Thread.Sleep(4000);
             FormCompletionHelper.PressTabKey();
             Thread.Sleep(4000);
+            return this;
         }
 
         public WhoIsTheEmployerPage EnterEmployer(String employerName)
@@ -70,13 +73,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             Thread.Sleep(6000);
             //FormCompletionHelper.PressTabKey();
             FormCompletionHelper.ClickElement(ContinueButton);
-
             return this;
         }
 
-        public void VerifyPageURL()
+        public WhoIsTheEmployerPage VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, expectedPageURL);
+            return this;
         }
     }
 }

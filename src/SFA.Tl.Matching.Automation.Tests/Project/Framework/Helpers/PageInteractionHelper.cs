@@ -283,8 +283,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 
         public static void ValidateProvidersDisplayed()
         {
-            var skillArea = ScenarioContext.Current["_provisionGapTypeOfPlacement"];
-            var radius = ScenarioContext.Current["_provisionGapPostcodeRadius"];
+            // var skillArea = ScenarioContext.Current["_provisionGapTypeOfPlacement"];
+            // var radius = ScenarioContext.Current["_provisionGapPostcodeRadius"];
+
+            var skillArea = Constants.skillArea;
+            var radius = Constants.radius;
+
             String postcodeRadius = Convert.ToString(radius);
             postcodeRadius = Regex.Replace(postcodeRadius, "[^.0-9]", "");
             int _postcodeRadius = Convert.ToInt32(postcodeRadius);

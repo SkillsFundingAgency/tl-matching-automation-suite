@@ -58,40 +58,47 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return this;
         }
 
-        public void ClearJobField()
+        public PlacementInformationPage ClearJobField()
         {
             FormCompletionHelper.ClearText(JobTypeField);
+            return this;
         }
 
-        public void VerifyErrorNoJobPlacementEntered(string expectedError)
+        public PlacementInformationPage VerifyErrorNoJobPlacementEntered(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeNullError, expectedError);
+            return this;
         }
 
-        public void VerifyErrorNoPlacementsSelected(string expectedError)
+        public PlacementInformationPage VerifyErrorNoPlacementsSelected(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
+            return this;
         }
 
-        public void VerifyError_PlacementRadioButtonNotSelected(string expectedError)
+        public PlacementInformationPage VerifyError_PlacementRadioButtonNotSelected(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementRadioButtonNotSelected, expectedError);
+            return this;
         }
 
-        public void VerifyErrorJobRoleTooLong(string expectedError)
+        public PlacementInformationPage VerifyErrorJobRoleTooLong(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeTooLongError, expectedError);
+            return this;
         }
 
-        public void VerifyErrorJobRoleTooShort(string expectedError)
+        public PlacementInformationPage VerifyErrorJobRoleTooShort(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);
+            return this;
         }
         
-        public void AutoPopulateFields()
+        public PlacementInformationPage AutoPopulateFields()
         {
             FormCompletionHelper.EnterText(JobTypeField, "Mechanic");
             FormCompletionHelper.ClickElement(NoRadioButton);
+            return this;
         }
 
         public PlacementInformationPage SelectNoRadioButton()
@@ -101,12 +108,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return this;
         }
 
-        public void SelectYesRadioButton()
+        public PlacementInformationPage SelectYesRadioButton()
         {
-           FormCompletionHelper.ClickElement(YesRadioButton);       
+           FormCompletionHelper.ClickElement(YesRadioButton);
+            return this;
         }
 
-        public void VerifyNumberOfPLacementsIsVisibile()
+        public PlacementInformationPage VerifyNumberOfPLacementsIsVisibile()
         {
             bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
             Console.WriteLine(Displayed);
@@ -115,10 +123,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             {
                 throw new Exception("Element verification failed: "
                + "\n Expected element to be visible: " );              
-            }            
+            }
+
+            return this;
         }
 
-        public void VerifyNumberOfPLacementsIsNotVisibile()
+        public PlacementInformationPage VerifyNumberOfPLacementsIsNotVisibile()
         {
             bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
             Console.WriteLine(Displayed);
@@ -128,6 +138,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 throw new Exception("Element verification failed: "
                + "\n Expected element to be visible: ");
             }
+            return this;
         }
 
         public PlacementInformationPage EnterJobRole(String jobtype)
@@ -157,26 +168,30 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new WhoIsTheEmployerPage(webDriver);
         }
 
-        public void EnterNumberOfPlacements(int Number)
+        public PlacementInformationPage EnterNumberOfPlacements(int Number)
         {
             String ConvertNumbertoString = Number.ToString();
             FormCompletionHelper.EnterText(PlacementsField, ConvertNumbertoString);
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = ConvertNumbertoString;
+            return this;
         }
 
-        public void VerifyErrorPlacementNumberTooSmall(string expectedError)
+        public PlacementInformationPage VerifyErrorPlacementNumberTooSmall(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooSmallError, expectedError);
+            return this;
         }
 
-        public void VerifyErrorPlacementNumberTooBig(string expectedError)
+        public PlacementInformationPage VerifyErrorPlacementNumberTooBig(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooBigError, expectedError);
+            return this;
         }
 
-        public void VerifyErrorPlacementNumberIsNull(string expectedError)
+        public PlacementInformationPage VerifyErrorPlacementNumberIsNull(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
+            return this;
         }
     }
 }

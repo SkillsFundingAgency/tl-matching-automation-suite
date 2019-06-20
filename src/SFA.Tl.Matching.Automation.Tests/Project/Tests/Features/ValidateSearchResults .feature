@@ -7,18 +7,9 @@ Background:
 
 @regression
 Scenario: Validate search results on Select a Provider page where results are returned 3
-Given I have entered new Skill Area as "Care services"
+Given I have entered new Skill Area in dropdown
 	And Employer postcode as "B43 6JN"
 	And Providers within as "25 miles"
-	And I press the Search again button on the Select Providers page
-	Then the provider results returned will match the expected values
-	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
-
-@regression
-Scenario: Validate search results on Select a Provider page where results are returned 4
-Given I have entered new Skill Area as "Digital"
-	And Employer postcode as "B43 6JN"
-	And Providers within as "15 miles"
 	And I press the Search again button on the Select Providers page
 	Then the provider results returned will match the expected values
 	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 

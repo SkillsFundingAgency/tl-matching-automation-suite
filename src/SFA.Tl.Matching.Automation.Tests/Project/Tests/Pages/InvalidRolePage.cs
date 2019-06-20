@@ -24,9 +24,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
                
-        public void VerifyPageURL()
+        public InvalidRolePage VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, _expectedPageURL);
+            return this;
         }
      }
 }

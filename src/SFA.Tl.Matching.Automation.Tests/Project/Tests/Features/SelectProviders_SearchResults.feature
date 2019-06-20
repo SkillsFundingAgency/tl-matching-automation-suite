@@ -15,17 +15,13 @@ Scenario: Select Providers - Details entered on the Find Provider page will be d
 
 @regression
 Scenario: Search on Select Providers page and return zero results
-	Given I have entered new Skill Area as "Care services"
-	And Employer postcode as "IV12 5XX"
-	And Providers within as "25 miles"
-	And I press the Search again button on the Select Providers page
-	Then the Select Providers page will display 0 results, skill area, postcode and radius in the H2 heading
+	Given I have filled in the search form on the Search Providers page with criteria which will return no results
+	When I press the Search again button on the Select Providers page
+	Then the Select Providers page will display a H2 heading for zero results	
 
 @regression
 Scenario: Validate search results on Select a Provider page where results are returned 1
-    Given I have entered new Skill Area as "Care services"
-	And Employer postcode as "B43 6JN"
-	And Providers within as "25 miles"
+    Given I have filled in the search form on the Search Providers page with criteria which will return some results 
 	And I press the Search again button on the Select Providers page
 	Then the provider results returned will match the expected values
 	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
@@ -33,9 +29,14 @@ Scenario: Validate search results on Select a Provider page where results are re
 
 @regression
 Scenario: Validate search results on Select a Provider page where results are returned 2
-    Given I have entered new Skill Area as "Digital"
-	And Employer postcode as "B43 6JN"
-	And Providers within as "15 miles"
+    Given I have filled in the search form on the Search Providers page with criteria which will return some results 
 	And I press the Search again button on the Select Providers page
 	Then the provider results returned will match the expected values
 	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
+
+	@regression
+Scenario: Validate search results on Select a Provider page where 1 result is returned
+    Given I have filled in the search form on the Search Providers page with criteria which will return one result
+	And I press the Search again button on the Select Providers page
+	And the Select Providers page will display the count, skill area, postcode, radius and text result in in the H2 heading 
+

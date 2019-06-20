@@ -71,18 +71,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             placementInformationPage.SelectYesRadioButton();
         }
 
-        [Then(@"the Number of Placements field is not displayed")]
-        public void ThenTheNumberOfPlacementsFieldIsNotDisplayed()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
-        [Then(@"the Number of Placements field is displayed")]
-        public void ThenTheNumberOfPlacementsFieldIsDisplayed()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
         [Given(@"I select the No radio button")]
         public void GivenISelectTheNoRadioButton()
         {

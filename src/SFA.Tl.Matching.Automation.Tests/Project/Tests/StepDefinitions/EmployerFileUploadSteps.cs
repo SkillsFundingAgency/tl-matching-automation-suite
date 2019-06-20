@@ -13,12 +13,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
     [Binding]
     public class EmployerFileUploadSteps : BaseTest
     {
-        [Given(@"I am logged in as Administrator")]
-        public void GivenIAmLoggedInAsAdministrator()
-        {
-            //TODO: Add Logic to OpenWeb browser and Navigate to Login screen and Login
-            //ScenarioContext.Current.Pending();
-        }
+        //[Given(@"I am logged in as Administrator")]
+        //public void GivenIAmLoggedInAsAdministrator()
+        //{
+        //    //TODO: Add Logic to OpenWeb browser and Navigate to Login screen and Login
+        //    //ScenarioContext.Current.Pending();
+        //}
 
         [Given(@"I Navigate to File Upload Page")]
         public void GivenINevigateToFileUploadPage()

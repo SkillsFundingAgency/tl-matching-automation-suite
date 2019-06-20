@@ -20,17 +20,13 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void GivenTheReferralDonePageIsDisplayedwithCorrectText()
         {
             ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyWhatHappensNextText();
-
         }
         
-
         [Given(@"the Opportunity record has recorded the user Opted in")]
         public void GivenTheOpportunityRecordHasRecordedTheUserOptedIn()
         {
             ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyOptInValueRecorded("True");
             
         }
-
-
     }
 }

@@ -51,20 +51,23 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new FindLocalProvidersPage(webDriver);
         }
 
-        public void ClearPostcode()
+        public FindLocalProvidersPage ClearPostcode()
         {
             FormCompletionHelper.ClearText(PostcodeField);
+            return this;
         }
 
-        public void VerifyPostcodeError (string expectedErrorMessage)
+        public FindLocalProvidersPage VerifyPostcodeError (string expectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualPostcodeError, expectedErrorMessage);
+            return this;
         }
 
-        public void AutoPopulateFields()
+        public FindLocalProvidersPage AutoPopulateFields()
         {
             FormCompletionHelper.EnterText(PostcodeField, "B43 6JN");
             FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, "Care services");
+            return this;
         }
     }
 }

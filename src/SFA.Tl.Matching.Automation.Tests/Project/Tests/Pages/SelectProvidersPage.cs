@@ -32,7 +32,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By ActualPostcodeDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[4]");
         private By ActualSearchRadiusDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[3]");
         private By ActualResultsCount = By.Id("tl-search-count");
-        
+        private By ActualResultHeadingDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2");
 
 
         public SelectProvidersPage(IWebDriver webDriver) : base(webDriver)
@@ -45,9 +45,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);         
         }    
         
-        public void VerifyPageURL()
+        public SelectProvidersPage VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
+            return this;
         }
 
         public PlacementInformationPage ClickReportProvisionGapLink()
@@ -65,7 +66,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         public SelectProvidersPage SelectSkillArea(String dropdownValue)
         {
             FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, dropdownValue);
-            ScenarioContext.Current["_provisionGapTypeOfPlacement"] = dropdownValue;
+           // ScenarioContext.Current["_provisionGapTypeOfPlacement"] = dropdownValue;
             return new SelectProvidersPage(webDriver);
         }
 
@@ -86,9 +87,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new SelectProvidersPage(webDriver);
         }
 
-        public void ClearPostcode()
+        public SelectProvidersPage ClearPostcode()
         {
             FormCompletionHelper.ClearText(PostcodeField);
+            return this;
         }
 
         public SelectProvidersPage EnterPostcode(string postcode)
@@ -98,21 +100,25 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new SelectProvidersPage(webDriver);
         }
 
-        public void VerifyPostcodeError (string ExpectedErrorMessage)
+        public SelectProvidersPage VerifyPostcodeError (string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualPostcodeError, ExpectedErrorMessage);
+            return this;
         }
 
-        public SelectProvidersPage VerifyPostcodeDisplayed()
+        public SelectProvidersPage VerifyPostcodeDisplayed(String Postcode)
         {
-            String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
+            //String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
+            String expectedPostcode = Postcode;
             FormCompletionHelper.VerifyText(ActualPostcodeDisplayed, expectedPostcode);
             return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifySkillsetDisplayed()
+
+        public SelectProvidersPage VerifySkillsetDisplayed(String SkillArea)
         {
-            String expectedJobType = ((string)ScenarioContext.Current["_provisionGapTypeOfPlacement"]).ToLower();
+            //String expectedJobType = ((string)ScenarioContext.Current["_provisionGapTypeOfPlacement"]).ToLower();
+            String expectedJobType = SkillArea.ToLower();
             Console.WriteLine(expectedJobType);
             FormCompletionHelper.VerifyText(ActualSkillsetDisplayed, expectedJobType);
             return new SelectProvidersPage(webDriver);
@@ -125,15 +131,31 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
              return new SelectProvidersPage(webDriver);
         }
 
-        public void VerifyZeroResultsCount()
+        public SelectProvidersPage VerifyZeroResultsCount()
         {
             int expResultsCount = 0;
             PageInteractionHelper.VerifyText(ActualNumberResultsDisplayed, expResultsCount);
+            return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifySearchRadius()
+        public SelectProvidersPage VerifysHeadingShowsResults()
         {
-            String expSearchRadius = (String)ScenarioContext.Current["_provisionGapPostcodeRadius"];
+            String ExpectedResultsHeading = "results in";
+            PageInteractionHelper.VerifyText(ActualResultHeadingDisplayed, ExpectedResultsHeading);
+            return new SelectProvidersPage(webDriver);
+        }
+
+        public SelectProvidersPage VerifysHeadingShowsResult()
+        {
+            String ExpectedResultsHeading = "result in";
+            PageInteractionHelper.VerifyText(ActualResultHeadingDisplayed, ExpectedResultsHeading);
+            return new SelectProvidersPage(webDriver);
+        }
+
+        public SelectProvidersPage VerifySearchRadius(String SearchRadius)
+        {
+            //String expSearchRadius = (String)ScenarioContext.Current["_provisionGapPostcodeRadius"];
+            String expSearchRadius = SearchRadius;
             PageInteractionHelper.VerifyText(ActualSearchRadiusDisplayed, expSearchRadius);
             return new SelectProvidersPage(webDriver);
         }
@@ -149,19 +171,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             SelectPostcodeRadius(Constants.radius);
             ClickSearchAgain();
             FormCompletionHelper.ClickElement(Provider1Checkbox);
-            //FormCompletionHelper.ClickElement(Provider2Checkbox);
             PageInteractionHelper.SetProviderNames(providerName1, providerName2);
             return new SelectProvidersPage(webDriver);
         }
 
-        public void VerifyProviderNotSelectedError(string ExpectedErrorMessage)
+        public SelectProvidersPage VerifyProviderNotSelectedError(string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualNoProviderSelectedError, ExpectedErrorMessage);
+            return this;
         }
 
-        public void VerifyInvalidPostcodeError(string ExpectedErrorMessage)
+        public SelectProvidersPage VerifyInvalidPostcodeError(string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualInvalidPostcodeError, ExpectedErrorMessage);
+            return this;
         }
     }
 }
