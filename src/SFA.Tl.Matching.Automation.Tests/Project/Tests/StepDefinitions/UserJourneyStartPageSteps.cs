@@ -24,20 +24,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
             LoginHelpPage.VerifyLoginLinkIsPresent();           
         }
-        
+
         [Given(@"I am logged in")]
         public void GivenIAmLoggedIn()
         {
             //Log the user in as an Admin user. 
             LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
             LoginHelpPage.VerifyLoginLinkIsPresent();
-            LoginHelpPage.ClickLogin();           
+            LoginHelpPage.ClickLogin();
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             //IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
             IDAMSLoginPage.LoginAsAdminUser();
             Thread.Sleep(10000);
         }
-        
+
         [Then(@"I will be shown the Login Help Page")]
         public void ThenIWillBeShownTheLoginHelpPage()
         {

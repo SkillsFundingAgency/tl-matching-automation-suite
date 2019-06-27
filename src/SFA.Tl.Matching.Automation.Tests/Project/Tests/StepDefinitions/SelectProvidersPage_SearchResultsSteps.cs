@@ -168,7 +168,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void ThenTheProviderResultsReturnedWillMatchTheExpectedValues()
         {
             //checks the providers returned by the SQL match the providers displayed on screen
-            PageInteractionHelper.ValidateProvidersDisplayed();
+            ProviderResultsHelper.ValidateProvidersDisplayed();
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
             .VerifyResultsCount();           
         }

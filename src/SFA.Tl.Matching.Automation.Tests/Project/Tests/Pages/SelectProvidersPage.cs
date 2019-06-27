@@ -171,7 +171,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             SelectPostcodeRadius(Constants.radius);
             ClickSearchAgain();
             FormCompletionHelper.ClickElement(Provider1Checkbox);
-            PageInteractionHelper.SetProviderNames(providerName1, providerName2);
+            ProviderResultsHelper.SetProviderNames(providerName1, providerName2);
             return new SelectProvidersPage(webDriver);
         }
 

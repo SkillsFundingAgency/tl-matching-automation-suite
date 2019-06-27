@@ -87,7 +87,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
            String provider1 = (string)ScenarioContext.Current["_Provider1"];
           // String provider2 = (string)ScenarioContext.Current["_Provider2"];
-           PageInteractionHelper.VerifyProviderDisplayed(provider1, provider1Name);
+           ProviderResultsHelper.VerifyProviderDisplayed(provider1, provider1Name);
            Console.WriteLine(provider1 + "Verified");
            //PageInteractionHelper.VerifyProviderDisplayed(provider2, provider2Name);
            //Console.WriteLine(provider2 + "Verified");
@@ -125,11 +125,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 Console.WriteLine("ActualEmployerName: " + actualEmployername + "ExpectedEmployerName: " + expectedEmployername);
                 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(actualSkillArea, expectedTypeOfPlacement);
-                PageInteractionHelper.AssertText(actualPostcode, expectedPostcode);
-                PageInteractionHelper.AssertText(actualSearchRadius, expectedSearchRadius);
-                PageInteractionHelper.AssertText(actualJobtitle, expectedJobType);
-                PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
+                PageInteractionHelper.VerifyText(actualSkillArea, expectedTypeOfPlacement);
+                PageInteractionHelper.VerifyText(actualPostcode, expectedPostcode);
+                PageInteractionHelper.VerifyText(actualSearchRadius, expectedSearchRadius);
+                PageInteractionHelper.VerifyText(actualJobtitle, expectedJobType);
+                PageInteractionHelper.VerifyText(actualNoOfPlacements, actualNoOfPlacements);
             }
             return new ReferralCheckAnswersPage(webDriver);
         }

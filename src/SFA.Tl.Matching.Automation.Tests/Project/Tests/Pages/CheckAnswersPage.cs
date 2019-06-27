@@ -54,7 +54,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
            FormCompletionHelper.ClickElement(ConfirmAndSendButton);
 
-            return new DonePage(webDriver);
+           return new DonePage(webDriver);
         }
 
         public CheckAnswersPage ClickOptIn()
@@ -93,11 +93,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
                 // checking values against sql record                     
                 //Assert the variables entered in the journey to the actual values written to the opportunity record
-                PageInteractionHelper.AssertText(actualSkillArea, expectedTypeOfPlacement);
-                PageInteractionHelper.AssertText(actualPostcode, expectedPostcode);
-                PageInteractionHelper.AssertText(actualSearchRadius, expectedSearchRadius);
-                PageInteractionHelper.AssertText(actualJobtitle, expectedJobType);
-                PageInteractionHelper.AssertText(actualNoOfPlacements, actualNoOfPlacements);
+                PageInteractionHelper.VerifyText(actualSkillArea, expectedTypeOfPlacement);
+                PageInteractionHelper.VerifyText(actualPostcode, expectedPostcode);
+                PageInteractionHelper.VerifyText(actualSearchRadius, expectedSearchRadius);
+                PageInteractionHelper.VerifyText(actualJobtitle, expectedJobType);
+                PageInteractionHelper.VerifyText(actualNoOfPlacements, actualNoOfPlacements);
             }
             //checking values against UI screen
             String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];

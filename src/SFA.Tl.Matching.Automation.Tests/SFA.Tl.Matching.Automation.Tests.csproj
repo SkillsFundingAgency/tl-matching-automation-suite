@@ -145,6 +145,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\Framework\Helpers\ProviderResultsHelper.cs" />
     <Compile Include="Project\Tests\Features\Referral_PlacementInformation_ErrorMessages.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -46,7 +46,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 String expectedCount = Constants.expectedCount;
 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(actualCount, expectedCount);
+                PageInteractionHelper.VerifyText(actualCount, expectedCount);
             }
 
             return this;
@@ -75,7 +75,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 Console.WriteLine("Confirmation Selected: " + actualConfirmationSelected);
 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(actualConfirmationSelected, expectedConfirmationSelected);
+                PageInteractionHelper.VerifyText(actualConfirmationSelected, expectedConfirmationSelected);
             }
 
             return this;

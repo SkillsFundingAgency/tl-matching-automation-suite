@@ -48,7 +48,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 String expectedCount = "1";
 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(expectedCount, actualCount);
+                PageInteractionHelper.VerifyText(expectedCount, actualCount);
             }
             return this;
         }
@@ -70,7 +70,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 Console.WriteLine("Confirmation Selected: " + actualConfirmationSelected);
 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.AssertText(actualConfirmationSelected, expectedConfirmationSelected);
+                PageInteractionHelper.VerifyText(actualConfirmationSelected, expectedConfirmationSelected);
             }
             return this;
 
@@ -98,7 +98,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                     String expectedCount = "1";
 
                     //Assert the variables above to the actual values displayed on the screen
-                    PageInteractionHelper.AssertText(expectedCount, actualCount);
+                    PageInteractionHelper.VerifyText(expectedCount, actualCount);
                 }
             }
             return this;

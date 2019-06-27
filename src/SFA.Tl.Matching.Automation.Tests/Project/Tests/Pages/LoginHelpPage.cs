@@ -34,8 +34,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                
         public IDAMSLoginPage ClickLogin()
         {
-            FormCompletionHelper.ClickElement(LoginButton);
-            return new IDAMSLoginPage(webDriver);
+           FormCompletionHelper.ClickElement(LoginButton);
+           return new IDAMSLoginPage(webDriver);
         }
 
     }
