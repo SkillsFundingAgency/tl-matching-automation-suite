@@ -17,16 +17,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             IDAMSLoginPage.LoginAsAdminUser();
-            Thread.Sleep(3000);           
+            Thread.Sleep(3000);
         }
-        
+
         [Given(@"I have logged in as a dual access user")]
         public void GivenIHaveLoggedInAsADualAccessUser()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
             IDAMSLoginPage.LoginAsDualUser();
         }
-        
+
         [Given(@"I have logged in as an Standard user")]
         public void GivenIHaveLoggedInAsAnStandardUser()
         {
@@ -34,27 +34,27 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetStandardUserName(), Configurator.GetConfiguratorInstance().GetStandardPassword());
             IDAMSLoginPage.LoginAsStandardUser();
         }
-        
+
         [Then(@"I should be on the Start Page")]
         public void ThenIShouldBeOnTheStartPage()
         {
             StartPage startPage = new StartPage(webDriver);
             startPage.VerifyPageURL();
         }
-        
+
         [Then(@"I should see an option stating ""(.*)""")]
         public void ThenIShouldSeeAnOptionStating(string expectedString)
         {
             StartPage StartPage = new StartPage(webDriver);
             StartPage.VerifyLinkPresent(expectedString);
         }
-        
+
         [Then(@"I should not see a link to upload Employer Data")]
         public void ThenIShouldNotSeeALinkToUploadEmployerData()
         {
             StartPage StartPage = new StartPage(webDriver);
             StartPage.VerifyElementNotPresent();
-            
+
         }
 
         [Given(@"I have attempted to log in as an non authorised IDAMS user")]
@@ -73,5 +73,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             InvalidRolePage.VerifyPageURL();
         }
 
+        [Given(@"I navigate to Find a Provider Page")]
+        public void GivenINavigateToFindAProviderPage()
+        {
+            StartPage StartPage = new StartPage(webDriver);
+            StartPage.ClickAddOrEditProviderDataLink();
+        }
     }
 }
