@@ -159,7 +159,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void ThenIAmOnThePlacementInformationPage()
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver).VerifyPageURL();
-           
+            ;
         }
 
         [Given(@"I entered the placement information and press No then click continue button")]
