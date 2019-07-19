@@ -13,11 +13,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class StartPage : BasePage
     {
         private static String PAGE_TITLE = "Match employers with providers for industry placements";
-        private By UserName = By.Id("username");
-        private By Password = By.Id("password");
         private By StartNowButton = By.Id("tl-start-now");
         private By LogoffButton = By.LinkText("Sign out");
         private By UploadLink = By.Id("tl-upload-link");
+        private By AddOrEditProviderDataLink = By.Id("tl-Add-edit-provider-link");
         String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/Start";
 
         public StartPage(IWebDriver webDriver) : base(webDriver)
@@ -62,6 +61,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             Console.WriteLine(Displayed);
             Assert.False(Displayed);
             return Displayed;
+        }
+
+        public FindAProviderPage ClickAddOrEditProviderDataLink()
+        {
+            FormCompletionHelper.ClickElement(AddOrEditProviderDataLink);
+            return new FindAProviderPage(webDriver);
         }
     }
 }

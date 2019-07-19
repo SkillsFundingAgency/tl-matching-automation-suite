@@ -29,20 +29,20 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }
 
         public IDAMSLoginPage IDAMSLogin(String userName, String passWord)
-        {        
+        {
             FormCompletionHelper.EnterText(UserNameLocator, userName);
             FormCompletionHelper.EnterText(PasswordLocator, passWord);
             return this;
         }
 
         public IDAMSLoginPage IDAMSLoginUsernameOnly()
-        {                    
+        {
             FormCompletionHelper.EnterText(UserNameLocator, Configurator.GetConfiguratorInstance().GetAdminUserName());
             return this;
         }
 
         public IDAMSLoginPage IDAMSLoginPasswordOnly()
-        {        
+        {
             FormCompletionHelper.EnterText(PasswordLocator, Configurator.GetConfiguratorInstance().GetAdminPassword());
             return this;
         }
@@ -70,7 +70,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             Thread.Sleep(5000);
             return new StartPage(webDriver);
         }
-               
+
         public StartPage LoginAsDualUser()
         {
             IDAMSLogin(Configurator.GetConfiguratorInstance().GetDualUserName(), Configurator.GetConfiguratorInstance().GetDualPassword());

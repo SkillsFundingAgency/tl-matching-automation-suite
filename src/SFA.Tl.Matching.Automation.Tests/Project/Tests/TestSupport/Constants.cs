@@ -26,5 +26,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String oneResultpostCode = "B43 6JN";
         public const String oneResultskillArea = "Agriculture, environmental and animal care";
         public const String oneResultradius = "5 miles";
+        public const String queryToGetQualificationMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarsID WHERE q.LarsID = lar.LarId";
+        public const String queryToGetQualificationNotMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarsID WHERE q.LarsID IS NULL order by lar.Id desc";
     }
 }
