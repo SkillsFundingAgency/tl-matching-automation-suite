@@ -161,7 +161,7 @@ this.FeatureBackground();
 #line 28
  testRunner.Given("I have attempted to log in as an non authorised IDAMS user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
- testRunner.Then("I should be on the Invalid Role Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be on the No Permission Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

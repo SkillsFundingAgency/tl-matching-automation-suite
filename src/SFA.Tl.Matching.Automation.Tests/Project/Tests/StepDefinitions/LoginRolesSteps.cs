@@ -55,16 +55,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             StartPage StartPage = new StartPage(webDriver);
             StartPage.VerifyElementNotPresent();
 
-        }
-
-        [Given(@"I have attempted to log in as an non authorised IDAMS user")]
-        public void GivenIHaveAttemptedToLogInAsAnNonAuthorisedIDAMSUser()
-        {
-            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            Thread.Sleep(2000);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserName(), Configurator.GetConfiguratorInstance().GetNonAuthorisedUserPassword())
-            .ClickLoginButton();
-        }
+        }       
 
         [Then(@"I should be on the Invalid Role Page")]
         public void ThenIShouldBeOnTheInvalidRolePage()
@@ -78,6 +69,21 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             StartPage StartPage = new StartPage(webDriver);
             StartPage.ClickAddOrEditProviderDataLink();
+        }
+
+        [Given(@"I have attempted to log in as an non authorised IDAMS user")]
+        public void GivenIHaveAttemptedToLogInAsAnNonAuthorisedIDAMSUser()
+        {
+            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
+            Thread.Sleep(2000);
+            IDAMSLoginPage.LoginAsNonAuthorisedUser();
+        }
+
+        [Then(@"I should be on the No Permission Page")]
+        public void ThenIShouldBeOnTheNoPermissionPage()
+        {
+            NoPermissionPage NoPermissionPage = new NoPermissionPage(webDriver);
+            NoPermissionPage.VerifyPageURL();
         }
     }
 }

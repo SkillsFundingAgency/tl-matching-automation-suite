@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -26,17 +22,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-       public LoginHelpPage VerifyLoginLinkIsPresent()
+       public void VerifyLoginLinkIsPresent()
         {
             PageInteractionHelper.VerifyLinkIsPresent(LoginText, "Login");
-            return this;
-        }  
+        }
                
         public IDAMSLoginPage ClickLogin()
         {
-           FormCompletionHelper.ClickElement(LoginButton);
-           return new IDAMSLoginPage(webDriver);
+            FormCompletionHelper.ClickElement(LoginButton);
+            return new IDAMSLoginPage(webDriver);
         }
-
     }
 }

@@ -79,6 +79,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new StartPage(webDriver);
         }
 
+        public NoPermissionPage LoginAsNonAuthorisedUser()
+        {
+            IDAMSLogin(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserName(), Configurator.GetConfiguratorInstance().GetNonAuthorisedUserPassword());
+            FormCompletionHelper.ClickElement(LoginButton);
+            Thread.Sleep(5000);
+            return new NoPermissionPage(webDriver);
+        }
 
         public IDAMSLoginPage VerifyLoginErrorMessage(String errorMessage)
         {

@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Project\Tests\Pages\AddQualificationPage.cs" />
     <Compile Include="Project\Tests\Pages\FindAProviderPage.cs" />
+    <Compile Include="Project\Tests\Pages\NoPermissionPage.cs" />
     <Compile Include="Project\Tests\Pages\ProviderAndVenuesDetailsPage.cs" />
     <Compile Include="Project\Tests\Pages\ReferralDonePage.cs" />
     <Compile Include="Project\Tests\Pages\ReferralCheckAnswersPage.cs" />
