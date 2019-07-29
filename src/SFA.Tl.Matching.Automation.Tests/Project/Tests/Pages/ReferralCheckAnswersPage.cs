@@ -46,7 +46,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private String expectedPostcode = Constants.postCode;
         private String expectedSearchRadius = Constants.radius;
         private String expectedJobType = Constants.jobTitle;
-        private String expectedNoOfPlacementsKnown = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
+        private String expectedNoOfPlacementsKnown = Constants.NoofPlacements; //(string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
         private String expectedTypeOfPlacement = Constants.skillArea;
         private String expectedEmployername = Constants.employerName;
 
@@ -76,7 +76,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public ReferralCheckAnswersPage VerifyPageHeader()
         {
-            String expectedPageTitle = "Check " + expectedEmployername + "'s answers";
+            //String expectedPageTitle = "Check " + expectedEmployername + "'s answers";
+            String expectedPageTitle = "Check answers";
             String actualPageTitle = PageInteractionHelper.GetText(PageHeading);
 
             PageInteractionHelper.VerifyPageHeading(actualPageTitle, expectedPageTitle);
@@ -97,9 +98,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
 
         public ReferralCheckAnswersPage VerifyEmployersAnswers()
-        {        
-           String query = ("Select o.postcode, o.searchradius, o.jobtitle, o.PlacementsKnown, o.placements, o.employername, r.Name, o.id from opportunity o, route r where o.RouteId = r.Id and o.ID in (select max(id) from opportunity)");
-           Console.WriteLine(query);
+        {
+            //String query = ("Select o.postcode, o.searchradius, o.jobtitle, o.PlacementsKnown, o.placements, o.employername, r.Name, o.id from opportunity o, route r where o.RouteId = r.Id and o.ID in (select max(id) from opportunity)");
+            String query = ("Select oi.Postcode, oi.SearchRadius, oi.JobRole, oi.PlacementsKnown, oi.Placements, e.CompanyName from opportunity o, OpportunityItem OI, employer e where o.id = oi.OpportunityId and o.EmployerId = e.Id and o.ID in (select max(id) from opportunity)");
+            Console.WriteLine(query);
 
            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
           
@@ -113,9 +115,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 actualPlacementsKnown = Convert.ToInt32(fieldNo[3]);
                 actualNoOfPlacements = fieldNo[4].ToString();
                 actualEmployername = fieldNo[5].ToString();
-                actualSkillArea = fieldNo[6].ToString();
-                OpportunityId = Convert.ToInt32(fieldNo[7]);
-                ScenarioContext.Current["_provisionGapOpportunityID"] = OpportunityId;
+                //actualSkillArea = fieldNo[6].ToString();
+                //OpportunityId = Convert.ToInt32(fieldNo[7]);
+                //  ScenarioContext.Current["_provisionGapOpportunityID"] = OpportunityId;
 
                 Console.WriteLine("ActualNoOfPlacements: " + actualNoOfPlacements + "ExpectedNoOfPlacements: " + expectedNoOfPlacementsKnown);
                 Console.WriteLine("ActualPostcode: " + actualPostcode + "ExpectedPostcode: " + expectedPostcode);
@@ -123,9 +125,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 Console.WriteLine("ActualJobTitle: " + actualJobtitle + "ExpectedJobTitle: " + expectedJobType);
                 Console.WriteLine("ActualSkillArea: " + actualSkillArea + "ExpectedSkillArea: " + expectedTypeOfPlacement);
                 Console.WriteLine("ActualEmployerName: " + actualEmployername + "ExpectedEmployerName: " + expectedEmployername);
-                
+                Console.WriteLine("ActualpLACEMENTS: " + actualPlacementsKnown);
+
+
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.VerifyText(actualSkillArea, expectedTypeOfPlacement);
+                //PageInteractionHelper.VerifyText(actualSkillArea, expectedTypeOfPlacement);
                 PageInteractionHelper.VerifyText(actualPostcode, expectedPostcode);
                 PageInteractionHelper.VerifyText(actualSearchRadius, expectedSearchRadius);
                 PageInteractionHelper.VerifyText(actualJobtitle, expectedJobType);

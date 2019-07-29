@@ -165,7 +165,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         [Given(@"I entered the placement information and press No then click continue button")]
         public void IenteredplaceinformationandPressNo()
         {
-            WhoIsTheEmployerPage whoIsTheEmployerPage = new PlacementInformationPage(webDriver).ClickContinue(); 
+            //WhoIsTheEmployerPage whoIsTheEmployerPage = new PlacementInformationPage(webDriver).ClickContinue(); 
+            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
+            Thread.Sleep(2000);
+            placementInformationPage.EnterJobRole(Constants.jobTitle)
+                                    .SelectNoRadioButton()
+                                    .ClickContinueButton();
+
 
         }
         

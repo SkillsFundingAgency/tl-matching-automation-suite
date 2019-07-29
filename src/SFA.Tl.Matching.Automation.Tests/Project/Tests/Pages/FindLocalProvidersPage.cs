@@ -11,7 +11,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
     public class FindLocalProvidersPage : BasePage
     {
-        private static String PAGE_TITLE = "Find local providers";
+        private static String PAGE_TITLE = "Set up placement opportunity";
         private By SearchButton = By.ClassName("govuk-button");
         private By SkillAreaDropdown = By.Id("SelectedRouteId");
         private By PostcodeField = By.Id("Postcode");

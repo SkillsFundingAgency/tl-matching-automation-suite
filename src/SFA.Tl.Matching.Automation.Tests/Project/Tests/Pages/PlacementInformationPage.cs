@@ -14,7 +14,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     {
         private static String PAGE_TITLE = "Placement information";
         private By ContinueButton = By.ClassName("govuk-button");
-        private By JobTypeField = By.Name("JobTitle");
+        private By JobTypeField = By.Name("JobRole");
         private By YesRadioButton = By.Id("placement-location-yes");
         private By NoRadioButton = By.Id("placement-location-no");
         private By PlacementsField = By.Id("Placements");

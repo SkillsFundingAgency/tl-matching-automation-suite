@@ -12,18 +12,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 {
     public class ProviderResultsHelper
     {
-        protected static IWebDriver webDriver;
-        private const int implicitWaitTimeInSeconds = 10;
-
-        public static void SetDriver(IWebDriver webDriver)
-        {
-            ProviderResultsHelper.webDriver = webDriver;
-        }
-
-       
         public static Boolean VerifyProviderPostcodeDisplayed(String expectedPostcode)
         {
-            if (webDriver.FindElement(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Text.Contains(expectedPostcode))
+            if (PageInteractionHelper.GetText(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Contains(expectedPostcode))
             {
                 return true;
             }
@@ -115,15 +106,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             ScenarioContext.Current["SearchResultsCount"] = providerCount;
         }
 
-        public static void SetProviderNames(By locator1, By locator2)
+        public static void SetProviderNames(By locator1)
         {
             ScenarioContext.Current["_Provider1"] = GetProviderName(locator1);
         }
 
         private static String GetProviderName(By locator)
         {
-            String text = webDriver.FindElement(locator).Text.Split('\r')[0];
+            String text = PageInteractionHelper.GetText(locator).Split('\r')[0];
             text = text.TrimEnd();
+            Console.WriteLine(text);
             return text;
         }
     }
