@@ -1,7 +1,12 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 {
@@ -15,6 +20,32 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             PageInteractionHelper.webDriver = webDriver;
         }
 
+        public static Boolean VerifyPageURL(String actual, String expected)
+        {
+            if (actual.Contains(expected))
+            {
+                return true;
+            }
+
+            throw new Exception("Page URL verification failed:"
+                + "\n Expected URL: " + expected 
+                + "\n Found URL: " + actual);
+        }
+
+
+        public static Boolean VerifyLinkIsPresent(By locator, String expected)
+        {
+            String actual = webDriver.FindElement(locator).Text;
+            if (actual.Contains(expected))
+            {
+                return true;
+            }
+
+            throw new Exception("The following link was not found: "
+                + "\n Expected: " + expected
+                + "\n Found: " + actual);
+        }
+
         public static Boolean VerifyPageHeading(String actual, String expected)
         {
             if (actual.Contains(expected))
@@ -23,8 +54,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             }
 
             throw new Exception("Page verification failed:"
-                + "\n Expected: " + expected + " page"
-                + "\n Found: " + actual + " page");
+                + "\n Expected page: " + expected
+                + "\n Found page: " + actual);
         }
 
         public static Boolean VerifyPageHeading(By locator, String expected)
@@ -36,8 +67,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             }
 
             throw new Exception("Page verification failed:"
-                + "\n Expected: " + expected + " page"
-                + "\n Found: " + actual + " page");
+                + "\n Expected page: " + expected 
+                + "\n Found page: " + actual);
         }
 
         public static Boolean VerifyPageHeading(String actual, String expected1, String expected2)
@@ -64,17 +95,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 + "\n Found: " + actual);
         }
 
+        public static Boolean VerifyText(By locator, int expected)
+        {
+            String expectedText = Convert.ToString(expected);
+            return VerifyText(locator, expectedText);
+        }
+
         public static Boolean VerifyText(By locator, String expected)
         {
             String actual = webDriver.FindElement(locator).Text;
-            if (actual.Contains(expected))
-            {
-                return true;
-            }
-
-            throw new Exception("Text verification failed: "
-                + "\n Expected: " + expected
-                + "\n Found: " + actual);
+            return VerifyText(actual, expected);
         }
 
         public static Boolean VerifyValueAttributeOfAnElement(By locator, String expected)
@@ -187,6 +217,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         {
             IWebElement webElement = webDriver.FindElement(locator);
             return webElement.Text;
+        }
+
+        public static String GetValueFromField(By locator)
+        {
+            IWebElement webElement = webDriver.FindElement(locator);
+            String value = webElement.GetAttribute("value");
+            return value;
         }
     }
 }

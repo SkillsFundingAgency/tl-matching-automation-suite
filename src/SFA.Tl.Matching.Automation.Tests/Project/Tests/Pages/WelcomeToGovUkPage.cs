@@ -8,6 +8,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class WelcomeToGovUkPage : BasePage
     {
         private static String PAGE_TITLE = "Welcome to GOV.UK";
+        private By searchField = By.Name("q");
+        private By searchButton = By.CssSelector(".search-submit");
 
         public WelcomeToGovUkPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -19,12 +21,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-        private By searchField = By.Name("q");
-        private By searchButton = By.CssSelector(".search-submit");
-
         internal SearchResultsPage EnterSearchTextAndSubmit(String searchText)
         {
-            FormCompletionHelper.EnterText(searchField, searchText);
             FormCompletionHelper.ClickElement(searchButton);
             return new SearchResultsPage(webDriver);
         }

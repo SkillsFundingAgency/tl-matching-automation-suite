@@ -18,6 +18,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             webDriver.FindElement(locator).Click();
         }
 
+        public static void ClearText(By locator)
+        {
+            webDriver.FindElement(locator).Clear();
+        }
+
         public static void EnterText(IWebElement element, String text)
         {
             element.Clear();
@@ -36,10 +41,30 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             element.SendKeys(value.ToString());
         }
 
+        public static void PressTabKey()
+        {
+            IWebElement element = webDriver.FindElement(By.TagName("body"));
+            element.SendKeys(Keys.Tab);
+        }
+
         public static void SelectFromDropDownByValue(IWebElement element, String value)
         {
             var selectElement = new SelectElement(element);
             selectElement.SelectByValue(value);
+        }
+
+        public static void SelectFromDropDownByValue(By locator, String value)
+        {
+            IWebElement element = webDriver.FindElement(locator);
+            var selectElement = new SelectElement(element);
+            selectElement.SelectByValue(value);
+        }
+        
+        public static void SelectFromDropDownByText(By locator, String value)
+        {
+            IWebElement element = webDriver.FindElement(locator);
+            var selectElement = new SelectElement(element);
+            selectElement.SelectByText(value);            
         }
 
         public static void SelectFromDropDownByText(IWebElement element, String text)
