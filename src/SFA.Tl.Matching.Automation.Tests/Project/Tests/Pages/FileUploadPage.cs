@@ -17,9 +17,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     {        
         private static String PAGE_TITLE = "Data Import";
         private String EmployerFileLocation = "C:/EmployersDataFile.xlsx";
-        private String ProviderFileLocation = "C:/ProviderData.xlsx";
-        private String WordDocumentLocation = Directory.GetCurrentDirectory() + "/Word.docx";
-        private String JPEGImageLocation = Directory.GetCurrentDirectory() + "/Image.jpeg";
+        private String ProviderFileLocation = "C:/ProviderData.xlsx";        
+        private static String BaseLocation = AppDomain.CurrentDomain.BaseDirectory;
+        private String WordDocumentLocation = Path.GetFullPath(Path.Combine(BaseLocation, @"..\..\..\word.docx"));
+        private String JPEGImageLocation = Path.GetFullPath(Path.Combine(BaseLocation, @"..\..\..\Image.jpeg"));
         private String ExpectedPageURL = "https://tl-test-mtchui-as.azurewebsites.net/Search/Start";
         String ExpectedSuccessTitle = "File uploaded successfully";
         private By ActualSuccessTitle = By.ClassName("das-notification__body");
