@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
@@ -32,64 +31,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             findLocalProvidersPage.ClickSearchButton();
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickReportProvisionGapLink();
-        }       
-
-        [Given(@"I fill in the values on the Placement Information Page")]
-        public void GivenIFillInTheValuesOnThePlacementInformationPage()
-        {
-            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-         //   placementInformationPage.AutoPopulateFields();
         }
-
-        //[Given(@"I clear the job field on the Placement Information page")]
-        //public void GivenIClearTheJobFieldOnThePlacementInformationPage()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        // //   placementInformationPage.ClearJobField();
-        //}
 
         [When(@"I enter no placement information and Continue")]
         public void WhenIEnterNoPlacementInformationAndContinue()
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             placementInformationPage.EnterNoPlacementInformationAndContinue();
-        }
-
-        [Given(@"I press Continue on the Placement Information page")]
-        public void GivenIPressContinueOnThePlacementInformationPage()
-        {
-            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-          //  placementInformationPage.ClickContinueExpectingErrors();
-            
-        }
-        
-        //[Then(@"the Placement Information page will show an error stating ""(.*)""")]
-        //public void ThenThePlacementInformationPageWillShowAnErrorStating(string errorMessage)
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //    placementInformationPage.VerifyErrorNoJobPlacementEntered(errorMessage);         
-        //}
-
-        //[Then(@"the Placement Information page will display a no placement selected error stating ""(.*)""")]
-        //public void ThenThePlacementInformationPageWillDisplayANoPlacementSelectedErrorStating(string errorMessage)
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //    placementInformationPage.VerifyError_PlacementRadioButtonNotSelected(errorMessage);            
-        //}
-
-        //[Given(@"I have selected the No radio button")]
-        //public void GivenIHaveSelectedTheNoRadioButton()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //   // placementInformationPage.SelectNoRadioButton();
-        //}
-
-        //[Given(@"I have selected the Yes radio button")]
-        //public void GivenIHaveSelectedTheYesRadioButton()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //   // placementInformationPage.SelectYesRadioButton();
-        //}
+        }        
 
         [When(@"I select (.*) for how many students needed")]
         public void WhenISelectForHowManyStudentsNeeded(string p0)
@@ -105,21 +54,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
                     break;
             }
         }
-
-        //[Given(@"I select the No radio button")]
-        //public void GivenISelectTheNoRadioButton()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //   // placementInformationPage.SelectNoRadioButton();
-        //}
-
-        //[Then(@"Number of Placements field is not displayed")]
-        //public void ThenNumberOfPlacementsFieldIsNotDisplayed()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //    placementInformationPage.VerifyNumberOfPLacementsIsNotVisibile();
-        //}
-
+        
         [Then(@"Number of Students field is (.*)")]
         public void ThenNumberOfStudentsFieldIs(string result)
         {
@@ -132,31 +67,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
                 case "Not Displayed":
                     placementInformationPage.VerifyNumberOfPLacementsIsNotVisibile();
                     break;
-            }
-            
-        }
-
-
-        //[Given(@"I select the Yes radio button")]
-        //public void GivenISelectTheYesRadioButton()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //    //placementInformationPage.SelectYesRadioButton();
-        //}
-
-        //[Then(@"Number of Placements field is displayed")]
-        //public void ThenNumberOfPlacementsFieldIsDisplayed()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-        //    placementInformationPage.VerifyNumberOfPLacementsIsVisibile();
-        //}
-       
-        //[Then(@"the Place Information page will show an error for job type not long enough stating ""(.*)""")]
-        //public void ThenThePlaceInformationPageWillShowAnErrorForJobTypeNotLongEnoughStating(string errorMessage)
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            
-        //}
+            }            
+        }        
 
         [When(@"I enter an invalid job title (.*) and Continue")]
         public void WhenIEnterAnInvalidJobTitleAndContinue(string p0)
@@ -219,37 +131,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
                     placementInformationPage.VerifyErrorPlacementNumberIsNull(errorMessage);
                     break;
             }
-        }                
-
-        [Given(@"I enter a job description of ""(.*)"" on the Placement information page")]
-        public void GivenIEnterAJobDescriptionOfOnThePlacementInformationPage(string jobTitle)
-        {
-            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            Thread.Sleep(2000);
-         //   placementInformationPage.EnterJobRole(jobTitle);
-
         }
-
-        [Given(@"I entered the placement information and select yes and enter number of placements then click continue button")]
-        public void GivenIEnterPlaceInfoSelectYes()
-        {
-            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            Thread.Sleep(2000);
-          //  placementInformationPage.SelectYesContinue();
-
-        }        
-
-        [Given(@"I select No for the number of placements known")]
-        public void GivenISelectNoForTheNumberOfPlacementsKnown()
-        {
-            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-          //  placementInformationPage.SelectNoRadioButton();            
-        }
-
-        //[Then(@"I am on the Placement information page")]
-        //public void ThenIAmOnThePlacementInformationPage()
-        //{
-        //    PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver).VerifyPageURL();
-        //}
     }
 }

@@ -78,7 +78,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 6
  testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
- testRunner.And("I navigate to Who is the employer page Provision Gap", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I navigate to Who is the employer page Provision Gap with unknown Number of stude" +
+                    "nts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         

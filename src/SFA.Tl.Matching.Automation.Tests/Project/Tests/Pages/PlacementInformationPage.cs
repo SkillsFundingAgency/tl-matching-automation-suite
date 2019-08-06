@@ -47,52 +47,45 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }     */        
 
         //Actions
-        private void SelectReasonsForNoProviderChosen()  //PlacementInformationPage
+        private void SelectReasonsForNoProviderChosen()
         {
             FormCompletionHelper.ClickElement(NoSuitableStudentCheckBox);
             FormCompletionHelper.ClickElement(HadBadExperience);
             FormCompletionHelper.ClickElement(ProvidersTooFarAway);
-            //return this;
         }
 
-        private void EnterJobRole(String jobtype)   //PlacementInformationPage
+        private void EnterJobRole(String jobtype)
         {
             FormCompletionHelper.EnterText(JobTypeField, jobtype);
             ScenarioContext.Current["_provisionGapJobType"] = jobtype;
-            //return new PlacementInformationPage(webDriver);
         }
 
-        private void SelectYesRadioButton()  //PlacementInformationPage
+        private void SelectYesRadioButton()
         {
            FormCompletionHelper.ClickElement(YesRadioButton);
-           //return this;
         }
 
-        private void EnterNumberOfStudents()   //PlacementInformationPage
+        private void EnterNumberOfStudents()
         {
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacementEntered;
             FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);           
-            //return this;
         }
 
-        private void EnterInvalidNumberOfStudents(string invalidNumberOfStudents)   //PlacementInformationPage
+        private void EnterInvalidNumberOfStudents(string invalidNumberOfStudents)
         {
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = invalidNumberOfStudents;
             FormCompletionHelper.EnterText(PlacementsField, invalidNumberOfStudents);
-            //return this;
         }
 
-        private void SelectNoRadioButton()  //PlacementInformationPage
+        private void SelectNoRadioButton()
         {
             FormCompletionHelper.ClickElement(NoRadioButton);
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = "at least 1";
-            //return this;
         }        
 
-        private void ClickContinueButton()   //WhoIsTheEmployerPage
+        private void ClickContinueButton()
         {
             FormCompletionHelper.ClickElement(ContinueButton);
-            //return new WhoIsTheEmployerPage(webDriver);
         }               
 
         //Behaviour
