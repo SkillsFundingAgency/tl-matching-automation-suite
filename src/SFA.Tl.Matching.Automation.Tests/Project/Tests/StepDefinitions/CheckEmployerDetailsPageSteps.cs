@@ -19,8 +19,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickReportProvisionGapLink();
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.AutoPopulateFields();
-            placementInformationPage.ClickContinueButton();
+            placementInformationPage.EnterMandatoryPlacementInformationForNoSuitableProvidersAndContinue("No");
             WhoIsTheEmployerPage whoIsTheEmployerPage = new WhoIsTheEmployerPage(webDriver);
             whoIsTheEmployerPage.AutoPopulateEmployer();
             whoIsTheEmployerPage.ClickContinue();
@@ -38,7 +37,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenIPressContinueOnTheCheckEmployerDetailsPage()
         {
             CheckEmployersDetailsPage checkEmplyerDetailsPage = new CheckEmployersDetailsPage(webDriver);
-             checkEmplyerDetailsPage.ClickConfirmAndContinueButton();
+            checkEmplyerDetailsPage.ClickConfirmAndContinueButton();
             
         }
         

@@ -11,8 +11,25 @@ namespace SFA.Tl.Matching.Automation.Tests
     [Binding]
     public class WhoIsTheEmployerPageErrorMessagesSteps : BaseTest
     {
-        [Given(@"I navigate to the Who is the employer page")]
-        public void GivenINavigateToTheWhoIsTheEmployerPage()
+        [Given(@"I navigate to Who is the employer page Referral Journey")]
+        public void GivenINavigateToWhoIsTheEmployerPageReferralJourney()
+        {
+            ScenarioContext.Current.Pending();
+            StartPage startPage = new StartPage(webDriver);
+            startPage.ClickStartButton();
+            FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
+            findLocalProvidersPage.AutoPopulateFields()
+            .ClickSearchButton();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.SelectProviders()
+                .ClickContinue();
+            PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
+            placementInformationPage.EnterMandatoryPlacementInformationForChosenProvidersAndContinue("No");
+        }
+
+
+        [Given(@"I navigate to Who is the employer page Provision Gap")]
+        public void GivenINavigateToWhoIsTheEmployerPageProvisionGap()
         {
             StartPage startPage = new StartPage(webDriver);
             startPage.ClickStartButton();
@@ -22,9 +39,8 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.ClickReportProvisionGapLink();
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
-            placementInformationPage.AutoPopulateFields()
-            .ClickContinueButton();            
-        }
+            placementInformationPage.EnterMandatoryPlacementInformationForNoSuitableProvidersAndContinue("No");
+        }        
         
         [Given(@"I clear the job field on the Who is the employer page")]
         public void GivenIClearTheJobFieldOnTheWhoIsTheEmployerPage()
@@ -63,7 +79,6 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void IenteredEmployerandPressContinue()
         {
             WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver).clickContinue();
-
         }
         
          [Given(@"I enter an employer name of ""(.*)"" on the Who is the employer page")]
