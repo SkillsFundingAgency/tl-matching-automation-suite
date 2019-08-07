@@ -219,10 +219,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateAProvisionGap.feature</DependentUpon>
     </Compile>
-    <Compile Include="Project\Tests\Features\WhoIsTheEmployerPage_ErrorMessages.feature.cs">
+    <Compile Include="Project\Tests\Features\ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WhoIsTheEmployerPage_ErrorMessages.feature</DependentUpon>
+      <DependentUpon>ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature</DependentUpon>
     </Compile>
     <Compile Include="Project\Tests\Pages\CheckAnswersPage.cs" />
     <Compile Include="Project\Tests\Pages\CheckEmployersDetailsPage.cs" />
@@ -388,9 +388,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ValidateSearchResults .feature.cs</LastGenOutput>
     </None>
-    <None Include="Project\Tests\Features\WhoIsTheEmployerPage_ErrorMessages.feature">
+    <None Include="Project\Tests\Features\ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WhoIsTheEmployerPage_ErrorMessages.feature.cs</LastGenOutput>
+      <LastGenOutput>ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\UploadFilePageErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

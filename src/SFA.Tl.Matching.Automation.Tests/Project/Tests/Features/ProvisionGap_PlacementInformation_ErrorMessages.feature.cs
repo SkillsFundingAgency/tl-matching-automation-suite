@@ -18,8 +18,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Report a provision gap - Error messages on the Placement Information page")]
-    public partial class ReportAProvisionGap_ErrorMessagesOnThePlacementInformationPageFeature
+    [NUnit.Framework.DescriptionAttribute("Provision Gap - Placement Information - Error Messages")]
+    public partial class ProvisionGap_PlacementInformation_ErrorMessagesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,8 +31,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Report a provision gap - Error messages on the Placement Information page", "\tThis feature is used to confirm the error messages on the Placement information " +
-                    "web page. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Provision Gap - Placement Information - Error Messages", "\tThis feature is used to confirm the error messages on the Placement information " +
+                    "page for a provision gap", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -77,17 +77,17 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
  testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
- testRunner.And("I navigate to the Provision Gap Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Placement Information - Press continue without entering any data")]
+        [NUnit.Framework.DescriptionAttribute("No Suitable Providers - Placement Information - Error Messages when No data is en" +
+            "tered and click Continue")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void PlacementInformation_PressContinueWithoutEnteringAnyData()
+        public virtual void NoSuitableProviders_PlacementInformation_ErrorMessagesWhenNoDataIsEnteredAndClickContinue()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Press continue without entering any data", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No Suitable Providers - Placement Information - Error Messages when No data is en" +
+                    "tered and click Continue", null, new string[] {
                         "regression"});
 #line 11
 this.ScenarioInitialize(scenarioInfo);
@@ -95,16 +95,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 12
- testRunner.Given("I clear the job field on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I navigate to the Provision Gap Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I enter no placement information and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
- testRunner.Then("the Placement Information page will show an error stating \"You must tell us what " +
-                    "specific job the placement student would do\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Placement Information page will show an error stating \"You must tell us why t" +
+                    "he employer did not choose a provider\" for \"NoProvidersChosen\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 15
- testRunner.And("the Placement Information page will display a no placement selected error stating" +
-                    " \"You must tell us whether the employer knows how many placements they want at t" +
-                    "his location\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the Placement Information page will show an error stating \"You must tell us wheth" +
+                    "er the employer knows how many students they want for this job at this location\"" +
+                    " for \"StudentsOptionNotSelected\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -113,24 +113,29 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Placement Information - Number of Placements field is shown only if Yes is select" +
             "ed")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void PlacementInformation_NumberOfPlacementsFieldIsShownOnlyIfYesIsSelected()
+        [NUnit.Framework.TestCaseAttribute("Yes", "Displayed", null)]
+        [NUnit.Framework.TestCaseAttribute("No", "Not Displayed", null)]
+        public virtual void PlacementInformation_NumberOfPlacementsFieldIsShownOnlyIfYesIsSelected(string value, string result, string[] exampleTags)
         {
+            string[] @__tags = new string[] {
+                    "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Number of Placements field is shown only if Yes is select" +
-                    "ed", null, new string[] {
-                        "regression"});
-#line 18
+                    "ed", null, @__tags);
+#line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 5
 this.FeatureBackground();
-#line 19
- testRunner.Given("I select the No radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 20
- testRunner.Then("Number of Placements field is not displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I navigate to the Provision Gap Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 21
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When(string.Format("I select {0} for how many students needed", value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 22
- testRunner.Then("Number of Placements field is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("Number of Students field is {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -138,105 +143,60 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Placement Information - Job type must be between 2 and 99 characters")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void PlacementInformation_JobTypeMustBeBetween2And99Characters()
+        [NUnit.Framework.TestCaseAttribute("1", "A", "You must enter a job role using 2 or more characters", null)]
+        [NUnit.Framework.TestCaseAttribute("100", "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" +
+            "BCDEFGHIJABCDEFGHIJ", "You must enter a job role using 99 characters or less", null)]
+        public virtual void PlacementInformation_JobTypeMustBeBetween2And99Characters(string number, string jobRole, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Job type must be between 2 and 99 characters", null, new string[] {
-                        "regression"});
-#line 26
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 5
-this.FeatureBackground();
-#line 27
- testRunner.Given("I enter a job title 1 character long", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 28
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 29
- testRunner.Then("the Place Information page will show an error for job type not long enough statin" +
-                    "g \"You must enter a job role using 2 or more characters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            string[] @__tags = new string[] {
+                    "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Job type must be between 2 and 99 characters", null, @__tags);
 #line 30
- testRunner.Given("I enter a job title longer than 99 characters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 5
+this.FeatureBackground();
 #line 31
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I navigate to the Provision Gap Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
- testRunner.Then("the Place Information page will show an error for job type too long stating \"You " +
-                    "must enter a job role using 99 characters or less\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When(string.Format("I enter an invalid job title {0} and Continue", jobRole), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 33
+ testRunner.Then(string.Format("the {0} for Invalid Job Role for {1} characters is displayed", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Placement Information - Number of placements entered must be greater than 0")]
+        [NUnit.Framework.DescriptionAttribute("Placement Information - Number of Students must be between 1 and 999")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void PlacementInformation_NumberOfPlacementsEnteredMustBeGreaterThan0()
+        [NUnit.Framework.TestCaseAttribute("0", "The number of students must be 1 or more", null)]
+        [NUnit.Framework.TestCaseAttribute("1000", "The number of students must be 999 or less", null)]
+        [NUnit.Framework.TestCaseAttribute("", "You must estimate how many students the employer wants for this job at this locat" +
+            "ion", null)]
+        public virtual void PlacementInformation_NumberOfStudentsMustBeBetween1And999(string number, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Number of placements entered must be greater than 0", null, new string[] {
-                        "regression"});
-#line 35
+            string[] @__tags = new string[] {
+                    "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Number of Students must be between 1 and 999", null, @__tags);
+#line 41
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 5
 this.FeatureBackground();
-#line 36
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 37
- testRunner.And("I enter 0 for the number of placements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 38
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 39
- testRunner.Then("the Place Information page will show an error for number of placements being too " +
-                    "small stating \"The number of placements must be 1 or more\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Placement Information - Number of placements entered must be less than 1000")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void PlacementInformation_NumberOfPlacementsEnteredMustBeLessThan1000()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Number of placements entered must be less than 1000", null, new string[] {
-                        "regression"});
 #line 42
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 5
-this.FeatureBackground();
+ testRunner.Given("I navigate to the Provision Gap Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 43
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When(string.Format("I enter Invalid number of Students {0} and Continue", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 44
- testRunner.And("I enter 1000 for the number of placements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 45
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 46
- testRunner.Then("the Place Information page will show an error for number of placements being too " +
-                    "big stating \"The number of placements must be 999 or less\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Placement Information - Number of placements must be entered if the number of pla" +
-            "cements field is visbile")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void PlacementInformation_NumberOfPlacementsMustBeEnteredIfTheNumberOfPlacementsFieldIsVisbile()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Number of placements must be entered if the number of pla" +
-                    "cements field is visbile", null, new string[] {
-                        "regression"});
-#line 49
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 5
-this.FeatureBackground();
-#line 50
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 51
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
- testRunner.Then("the Place Information page will show an error for Placement number cannot be null" +
-                    " stating \"You must estimate how many placements the employer wants at this locat" +
-                    "ion\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the {0} for Invalid Number of Students is displayed for {1}", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

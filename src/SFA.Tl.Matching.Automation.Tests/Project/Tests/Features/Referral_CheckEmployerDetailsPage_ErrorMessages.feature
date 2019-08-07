@@ -4,14 +4,13 @@
 Background: 
 	Given I have navigated to the IDAMS login page
 	And I have logged in as an Admin user
-	And I navigate to the Select Providers page
-	Given I select some providers
-	When I press the Continue button
-	Then I am on the Placement information page
-	Given I enter a job description of "Builder" on the Placement information page
-	And I select No for the number of placements known
-	And I press Continue on the Placement Information page
-	Then I am on Who is the employer page
+	#And I navigate to the Select Providers page
+	#Given I select some providers
+	#When I press the Continue button
+	#Given I enter a job description of "Builder" on the Placement information page
+	#And I select No for the number of placements known
+	#And I press Continue on the Placement Information page
+	And I navigate to Who is the employer page Referral Journey
 	Given I enter an employer name of "Abacus Childrens Nurseries" on the Who is the employer page
 	And I press Continue on the Who is the employer page
 	Then I am taken to the Check Employer Details page
@@ -50,4 +49,3 @@ Scenario: Referral - Check Employer Details - Contact name cannot contain specia
 	Given I enter special characters in contact name
 	And I press Continue on the Check Employer page
 	Then the Check Employer page will show an error for special characters in contact name stating "You must enter a contact name using only letters, hyphens and apostrophes"
-
