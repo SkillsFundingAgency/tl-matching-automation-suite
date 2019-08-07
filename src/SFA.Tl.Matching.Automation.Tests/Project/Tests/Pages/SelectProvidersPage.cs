@@ -100,6 +100,27 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new SelectProvidersPage(webDriver);
         }
 
+        public PlacementInformationPage ClickContinue()
+        {
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return new PlacementInformationPage(webDriver);
+        }
+
+        public SelectProvidersPage SelectProviders()
+        {
+            FormCompletionHelper.ClickElement(Provider1Checkbox);
+            //Commented by Shalini  --  need to rework how to use xpath
+            ProviderResultsHelper.SetProviderNames(providerName1);
+            return new SelectProvidersPage(webDriver);
+        }
+
+        public PlacementInformationPage SelectProviderAndClickContinue()
+        {
+            SelectProviders();
+            ClickContinue();
+            return new PlacementInformationPage(webDriver);
+        }
+
         public SelectProvidersPage VerifyPostcodeError (string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualPostcodeError, ExpectedErrorMessage);
@@ -159,32 +180,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyText(ActualSearchRadiusDisplayed, expSearchRadius);
             return new SelectProvidersPage(webDriver);
         }
-
-        public PlacementInformationPage SelectProviderAndClickContinue()
-        {
-            SelectProviders();
-            ClickContinue();
-            return new PlacementInformationPage(webDriver);
-        }
-
-        //make an action
-        public PlacementInformationPage ClickContinue()
-        {
-            FormCompletionHelper.ClickElement(ContinueButton);
-            return new PlacementInformationPage(webDriver);
-        }
-
-        //make an action
-        public SelectProvidersPage SelectProviders()
-        {
-            SelectPostcodeRadius(Constants.radius);
-            ClickSearchAgain();
-            FormCompletionHelper.ClickElement(Provider1Checkbox);
-            //Commented by Shalini  --  need to rework how to use xpath
-            ProviderResultsHelper.SetProviderNames(providerName1);
-            return new SelectProvidersPage(webDriver);
-        }
-
+        
         public SelectProvidersPage VerifyProviderNotSelectedError(string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualNoProviderSelectedError, ExpectedErrorMessage);
