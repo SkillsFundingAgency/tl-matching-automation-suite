@@ -13,8 +13,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class ReferralDonePage : BasePage
     {
         private static String PAGE_TITLE = ("Emails sent");
-        private By FinishButton = By.Id("tl-finish");
-        private int opportunityID = (int)ScenarioContext.Current["_provisionGapOpportunityID"];
+        private By FinishButton = By.Id("tl-end");
+        //private int opportunityID = (int)ScenarioContext.Current["_provisionGapOpportunityID"];
+        private int opportunityID = 212; 
         private By ActualWhatHappensNextText = By.XPath("//*[@id='main-content']//p[2]");
                
         public ReferralDonePage(IWebDriver webDriver) : base(webDriver)

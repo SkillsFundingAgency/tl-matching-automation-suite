@@ -66,6 +66,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
             webDriver.Navigate().GoToUrl(Configurator.GetConfiguratorInstance().GetBaseUrl());
 
             PageInteractionHelper.SetDriver(webDriver);
+            ProviderResultsHelper.SetDriver(webDriver);
         }
 
         [After]

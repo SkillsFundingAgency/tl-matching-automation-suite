@@ -68,8 +68,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private void EnterNumberOfStudents()
         {
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacementEntered;
-            FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);           
-        }
+            FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);
+        }        
 
         private void EnterInvalidNumberOfStudents(string invalidNumberOfStudents)
         {
@@ -169,6 +169,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             }
         }
 
+        public ReferralCheckAnswersPage ClickContinueMoreThanOneOpportunityExists()
+        {
+            FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
+            FormCompletionHelper.ClickElement(NoRadioButton);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacements;
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return new ReferralCheckAnswersPage(webDriver);
+        }        
+
         //Assertions        
         public PlacementInformationPage VerifyNumberOfPLacementsIsVisibile()
         {
@@ -225,7 +234,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             FormCompletionHelper.VerifyText(ActualJobTypeNullError, expectedError);
             return this;
-        }
+        }        
+
+        //   delete this
+        //public PlacementInformationPage EnterNumberOfPlacements(int Number)
 
         public PlacementInformationPage VerifyErrorNoPlacementsSelected(string expectedError)
         {

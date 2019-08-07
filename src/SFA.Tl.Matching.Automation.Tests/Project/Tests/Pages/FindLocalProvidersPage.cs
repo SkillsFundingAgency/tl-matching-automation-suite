@@ -69,5 +69,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, "Care services");
             return this;
         }
+
+        public FindLocalProvidersPage AutoPopulateFieldsSecondPass()
+        {
+            FormCompletionHelper.EnterText(PostcodeField, Constants.opportunity2Postcode);
+            FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, Constants.opportunity2SkillArea);
+            return this;
+        }
     }
 }

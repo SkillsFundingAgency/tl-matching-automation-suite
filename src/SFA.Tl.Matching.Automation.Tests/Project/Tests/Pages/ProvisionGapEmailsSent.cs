@@ -10,13 +10,13 @@ using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
-    public class DonePage : BasePage
+    public class ProvisionGapEmailsSent : BasePage
     {
-        private static String PAGE_TITLE = ("Report sent to the industry placement team");
+        private static String PAGE_TITLE = ("Emails sent");
         private int opportunityID = (int)ScenarioContext.Current["_provisionGapOpportunityID"];
         private By FinishButton = By.ClassName("govuk-button");        
                
-        public DonePage(IWebDriver webDriver) : base(webDriver)
+        public ProvisionGapEmailsSent(IWebDriver webDriver) : base(webDriver)
         {
            SelfVerify();
         }
@@ -26,14 +26,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }                       
 
-        public DonePage ClickFinishbutton()
+        public ProvisionGapEmailsSent ClickFinishbutton()
         {
            FormCompletionHelper.ClickElement(FinishButton);
 
             return this;
         }
 
-        public DonePage VerifyProvisionGapRecordCreated()
+        public ProvisionGapEmailsSent VerifyProvisionGapRecordCreated()
         {
 
             List<Object[]> provisionGapCount = GetProvisionGapCount();
@@ -63,7 +63,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return queryResults;
         }
         
-        public DonePage VerifyOptInValueRecorded(String expectectedValue)
+        public ProvisionGapEmailsSent VerifyOptInValueRecorded(String expectectedValue)
         {
             List<Object[]> confirmationSelected = GetConfirmationSelected();
 

@@ -50,21 +50,23 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I press Opt In on the Check answers page and click continue")]
         public void GivenIPressOptInOnTheCheckAnswersPageandContinue()
         {
-            ReferralDonePage ReferralcheckAnswersPage = new ReferralCheckAnswersPage(webDriver).ClickConfirmationCheckBox()
-                .ClickConfirmAndSendutton();
+            ReferralCheckAnswersPage ReferralcheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
+            ReferralcheckAnswersPage.ClickConfirmAndSendutton();
+             
         }
 
         [Then(@"a Provision gap record will be created")]
         public void ThenAProvisionGapRecordWillBeCreated()
         {
-            DonePage donePage = new DonePage(webDriver);
+            ProvisionGapEmailsSent donePage = new ProvisionGapEmailsSent(webDriver);
             donePage.VerifyProvisionGapRecordCreated();            
         }
 
         [Given(@"referral records are created")]
         public void GivenReferralRecordsAreCreated()
         {
-            ReferralDonePage referralDonePage = new ReferralDonePage(webDriver).VerifyCountofReferralRecords()
+            ReferralDonePage referralDonePage = new ReferralDonePage(webDriver)
+                .VerifyCountofReferralRecords()
                 .VerifyReferralRecordsCreated();
          
         }
@@ -72,14 +74,14 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Then(@"the Opportunity record will record OPT IN has been selected")]
         public void ThenTheOpportunityRecordWillRecordOPTINHasBeenSelected()
         {
-            DonePage donePage = new DonePage(webDriver);
+            ProvisionGapEmailsSent donePage = new ProvisionGapEmailsSent(webDriver);
             donePage.VerifyOptInValueRecorded("True");
         }
 
         [Then(@"the Opportunity record will record OPT IN has not been selected")]
         public void ThenTheOpportunityRecordWillRecordOPTINHasNotBeenSelected()
         {
-            DonePage donePage = new DonePage(webDriver);
+            ProvisionGapEmailsSent donePage = new ProvisionGapEmailsSent(webDriver);
             donePage.VerifyOptInValueRecorded(Constants.ProvisionGapOptInFalse);
         }
     }

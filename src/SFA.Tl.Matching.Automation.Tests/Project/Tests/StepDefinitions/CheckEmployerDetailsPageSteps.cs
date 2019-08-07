@@ -144,7 +144,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void ThenTheCheckEmployersDetailsPageWillShowTheDetailsEntered()
         {
             CheckEmployersDetailsPage checkEmployerDetailsPage = new CheckEmployersDetailsPage(webDriver);
-            CheckAnswersPage checkAnswersPage = checkEmployerDetailsPage.VerifyEmployerDetails().ClickConfirmAndContinueButton();          
+            checkEmployerDetailsPage.VerifyEmployerDetails().ClickConfirmAndContinueButton();         
         }
 
         [Then(@"the Referral Check employers details page will show the details entered")]

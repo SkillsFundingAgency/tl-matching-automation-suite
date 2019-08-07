@@ -17,7 +17,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String expectedCount = "1";
         public const String ProvisionGapOptInFalse = "False";
         public const String ProvisionGapOptInNo = "Null";
-        public const String NoofPlacementEntered = "6";
+        public const String NoofPlacementEntered = "at least 1";
         public const String InvalidUser = "InvalidUser";
         public const String InvalidPass = "InvalidPass";
         public const String postcodeNoResults = "G63 0AR";
@@ -28,5 +28,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String oneResultradius = "5 miles";
         public const String queryToGetQualificationMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarsID WHERE q.LarsID = lar.LarId";
         public const String queryToGetQualificationNotMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarsID WHERE q.LarsID IS NULL order by lar.Id desc";
+        public const String Opportunity1Postcode = "B43 6JN";
+        public const String Opportunity1JobRole = "None given";
+        public const String Opportunity1StudentsWanted = "at least 1";
+        public const String Opportunity1Providers = "1";
+        public const String opportunity2Postcode = "B43 6JN";
+        public const String opportunity2JobRole = "None given";
+        public const String opportunity2StudentsWanted = "at least 1";
+        public const String opportunity2Providers = "1";
+        public const String opportunity2SkillArea = "Care services";
+
     }
 }

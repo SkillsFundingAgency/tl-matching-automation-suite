@@ -87,7 +87,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I entered employer name and press continue")]
         public void IenteredEmployerandPressContinue()
         {
-            WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver).clickContinue();
+            WhoIsTheEmployerPage whoIstheEmployerPage = new WhoIsTheEmployerPage(webDriver).EnterEmployerNameAndClickContinue();
         }
         
          [Given(@"I enter an employer name of ""(.*)"" on the Who is the employer page")]

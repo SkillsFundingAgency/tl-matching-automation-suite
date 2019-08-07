@@ -81,6 +81,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             }
         }
 
+        public static void SelectCheckBox(By locator)
+        {
+            IWebElement element = webDriver.FindElement(locator);
+            SelectCheckBox(element);
+        }
+
         public static void SelectRadioOptionByForAttribute(By locator, String forAttribute)
         {
             IList<IWebElement> radios = webDriver.FindElements(locator);

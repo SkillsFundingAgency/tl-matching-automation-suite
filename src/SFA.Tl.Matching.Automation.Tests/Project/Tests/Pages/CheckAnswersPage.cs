@@ -50,11 +50,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }               
 
-        public DonePage ClickConfirmAndSendutton()
+        public ProvisionGapEmailsSent ClickConfirmAndSendutton()
         {
            FormCompletionHelper.ClickElement(ConfirmAndSendButton);
 
-           return new DonePage(webDriver);
+           return new ProvisionGapEmailsSent(webDriver);
         }
 
         public CheckAnswersPage ClickOptIn()

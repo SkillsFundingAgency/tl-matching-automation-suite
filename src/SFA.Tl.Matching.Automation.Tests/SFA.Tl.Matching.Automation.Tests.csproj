@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\Tests\StepDefinitions\OpportunityBasketSteps.cs" />
     <Compile Include="Project\Framework\Helpers\ProviderResultsHelper.cs" />
     <Compile Include="Project\Tests\Features\AddQualification.feature.cs">
       <AutoGen>True</AutoGen>
@@ -187,10 +188,12 @@
     </Compile>
     <Compile Include="Project\Tests\Pages\AddQualificationPage.cs" />
     <Compile Include="Project\Tests\Pages\FindAProviderPage.cs" />
+    <Compile Include="Project\Tests\Pages\SendEmailsPage.cs" />
+    <Compile Include="Project\Tests\Pages\OpportunitiesBasketPage.cs" />
     <Compile Include="Project\Tests\Pages\ProviderAndVenuesDetailsPage.cs" />
     <Compile Include="Project\Tests\Pages\ReferralDonePage.cs" />
     <Compile Include="Project\Tests\Pages\ReferralCheckAnswersPage.cs" />
-    <Compile Include="Project\Tests\Pages\DonePage.cs" />
+    <Compile Include="Project\Tests\Pages\ProvisionGapEmailsSent.cs" />
     <Compile Include="Project\Tests\Pages\VenueAndQualificationsDetailsPage.cs" />
     <Compile Include="Project\Tests\StepDefinitions\AddQualificationPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\CheckAnswersPageSteps.cs" />
@@ -290,6 +293,8 @@
     <Compile Include="Project\Tests\StepDefinitions\LoginRolesSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\ProvisionGapDonePageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\QualificationsPageSteps.cs" />
+    <Compile Include="Project\Tests\StepDefinitions\ReferralJourneySteps.cs" />
+    <Compile Include="Project\Tests\StepDefinitions\SendEmailPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\UploadFileErrorMessages.cs" />
     <Compile Include="Project\Tests\StepDefinitions\UserJourneyStartPageSteps.cs" />
     <Compile Include="Project\Tests\TestSupport\BasePage.cs" />

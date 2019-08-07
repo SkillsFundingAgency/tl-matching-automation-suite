@@ -185,7 +185,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void GivenISelectSomeProvidersAndClickContinue()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.SelectProviders().ClickContinue();   
+            selectProvidersPage.SelectProviderAndClickContinue();//    SelectProviders().ClickContinue();   
             Thread.Sleep(5000);
 
         }

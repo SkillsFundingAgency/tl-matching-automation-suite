@@ -66,7 +66,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return this;
         }
 
-        public WhoIsTheEmployerPage clickContinue()
+        public WhoIsTheEmployerPage EnterEmployerNameAndClickContinue()
         { 
        
             FormCompletionHelper.EnterText(BusinessNameField, Constants.employerName);

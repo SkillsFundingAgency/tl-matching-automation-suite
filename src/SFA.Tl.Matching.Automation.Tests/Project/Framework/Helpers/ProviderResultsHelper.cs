@@ -12,6 +12,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 {
     public class ProviderResultsHelper
     {
+
+        protected static IWebDriver webDriver;
+
+        public static void SetDriver(IWebDriver webDriver)
+        {
+            ProviderResultsHelper.webDriver = webDriver;
+        }
+
         public static Boolean VerifyProviderPostcodeDisplayed(String expectedPostcode)
         {
             if (PageInteractionHelper.GetText(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Contains(expectedPostcode))
@@ -115,7 +123,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         {
             String text = PageInteractionHelper.GetText(locator).Split('\r')[0];
             text = text.TrimEnd();
-            Console.WriteLine(text);
+            Console.WriteLine("MAYUR PROVIDER:" + text);
             return text;
         }
     }

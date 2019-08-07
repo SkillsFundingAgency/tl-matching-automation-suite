@@ -12,7 +12,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         [Then(@"the Provision Gap Done page is displayed")]
         public void ThenTheProvisionGapDonePageIsDisplayed()
         {
-            DonePage donePage = new DonePage(webDriver);
+            ProvisionGapEmailsSent donePage = new ProvisionGapEmailsSent(webDriver);
             donePage.ClickFinishbutton();
         }
     }
