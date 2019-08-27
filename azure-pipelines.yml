@@ -5,6 +5,15 @@ pool:
 
 name: $(Build.MajorNumber).$(Build.MinorNumber)$(Rev:.r)
 
+variables:
+  Build.MajorNumber: 0
+  Build.MinorNumber: 1
+  BuildConfiguration: Release
+  BuildPlatform: Release
+  system.collectionId: 35a6fa5f-e586-40c1-be4e-bae1716439ab
+  system.definitionId: 490
+  system.teamProject: Digital Apprenticeship Service
+
 steps:
 - task: BatchScript@1
   displayName: 'Run script src/RunBuild.bat'
