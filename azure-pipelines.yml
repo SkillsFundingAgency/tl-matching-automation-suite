@@ -3,6 +3,8 @@ pool:
   demands:
   - Cmd
 
+name: $(Build.MajorNumber).$(Build.MinorNumber)$(Rev:.r)
+
 steps:
 - task: BatchScript@1
   displayName: 'Run script src/RunBuild.bat'
