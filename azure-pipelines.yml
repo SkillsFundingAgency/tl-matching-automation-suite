@@ -24,7 +24,7 @@ steps:
   inputs:
     CopyRoot: src/
     Contents: |
-      tl-matching-automation-suite/bin/Release/**/*.*
+      SFA.Tl.Matching.Automation.Tests/bin/Release/**/*.*
       *.fsx
       *.bat
       Tools\Nuget\NuGet.exe
