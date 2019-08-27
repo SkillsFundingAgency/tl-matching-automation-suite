@@ -3,6 +3,14 @@ pool:
   demands:
   - Cmd
 
+name: $(Build.MajorNumber).$(Build.MinorNumber)$(Rev:.r)
+
+variables:
+  Build.MajorNumber: '0'
+  Build.MinorNumber: '1'
+  BuildConfiguration: 'Release'
+  BuildPlatform: 'Release'
+
 steps:
 - task: BatchScript@1
   displayName: 'Run script src/RunBuild.bat'
@@ -16,7 +24,7 @@ steps:
   inputs:
     CopyRoot: src/
     Contents: |
-      tl-matching-automation-suite/bin/Release/**/*.*
+      SFA.Tl.Matching.Automation.Tests/bin/Release/**/*.*
       *.fsx
       *.bat
       Tools\Nuget\NuGet.exe
