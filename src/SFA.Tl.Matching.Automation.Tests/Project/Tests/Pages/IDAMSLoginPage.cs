@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -26,66 +22,99 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         protected override bool SelfVerify()
         {
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
-        }
+        }        
 
-        public IDAMSLoginPage IDAMSLogin(String userName, String passWord)
+        private void EnterUsername(String userName)
         {
             FormCompletionHelper.EnterText(UserNameLocator, userName);
+        }
+
+        private void EnterPassword(String passWord)
+        {
             FormCompletionHelper.EnterText(PasswordLocator, passWord);
-            return this;
         }
 
-        public IDAMSLoginPage IDAMSLoginUsernameOnly()
+        private void ClickLoginButton()
         {
-            FormCompletionHelper.EnterText(UserNameLocator, Configurator.GetConfiguratorInstance().GetAdminUserName());
-            return this;
+            FormCompletionHelper.ClickElement(LoginButton);
+            Thread.Sleep(5000);
         }
 
-        public IDAMSLoginPage IDAMSLoginPasswordOnly()
-        {
-            FormCompletionHelper.EnterText(PasswordLocator, Configurator.GetConfiguratorInstance().GetAdminPassword());
-            return this;
-        }
-
+        //Behaviour
         public StartPage LoginAsAdminUser()
         {
-            IDAMSLogin(Configurator.GetConfiguratorInstance().GetAdminUserName(), Configurator.GetConfiguratorInstance().GetAdminPassword());
-            FormCompletionHelper.ClickElement(LoginButton);
+            EnterUsername(Configurator.GetConfiguratorInstance().GetAdminUserName());
+            EnterPassword(Configurator.GetConfiguratorInstance().GetAdminPassword());
+            ClickLoginButton();
             Thread.Sleep(5000);
             return new StartPage(webDriver);
-        }
-
-        public IDAMSLoginPage ClickLoginButton()
-        {
-            FormCompletionHelper.ClickElement(LoginButton);
-            Thread.Sleep(5000);
-            return new IDAMSLoginPage(webDriver);
-
-        }
+        }        
 
         public StartPage LoginAsStandardUser()
         {
-            IDAMSLogin(Configurator.GetConfiguratorInstance().GetStandardUserName(), Configurator.GetConfiguratorInstance().GetStandardPassword());
-            FormCompletionHelper.ClickElement(LoginButton);
+            EnterUsername(Configurator.GetConfiguratorInstance().GetStandardUserName());
+            EnterPassword(Configurator.GetConfiguratorInstance().GetStandardPassword());
+            ClickLoginButton();
             Thread.Sleep(5000);
             return new StartPage(webDriver);
         }
 
         public StartPage LoginAsDualUser()
         {
-            IDAMSLogin(Configurator.GetConfiguratorInstance().GetDualUserName(), Configurator.GetConfiguratorInstance().GetDualPassword());
-            FormCompletionHelper.ClickElement(LoginButton);
+            EnterUsername(Configurator.GetConfiguratorInstance().GetDualUserName());
+            EnterPassword(Configurator.GetConfiguratorInstance().GetDualPassword());
+            ClickLoginButton();
             Thread.Sleep(5000);
             return new StartPage(webDriver);
         }
 
+        public InvalidRolePage LoginAsNonAuthorisedUser()
+        {
+            EnterUsername(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserName());
+            EnterPassword(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserPassword());
+            ClickLoginButton();
+            Thread.Sleep(5000);
+            return new InvalidRolePage(webDriver);
+        }
 
+        public IDAMSLoginPage LoginWithOnlyUsername()
+        {
+            EnterUsername(Configurator.GetConfiguratorInstance().GetAdminUserName());
+            ClickLoginButton();
+            Thread.Sleep(5000);
+            return new IDAMSLoginPage(webDriver);
+        }
+
+        public IDAMSLoginPage LoginWithOnlyPassword()
+        {
+            EnterPassword(Configurator.GetConfiguratorInstance().GetAdminPassword());
+            ClickLoginButton();
+            Thread.Sleep(5000);
+            return new IDAMSLoginPage(webDriver);
+        }
+
+        public IDAMSLoginPage LoginWithInvalidUsernameAndPassword()
+        {
+            EnterUsername(Constants.InvalidUser);
+            EnterPassword(Constants.InvalidPass);
+            ClickLoginButton();
+            Thread.Sleep(5000);
+            return new IDAMSLoginPage(webDriver);
+        }
+
+        public IDAMSLoginPage LoginWithoutUsernameAndPassword()
+        {
+            ClickLoginButton();
+            Thread.Sleep(5000);
+            return new IDAMSLoginPage(webDriver);
+        }        
+
+        //Assertions
         public IDAMSLoginPage VerifyLoginErrorMessage(String errorMessage)
         {
             PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);
             return this;
         }
-
         public IDAMSLoginPage VerifyInvalidLoginDetailsErrorMessage(String errorMessage)
         {
             PageInteractionHelper.VerifyText(ActualLoginErrorMessage, errorMessage);

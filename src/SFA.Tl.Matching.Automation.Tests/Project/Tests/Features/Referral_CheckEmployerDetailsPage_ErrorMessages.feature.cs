@@ -18,8 +18,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Error messages on the Referral Journey Check Employer Details page")]
-    public partial class ErrorMessagesOnTheReferralJourneyCheckEmployerDetailsPageFeature
+    [NUnit.Framework.DescriptionAttribute("Referral Journey - Check Employer Details page - Error messages")]
+    public partial class ReferralJourney_CheckEmployerDetailsPage_ErrorMessagesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Error messages on the Referral Journey Check Employer Details page", "         Verify the error messages are correctly triggered on the Check Employer " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Referral Journey - Check Employer Details page - Error messages", "         Verify the error messages are correctly triggered on the Check Employer " +
                     "Details Page in the referral journey", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -76,149 +76,71 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 5
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 7
  testRunner.And("I navigate to Who is the employer page Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 8
+ testRunner.And("I enter an Employer business name \"testNameForPageCheck\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Referral - Check Employer Details - Verify error messages")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void Referral_CheckEmployerDetails_VerifyErrorMessages()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral - Check Employer Details - Verify error messages", null, new string[] {
+                        "regression"});
+#line 11
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 4
+this.FeatureBackground();
+#line 12
+ testRunner.Then("the Check employers details page must pull the correct details from DB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 14
- testRunner.Given("I enter an employer name of \"Abacus Childrens Nurseries\" on the Who is the employ" +
-                    "er page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I clear all text fields on the Employer Contact Details and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
- testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the Check Employer page will show an error for \"Null\" contact name as \"You must e" +
+                    "nter a contact name for placements\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 16
- testRunner.Then("I am taken to the Check Employer Details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral - Check Employer Details - Press continue after clearing all fields")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_CheckEmployerDetails_PressContinueAfterClearingAllFields()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral - Check Employer Details - Press continue after clearing all fields", null, new string[] {
-                        "regression"});
+ testRunner.And("the Check Employer page will show an error for \"Null\" email address stating \"You " +
+                    "must enter a contact email for placements\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
+ testRunner.And("the Check Employer page will show an error for \"Null\" phone number must be a numb" +
+                    "er stating \"You must enter a contact telephone number for placements\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
+ testRunner.When("I enter an Invalid contact name \"A\" of \"oneCharacterLong\" on the Check Employer s" +
+                    "creen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 20
- testRunner.Given("I have cleared all of the text fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 21
- testRunner.And("I press Continue on the Check Employer Details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the Check Employer page will show an error for \"oneCharacterLong\" contact name as" +
+                    " \"You must enter a contact name using 2 or more characters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 22
- testRunner.Then("the Check Employer Details page will show an error for Null contact name stating " +
-                    "\"You must enter a contact name for placements\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I enter an Invalid contact name \"ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGH" +
+                    "IJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA\" of \"Morethan99Characters\"" +
+                    " on the Check Employer screen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 23
- testRunner.And("the Check Employer Details page will show an error for Null email address stating" +
-                    " \"You must enter a contact email for placements\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 24
- testRunner.And("the Check Employer Details page will show an error for Null contact number statin" +
-                    "g \"You must enter a contact telephone number for placements\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral - Check Employer Details - Job type must be between 2 and 99 characters")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_CheckEmployerDetails_JobTypeMustBeBetween2And99Characters()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral - Check Employer Details - Job type must be between 2 and 99 characters", null, new string[] {
-                        "regression"});
-#line 27
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
+ testRunner.Then("the Check Employer page will show an error for \"Morethan99Characters\" contact nam" +
+                    "e as \"You must enter a contact name that is 100 characters or fewer\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 25
+ testRunner.When("I enter an Invalid contact name \"Name!£$%^&*()\" of \"SpecialCharacters\" on the Che" +
+                    "ck Employer screen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then("the Check Employer page will show an error for \"SpecialCharacters\" contact name a" +
+                    "s \"You must enter a contact name using only letters, hyphens and apostrophes\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 28
- testRunner.Given("I enter a contact name 1 character long on the Check Employer screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I enter an Invalid Phone Number \"ABCDEFG123456\" of \"AlphaNumericCharacters\" on th" +
+                    "e Check Employer screen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
- testRunner.And("I press Continue on the Check Employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 30
- testRunner.Then("the Check Employer page will show an error for contact name not long enough stati" +
-                    "ng \"You must enter a contact name using 2 or more characters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Check Employer page will show an error for \"alphaNumericCharacters\" phone num" +
+                    "ber must be a number stating \"You must enter a number\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 31
- testRunner.Given("I enter a contact name longer than 99 characters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I enter an Invalid Phone Number \"254125\" of \"SixNumbersOnly\" on the Check Employe" +
+                    "r screen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 32
- testRunner.And("I press Continue on the Check Employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 33
- testRunner.Then("the Check Employer page will show an error for contact name being too long statin" +
-                    "g \"You must enter a contact name using 99 characters or less\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral - Check Employer Details - Phone number must contain numbers")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_CheckEmployerDetails_PhoneNumberMustContainNumbers()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral - Check Employer Details - Phone number must contain numbers", null, new string[] {
-                        "regression"});
-#line 36
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line 37
- testRunner.Given("I enter a phone number consisting of alphanumeric characters only", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 38
- testRunner.And("I press Continue on the Check Employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 39
- testRunner.Then("the Check Employer page will show an error for phone number must be a number stat" +
-                    "ing \"You must enter a number\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral - Check Employer Details - Phone number must contain at least 7 characte" +
-            "rs")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_CheckEmployerDetails_PhoneNumberMustContainAtLeast7Characters()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral - Check Employer Details - Phone number must contain at least 7 characte" +
-                    "rs", null, new string[] {
-                        "regression"});
-#line 42
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line 43
- testRunner.Given("I enter a phone number consisting of alphanumeric characters and six numbers only" +
-                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 44
- testRunner.And("I press Continue on the Check Employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 45
- testRunner.Then("the Check Employer page will show an error for phone number not long enough \"You " +
-                    "must enter a telephone number that has 7 or more numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral - Check Employer Details - Contact name cannot contain special character" +
-            "s")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_CheckEmployerDetails_ContactNameCannotContainSpecialCharacters()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral - Check Employer Details - Contact name cannot contain special character" +
-                    "s", null, new string[] {
-                        "regression"});
-#line 48
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line 49
- testRunner.Given("I enter special characters in contact name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 50
- testRunner.And("I press Continue on the Check Employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 51
- testRunner.Then("the Check Employer page will show an error for special characters in contact name" +
-                    " stating \"You must enter a contact name using only letters, hyphens and apostrop" +
-                    "hes\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Check Employer page will show an error for \"SixNumbersOnly\" phone number must" +
+                    " be a number stating \"You must enter a telephone number that has 7 or more numbe" +
+                    "rs\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

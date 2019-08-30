@@ -3,7 +3,7 @@ Verify that an admin user can add a qualification
 
 Background: 
 	Given I have navigated to the IDAMS login page
-	And I have logged in as an Admin user
+	And I have logged in as an "Admin User"
 	And I navigate to Find a Provider Page
 
 @regression

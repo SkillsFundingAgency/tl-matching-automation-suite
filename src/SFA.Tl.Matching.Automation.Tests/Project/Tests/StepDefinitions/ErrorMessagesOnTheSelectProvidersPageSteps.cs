@@ -13,30 +13,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
     public class ErrorMessagesOnTheSelectProvidersPageSteps : BaseTest
     {
         [Given(@"I navigate to the Select Providers page")]
-        public void GivenINavigateToTheSelectProvidersPage()
+        public static void GivenINavigateToTheSelectProvidersPage()
         {
             StartPage startPage = new StartPage(webDriver);
-            startPage.ClickStartButton()
-                .EnterPostcode(Constants.postCode)
-                .SelectFromDropdown(Constants.skillArea)
-                .ClickSearchButton();
-            
-        }
-        
-        [Given(@"I clear the Employer postcode field")]
-        public void GivenIClearTheEmployerPostcodeField()
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.ClearPostcode();
-            
-        }
-
-        [When(@"I press the Search again button on the Select Providers page")]
-        [Given(@"I press the Search again button on the Select Providers page")]
-        public SelectProvidersPage GivenIPressTheSearchAgainButtonOnTheSelectProvidersPage()
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).ClickSearchAgain();
-            return selectProvidersPage;
+            startPage.StartANewOpportunity()
+                     .EnterOpportunityDetailsAndSearchForProviders(Constants.skillArea, Constants.postCode);            
         }
         
         [Then(@"the Select Providers page will show an error stating ""(.*)""")]
@@ -50,7 +31,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public PlacementInformationPage GivenIPressTheReportProvisionGapLink()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            PlacementInformationPage placementInformationPage = selectProvidersPage.ClickReportProvisionGapLink();
+            PlacementInformationPage placementInformationPage = selectProvidersPage.SelectNoSuitableProviers();
             return placementInformationPage;
         }
     }

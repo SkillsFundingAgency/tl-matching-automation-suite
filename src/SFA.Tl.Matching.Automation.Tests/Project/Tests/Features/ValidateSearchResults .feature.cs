@@ -75,7 +75,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 4
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 6
  testRunner.And("I navigate to the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -94,16 +94,11 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line 10
-testRunner.Given("I have entered new Skill Area in dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
+                    " returns some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.And("Employer postcode as \"B43 6JN\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
- testRunner.And("Providers within as \"25 miles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
- testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
  testRunner.Then("the provider results returned will match the expected values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 15
+#line 12
  testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
                     " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

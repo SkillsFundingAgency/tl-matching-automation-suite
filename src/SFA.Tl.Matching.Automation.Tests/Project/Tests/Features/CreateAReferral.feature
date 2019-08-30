@@ -5,41 +5,33 @@ Please note, these tests are using hardcoded values to select the first two prov
 
 Background: 
 	Given I have navigated to the IDAMS login page
-	And I have logged in as an Admin user
+	And I have logged in as an "Admin User"
 	And I navigate to Who is the employer page Referral Journey
-	And I entered employer name and press continue 
-	
+	And I enter an Employer business name "testNameForGeneralFlow" and Continue
 
 @regression
     Scenario: Create a referral - No of placements is not known
-    Then the Check employers details page will show the details entered
-    #Given I press Continue on the Check Employer Details page
+	Then Enter the Employer Details and continue for Referral Journey
     Then the referral Check answers screen will display the referral details entered
-   # And the providers selected will be displayed on the Referral Check Answers screen
-    Given I press Opt In on the Check answers page and click continue  
-	#Given I press Opt In on the Check answers page
-    #Given I press Continue on the Check Employer Details page
-    And referral records are created
-	And the Opportunity record has recorded the user Opted in
-	Then the Referral Done page is displayed with the correct text
-	#And the Referral Done page is displayed
+    #And the providers selected will be displayed on the Referral Check Answers screen
+	Given I Confirm details on the Check answers page
+    Then referral records are created
+	And the Opportunity record will record OPT IN has been selected
+	And the Emails Sent Page is displayed with the correct text
 
 	@regression
     Scenario: Create a referral - A single referral
-    Then the Check employers details page will show the details entered
+    Then Enter the Employer Details and continue for Referral Journey
     Then the referral Check answers screen will display the referral details entered
-    Given I press Opt In on the Check answers page and click continue  
-	#And referral records are created
-	#And the Opportunity record has recorded the user Opted in
-	#Then the Referral Done page is displayed with the correct text
-	And I press Continue with Opportunity on the Opportunity Basket
-	And I opt in to send emails and press Confirm and Send Opportunity
-	
+	Given I Confirm details on the Check answers page
+	#Then referral records are created
+	#And the Opportunity record will record OPT IN has been selected
+	#And the Emails Sent Page is displayed with the correct text
+	And I Continue with Single Opportunity on the Opportunity Basket
+	And I opt in to send emails and press Confirm and Send Opportunity	
 
 	@regression
     Scenario: Create a referral - The user will not be asked to select the Employer again when they add more than one opportunity to a referral 
     Given I have added a single opportunity
-	When I press Add another Opportunity on the Opportunity Basket
+	When I start Adding another Opportunity from Opportunity Basket
 	Then I will not be asked to select the Employer name again
-
-    

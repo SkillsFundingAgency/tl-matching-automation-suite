@@ -9,6 +9,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class PlacementInformationPage : BasePage
     {
         //Page element locators
+        private String expectedPageURL = "https://test.industryplacementmatching.education.gov.uk/placement-information/";
         private static String PAGE_TITLE = "Placement information";
         private By NoSuitableStudentCheckBox = By.Id("NoSuitableStudent");
         private By HadBadExperience = By.Id("HadBadExperience");
@@ -26,9 +27,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By ActualPlacementsNumberTooSmallError = By.LinkText("The number of students must be 1 or more");
         private By ActualPlacementsNumberTooBigError = By.LinkText("The number of students must be 999 or less");
         private By ActualJobTypeTooShortError = By.LinkText("You must enter a job role using 2 or more characters");
-        private By ActualJobTypeTooLongError = By.LinkText("You must enter a job role using 99 characters or less");
-        private By ActualJobTypeNullError = By.LinkText("You must tell us what specific job the placement student would do");        
-        private String expectedPageURL = "https://test.industryplacementmatching.education.gov.uk/placement-information/";
+        //Check and delete comment
+        //You must enter a job role using 99 characters or less
+        private By ActualJobTypeTooLongError = By.LinkText("You must enter a job role that is 100 characters or fewer");
+        private By ActualJobTypeNullError = By.LinkText("You must tell us what specific job the placement student would do");                
 
         public PlacementInformationPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -179,7 +181,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }        
 
         //Assertions        
-        public PlacementInformationPage VerifyNumberOfPLacementsIsVisibile()
+        public void VerifyNumberOfPLacementsIsVisibile()
         {
             bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
             Console.WriteLine(Displayed);
@@ -189,11 +191,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 throw new Exception("Element verification failed: "
                + "\n Expected element to be visible: " );              
             }
-
-            return this;
         }
 
-        public PlacementInformationPage VerifyNumberOfPLacementsIsNotVisibile()
+        public void VerifyNumberOfPLacementsIsNotVisibile()
         {
             bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
             Console.WriteLine(Displayed);
@@ -203,64 +203,51 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 throw new Exception("Element verification failed: "
                + "\n Expected element to be visible: ");
             }
-            return this;
         }               
 
-        public PlacementInformationPage VerifyErrorForNoProvidersChosen(string expectedError)
+        public void VerifyErrorForNoProvidersChosen(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualErrorForNoProvidersChosen, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorPlacementNumberTooSmall(string expectedError)
+        public void VerifyErrorPlacementNumberTooSmall(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooSmallError, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorPlacementNumberTooBig(string expectedError)
+        public void VerifyErrorPlacementNumberTooBig(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooBigError, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorPlacementNumberIsNull(string expectedError)
+        public void VerifyErrorPlacementNumberIsNull(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
-            return this;
         }
         
-        public PlacementInformationPage VerifyErrorNoJobPlacementEntered(string expectedError)
+        public void VerifyErrorNoJobPlacementEntered(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeNullError, expectedError);
-            return this;
         }        
 
-        //   delete this
-        //public PlacementInformationPage EnterNumberOfPlacements(int Number)
-
-        public PlacementInformationPage VerifyErrorNoPlacementsSelected(string expectedError)
+        public void VerifyErrorNoPlacementsSelected(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyError_PlacementRadioButtonNotSelected(string expectedError)
+        public void VerifyError_PlacementRadioButtonNotSelected(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementRadioButtonNotSelected, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorJobRoleTooLong(string expectedError)
+        public void VerifyErrorJobRoleTooLong(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualJobTypeTooLongError, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorJobRoleTooShort(string expectedError)
+        public void VerifyErrorJobRoleTooShort(string expectedError)
         {
-            FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);
-            return this;
+            FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);            
         }
     }
 }

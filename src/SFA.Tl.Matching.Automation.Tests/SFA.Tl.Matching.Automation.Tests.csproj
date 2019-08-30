@@ -154,6 +154,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\Tests\Features\FindLocalProviders_ErrorMessages.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FindLocalProviders_ErrorMessages.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\Features\LoginRoles.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginRoles.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Tests\StepDefinitions\BeforeYouSendEmailsPageSteps.cs" />
+    <Compile Include="Project\Tests\StepDefinitions\EmailsSentPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\OpportunityBasketSteps.cs" />
     <Compile Include="Project\Framework\Helpers\ProviderResultsHelper.cs" />
     <Compile Include="Project\Tests\Features\AddQualification.feature.cs">
@@ -188,12 +200,12 @@
     </Compile>
     <Compile Include="Project\Tests\Pages\AddQualificationPage.cs" />
     <Compile Include="Project\Tests\Pages\FindAProviderPage.cs" />
-    <Compile Include="Project\Tests\Pages\SendEmailsPage.cs" />
-    <Compile Include="Project\Tests\Pages\OpportunitiesBasketPage.cs" />
+    <Compile Include="Project\Tests\Pages\BeforeYouSendEmailsPage.cs" />
+    <Compile Include="Project\Tests\Pages\OpportunitiesBasketReferralPage.cs" />
     <Compile Include="Project\Tests\Pages\ProviderAndVenuesDetailsPage.cs" />
-    <Compile Include="Project\Tests\Pages\ReferralDonePage.cs" />
+    <Compile Include="Project\Tests\Pages\EmailsSentPage.cs" />
     <Compile Include="Project\Tests\Pages\ReferralCheckAnswersPage.cs" />
-    <Compile Include="Project\Tests\Pages\ProvisionGapEmailsSent.cs" />
+    <Compile Include="Project\Tests\Pages\OpportunityBasketProvisionGapPage.cs" />
     <Compile Include="Project\Tests\Pages\VenueAndQualificationsDetailsPage.cs" />
     <Compile Include="Project\Tests\StepDefinitions\AddQualificationPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\CheckAnswersPageSteps.cs" />
@@ -212,10 +224,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Project\Tests\Features\CheckEmployersDetailsPage_ErrorMessages.feature.cs">
+    <Compile Include="Project\Tests\Features\ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CheckEmployersDetailsPage_ErrorMessages.feature</DependentUpon>
+      <DependentUpon>ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature</DependentUpon>
     </Compile>
     <Compile Include="Project\Tests\Features\CreateAProvisionGap.feature.cs">
       <AutoGen>True</AutoGen>
@@ -227,7 +239,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature</DependentUpon>
     </Compile>
-    <Compile Include="Project\Tests\Pages\CheckAnswersPage.cs" />
     <Compile Include="Project\Tests\Pages\CheckEmployersDetailsPage.cs" />
     <Compile Include="Project\Tests\Pages\WhoIsTheEmployerPage.cs" />
     <Compile Include="Project\Tests\StepDefinitions\CheckEmployerDetailsPageSteps.cs" />
@@ -244,16 +255,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployerFileUpload.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Project\Tests\Features\LoginRoles.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoginRoles.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Project\Tests\Features\ProviderFileUpload.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProviderFileUpload.feature</DependentUpon>
     </Compile>
     <Compile Include="Project\Tests\Features\UploadFilePageErrorMessages.feature.cs">
       <AutoGen>True</AutoGen>
@@ -286,15 +287,10 @@
     </Compile>
     <Compile Include="Project\Tests\Pages\StartPage.cs" />
     <Compile Include="Project\Tests\Pages\IDAMSLoginPage.cs" />
-    <Compile Include="Project\Tests\Pages\LoginHelpPage.cs" />
-    <Compile Include="Project\Tests\Pages\DepartmentForEducationHomePage.cs" />
-    <Compile Include="Project\Tests\Pages\SearchResultsPage.cs" />
-    <Compile Include="Project\Tests\Pages\WelcomeToGovUkPage.cs" />
+    <Compile Include="Project\Tests\Pages\HowToSignInPage.cs" />
     <Compile Include="Project\Tests\StepDefinitions\LoginRolesSteps.cs" />
-    <Compile Include="Project\Tests\StepDefinitions\ProvisionGapDonePageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\QualificationsPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\ReferralJourneySteps.cs" />
-    <Compile Include="Project\Tests\StepDefinitions\SendEmailPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\UploadFileErrorMessages.cs" />
     <Compile Include="Project\Tests\StepDefinitions\UserJourneyStartPageSteps.cs" />
     <Compile Include="Project\Tests\TestSupport\BasePage.cs" />
@@ -306,7 +302,6 @@
     <Compile Include="Project\Tests\StepDefinitions\ProviderFileUploadSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\SelectProvidersPage_SearchResultsSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\WhoIsTheEmployerPageSteps.cs" />
-    <Compile Include="Project\Tests\StepDefinitions\ReferralDonePageSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -337,6 +332,14 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>EmployerFileUpload.feature.cs</LastGenOutput>
     </None>
+    <None Include="Project\Tests\Features\FindLocalProviders_ErrorMessages.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FindLocalProviders_ErrorMessages.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\LoginRoles.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginRoles.feature.cs</LastGenOutput>
+    </None>
     <None Include="Project\Tests\Features\ProvisionGap_PlacementInformation_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ProvisionGap_PlacementInformation_ErrorMessages.feature.cs</LastGenOutput>
@@ -357,17 +360,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoginErrorMessages.feature.cs</LastGenOutput>
     </None>
-    <None Include="Project\Tests\Features\LoginRoles.feature">
+    <None Include="Project\Tests\Features\ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>LoginRoles.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Project\Tests\Features\ProviderFileUpload.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ProviderFileUpload.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Project\Tests\Features\CheckEmployersDetailsPage_ErrorMessages.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>CheckEmployersDetailsPage_ErrorMessages.feature.cs</LastGenOutput>
+      <LastGenOutput>ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\CreateAProvisionGap.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -420,7 +415,7 @@
     <Error Condition="!Exists('..\packages\SpecFlow.2.4.0\build\SpecFlow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.2.4.0\build\SpecFlow.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets" Condition="Exists('..\packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets')" />
   <Import Project="..\packages\Selenium.Firefox.WebDriver.0.22.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('..\packages\Selenium.Firefox.WebDriver.0.22.0\build\Selenium.Firefox.WebDriver.targets')" />
@@ -429,5 +424,5 @@
   <Import Project="..\packages\Selenium.WebDriver.IEDriver.3.141.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.IEDriver.3.141.0\build\Selenium.WebDriver.IEDriver.targets')" />
   <Import Project="..\packages\SpecFlow.2.4.0\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.2.4.0\build\SpecFlow.targets')" />
   <Import Project="..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets')" />
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.74.0.3729.6\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets')" />
 </Project>

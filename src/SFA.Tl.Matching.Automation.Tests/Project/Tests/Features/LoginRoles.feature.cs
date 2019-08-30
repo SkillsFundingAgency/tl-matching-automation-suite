@@ -18,7 +18,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Login Roles")]
+    [NUnit.Framework.DescriptionAttribute("LoginRoles")]
     public partial class LoginRolesFeature
     {
         
@@ -31,8 +31,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login Roles", "\tAdmin users will see a link on the Start Page to upload Employer Data\r\n\tStandard" +
-                    " users will not be shows a link on the Start Page to upload Employer data ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LoginRoles", "\tAdmin users will see a link on the Start Page to upload Employer Data\r\n\tStandard" +
+                    " users will not be shows a link on the Start Page to upload Employer data", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,7 +74,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         {
 #line 5
 #line 6
-testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -91,7 +91,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 10
- testRunner.Given("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
  testRunner.Then("I should be on the Start Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 12
@@ -115,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 16
- testRunner.Given("I have logged in as a dual access user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have logged in as an \"Dual User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 17
  testRunner.Then("I should be on the Start Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 18
@@ -137,7 +137,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 22
- testRunner.Given("I have logged in as an Standard user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have logged in as an \"Standard User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 23
  testRunner.Then("I should be on the Start Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 24
@@ -159,7 +159,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 28
- testRunner.Given("I have attempted to log in as an non authorised IDAMS user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have logged in as an \"Non Authorised User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
  testRunner.Then("I should be on the Invalid Role Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

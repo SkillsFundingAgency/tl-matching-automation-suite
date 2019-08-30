@@ -12,25 +12,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenINavigateToTheReferralJourneyPlacementInformationPage()
         {
             StartPage startPage = new StartPage(webDriver);
-            startPage.ClickStartButton();
+            startPage.StartANewOpportunity();
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.AutoPopulateFields();
-            findLocalProvidersPage.ClickSearchButton();
+            findLocalProvidersPage.EnterOpportunityDetailsAndSearchForProviders(Constants.skillArea, Constants.postCode);
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.SelectProviders();
-            selectProvidersPage.ClickContinue();
+            selectProvidersPage.SelectProvidersAndContinue();
         }
 
         [Given(@"I navigate to the Provision Gap Placement Information page")]
         public void GivenINavigateToTheProvisionGapPlacementInformationPage()
         {
             StartPage startPage = new StartPage(webDriver);
-            startPage.ClickStartButton();
+            startPage.StartANewOpportunity();
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.AutoPopulateFields();
-            findLocalProvidersPage.ClickSearchButton();
+            findLocalProvidersPage.EnterOpportunityDetailsAndSearchForProviders(Constants.skillArea, Constants.postCode);
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.ClickReportProvisionGapLink();
+            selectProvidersPage.SelectNoSuitableProviers();
         }
 
         [When(@"I enter no placement information and Continue")]
@@ -82,7 +79,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             PlacementInformationPage placementInformationPage = new PlacementInformationPage(webDriver);
             placementInformationPage.EnterInvalidNumberOfStudentsAndContinue(p0);
-            Thread.Sleep(3000);
         }
 
         [Then(@"the Placement Information page will show an error stating (.*) for (.*)")]

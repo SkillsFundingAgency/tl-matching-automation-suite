@@ -4,10 +4,9 @@ using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
-    public class OpportunitiesBasketPage : BasePage
+    public class OpportunitiesBasketReferralPage : BasePage
     {
         private const string PAGE_TITLE = "All opportunities";
-
         private By continueButton = By.Id("tl-continue");
         private By AddAnotherOpportunity = By.Id("tl-add-another-opportunity");
         private By selectAllCheckbox = By.Name("selectall");
@@ -16,7 +15,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By Opportunity1StudentsWanted = By.XPath("//tr[1]/td[3]");
         private By Opportunity1NoOfProviders = By.XPath("//tr[1]/td[4]");
 
-        public OpportunitiesBasketPage(IWebDriver webDriver) : base(webDriver)
+        public OpportunitiesBasketReferralPage(IWebDriver webDriver) : base(webDriver)
         {
             SelfVerify();
         }
@@ -26,37 +25,36 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-        internal SendEmailsPage SubmitContinueWithopportunity()
+        //Behaviour
+        internal BeforeYouSendEmailsPage ContinueWithOpportunity()
         {
             FormCompletionHelper.ClickElement(continueButton);
-            return new SendEmailsPage(webDriver);
+            return new BeforeYouSendEmailsPage(webDriver);
         }
 
-        internal SendEmailsPage SubmitContinueWithopportunityMultipleOpportunities()
+        internal BeforeYouSendEmailsPage ContinueWithOpportunityMultipleOpportunities()
         {
             FormCompletionHelper.ClickElement(selectAllCheckbox);
             FormCompletionHelper.ClickElement(continueButton);
-            return new SendEmailsPage(webDriver);
+            return new BeforeYouSendEmailsPage(webDriver);
         }
 
-        internal FindLocalProvidersPage ClickAddAnotherOpportunity()
+        internal FindLocalProvidersPage StartAddingAnotherOpportunityFromBasket()
         {
             FormCompletionHelper.ClickElement(AddAnotherOpportunity);
             return new FindLocalProvidersPage(webDriver);
         }
 
-        public OpportunitiesBasketPage VerifyOpportunityDetailsAreDisplayedforOpportunity1()
+        //Assertions
+        public void VerifyOpportunityDetailsAreDisplayedforOpportunity1()
         {
-            string StudentsWanted = "at least 1";
+            string StudentsWanted = "At least 1";
             string NoOfProviders = "1";
                        
             PageInteractionHelper.VerifyText(Opportunity1WorkPlace, Constants.postCode);
             PageInteractionHelper.VerifyText(Opportunity1JobRole, "None given");
             PageInteractionHelper.VerifyText(Opportunity1StudentsWanted, StudentsWanted);
             PageInteractionHelper.VerifyText(Opportunity1NoOfProviders, NoOfProviders);
-            return this;
         }
-
-
     }
 }

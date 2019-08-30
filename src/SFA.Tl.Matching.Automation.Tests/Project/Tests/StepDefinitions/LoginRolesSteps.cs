@@ -1,9 +1,4 @@
-﻿using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
-using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
+﻿using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
 
@@ -12,29 +7,28 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
     [Binding]
     public class LoginRolesSteps : BaseTest
     {
-        [Given(@"I have logged in as an Admin user")]
-        public void GivenIHaveLoggedInAsAnAdminUser()
+        [Given(@"I have logged in as an ""(.*)""")]
+        public void GivenIHaveLoggedInAsAn(string p0)
         {
-            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.LoginAsAdminUser();
-            Thread.Sleep(3000);
-        }
+            IDAMSLoginPage idamsLoginPage = new IDAMSLoginPage(webDriver);
 
-        [Given(@"I have logged in as a dual access user")]
-        public void GivenIHaveLoggedInAsADualAccessUser()
-        {
-            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.LoginAsDualUser();
+            switch (p0)
+            {
+                case "Admin User":
+                    idamsLoginPage.LoginAsAdminUser();
+                    break;
+                case "Standard User":
+                    idamsLoginPage.LoginAsStandardUser();
+                    break;
+                case "Dual User":
+                    idamsLoginPage.LoginAsDualUser();
+                    break;
+                case "Non Authorised User":
+                    idamsLoginPage.LoginAsDualUser();
+                    break;
+            }
         }
-
-        [Given(@"I have logged in as an Standard user")]
-        public void GivenIHaveLoggedInAsAnStandardUser()
-        {
-            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetStandardUserName(), Configurator.GetConfiguratorInstance().GetStandardPassword());
-            IDAMSLoginPage.LoginAsStandardUser();
-        }
-
+        
         [Then(@"I should be on the Start Page")]
         public void ThenIShouldBeOnTheStartPage()
         {
@@ -54,16 +48,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             StartPage StartPage = new StartPage(webDriver);
             StartPage.VerifyElementNotPresent();
-
-        }
-
-        [Given(@"I have attempted to log in as an non authorised IDAMS user")]
-        public void GivenIHaveAttemptedToLogInAsAnNonAuthorisedIDAMSUser()
-        {
-            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            Thread.Sleep(2000);
-            IDAMSLoginPage.IDAMSLogin(Configurator.GetConfiguratorInstance().GetNonAuthorisedUserName(), Configurator.GetConfiguratorInstance().GetNonAuthorisedUserPassword())
-            .ClickLoginButton();
         }
 
         [Then(@"I should be on the Invalid Role Page")]
@@ -77,7 +61,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenINavigateToFindAProviderPage()
         {
             StartPage StartPage = new StartPage(webDriver);
-            StartPage.ClickAddOrEditProviderDataLink();
+            StartPage.StartAddingProviderData();
         }
     }
 }

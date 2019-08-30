@@ -1,6 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
-using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
+﻿using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
 
@@ -14,25 +12,18 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void GivenINavigateToTheFindProvidersPage()
         {
             StartPage startPage = new StartPage(webDriver);
-            startPage.ClickStartButton();
+            startPage.StartANewOpportunity();
         }
-        
-        [Given(@"I clear the postcode field")]
-        public void GivenIClearThePostcodeField()
+
+        [When(@"I clear the Postcode and Search")]
+        public void WhenIClearThePostcodeAndSearch()
         {
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.ClearPostcode();
+            findLocalProvidersPage.ClearPostcodeAndSearch();
         }
-        
-        [Given(@"I press Continue on the Find a Provider page")]
-        public void GivenIPressContinueOnTheFindAProviderPage()
-        {
-            FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.ClickSearchButton();
-        }
-        
-        [Then(@"the Find a Provider page will show an error stating ""(.*)""")]
-        public void ThenTheFindAProviderPageWillShowAnErrorStating(string postcodeError)
+
+        [Then(@"the Find Providers page will show an error stating ""(.*)""")]
+        public void ThenTheFindProvidersPageWillShowAnErrorStating(string postcodeError)
         {
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
             findLocalProvidersPage.VerifyPostcodeError(postcodeError);

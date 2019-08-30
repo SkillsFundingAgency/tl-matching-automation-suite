@@ -72,11 +72,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         
         public virtual void FeatureBackground()
         {
+#line 4
 #line 5
-#line 6
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 7
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 6
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -87,16 +87,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Press continue without entering any data", null, new string[] {
                         "regression"});
-#line 11
+#line 9
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 12
+#line 10
     testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 13
+#line 11
  testRunner.When("I enter no placement information and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 14
+#line 12
  testRunner.Then("the Placement Information page will show an error stating \"You must tell us wheth" +
                     "er the employer knows how many students they want for this job at this location\"" +
                     " for \"StudentsOptionNotSelected\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -120,16 +120,16 @@ this.FeatureBackground();
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Number of Placements field is shown only if Yes " +
                     "is selected", null, @__tags);
-#line 18
+#line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 19
+#line 16
  testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 20
+#line 17
  testRunner.When(string.Format("I select {0} for how many students needed", value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 21
+#line 18
  testRunner.Then(string.Format("Number of Students field is {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -140,7 +140,7 @@ this.FeatureBackground();
         [NUnit.Framework.CategoryAttribute("regression")]
         [NUnit.Framework.TestCaseAttribute("1", "A", "You must enter a job role using 2 or more characters", null)]
         [NUnit.Framework.TestCaseAttribute("100", "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" +
-            "BCDEFGHIJABCDEFGHIJ", "You must enter a job role using 99 characters or less", null)]
+            "BCDEFGHIJABCDEFGHIJA", "You must enter a job role that is 100 characters or fewer", null)]
         public virtual void Referral_PlacementInformation_JobTypeMustBeBetween2And99Characters(string number, string jobRole, string errorMessage, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -150,16 +150,16 @@ this.FeatureBackground();
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Job type must be between 2 and 99 characters", null, @__tags);
-#line 29
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 30
+#line 26
  testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
+#line 27
  testRunner.When(string.Format("I enter an invalid job title {0} and Continue", jobRole), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 32
+#line 28
  testRunner.Then(string.Format("the {0} for Invalid Job Role for {1} characters is displayed", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -183,16 +183,16 @@ this.FeatureBackground();
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Number of placements entered must be greater tha" +
                     "n 0", null, @__tags);
-#line 40
+#line 35
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 41
+#line 36
  testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 42
+#line 37
     testRunner.When(string.Format("I enter Invalid number of Students {0} and Continue", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 43
+#line 38
  testRunner.Then(string.Format("the {0} for Invalid Number of Students is displayed for {1}", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

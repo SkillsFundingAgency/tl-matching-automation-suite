@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
-using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -12,197 +10,139 @@ namespace SFA.Tl.Matching.Automation.Tests
     [Binding]
     public class SelectProvidersPage_SearchResultsSteps : BaseTest
     {
-        [Given(@"Given I have entered new Skill Area as ""(.*)""")]
-        public SelectProvidersPage GivenIHaveEnteredNewSkillAreaAs(string skillArea)
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectSkillArea(Constants.skillArea);            
-            return selectProvidersPage;
-        }
-
-        [Given(@"I have entered new Skill Area in dropdown")]
-        public void GivenIHaveEnteredNewSkillAreaInDropdown()
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .SelectSkillArea(Constants.skillArea);
-        }
-
-
         [Given(@"I entered new search criteria and press Search again button on the Select Providers Page")]
-        public void GivenIenteredNewSearchAmdPressSearch()
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectSearchAgain();
-            
-        }
-
-        [Given(@"I have filled in the search form on the Search Providers page with criteria which will return no results")]
-        public void GivenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnNoResults()
+        public void GivenIenteredNewSearchAndPressSearch()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .EnterPostcode(Constants.postcodeNoResults)
-            .SelectPostcodeRadius(Constants.radiusNoResults)
-            .SelectSkillArea(Constants.skillAreaNoResults);
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillArea, Constants.postCode, Constants.radius);
         }
 
-        [Given(@"Employer postcode as ""(.*)""")]
-        public SelectProvidersPage GivenEmployerPostcodeAs(string postcode)
+        [When(@"I have filled in the search form on the Search Providers page with criteria which returns no results")]
+        public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnNoResults()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .EnterPostcode(Constants.postCode);
-            return selectProvidersPage;
-        }
-
-        //[Given(@"Employer postcode1 as ""(.*)""")]
-        //public void GivenEmployerPostcodeAs(int p0, string p1)
-        //{
-        //    ScenarioContext.Current.Pending();
-        //}
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResults, Constants.postcodeNoResults, Constants.radiusNoResults);
+        }        
 
         //some
-        [Given(@"I have filled in the search form on the Search Providers page with criteria which will return some results")]
-        public void GivenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnSomeResults()
+        [When(@"I have filled in the search form on the Search Providers page with criteria which returns some results")]
+        public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnSomeResults()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-                .EnterPostcode(Constants.postCode)
-                .SelectSkillArea(Constants.skillArea)
-                .SelectPostcodeRadius(Constants.radius);
-               
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillArea, Constants.postCode, Constants.radius);
         }
 
         //one
-        [Given(@"I have filled in the search form on the Search Providers page with criteria which will return (.*) result")]
-        public void GivenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnResult(String p0)
+        [When(@"I have filled in the search form on the Search Providers page with criteria which returns (.*) result")]
+        public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnResult(String p0)
         {
-           SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-          .EnterPostcode(Constants.oneResultpostCode)
-          .SelectSkillArea(Constants.oneResultskillArea)
-          .SelectPostcodeRadius(Constants.oneResultradius);
-        }
-
-
-        [Given(@"Providers within as ""(.*)""")]
-        public SelectProvidersPage GivenProvidersWithinAs(string postcodeRadius)
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver).SelectPostcodeRadius(Constants.radius);
-            return selectProvidersPage;
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.oneResultpostCode, Constants.oneResultskillArea, Constants.oneResultradius);
         }
 
         [Then(@"the Select Providers page will display the postcode and skill area selected on the Find Providers page")]
         public void ThenTheSelectProvidersPageWillDisplayThePostcodeAndSkillAreaSelectedOnTheFindProvidersPage()
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .VerifyPostcodeDisplayed(Constants.postCode)
-            .VerifySkillsetDisplayed(Constants.skillArea)
-            .VerifySearchRadius(Constants.radius);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.skillArea);
+            selectProvidersPage.VerifySearchRadius(Constants.radius);
         }
         
         [Then(@"the Select Providers page will display (.*) results, skill area, postcode and radius in the H(.*) heading")]
         public void ThenTheSelectProvidersPageWillDisplayResultsSkillAreaPostcodeAndRadiusInTheHHeading(int p0, int p1)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .VerifyPostcodeDisplayed(Constants.postCode)
-            .VerifySkillsetDisplayed(Constants.postCode)
-            .VerifyZeroResultsCount()
-            .VerifySearchRadius(Constants.postCode);
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.postCode);
+            selectProvidersPage.VerifyZeroResultsCount();
+            selectProvidersPage.VerifySearchRadius(Constants.postCode);
         }
 
         //maybe redundant
         [Then(@"the Select Providers page will display a H(.*) heading for zero results")]
         public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResults(int p0)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .VerifyPostcodeDisplayed(Constants.postcodeNoResults)
-            .VerifySkillsetDisplayed(Constants.skillAreaNoResults)
-            .VerifySearchRadius(Constants.radiusNoResults)
-            .VerifyZeroResultsCount()
-            .VerifysHeadingShowsResults();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postcodeNoResults);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.skillAreaNoResults);
+            selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
+            selectProvidersPage.VerifyZeroResultsCount();
+            selectProvidersPage.VerifysHeadingShowsResults();
         }
 
         [Then(@"the Select Providers page will display the count, skill area, postcode and radius in the H(.*) heading")]
         public void ThenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeAndRadiusInTheHHeading(int p0)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .VerifyPostcodeDisplayed(Constants.postCode)
-            .VerifySkillsetDisplayed(Constants.skillArea)
-            .VerifySearchRadius(Constants.radius)
-            .VerifyResultsCount()
-            .VerifysHeadingShowsResults();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.skillArea);
+            selectProvidersPage.VerifySearchRadius(Constants.radius);
+            selectProvidersPage.VerifyResultsCount();
+            selectProvidersPage.VerifysHeadingShowsResults();
         }
 
-        [Given(@"the Select Providers page will display the count, skill area, postcode, radius and text result in in the H(.*) heading")]
-        public void GivenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeRadiusAndTextResultInInTheHHeading(int p0)
+        [Then(@"the Select Providers page will display the count, skill area, postcode, radius and text result in in the H(.*) heading")]
+        public void ThenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeRadiusAndTextResultInInTheHHeading(int p0)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-              .VerifyPostcodeDisplayed(Constants.oneResultpostCode)
-              .VerifySkillsetDisplayed(Constants.oneResultskillArea)
-              .VerifySearchRadius(Constants.oneResultradius)
-              .VerifysHeadingShowsResult();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.oneResultpostCode);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.oneResultskillArea);
+            selectProvidersPage.VerifySearchRadius(Constants.oneResultradius);
+            selectProvidersPage.VerifysHeadingShowsResult();
         }
-
 
         //need this one
         [Given(@"the Select Providers page will display the count, skill area, postcode and radius in the H(.*) heading")]
         public void GivenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeAndRadiusInTheHHeading(int p0)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-              .VerifyPostcodeDisplayed(Constants.oneResultpostCode)
-              .VerifySkillsetDisplayed(Constants.oneResultskillArea)
-              .VerifySearchRadius(Constants.oneResultradius)
-              .VerifysHeadingShowsResult();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.oneResultpostCode);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.oneResultskillArea);
+            selectProvidersPage.VerifySearchRadius(Constants.oneResultradius);
+            selectProvidersPage.VerifysHeadingShowsResult();
         }
-
 
         [Then(@"the Select Providers page will display the count, skill area, postcode and radius and text result in the H(.*) heading")]
         public void ThenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeAndRadiusAndTextResultInTheHHeading(int p0)
         {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-               .VerifyPostcodeDisplayed(Constants.postCode)
-               .VerifySkillsetDisplayed(Constants.skillArea)
-               .VerifyResultsCount()
-               .VerifySearchRadius(Constants.radius)
-               .VerifysHeadingShowsResult();
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.skillArea);
+            selectProvidersPage.VerifyResultsCount();
+            selectProvidersPage.VerifySearchRadius(Constants.radius);
+            selectProvidersPage.VerifysHeadingShowsResult();
         }
-
-
 
         [Then(@"the provider results returned will match the expected values")]
         public void ThenTheProviderResultsReturnedWillMatchTheExpectedValues()
         {
             //checks the providers returned by the SQL match the providers displayed on screen
             ProviderResultsHelper.ValidateProvidersDisplayed();
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .VerifyResultsCount();           
-        }
-
-        [Given(@"I select some providers")]
-        public void GivenISelectSomeProviders()
-        {
-            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-            .SelectProviders();
-            Thread.Sleep(5000);
-        }  
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyResultsCount();           
+        }       
 
         [Given(@"I select a provider and continue to placement information page")]
         public void GivenISelectSomeProvidersAndClickContinue()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.SelectProviderAndClickContinue();//    SelectProviders().ClickContinue();   
+            selectProvidersPage.SelectProvidersAndContinue();
             Thread.Sleep(5000);
-
         }
 
-        [When(@"I press the Continue button")]
-        public void WhenIPressTheContinueButton()
+        [When(@"I press Continue without selecting Providers")]
+        public void WhenIPressContinueWithoutSelectingProviders()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.ClickContinue();
-            
+            selectProvidersPage.ContinueWithoutSelectingProviders();
         }
 
-        [Given(@"I clear the postcode field on the Select providers page")]
-        public void GivenIClearThePostcodeFieldOnTheSelectProvidersPage()
+        [Given(@"I clear the postcode field on the Select providers page and Search Again")]
+        public void GivenIClearThePostcodeFieldOnTheSelectProvidersPageAndSearchAgain()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.ClearPostcode();
+            selectProvidersPage.ClearPostCodeAndSearchAgain();
         }
 
         [Then(@"I am shown an error for blank postcode stating ""(.*)""")]
@@ -216,13 +156,14 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void ThenIAmShownAnErrorForNoProviderSelectedStating(string expectedErrorMessage)
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyProviderNotSelectedError(expectedErrorMessage);
         }
 
-        [Given(@"I enter an invalid postcode on the Select providers page")]
-        public void GivenIEnterAnInvalidPostcodeOnTheSelectProvidersPage()
+        [Given(@"I enter an invalid postcode on the Select providers page and Search again")]
+        public void GivenIEnterAnInvalidPostcodeOnTheSelectProvidersPageAndSearchAgain()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.EnterPostcode("B98");
+            selectProvidersPage.EnterInvalidPostCodeAndSearchAgain();
         }
 
         [Then(@"I am shown an error for invalid postcode stating ""(.*)""")]

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -12,8 +8,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
     public class SelectProvidersPage : BasePage
     {
+        //Page Element Locators
         private static String PAGE_TITLE = "Select providers";
-        private String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/provider-results";
         private By Provider1Checkbox = By.Name("SelectedProvider[0].IsSelected");
         private By Provider2Checkbox = By.Name("SelectedProvider[1].IsSelected");
         private By providerName1 = By.XPath("//*[@id='main-content']//li[1]/div/div/label");
@@ -24,6 +20,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By PostcodeField = By.Name("Postcode");
         private By PostcodeRadius = By.Id("SearchRadius");
         private By ReportProvisionGapLink = By.LinkText("No suitable providers? Let us know");
+
+        //Error message Locators
         private By ActualPostcodeError = By.LinkText("You must enter a postcode");
         private By ActualNoProviderSelectedError = By.LinkText("You must select at least one provider");
         private By ActualInvalidPostcodeError = By.LinkText("You must enter a real postcode");
@@ -34,7 +32,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By ActualResultsCount = By.Id("tl-search-count");
         private By ActualResultHeadingDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2");
 
-
         public SelectProvidersPage(IWebDriver webDriver) : base(webDriver)
         {
             SelfVerify();
@@ -43,154 +40,156 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         protected override bool SelfVerify()
         {
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);         
-        }    
-        
-        public SelectProvidersPage VerifyPageURL()
-        {
-            PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
-            return this;
         }
 
-        public PlacementInformationPage ClickReportProvisionGapLink()
-        {
-            FormCompletionHelper.ClickElement(ReportProvisionGapLink);
-            return new PlacementInformationPage(webDriver);
-        }
-
-        public SelectProvidersPage ClickSearchAgain()
-        {
-            FormCompletionHelper.ClickElement(SearchAgainButton);
-            return new SelectProvidersPage(webDriver);
-        }
-
-        public SelectProvidersPage SelectSkillArea(String dropdownValue)
+        //Actions
+        private void SelectSkillArea(String dropdownValue)
         {
             FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, dropdownValue);
-           // ScenarioContext.Current["_provisionGapTypeOfPlacement"] = dropdownValue;
-            return new SelectProvidersPage(webDriver);
-        }
+            // ScenarioContext.Current["_provisionGapTypeOfPlacement"] = dropdownValue;
+        }        
 
-        public SelectProvidersPage SelectSearchAgain()
-        {
-            FormCompletionHelper.SelectFromDropDownByText(SkillAreaDropdown, Constants.skillArea);
-            FormCompletionHelper.EnterText(PostcodeField, Constants.postCode);
-            FormCompletionHelper.SelectFromDropDownByText(PostcodeRadius, Constants.radius);
-            FormCompletionHelper.ClickElement(SearchAgainButton);
-
-            return new SelectProvidersPage(webDriver);
-        }
-
-        public SelectProvidersPage SelectPostcodeRadius(String dropdownValue)
-        {
-            FormCompletionHelper.SelectFromDropDownByText(PostcodeRadius, dropdownValue);
-            ScenarioContext.Current["_provisionGapPostcodeRadius"] = dropdownValue;
-            return new SelectProvidersPage(webDriver);
-        }
-
-        public SelectProvidersPage ClearPostcode()
-        {
-            FormCompletionHelper.ClearText(PostcodeField);
-            return this;
-        }
-
-        public SelectProvidersPage EnterPostcode(string postcode)
+        private void EnterPostcode(string postcode)
         {
             FormCompletionHelper.EnterText(PostcodeField, postcode);
             ScenarioContext.Current["_provisionGapPostcode"] = postcode;
-            return new SelectProvidersPage(webDriver);
-        }
+        }        
 
-        public PlacementInformationPage ClickContinue()
+        private void ClearPostcode()
         {
-            FormCompletionHelper.ClickElement(ContinueButton);
-            return new PlacementInformationPage(webDriver);
+            FormCompletionHelper.ClearText(PostcodeField);
         }
 
-        public SelectProvidersPage SelectProviders()
+        private void SelectPostcodeRadius(String dropdownValue)
+        {
+            FormCompletionHelper.SelectFromDropDownByText(PostcodeRadius, dropdownValue);
+            ScenarioContext.Current["_provisionGapPostcodeRadius"] = dropdownValue;
+        }
+
+        private void ClickSearchAgain()
+        {
+            FormCompletionHelper.ClickElement(SearchAgainButton);
+        }
+
+        private void SelectNoSuitableProviders()
+        {
+            FormCompletionHelper.ClickElement(ReportProvisionGapLink);
+        }
+
+        private void SelectProviders()
         {
             FormCompletionHelper.ClickElement(Provider1Checkbox);
-            //Commented by Shalini  --  need to rework how to use xpath
             ProviderResultsHelper.SetProviderNames(providerName1);
-            return new SelectProvidersPage(webDriver);
         }
 
-        public PlacementInformationPage SelectProviderAndClickContinue()
+        private void ClickContinue()
+        {
+            FormCompletionHelper.ClickElement(ContinueButton);
+        }
+
+        //Behaviour
+        public SelectProvidersPage EnterNewOpportunityDetailsAndSearchAgain(string skillArea, string postCode, string radius)
+        {
+            SelectSkillArea(skillArea);
+            EnterPostcode(postCode);
+            SelectPostcodeRadius(radius);
+            ClickSearchAgain();
+            return new SelectProvidersPage(webDriver);
+        }        
+
+        public PlacementInformationPage SelectNoSuitableProviers()
+        {
+            SelectNoSuitableProviders();
+            return new PlacementInformationPage(webDriver);
+        }        
+
+        public PlacementInformationPage SelectProvidersAndContinue()
         {
             SelectProviders();
             ClickContinue();
             return new PlacementInformationPage(webDriver);
         }
 
-        public SelectProvidersPage VerifyPostcodeError (string ExpectedErrorMessage)
+        public SelectProvidersPage EnterInvalidPostCodeAndSearchAgain()
         {
-            FormCompletionHelper.VerifyText(ActualPostcodeError, ExpectedErrorMessage);
-            return this;
+            EnterPostcode("B98");
+            ClickSearchAgain();
+            return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifyPostcodeDisplayed(String Postcode)
+        public SelectProvidersPage ClearPostCodeAndSearchAgain()
+        {
+            ClearPostcode();
+            ClickSearchAgain();
+            return new SelectProvidersPage(webDriver);
+        }
+
+        public SelectProvidersPage ContinueWithoutSelectingProviders()
+        {
+            ClickContinue();
+            return new SelectProvidersPage(webDriver);
+        }
+
+        //Assertions
+        public void VerifyPostcodeError (string ExpectedErrorMessage)
+        {
+            FormCompletionHelper.VerifyText(ActualPostcodeError, ExpectedErrorMessage);
+        }
+
+        public void VerifyPostcodeDisplayed(String Postcode)
         {
             //String expectedPostcode = (string)ScenarioContext.Current["_provisionGapPostcode"];
             String expectedPostcode = Postcode;
             FormCompletionHelper.VerifyText(ActualPostcodeDisplayed, expectedPostcode);
-            return new SelectProvidersPage(webDriver);
         }
 
-
-        public SelectProvidersPage VerifySkillsetDisplayed(String SkillArea)
+        public void VerifySkillsetDisplayed(String SkillArea)
         {
             //String expectedJobType = ((string)ScenarioContext.Current["_provisionGapTypeOfPlacement"]).ToLower();
             String expectedJobType = SkillArea.ToLower();
             Console.WriteLine(expectedJobType);
             FormCompletionHelper.VerifyText(ActualSkillsetDisplayed, expectedJobType);
-            return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifyResultsCount()
+        public void VerifyResultsCount()
         {
              int expResultsCount = (Int32)ScenarioContext.Current["SearchResultsCount"];
              PageInteractionHelper.VerifyText(ActualResultsCount, expResultsCount);
-             return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifyZeroResultsCount()
+        public void VerifyZeroResultsCount()
         {
             int expResultsCount = 0;
             PageInteractionHelper.VerifyText(ActualNumberResultsDisplayed, expResultsCount);
-            return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifysHeadingShowsResults()
+        public void VerifysHeadingShowsResults()
         {
             String ExpectedResultsHeading = "results in";
             PageInteractionHelper.VerifyText(ActualResultHeadingDisplayed, ExpectedResultsHeading);
-            return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifysHeadingShowsResult()
+        public void VerifysHeadingShowsResult()
         {
             String ExpectedResultsHeading = "result in";
             PageInteractionHelper.VerifyText(ActualResultHeadingDisplayed, ExpectedResultsHeading);
-            return new SelectProvidersPage(webDriver);
         }
 
-        public SelectProvidersPage VerifySearchRadius(String SearchRadius)
+        public void VerifySearchRadius(String SearchRadius)
         {
             //String expSearchRadius = (String)ScenarioContext.Current["_provisionGapPostcodeRadius"];
             String expSearchRadius = SearchRadius;
             PageInteractionHelper.VerifyText(ActualSearchRadiusDisplayed, expSearchRadius);
-            return new SelectProvidersPage(webDriver);
-        }
-        
-        public SelectProvidersPage VerifyProviderNotSelectedError(string ExpectedErrorMessage)
+        }                
+
+        public void VerifyProviderNotSelectedError(string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualNoProviderSelectedError, ExpectedErrorMessage);
-            return this;
         }
 
-        public SelectProvidersPage VerifyInvalidPostcodeError(string ExpectedErrorMessage)
+        public void VerifyInvalidPostcodeError(string ExpectedErrorMessage)
         {
             FormCompletionHelper.VerifyText(ActualInvalidPostcodeError, ExpectedErrorMessage);
-            return this;
         }
     }
 }

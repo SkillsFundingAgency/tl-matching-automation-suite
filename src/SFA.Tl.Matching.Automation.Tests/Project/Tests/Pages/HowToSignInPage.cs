@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
-    public class LoginHelpPage : BasePage
+    public class HowToSignInPage : BasePage
     {
         private static String PAGE_TITLE = "How to sign in";
         private By LoginButton = By.Id("tl-login");
         By LoginText = By.LinkText("Login");
-        By Logout = By.LinkText("Logout");
 
-        public LoginHelpPage(IWebDriver webDriver) : base(webDriver)
+        public HowToSignInPage(IWebDriver webDriver) : base(webDriver)
         {
             SelfVerify();
         }
@@ -26,17 +21,18 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-       public LoginHelpPage VerifyLoginLinkIsPresent()
-        {
-            PageInteractionHelper.VerifyLinkIsPresent(LoginText, "Login");
-            return this;
-        }  
-               
-        public IDAMSLoginPage ClickLogin()
+        //Behaviour
+        public IDAMSLoginPage Login()
         {
            FormCompletionHelper.ClickElement(LoginButton);
            return new IDAMSLoginPage(webDriver);
         }
 
+        //Assertions
+        public HowToSignInPage VerifyLoginLinkIsPresent()
+        {
+            PageInteractionHelper.VerifyLinkIsPresent(LoginText, "Login");
+            return this;
+        }
     }
 }

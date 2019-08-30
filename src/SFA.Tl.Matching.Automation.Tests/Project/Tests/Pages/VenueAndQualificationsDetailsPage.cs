@@ -37,7 +37,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public String GetQualificationId(String query)
         {            
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
 
             String LardIdMappedToService = null;
             foreach (object[] LarId in queryResults)

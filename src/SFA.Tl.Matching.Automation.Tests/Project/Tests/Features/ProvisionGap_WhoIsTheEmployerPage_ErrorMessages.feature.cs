@@ -76,7 +76,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 5
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
  testRunner.And("I navigate to Who is the employer page Provision Gap with unknown Number of stude" +
                     "nts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -96,12 +96,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line 11
- testRunner.Given("I clear the job field on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I enter no Employer business name and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.And("I press Continue on the Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
- testRunner.Then("the Who is the employer page will show an error stating \"You must tell us what sp" +
-                    "ecific job the placement student would do\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Who is the employer page will show an error stating \"You must find and choose" +
+                    " an employer\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

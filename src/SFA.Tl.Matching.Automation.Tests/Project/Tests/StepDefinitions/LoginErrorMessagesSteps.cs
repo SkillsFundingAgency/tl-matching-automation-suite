@@ -1,9 +1,6 @@
-﻿using System;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
-using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
-using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 
 namespace SFA.Tl.Matching.Automation.Tests
 {
@@ -13,36 +10,36 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I have navigated to the IDAMS login page")]
         public void GivenIHaveNavigatedToTheIDAMSLoginPage()
         {
-            LoginHelpPage LoginHelpPage = new LoginHelpPage(webDriver);
-            LoginHelpPage.ClickLogin();            
-        }
-        
-        [Given(@"I only enter the username on the IDAMS login page")]
-        public void GivenIOnlyEnterTheUsernameOnTheIDAMSLoginPage()
-        {
-            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLoginUsernameOnly();
+            HowToSignInPage howToSignInPage = new HowToSignInPage(webDriver);
+            howToSignInPage.Login();            
         }
 
-        [Given(@"I only enter the password on the IDAMS login page")]
-        public void GivenIOnlyEnterThePasswordOnTheIDAMSLoginPage()
+        [When(@"I only enter the username and try to login on the IDAMS login page")]
+        public void WhenIOnlyEnterTheUsernameAndTryToLoginOnTheIDAMSLoginPage()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLoginPasswordOnly();
+            IDAMSLoginPage.LoginWithOnlyUsername();
         }
-                  
-        [Given(@"I enter an invalid username and password on the IDAMS login page")]
-        public void GivenIEnterAnInvalidUsernameAndPasswordOnTheIDAMSLoginPage()
+
+        [When(@"I only enter the password and try to login on the IDAMS login page")]
+        public void WhenIOnlyEnterThePasswordAndTryToLoginOnTheIDAMSLoginPage()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.IDAMSLogin(Constants.InvalidUser,Constants.InvalidPass);
+            IDAMSLoginPage.LoginWithOnlyPassword();
         }
-        
-        [When(@"I press Login")]
-        public void WhenIPressLogin()
+
+        [When(@"I enter an invalid username password and try to login on the IDAMS login page")]
+        public void WhenIEnterAnInvalidUsernamePasswordAndTryToLoginOnTheIDAMSLoginPage()
         {
             IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
-            IDAMSLoginPage.ClickLoginButton();
+            IDAMSLoginPage.LoginWithInvalidUsernameAndPassword();
+        }
+
+        [When(@"I Login without entering Username and Password")]
+        public void WhenILoginWithoutEnteringUsernameAndPassword()
+        {
+            IDAMSLoginPage IDAMSLoginPage = new IDAMSLoginPage(webDriver);
+            IDAMSLoginPage.LoginWithoutUsernameAndPassword();
         }
         
         [Then(@"a warning will be displayed stating ""(.*)""")]

@@ -9,7 +9,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
 
         private String _browser;
         private String _baseUrl;
-        private String _mathcingServiceConnectionString;
+        private String _matchingServiceConnectionString;
         private String _adminUserName;
         private String _adminUserPass;
         private String _standardUserName;
@@ -23,7 +23,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         {
             _browser = ConfigurationManager.AppSettings["Browser"];
             _baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
-            _mathcingServiceConnectionString = ConfigurationManager.AppSettings["MathcingServiceConnectionString"];
+            _matchingServiceConnectionString = ConfigurationManager.AppSettings["MatchingServiceConnectionString"];
             _adminUserName = ConfigurationManager.AppSettings["AdminUserName"];
             _adminUserPass = ConfigurationManager.AppSettings["AdminUserPass"];
             _standardUserName = ConfigurationManager.AppSettings["StandardUserName"];
@@ -54,9 +54,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
             return _baseUrl;
         }
 
-        public String GetMathcingServiceConnectionString()
+        public String GetMatchingServiceConnectionString()
         {
-            return _mathcingServiceConnectionString;
+            return _matchingServiceConnectionString;
         }
 
         public String GetAdminUserName()

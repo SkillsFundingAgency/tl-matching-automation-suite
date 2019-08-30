@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -10,7 +7,7 @@ using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
-    public class ReferralDonePage : BasePage
+    public class EmailsSentPage : BasePage
     {
         private static String PAGE_TITLE = ("Emails sent");
         private By FinishButton = By.Id("tl-end");
@@ -18,7 +15,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private int opportunityID = 212; 
         private By ActualWhatHappensNextText = By.XPath("//*[@id='main-content']//p[2]");
                
-        public ReferralDonePage(IWebDriver webDriver) : base(webDriver)
+        public EmailsSentPage(IWebDriver webDriver) : base(webDriver)
         {
            SelfVerify();
         }
@@ -28,19 +25,26 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }                       
 
-        public ReferralDonePage ClickFinishbutton()
+        //Actions
+        private void ClickFinishbutton()
         {
            FormCompletionHelper.ClickElement(FinishButton);
-            return this;
         }
 
-        public ReferralDonePage VerifyCountofReferralRecords()
+        //Behaviour
+        internal StartPage FinishReferralJourney()
+        {
+            ClickFinishbutton();
+            return new StartPage(webDriver);
+        }
+
+        //Assertions
+        public void VerifyCountofReferralRecords()
         {           
             String query = ("select count(*) from referral where opportunityID = " + opportunityID);
             Console.WriteLine(query);
             Console.WriteLine("Opportunity ID: " + opportunityID);
-
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
             
             foreach (object[] fieldNo in queryResults)
             {
@@ -51,19 +55,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 //Assert the variables above to the actual values displayed on the screen
                 PageInteractionHelper.VerifyText(expectedCount, actualCount);
             }
-            return this;
         }
 
-
-        public ReferralDonePage VerifyOptInValueRecorded(String expectectedValue)
+        //Once you find with Mayur place this method in appropriate page (either here or oppBasketPage)
+        public void VerifyOptInValueRecorded(String expectectedValue)
         {
-            String query = ("Select ConfirmationSelected from opportunity where id = " + opportunityID);
-            Console.WriteLine(query);
-            Console.WriteLine("Opportunity ID: " + opportunityID);
-          
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
-            
-            foreach (object[] fieldNo in queryResults)
+            List<Object[]> confirmationSelected = GetConfirmationSelected();
+
+            foreach (object[] fieldNo in confirmationSelected)
             {
                 //Assign values to variables from the SQL query run
                 String actualConfirmationSelected = fieldNo[0].ToString();
@@ -73,11 +72,18 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 //Assert the variables above to the actual values displayed on the screen
                 PageInteractionHelper.VerifyText(actualConfirmationSelected, expectedConfirmationSelected);
             }
-            return this;
-
         }
 
-        public ReferralDonePage VerifyReferralRecordsCreated()
+        private List<Object[]> GetConfirmationSelected()
+        {
+            String query = ("Select ConfirmationSelected from opportunity where id = " + opportunityID);
+            Console.WriteLine(query);
+            Console.WriteLine("Opportunity ID: " + opportunityID);
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
+            return queryResults;
+        }
+
+        public void VerifyReferralRecordsCreated()
         {
             string provider1 = (string)ScenarioContext.Current["_Provider1"];
             //string provider2 = (string)ScenarioContext.Current["_Provider2"];
@@ -88,9 +94,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             foreach (String items in providerArray)
             {
                 String query = ("select count(*) from referral where opportunityID = " + opportunityID + " and providervenueId in (select pv.id from ProviderVenue pv, provider p where pv.ProviderId = p.Id and p.name = '" + items + "')");
-                Console.WriteLine(query);
-               
-                var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+                Console.WriteLine(query);               
+                var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
                 
                 foreach (object[] fieldNo in queryResults)
                 {
@@ -102,17 +107,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                     PageInteractionHelper.VerifyText(expectedCount, actualCount);
                 }
             }
-            return this;
         }
 
-        public ReferralDonePage VerifyWhatHappensNextText()
+        public void VerifyWhatHappensNextText()
         {
             String expectedEmployername = Constants.employerName;
             String expectedEmployerContact = (string)ScenarioContext.Current["_EmployerContactName"];
-              String expectedWhatHappensNextText = ("We expect the provider will contact " + expectedEmployerContact + " within 2 to 3 working days. The provider will work with " + expectedEmployername + " to arrange the terms and details of each placement.");
+            String expectedWhatHappensNextText = ("We expect the provider will contact " + expectedEmployerContact + " within 2 to 3 working days. The provider will work with " + expectedEmployername + " to arrange the terms and details of each placement.");
 
-             PageInteractionHelper.VerifyText(ActualWhatHappensNextText, expectedWhatHappensNextText);
-            return this;
+            PageInteractionHelper.VerifyText(ActualWhatHappensNextText, expectedWhatHappensNextText);
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿Feature: Provision Gap - Placement Information - Error Messages
 	This feature is used to confirm the error messages on the Placement information page for a provision gap
 
-
 Background: 
 	Given I have navigated to the IDAMS login page
-	And I have logged in as an Admin user	
-
+	And I have logged in as an "Admin User"
 
 @regression
 Scenario: No Suitable Providers - Placement Information - Error Messages when No data is entered and click Continue
@@ -13,7 +11,6 @@ Scenario: No Suitable Providers - Placement Information - Error Messages when No
 	When I enter no placement information and Continue
 	Then the Placement Information page will show an error stating "You must tell us why the employer did not choose a provider" for "NoProvidersChosen"    
 	And the Placement Information page will show an error stating "You must tell us whether the employer knows how many students they want for this job at this location" for "StudentsOptionNotSelected"
-
 
 @regression
 Scenario Outline: Placement Information - Number of Placements field is shown only if Yes is selected
@@ -24,7 +21,6 @@ Examples:
 | Value | Result        |
 | Yes   | Displayed     |
 | No    | Not Displayed |
-	 
 
 @regression
 Scenario Outline: Placement Information - Job type must be between 2 and 99 characters
@@ -32,10 +28,9 @@ Scenario Outline: Placement Information - Job type must be between 2 and 99 char
 	When I enter an invalid job title <JobRole> and Continue	
 	Then the <ErrorMessage> for Invalid Job Role for <Number> characters is displayed
 Examples:
-| Number | JobRole                                                                                              | ErrorMessage                                          |
-| 1      | A                                                                                                    | You must enter a job role using 2 or more characters  |
-| 100    | ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJ | You must enter a job role using 99 characters or less |
-
+| Number | JobRole                                                                                               | ErrorMessage                                              |
+| 1      | A                                                                                                     | You must enter a job role using 2 or more characters      |
+| 100    | ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA | You must enter a job role that is 100 characters or fewer |
 
 @regression
 Scenario Outline: Placement Information - Number of Students must be between 1 and 999

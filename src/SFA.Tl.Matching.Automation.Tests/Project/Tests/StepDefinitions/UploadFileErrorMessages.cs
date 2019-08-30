@@ -14,8 +14,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             fileUploadPage.SelectProviderFromDropdown();
         }
         
-        [Given(@"I press Upload")]
-        public void GivenIPressUpload()
+        [When(@"I press Upload")]
+        public void WhenIPressUpload()
         {
             FileUploadPage fileUploadPage = new FileUploadPage(webDriver);
             fileUploadPage.ClickUploadLink();

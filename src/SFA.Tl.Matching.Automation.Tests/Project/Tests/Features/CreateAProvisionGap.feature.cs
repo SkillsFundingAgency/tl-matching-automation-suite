@@ -76,7 +76,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 5
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -98,19 +98,15 @@ this.FeatureBackground();
  testRunner.Given("I navigate to Who is the employer page Provision Gap with unknown Number of stude" +
                     "nts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
- testRunner.And("I entered employer name and press continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("the Check employers details page will show the details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("Enter the Employer Details and continue for Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13
- testRunner.And("the Check answers screen will display the provision gap details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.When("I press Confirm and Send on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 15
     testRunner.Then("a Provision gap record will be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 16
- testRunner.And("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 17
- testRunner.And("the Provision Gap Done page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.When("I Finish the Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 15
+ testRunner.Then("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -124,35 +120,29 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A provision gap record is created where the user enters the number of placements " +
                     "required and opts in to share their details", null, new string[] {
                         "regression"});
-#line 20
+#line 18
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 21
+#line 19
    testRunner.Given("I entered new search criteria and press Search again button on the Select Provide" +
                     "rs Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 20
  testRunner.And("I press the report provision gap link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
+#line 21
  testRunner.And("I navigate to Who is the employer page Provision Gap with known Number of student" +
                     "s", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 23
+ testRunner.Then("Enter the Employer Details and continue for Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 24
-    testRunner.Then("I am on Who is the employer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 25
-    testRunner.And("I entered employer name and press continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 26
- testRunner.And("the Check employers details page will show the details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 27
- testRunner.And("the Check answers screen will display the provision gap details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 28
- testRunner.When("I press Confirm and Send on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 29
     testRunner.Then("a Provision gap record will be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 30
- testRunner.And("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 31
- testRunner.And("the Provision Gap Done page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+ testRunner.When("I Finish the Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
+﻿using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
 
@@ -12,39 +11,34 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void GivenIHaveAddedASingleOpportunity()
         {
             CheckEmployersDetailsPage checkEmployerDetailsPage = new CheckEmployersDetailsPage(webDriver);
-            checkEmployerDetailsPage.ClickConfirmAndContinueButton()
-                                    .CheckPlacementInformationFirstPass()
-                                    .VerifyProvidersAreDisplayed()
-                                    .ClickConfirmAndSendutton();
-                              
+            checkEmployerDetailsPage.EnterEmployerContactDetailsAndContinueForAReferralJourney(Constants.testName, Constants.testEmail, Constants.testPhoneNumber)
+                                    .CheckPlacementInformationFirstPass();
+            ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
+            referralCheckAnswersPage.VerifyProvidersAreDisplayed();
+            referralCheckAnswersPage.ConfirmAndSendOpportunity();
         }
 
-
-
-        [When(@"I press Add another Opportunity on the Opportunity Basket")]
-        public void WhenIPressAddAnotherOpportunityOnTheOpportunityBasket()
+        [When(@"I start Adding another Opportunity from Opportunity Basket")]
+        public void WhenIStartAddingAnotherOpportunityFromOpportunityBasket()
         {
-            OpportunitiesBasketPage opportunitiesBasketPage = new OpportunitiesBasketPage(webDriver);
-            opportunitiesBasketPage.VerifyOpportunityDetailsAreDisplayedforOpportunity1()
-                                   .ClickAddAnotherOpportunity();
-                                  
-                                    
-                                    
+            OpportunitiesBasketReferralPage opportunitiesBasketPage = new OpportunitiesBasketReferralPage(webDriver);
+            opportunitiesBasketPage.VerifyOpportunityDetailsAreDisplayedforOpportunity1();
+            opportunitiesBasketPage.StartAddingAnotherOpportunityFromBasket();
         }
         
         [Then(@"I will not be asked to select the Employer name again")]
         public void ThenIWillNotBeAskedToSelectTheEmployerNameAgain()
         {
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
-            findLocalProvidersPage.AutoPopulateFieldsSecondPass()
-                                    .ClickSearchButton()
-                                    .SelectProviderAndClickContinue()
-                                    .ClickContinueMoreThanOneOpportunityExists()
-                                    .VerifyProvidersAreDisplayed()
-                                    .ClickConfirmAndSendutton()
-                                    .SubmitContinueWithopportunityMultipleOpportunities()
-                                    .SelectConfirmationCheckboxAndContinue()
-                                    .ClickFinishbutton();
+            findLocalProvidersPage.EnterOpportunityDetailsAndSearchForProvidersSecondPass(Constants.skillArea, Constants.postCode)
+                                  .SelectProvidersAndContinue()
+                                  .ClickContinueMoreThanOneOpportunityExists()
+                                  .VerifyProvidersAreDisplayed();
+            ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
+            referralCheckAnswersPage.ConfirmAndSendOpportunity()
+                                  .ContinueWithOpportunityMultipleOpportunities()
+                                  .ConfirmEmployerDetailsAndContinue()
+                                  .FinishReferralJourney();
         }
     }
 }

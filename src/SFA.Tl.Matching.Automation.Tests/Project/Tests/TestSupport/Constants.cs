@@ -13,6 +13,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String radius = "10 miles";
         public const String jobTitle = "Builder";
         public const String employerName = "Abacus Childrens Nurseries";
+        public const String testEmployerNameForVerification = "Test Account DO NOT USE";
+        public const String testName = "Shalini 123";
+        public const String testEmail = "testEmail@fhgygy.com";
+        public const String testPhoneNumber = "01234567890";
         public const String NoofPlacements = "at least 1";
         public const String expectedCount = "1";
         public const String ProvisionGapOptInFalse = "False";
