@@ -178,11 +178,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Referral_PlacementInformation_ErrorMessages.feature</DependentUpon>
     </Compile>
-    <Compile Include="Project\Tests\Features\Referral_WhoIsTheEmployerPage_ErrorMessages.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Referral_WhoIsTheEmployerPage_ErrorMessages.feature</DependentUpon>
-    </Compile>
     <Compile Include="Project\Tests\Features\Referral_CheckEmployerDetailsPage_ErrorMessages.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,11 +187,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateAReferral.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Project\Tests\Features\ValidateSearchResults .feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ValidateSearchResults .feature</DependentUpon>
     </Compile>
     <Compile Include="Project\Tests\Pages\AddQualificationPage.cs" />
     <Compile Include="Project\Tests\Pages\FindAProviderPage.cs" />
@@ -223,11 +213,6 @@
       <DependentUpon>SelectProviders_ErrorMessages.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Project\Tests\Features\ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature</DependentUpon>
     </Compile>
     <Compile Include="Project\Tests\Features\CreateAProvisionGap.feature.cs">
       <AutoGen>True</AutoGen>
@@ -360,10 +345,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoginErrorMessages.feature.cs</LastGenOutput>
     </None>
-    <None Include="Project\Tests\Features\ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ProvisionGap_CheckEmployersDetailsPage_ErrorMessages.feature.cs</LastGenOutput>
-    </None>
     <None Include="Project\Tests\Features\CreateAProvisionGap.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateAProvisionGap.feature.cs</LastGenOutput>
@@ -372,10 +353,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Referral_PlacementInformation_ErrorMessages.feature.cs</LastGenOutput>
     </None>
-    <None Include="Project\Tests\Features\Referral_WhoIsTheEmployerPage_ErrorMessages.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Referral_WhoIsTheEmployerPage_ErrorMessages.feature.cs</LastGenOutput>
-    </None>
     <None Include="Project\Tests\Features\Referral_CheckEmployerDetailsPage_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Referral_CheckEmployerDetailsPage_ErrorMessages.feature.cs</LastGenOutput>
@@ -383,10 +360,6 @@
     <None Include="Project\Tests\Features\CreateAReferral.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateAReferral.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Project\Tests\Features\ValidateSearchResults .feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ValidateSearchResults .feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

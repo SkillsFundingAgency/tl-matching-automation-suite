@@ -22,12 +22,6 @@ Scenario: Search on Select Providers page and return zero results in only select
 	Then the Select Providers page will display a H2 heading for zero results for the selected skill area	
 
 @regression
-Scenario: Validate search results on Select a Provider page where results are returned 1
-    When I have filled in the search form on the Search Providers page with criteria which returns some results 
-	Then the provider results returned will match the expected values
-	And the Select Providers page will display the count, skill area, postcode and radius in the H2 heading 
-
-@regression
 Scenario: Validate search results on Select a Provider page where results are returned 2
     When I have filled in the search form on the Search Providers page with criteria which returns some results 
 	Then the provider results returned will match the expected values
