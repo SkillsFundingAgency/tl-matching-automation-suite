@@ -106,11 +106,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Search on Select Providers page and return zero results")]
+        [NUnit.Framework.DescriptionAttribute("Search on Select Providers page and return zero results in any skill area")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void SearchOnSelectProvidersPageAndReturnZeroResults()
+        public virtual void SearchOnSelectProvidersPageAndReturnZeroResultsInAnySkillArea()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search on Select Providers page and return zero results", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search on Select Providers page and return zero results in any skill area", null, new string[] {
                         "regression"});
 #line 15
 this.ScenarioInitialize(scenarioInfo);
@@ -127,11 +127,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate search results on Select a Provider page where results are returned 1")]
+        [NUnit.Framework.DescriptionAttribute("Search on Select Providers page and return zero results in only selected skill ar" +
+            "ea")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ValidateSearchResultsOnSelectAProviderPageWhereResultsAreReturned1()
+        public virtual void SearchOnSelectProvidersPageAndReturnZeroResultsInOnlySelectedSkillArea()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where results are returned 1", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search on Select Providers page and return zero results in only selected skill ar" +
+                    "ea", null, new string[] {
                         "regression"});
 #line 20
 this.ScenarioInitialize(scenarioInfo);
@@ -139,11 +141,33 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line 21
+ testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
+                    " returns no results in only selected skill area", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+ testRunner.Then("the Select Providers page will display a H2 heading for zero results for the sele" +
+                    "cted skill area", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate search results on Select a Provider page where results are returned 1")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void ValidateSearchResultsOnSelectAProviderPageWhereResultsAreReturned1()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where results are returned 1", null, new string[] {
+                        "regression"});
+#line 25
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 4
+this.FeatureBackground();
+#line 26
     testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
                     " returns some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 22
+#line 27
  testRunner.Then("the provider results returned will match the expected values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 23
+#line 28
  testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
                     " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -157,17 +181,17 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where results are returned 2", null, new string[] {
                         "regression"});
-#line 26
+#line 31
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 27
+#line 32
     testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
                     " returns some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 28
+#line 33
  testRunner.Then("the provider results returned will match the expected values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 29
+#line 34
  testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
                     " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -181,15 +205,15 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where 1 result is returned", null, new string[] {
                         "regression"});
-#line 32
+#line 37
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 33
+#line 38
     testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
                     " returns one result", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 34
+#line 39
  testRunner.Then("the Select Providers page will display the count, skill area, postcode, radius an" +
                     "d text result in in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

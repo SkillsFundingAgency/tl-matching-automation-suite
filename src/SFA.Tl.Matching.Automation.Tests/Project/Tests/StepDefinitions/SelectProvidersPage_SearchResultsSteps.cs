@@ -22,7 +22,15 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
                 .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResults, Constants.postcodeNoResults, Constants.radiusNoResults);
-        }        
+        }
+
+        [When(@"I have filled in the search form on the Search Providers page with criteria which returns no results in only selected skill area")]
+        public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichReturnsNoResultsInOnlySelectedSkillArea()
+        {
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
+               .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResults, Constants.postCode, Constants.radiusNoResults);
+        }
+
 
         //some
         [When(@"I have filled in the search form on the Search Providers page with criteria which returns some results")]
@@ -37,7 +45,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnResult(String p0)
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-                .EnterNewOpportunityDetailsAndSearchAgain(Constants.oneResultpostCode, Constants.oneResultskillArea, Constants.oneResultradius);
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.oneResultskillArea, Constants.oneResultpostCode, Constants.oneResultradius);
         }
 
         [Then(@"the Select Providers page will display the postcode and skill area selected on the Find Providers page")]
@@ -59,17 +67,29 @@ namespace SFA.Tl.Matching.Automation.Tests
             selectProvidersPage.VerifySearchRadius(Constants.postCode);
         }
 
-        //maybe redundant
+        
         [Then(@"the Select Providers page will display a H(.*) heading for zero results")]
         public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResults(int p0)
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.postcodeNoResults);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.expectedskillAreaForNoResultsInAnySkillset);
+            selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
+            selectProvidersPage.VerifyZeroResultsCount();
+            selectProvidersPage.VerifysHeadingShowsResults();
+        }
+
+        [Then(@"the Select Providers page will display a H(.*) heading for zero results for the selected skill area")]
+        public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResultsForTheSelectedSkillArea(int p0)
+        {
+            SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.skillAreaNoResults);
             selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
             selectProvidersPage.VerifyZeroResultsCount();
             selectProvidersPage.VerifysHeadingShowsResults();
         }
+
 
         [Then(@"the Select Providers page will display the count, skill area, postcode and radius in the H(.*) heading")]
         public void ThenTheSelectProvidersPageWillDisplayTheCountSkillAreaPostcodeAndRadiusInTheHHeading(int p0)
