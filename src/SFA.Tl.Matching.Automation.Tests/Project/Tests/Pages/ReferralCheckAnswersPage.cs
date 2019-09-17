@@ -85,7 +85,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             PageInteractionHelper.VerifyText(TypeOfPlacement, Constants.skillArea);
             PageInteractionHelper.VerifyText(Postcode, Constants.postCode);
-            PageInteractionHelper.VerifyText(JobRole, Constants.jobTitle);
+            PageInteractionHelper.VerifyText(JobRole, "None given");
             PageInteractionHelper.VerifyText(NumberOfPlacements, Constants.NoofPlacementEntered);
         }
 
@@ -124,7 +124,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             }
         }
 
-        public void VerifyProvidersAreDisplayed()
+        public void VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen()
         {
             String provider1 = (string)ScenarioContext.Current["_Provider1"];
             //String provider2 = (string)ScenarioContext.Current["_Provider2"];
@@ -133,5 +133,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             //PageInteractionHelper.VerifyProviderDisplayed(provider2, provider2Name);
             //Console.WriteLine(provider2 + "Verified");
         }
+
+      
+
     }
 }

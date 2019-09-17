@@ -29,7 +29,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             AddQualificationPage AddQualificationPage = new AddQualificationPage(webDriver);
             AddQualificationPage.SearchForLarId(QualId);
             AddQualificationPage.AutoPopulateFields();
-            AddQualificationPage.ClickAddQualification();
+            AddQualificationPage.ClickAddQualification();   
         }
     }
 }

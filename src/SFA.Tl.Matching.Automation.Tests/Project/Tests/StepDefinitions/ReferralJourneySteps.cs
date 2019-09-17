@@ -14,7 +14,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             checkEmployerDetailsPage.EnterEmployerContactDetailsAndContinueForAReferralJourney(Constants.testName, Constants.testEmail, Constants.testPhoneNumber)
                                     .CheckPlacementInformationFirstPass();
             ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
-            referralCheckAnswersPage.VerifyProvidersAreDisplayed();
+            referralCheckAnswersPage.VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen();
             referralCheckAnswersPage.ConfirmAndSendOpportunity();
         }
 
@@ -23,6 +23,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         {
             OpportunitiesBasketReferralPage opportunitiesBasketPage = new OpportunitiesBasketReferralPage(webDriver);
             opportunitiesBasketPage.VerifyOpportunityDetailsAreDisplayedforOpportunity1();
+            opportunitiesBasketPage.VerifyLatestReferralRecordValues();
             opportunitiesBasketPage.StartAddingAnotherOpportunityFromBasket();
         }
         
@@ -33,9 +34,10 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             findLocalProvidersPage.EnterOpportunityDetailsAndSearchForProvidersSecondPass(Constants.skillArea, Constants.postCode)
                                   .SelectProvidersAndContinue()
                                   .ClickContinueMoreThanOneOpportunityExists()
-                                  .VerifyProvidersAreDisplayed();
+                                  .VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen();
             ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
             referralCheckAnswersPage.ConfirmAndSendOpportunity()
+                                  .VerifyLatestReferralRecordValues()
                                   .ContinueWithOpportunityMultipleOpportunities()
                                   .ConfirmEmployerDetailsAndContinue()
                                   .FinishReferralJourney();

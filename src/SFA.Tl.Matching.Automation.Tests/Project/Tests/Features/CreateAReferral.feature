@@ -15,10 +15,13 @@ Background:
     Then the referral Check answers screen will display the referral details entered
     #And the providers selected will be displayed on the Referral Check Answers screen
 	Given I Confirm details on the Check answers page
-    Then referral records are created
-	And the Opportunity record will record OPT IN has been selected
-	And the Emails Sent Page is displayed with the correct text
-
+	And I Continue with Single Opportunity on the Opportunity Basket
+	And I opt in to send emails and press Confirm and Send Opportunity	
+	#Then referral records are created
+	#And the Opportunity record will record OPT IN has been selected
+	#And the Emails Sent Page is displayed with the correct text
+	
+	
 	@regression
     Scenario: Create a referral - A single referral
     Then Enter the Employer Details and continue for Referral Journey

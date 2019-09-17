@@ -16,8 +16,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
                 .SelectNoSuitableProviers()
                 .EnterMandatoryPlacementInformationForNoSuitableProvidersAndContinue("No")
                 .EnterEmployerBusinessNameAndContinue(Constants.employerName);
-        }        
+        }
 
+        [Given(@"Enter the Employer Details and continue for Referral Journey")]
         [Then(@"Enter the Employer Details and continue for Referral Journey")]
         public void ThenEnterTheEmployerDetailsAndContinueForReferralJourney()
         {

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
+using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
@@ -40,6 +41,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private void EnterPostcode(string postcode)
         {
             FormCompletionHelper.EnterText(PostcodeField, postcode);
+            ScenarioContext.Current["_SearchPostcode"] = postcode;
         }
 
         private void ClickSearchButton()
