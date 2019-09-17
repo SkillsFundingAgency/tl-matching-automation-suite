@@ -1,10 +1,6 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TechTalk.SpecFlow;
 
@@ -12,18 +8,17 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 {
     public class ProviderResultsHelper
     {
+
         protected static IWebDriver webDriver;
-        private const int implicitWaitTimeInSeconds = 10;
 
         public static void SetDriver(IWebDriver webDriver)
         {
             ProviderResultsHelper.webDriver = webDriver;
         }
 
-       
         public static Boolean VerifyProviderPostcodeDisplayed(String expectedPostcode)
         {
-            if (webDriver.FindElement(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Text.Contains(expectedPostcode))
+            if (PageInteractionHelper.GetText(By.XPath("//*[@id='main-content']/div[2]/div/form/ol")).Contains(expectedPostcode))
             {
                 return true;
             }
@@ -78,9 +73,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             postcodeRadius = Regex.Replace(postcodeRadius, "[^.0-9]", "");
             int _postcodeRadius = Convert.ToInt32(postcodeRadius);
 
-            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude from ProviderQualification pq, Qualification q, QualificationRoutePathMapping qrpm, provider p, ProviderVenue pv, path, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.RouteId = r.Id and r.Name = '" + skillArea + "'and pv.Latitude is not null and pv.Longitude is not null and pv.isenabledforreferral = 1 and p.iscdfprovider=1 and p.isenabledforreferral=1");
+            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude from ProviderQualification pq, Qualification q, QualificationRouteMapping qrpm, provider p, ProviderVenue pv, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.RouteId = r.Id and r.Name = '" + skillArea + "' and pv.Latitude is not null and pv.Longitude is not null and pv.isenabledforreferral = 1 and p.iscdfprovider=1 and p.isenabledforreferral=1");
 
-            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMathcingServiceConnectionString());
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
 
             String Name;
             String Postcode;
@@ -109,21 +104,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                     providerCount = providerCount +1;
 
                    // VerifyProviderDisplayed(Name);
-                    VerifyProviderPostcodeDisplayed(Postcode);
+                   // VerifyProviderPostcodeDisplayed(Postcode);
                 }            
             }
             ScenarioContext.Current["SearchResultsCount"] = providerCount;
         }
 
-        public static void SetProviderNames(By locator1, By locator2)
+        public static void SetProviderNames(By locator1)
         {
             ScenarioContext.Current["_Provider1"] = GetProviderName(locator1);
         }
 
         private static String GetProviderName(By locator)
         {
-            String text = webDriver.FindElement(locator).Text.Split('\r')[0];
+            String text = PageInteractionHelper.GetText(locator).Split('\r')[0];
             text = text.TrimEnd();
+            Console.WriteLine("MAYUR PROVIDER:" + text);
             return text;
         }
     }

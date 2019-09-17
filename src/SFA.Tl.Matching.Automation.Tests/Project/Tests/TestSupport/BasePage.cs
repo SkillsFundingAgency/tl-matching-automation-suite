@@ -21,7 +21,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         {
             return webDriver.FindElement(pageHeading).Text;
         }
-        
-        
     }
 }

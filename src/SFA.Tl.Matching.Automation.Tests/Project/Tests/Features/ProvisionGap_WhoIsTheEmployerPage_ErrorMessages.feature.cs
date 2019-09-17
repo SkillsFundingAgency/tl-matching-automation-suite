@@ -18,21 +18,21 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ProviderFileUpload")]
-    public partial class ProviderFileUploadFeature
+    [NUnit.Framework.DescriptionAttribute("Provision Gap - Who is the Employer page - Error Messages")]
+    public partial class ProvisionGap_WhoIsTheEmployerPage_ErrorMessagesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "ProviderFileUpload.feature"
+#line 1 "ProvisionGap_WhoIsTheEmployerPage_ErrorMessages.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ProviderFileUpload", "\tThis feature is used to upload new provider data. \r\n\tThe test will verify a Prov" +
-                    "ider file can be uploaded and the record/s are written to the Provider table. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Provision Gap - Who is the Employer page - Error Messages", "\tThis feature is used to confirm the error messages on the Who is the Employer pa" +
+                    "ge. ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -72,38 +72,34 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         
         public virtual void FeatureBackground()
         {
-#line 6
-#line 7
+#line 4
+#line 5
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 7
+ testRunner.And("I navigate to Who is the employer page Provision Gap with unknown Number of stude" +
+                    "nts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Upload Provider Data")]
+        [NUnit.Framework.DescriptionAttribute("ProvisionGap_Who is the employer - Press continue without entering any data")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void UploadProviderData()
+        public virtual void ProvisionGap_WhoIsTheEmployer_PressContinueWithoutEnteringAnyData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Upload Provider Data", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("ProvisionGap_Who is the employer - Press continue without entering any data", null, new string[] {
                         "regression"});
-#line 11
+#line 10
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 4
 this.FeatureBackground();
+#line 11
+ testRunner.When("I enter no Employer business name and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Given("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 13
- testRunner.And("I Navigate to File Upload Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.And("I have cleared down the Provider table first", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
- testRunner.And("I upload a Provider File", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
- testRunner.When("I press Submit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
- testRunner.Then("the screen should display File Successfully Uploaded Message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 18
- testRunner.And("the database should have a new Provider", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the Who is the employer page will show an error stating \"You must find and choose" +
+                    " an employer\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

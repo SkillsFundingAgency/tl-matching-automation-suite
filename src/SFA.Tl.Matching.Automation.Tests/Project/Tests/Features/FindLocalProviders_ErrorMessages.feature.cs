@@ -72,12 +72,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         
         public virtual void FeatureBackground()
         {
+#line 4
 #line 5
-#line 6
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
  testRunner.And("I navigate to the FindProviders page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
@@ -89,17 +89,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FindLocalProviders-Press Continue without entering a postcode", null, new string[] {
                         "regression"});
-#line 11
+#line 10
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
+#line 11
+ testRunner.When("I clear the Postcode and Search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Given("I clear the postcode field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 13
- testRunner.And("I press Continue on the Find a Provider page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.Then("the Find a Provider page will show an error stating \"You must enter a postcode\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Find Providers page will show an error stating \"You must enter a postcode\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -107,3 +105,4 @@ this.FeatureBackground();
 }
 #pragma warning restore
 #endregion
+

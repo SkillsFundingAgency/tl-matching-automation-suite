@@ -74,7 +74,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         {
 #line 4
 #line 5
-  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -91,10 +91,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 4
 this.FeatureBackground();
 #line 9
- testRunner.Given("I only enter the password on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I only enter the password and try to login on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
- testRunner.When("I press Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
  testRunner.Then("a warning will be displayed stating \"Please enter your user ID or your email addr" +
                     "ess\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -108,16 +106,14 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Attempt to login but do not enter the password", null, new string[] {
                         "regression"});
-#line 14
+#line 13
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
+#line 14
+ testRunner.When("I only enter the username and try to login on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
- testRunner.Given("I only enter the username on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 16
- testRunner.When("I press Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
  testRunner.Then("a warning will be displayed stating \"Please enter your user password\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -130,14 +126,14 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Attempt to login but do not enter the username and password", null, new string[] {
                         "regression"});
-#line 20
+#line 18
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 21
- testRunner.When("I press Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 22
+#line 19
+ testRunner.When("I Login without entering Username and Password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
  testRunner.Then("a warning will be displayed stating \"Please enter your user ID or email address a" +
                     "nd your password\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -151,16 +147,14 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Attempt to login with invalid user credentials", null, new string[] {
                         "regression"});
-#line 25
+#line 23
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 26
- testRunner.Given("I enter an invalid username and password on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
- testRunner.When("I press Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 28
+#line 24
+ testRunner.When("I enter an invalid username password and try to login on the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 25
  testRunner.Then("a warning will be displayed stating \"Invalid user ID, email address or password\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

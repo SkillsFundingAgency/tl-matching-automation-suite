@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -12,23 +8,29 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 {
     public class PlacementInformationPage : BasePage
     {
+        //Page element locators
+        private String expectedPageURL = "https://test.industryplacementmatching.education.gov.uk/placement-information/";
         private static String PAGE_TITLE = "Placement information";
-        private By ContinueButton = By.ClassName("govuk-button");
-        private By JobTypeField = By.Name("JobTitle");
+        private By NoSuitableStudentCheckBox = By.Id("NoSuitableStudent");
+        private By HadBadExperience = By.Id("HadBadExperience");
+        private By ProvidersTooFarAway = By.Id("ProvidersTooFarAway");
+        private By JobTypeField = By.Name("JobRole");
         private By YesRadioButton = By.Id("placement-location-yes");
-        private By NoRadioButton = By.Id("placement-location-no");
         private By PlacementsField = By.Id("Placements");
+        private By NoRadioButton = By.Id("placement-location-no");
+        private By ContinueButton = By.ClassName("govuk-button");
 
         //Error message locators
+        private By ActualErrorForNoProvidersChosen = By.LinkText("You must tell us why the employer did not choose a provider");
         private By ActualPlacementRadioButtonNotSelected = By.LinkText("You must tell us whether the employer knows how many placements they want at this location");
-        private By ActualPlacementNumberNullError = By.LinkText("You must estimate how many placements the employer wants at this location");
-        private By ActualPlacementsNumberTooSmallError = By.LinkText("The number of placements must be 1 or more");
-        private By ActualPlacementsNumberTooBigError = By.LinkText("The number of placements must be 999 or less");
+        private By ActualPlacementNumberNullError = By.LinkText("You must estimate how many students the employer wants for this job at this location");
+        private By ActualPlacementsNumberTooSmallError = By.LinkText("The number of students must be 1 or more");
+        private By ActualPlacementsNumberTooBigError = By.LinkText("The number of students must be 999 or less");
         private By ActualJobTypeTooShortError = By.LinkText("You must enter a job role using 2 or more characters");
-        private By ActualJobTypeTooLongError = By.LinkText("You must enter a job role using 99 characters or less");
-        private By ActualJobTypeNullError = By.LinkText("You must tell us what specific job the placement student would do");
-        private String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/provider-results";
-        private String expectedPageURL = "https://test.industryplacementmatching.education.gov.uk/placement-information/";
+        //Check and delete comment
+        //You must enter a job role using 99 characters or less
+        private By ActualJobTypeTooLongError = By.LinkText("You must enter a job role that is 100 characters or fewer");
+        private By ActualJobTypeNullError = By.LinkText("You must tell us what specific job the placement student would do");                
 
         public PlacementInformationPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -40,95 +42,163 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);
         }
 
-        public PlacementInformationPage VerifyPageURL()
+        /*public PlacementInformationPage VerifyPageURL()
         {
             PageInteractionHelper.VerifyPageURL(webDriver.Url, expectedPageURL);
             return this;
+        }     */        
+
+        //Actions
+        private void SelectReasonsForNoProviderChosen()
+        {
+            FormCompletionHelper.ClickElement(NoSuitableStudentCheckBox);
+            FormCompletionHelper.ClickElement(HadBadExperience);
+            FormCompletionHelper.ClickElement(ProvidersTooFarAway);
         }
 
-        public WhoIsTheEmployerPage ClickContinueButton()
+        private void EnterJobRole(String jobtype)
         {
-           FormCompletionHelper.ClickElement(ContinueButton);
-           return new WhoIsTheEmployerPage(webDriver);
+            FormCompletionHelper.EnterText(JobTypeField, jobtype);
+            ScenarioContext.Current["_provisionGapJobType"] = jobtype;
         }
 
-        public PlacementInformationPage ClickContinueExpectingErrors()
-        {
-            FormCompletionHelper.ClickElement(ContinueButton);
-            return this;
-        }
-
-        public PlacementInformationPage ClearJobField()
-        {
-            FormCompletionHelper.ClearText(JobTypeField);
-            return this;
-        }
-
-        public PlacementInformationPage VerifyErrorNoJobPlacementEntered(string expectedError)
-        {
-            FormCompletionHelper.VerifyText(ActualJobTypeNullError, expectedError);
-            return this;
-        }
-
-        public PlacementInformationPage VerifyErrorNoPlacementsSelected(string expectedError)
-        {
-            FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
-            return this;
-        }
-
-        public PlacementInformationPage VerifyError_PlacementRadioButtonNotSelected(string expectedError)
-        {
-            FormCompletionHelper.VerifyText(ActualPlacementRadioButtonNotSelected, expectedError);
-            return this;
-        }
-
-        public PlacementInformationPage VerifyErrorJobRoleTooLong(string expectedError)
-        {
-            FormCompletionHelper.VerifyText(ActualJobTypeTooLongError, expectedError);
-            return this;
-        }
-
-        public PlacementInformationPage VerifyErrorJobRoleTooShort(string expectedError)
-        {
-            FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);
-            return this;
-        }
-        
-        public PlacementInformationPage AutoPopulateFields()
-        {
-            FormCompletionHelper.EnterText(JobTypeField, "Mechanic");
-            FormCompletionHelper.ClickElement(NoRadioButton);
-            return this;
-        }
-
-        public PlacementInformationPage SelectNoRadioButton()
-        {
-           FormCompletionHelper.ClickElement(NoRadioButton);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = "at least 1";
-            return this;
-        }
-
-        public PlacementInformationPage SelectYesRadioButton()
+        private void SelectYesRadioButton()
         {
            FormCompletionHelper.ClickElement(YesRadioButton);
-            return this;
         }
 
-        public PlacementInformationPage VerifyNumberOfPLacementsIsVisibile()
+        private void EnterNumberOfStudents()
         {
-            bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
-            Console.WriteLine(Displayed);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacementEntered;
+            FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);
+        }        
 
-            if (Displayed == false)
+        private void EnterInvalidNumberOfStudents(string invalidNumberOfStudents)
+        {
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = invalidNumberOfStudents;
+            FormCompletionHelper.EnterText(PlacementsField, invalidNumberOfStudents);
+        }
+
+        private void SelectNoRadioButton()
+        {
+            FormCompletionHelper.ClickElement(NoRadioButton);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = "At least 1";
+        }        
+
+        private void ClickContinueButton()
+        {
+            FormCompletionHelper.ClickElement(ContinueButton);
+        }               
+
+        //Behaviour
+        internal WhoIsTheEmployerPage EnterMandatoryPlacementInformationForNoSuitableProvidersAndContinue(string studentsWanted)
+        {
+            SelectReasonsForNoProviderChosen();            
+            if (studentsWanted == "Yes")
             {
-                throw new Exception("Element verification failed: "
-               + "\n Expected element to be visible: " );              
+                SelectYesRadioButton();
+                EnterNumberOfStudents();
             }
+            else
+            {
+                SelectNoRadioButton();
+            }
+            ClickContinueButton();            
+            return new WhoIsTheEmployerPage(webDriver);
+        }
 
+        internal WhoIsTheEmployerPage EnterMandatoryPlacementInformationForChosenProvidersAndContinue(string studentsWanted)    //SelectYesContinue    //ClickContinue(No)
+        {
+            if (studentsWanted == "Yes")
+            {
+                SelectYesRadioButton();
+                EnterNumberOfStudents();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
+
+            }
+            else
+            {
+                SelectNoRadioButton();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
+            }
+            ClickContinueButton();
+            return new WhoIsTheEmployerPage(webDriver);
+        }
+
+        internal WhoIsTheEmployerPage EnterMandatoryPlacementInformationForNoProvidersAndContinue(string studentsWanted)    //SelectYesContinue    //ClickContinue(No)
+        {
+            if (studentsWanted == "Yes")
+            {
+                SelectYesRadioButton();
+                EnterNumberOfStudents();
+            }
+            else
+            {
+                SelectNoRadioButton();
+            }
+            ClickContinueButton();
+            return new WhoIsTheEmployerPage(webDriver);
+        }
+
+        internal PlacementInformationPage EnterNoPlacementInformationAndContinue()    //SelectYesContinue    //ClickContinue(No)
+        {            
+            ClickContinueButton();
             return this;
         }
 
-        public PlacementInformationPage VerifyNumberOfPLacementsIsNotVisibile()
+        internal PlacementInformationPage EnterInvalidJobRoleAndContinue(string invalidJobRole)
+        {
+            EnterJobRole(invalidJobRole);
+            ClickContinueButton();
+            return this;
+        }
+
+        internal PlacementInformationPage EnterInvalidNumberOfStudentsAndContinue(string p0)
+        {
+            SelectYesRadioButton();
+            EnterInvalidNumberOfStudents(p0);
+            ClickContinueButton();
+            return this;
+        }
+                
+        internal void SelectRadioButtonToVerifyNumberOfStudentsFieldDisplay(string studentsWanted)
+        {
+            if (studentsWanted == "Yes")
+            {
+                SelectYesRadioButton();
+                EnterNumberOfStudents();
+            }
+            else
+            {
+                SelectNoRadioButton();
+            }
+        }
+
+        public ReferralCheckAnswersPage ClickContinueMoreThanOneOpportunityExists()
+        {
+            FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
+            FormCompletionHelper.ClickElement(NoRadioButton);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacements;
+            FormCompletionHelper.ClickElement(ContinueButton);
+            return new ReferralCheckAnswersPage(webDriver);
+        }
+
+        //Assertions        
+        public bool VerifyNumberOfPLacementsIsVisibile()
+        {
+            return PageInteractionHelper.IsElementDisplayed(PlacementsField);
+        }
+        //    bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
+        //    Console.WriteLine(Displayed);
+
+        //    if (Displayed == false)
+        //    {
+        //        throw new Exception("Element verification failed: "
+        //       + "\n Expected element to be visible: " );              
+        //    }
+        //}
+
+        public void VerifyNumberOfPLacementsIsNotVisibile()
         {
             bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
             Console.WriteLine(Displayed);
@@ -138,60 +208,51 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 throw new Exception("Element verification failed: "
                + "\n Expected element to be visible: ");
             }
-            return this;
-        }
+        }               
 
-        public PlacementInformationPage EnterJobRole(String jobtype)
+        public void VerifyErrorForNoProvidersChosen(string expectedError)
         {
-            FormCompletionHelper.EnterText(JobTypeField, jobtype);
-            ScenarioContext.Current["_provisionGapJobType"] = jobtype;
-            return new PlacementInformationPage(webDriver);
+            FormCompletionHelper.VerifyText(ActualErrorForNoProvidersChosen, expectedError);
         }
 
-
-        public WhoIsTheEmployerPage SelectYesContinue()
-        {
-            FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
-            FormCompletionHelper.ClickElement(YesRadioButton);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacementEntered;
-            FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);
-            FormCompletionHelper.ClickElement(ContinueButton);
-            return new WhoIsTheEmployerPage(webDriver);
-        }
-
-        public WhoIsTheEmployerPage ClickContinue()
-        {
-            FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
-            FormCompletionHelper.ClickElement(NoRadioButton);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacements;
-            FormCompletionHelper.ClickElement(ContinueButton);
-            return new WhoIsTheEmployerPage(webDriver);
-        }
-
-        public PlacementInformationPage EnterNumberOfPlacements(int Number)
-        {
-            String ConvertNumbertoString = Number.ToString();
-            FormCompletionHelper.EnterText(PlacementsField, ConvertNumbertoString);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = ConvertNumbertoString;
-            return this;
-        }
-
-        public PlacementInformationPage VerifyErrorPlacementNumberTooSmall(string expectedError)
+        public void VerifyErrorPlacementNumberTooSmall(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooSmallError, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorPlacementNumberTooBig(string expectedError)
+        public void VerifyErrorPlacementNumberTooBig(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementsNumberTooBigError, expectedError);
-            return this;
         }
 
-        public PlacementInformationPage VerifyErrorPlacementNumberIsNull(string expectedError)
+        public void VerifyErrorPlacementNumberIsNull(string expectedError)
         {
             FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
-            return this;
+        }
+        
+        public void VerifyErrorNoJobPlacementEntered(string expectedError)
+        {
+            FormCompletionHelper.VerifyText(ActualJobTypeNullError, expectedError);
+        }        
+
+        public void VerifyErrorNoPlacementsSelected(string expectedError)
+        {
+            FormCompletionHelper.VerifyText(ActualPlacementNumberNullError, expectedError);
+        }
+
+        public void VerifyError_PlacementRadioButtonNotSelected(string expectedError)
+        {
+            FormCompletionHelper.VerifyText(ActualPlacementRadioButtonNotSelected, expectedError);
+        }
+
+        public void VerifyErrorJobRoleTooLong(string expectedError)
+        {
+            FormCompletionHelper.VerifyText(ActualJobTypeTooLongError, expectedError);
+        }
+
+        public bool VerifyErrorJobRoleTooShort(string expectedError)
+        {
+            return FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);            
         }
     }
 }

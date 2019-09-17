@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using System.Collections.Generic;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 
+
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
 {
     [Binding]
@@ -66,6 +67,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
             webDriver.Navigate().GoToUrl(Configurator.GetConfiguratorInstance().GetBaseUrl());
 
             PageInteractionHelper.SetDriver(webDriver);
+            ProviderResultsHelper.SetDriver(webDriver);
         }
 
         [After]

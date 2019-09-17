@@ -11,5 +11,6 @@ Scenario: The matching service journey starts from the Login Help Page for non l
 @regression
 	Scenario: The matching service journey starts from the Start Page for logged in users
 	Given I navigate to the Matching Service home page
-	And I am logged in
-	Then when I navigate to the homepage I will be taken to the Start Page
+	And I have navigated to the IDAMS login page
+	And I have logged in as an "Standard User"
+	Then I should be taken to the Start Page

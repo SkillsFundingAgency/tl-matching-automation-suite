@@ -18,8 +18,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Referral journey - Validate the error messages on the Placement Information page")]
-    public partial class ReferralJourney_ValidateTheErrorMessagesOnThePlacementInformationPageFeature
+    [NUnit.Framework.DescriptionAttribute("Referral - Placement Information - Error Messages")]
+    public partial class Referral_PlacementInformation_ErrorMessagesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,8 +31,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Referral journey - Validate the error messages on the Placement Information page", "\t     This feature is used to confirm the error messages on the Placement informa" +
-                    "tion page in the Referral journey. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Referral - Placement Information - Error Messages", "\t     This feature is used to confirm the error messages on the Placement informa" +
+                    "tion page in the Referral journey", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,41 +76,30 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 5
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 7
- testRunner.And("I navigate to the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
- testRunner.Given("I select some providers", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.When("I press the Continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
- testRunner.Then("I am on the Placement information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral Placement Information - Press continue without entering any data")]
+        [NUnit.Framework.DescriptionAttribute("Referral-Placement Information - Press continue without entering any data")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ReferralPlacementInformation_PressContinueWithoutEnteringAnyData()
+        public virtual void Referral_PlacementInformation_PressContinueWithoutEnteringAnyData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral Placement Information - Press continue without entering any data", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Press continue without entering any data", null, new string[] {
                         "regression"});
-#line 13
+#line 9
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 15
- testRunner.Given("I clear the job field on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 16
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 17
- testRunner.Then("the Placement Information page will show an error stating \"You must tell us what " +
-                    "specific job the placement student would do\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 18
- testRunner.And("the Placement Information page will display a no placement selected error stating" +
-                    " \"You must tell us whether the employer knows how many placements they want at t" +
-                    "his location\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+    testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 11
+ testRunner.When("I enter no placement information and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 12
+ testRunner.Then("the Placement Information page will show an error stating \"You must tell us wheth" +
+                    "er the employer knows how many students they want for this job at this location\"" +
+                    " for \"StudentsOptionNotSelected\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -119,24 +108,29 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Referral-Placement Information - Number of Placements field is shown only if Yes " +
             "is selected")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_PlacementInformation_NumberOfPlacementsFieldIsShownOnlyIfYesIsSelected()
+        [NUnit.Framework.TestCaseAttribute("Yes", "Displayed", null)]
+        [NUnit.Framework.TestCaseAttribute("No", "Not Displayed", null)]
+        public virtual void Referral_PlacementInformation_NumberOfPlacementsFieldIsShownOnlyIfYesIsSelected(string value, string result, string[] exampleTags)
         {
+            string[] @__tags = new string[] {
+                    "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Number of Placements field is shown only if Yes " +
-                    "is selected", null, new string[] {
-                        "regression"});
-#line 21
+                    "is selected", null, @__tags);
+#line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 22
- testRunner.Given("I select the No radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 23
- testRunner.Then("Number of Placements field is not displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 24
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
- testRunner.Then("Number of Placements field is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 16
+ testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 17
+ testRunner.When(string.Format("I select {0} for how many students needed", value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 18
+ testRunner.Then(string.Format("Number of Students field is {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -144,109 +138,66 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Referral-Placement Information - Job type must be between 2 and 99 characters")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void Referral_PlacementInformation_JobTypeMustBeBetween2And99Characters()
+        [NUnit.Framework.TestCaseAttribute("1", "A", "You must enter a job role using 2 or more characters", null)]
+        [NUnit.Framework.TestCaseAttribute("100", "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" +
+            "BCDEFGHIJABCDEFGHIJA", "You must enter a job role that is 100 characters or fewer", null)]
+        [NUnit.Framework.TestCaseAttribute("Numbers", "123456", "You must enter a job role using letters", null)]
+        [NUnit.Framework.TestCaseAttribute("SpecialCharacters", "%^&**&^", "You must enter a job role using letters", null)]
+        [NUnit.Framework.TestCaseAttribute("NumAndSpecialChar", "565%$^^6678&*", "You must enter a job role using letters", null)]
+        public virtual void Referral_PlacementInformation_JobTypeMustBeBetween2And99Characters(string number, string jobRole, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Job type must be between 2 and 99 characters", null, new string[] {
-                        "regression"});
-#line 29
+            string[] @__tags = new string[] {
+                    "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Job type must be between 2 and 99 characters", null, @__tags);
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 30
- testRunner.Given("I enter a job title 1 character long", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
- testRunner.Then("the Place Information page will show an error for job type not long enough statin" +
-                    "g \"You must enter a job role using 2 or more characters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 33
- testRunner.Given("I enter a job title longer than 99 characters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 34
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
- testRunner.Then("the Place Information page will show an error for job type too long stating \"You " +
-                    "must enter a job role using 99 characters or less\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 26
+ testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
+ testRunner.When(string.Format("I enter an invalid job title {0} and Continue", jobRole), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+ testRunner.Then(string.Format("the {0} for Invalid Job Role for {1} characters is displayed", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral Placement Information - Number of placements entered must be greater tha" +
+        [NUnit.Framework.DescriptionAttribute("Referral-Placement Information - Number of placements entered must be greater tha" +
             "n 0")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ReferralPlacementInformation_NumberOfPlacementsEnteredMustBeGreaterThan0()
+        [NUnit.Framework.TestCaseAttribute("", "You must estimate how many students the employer wants for this job at this locat" +
+            "ion", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "The number of students must be 1 or more", null)]
+        [NUnit.Framework.TestCaseAttribute("1000", "The number of students must be 999 or less", null)]
+        [NUnit.Framework.TestCaseAttribute("10000000000", "The value 10000000000 is not valid for Placements", null)]
+        public virtual void Referral_PlacementInformation_NumberOfPlacementsEnteredMustBeGreaterThan0(string number, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral Placement Information - Number of placements entered must be greater tha" +
-                    "n 0", null, new string[] {
-                        "regression"});
+            string[] @__tags = new string[] {
+                    "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Number of placements entered must be greater tha" +
+                    "n 0", null, @__tags);
 #line 38
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
 #line 39
-    testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 40
- testRunner.And("I enter 0 for the number of placements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When(string.Format("I enter Invalid number of Students {0} and Continue", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 41
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
- testRunner.Then("the Place Information page will show an error for number of placements being too " +
-                    "small stating \"The number of placements must be 1 or more\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral Placement Information - Number of placements entered must be less than 1" +
-            "000")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ReferralPlacementInformation_NumberOfPlacementsEnteredMustBeLessThan1000()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral Placement Information - Number of placements entered must be less than 1" +
-                    "000", null, new string[] {
-                        "regression"});
-#line 45
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line 46
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 47
- testRunner.And("I enter 1000 for the number of placements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 48
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 49
- testRunner.Then("the Place Information page will show an error for number of placements being too " +
-                    "big stating \"The number of placements must be 999 or less\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Referral Placement Information - Number of placements must be entered if the numb" +
-            "er of placements field is visbile")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ReferralPlacementInformation_NumberOfPlacementsMustBeEnteredIfTheNumberOfPlacementsFieldIsVisbile()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral Placement Information - Number of placements must be entered if the numb" +
-                    "er of placements field is visbile", null, new string[] {
-                        "regression"});
-#line 52
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line 53
- testRunner.Given("I select the Yes radio button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 54
- testRunner.And("I press Continue on the Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 55
- testRunner.Then("the Place Information page will show an error for Placement number cannot be null" +
-                    " stating \"You must estimate how many placements the employer wants at this locat" +
-                    "ion\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the {0} for Invalid Number of Students is displayed for {1}", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

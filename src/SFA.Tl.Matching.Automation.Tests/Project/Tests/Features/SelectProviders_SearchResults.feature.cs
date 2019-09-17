@@ -72,12 +72,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         
         public virtual void FeatureBackground()
         {
+#line 4
 #line 5
-#line 6
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+ testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
- testRunner.And("I have logged in as an Admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
  testRunner.And("I navigate to the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
@@ -91,14 +91,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Providers - Details entered on the Find Provider page will be displayed in" +
                     " the header on Select Providers page", null, new string[] {
                         "regression"});
-#line 11
+#line 10
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 12
+#line 11
  testRunner.Then("the provider results returned will match the expected values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 13
+#line 12
  testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
                     " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -106,50 +106,46 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Search on Select Providers page and return zero results")]
+        [NUnit.Framework.DescriptionAttribute("Search on Select Providers page and return zero results in any skill area")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void SearchOnSelectProvidersPageAndReturnZeroResults()
+        public virtual void SearchOnSelectProvidersPageAndReturnZeroResultsInAnySkillArea()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search on Select Providers page and return zero results", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search on Select Providers page and return zero results in any skill area", null, new string[] {
                         "regression"});
-#line 17
+#line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 18
- testRunner.Given("I have filled in the search form on the Search Providers page with criteria which" +
-                    " will return no results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 19
- testRunner.When("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
+#line 16
+ testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
+                    " returns no results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 17
  testRunner.Then("the Select Providers page will display a H2 heading for zero results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate search results on Select a Provider page where results are returned 1")]
+        [NUnit.Framework.DescriptionAttribute("Search on Select Providers page and return zero results in only selected skill ar" +
+            "ea")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void ValidateSearchResultsOnSelectAProviderPageWhereResultsAreReturned1()
+        public virtual void SearchOnSelectProvidersPageAndReturnZeroResultsInOnlySelectedSkillArea()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where results are returned 1", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search on Select Providers page and return zero results in only selected skill ar" +
+                    "ea", null, new string[] {
                         "regression"});
-#line 23
+#line 20
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 24
-    testRunner.Given("I have filled in the search form on the Search Providers page with criteria which" +
-                    " will return some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
- testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 26
- testRunner.Then("the provider results returned will match the expected values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 27
- testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
-                    " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+ testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
+                    " returns no results in only selected skill area", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+ testRunner.Then("the Select Providers page will display a H2 heading for zero results for the sele" +
+                    "cted skill area", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -161,19 +157,17 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where results are returned 2", null, new string[] {
                         "regression"});
-#line 31
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 32
-    testRunner.Given("I have filled in the search form on the Search Providers page with criteria which" +
-                    " will return some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 33
- testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 34
+#line 26
+    testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
+                    " returns some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
  testRunner.Then("the provider results returned will match the expected values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 35
+#line 28
  testRunner.And("the Select Providers page will display the count, skill area, postcode and radius" +
                     " in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -187,19 +181,17 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate search results on Select a Provider page where 1 result is returned", null, new string[] {
                         "regression"});
-#line 38
+#line 31
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 4
 this.FeatureBackground();
-#line 39
-    testRunner.Given("I have filled in the search form on the Search Providers page with criteria which" +
-                    " will return one result", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 40
- testRunner.And("I press the Search again button on the Select Providers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 41
- testRunner.And("the Select Providers page will display the count, skill area, postcode, radius an" +
-                    "d text result in in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 32
+    testRunner.When("I have filled in the search form on the Search Providers page with criteria which" +
+                    " returns one result", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 33
+ testRunner.Then("the Select Providers page will display the count, skill area, postcode, radius an" +
+                    "d text result in in the H2 heading", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

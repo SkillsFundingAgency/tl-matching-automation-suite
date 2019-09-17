@@ -64,7 +64,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         {
             IWebElement element = webDriver.FindElement(locator);
             var selectElement = new SelectElement(element);
-            selectElement.SelectByText(value);            
+            selectElement.SelectByText(value);
         }
 
         public static void SelectFromDropDownByText(IWebElement element, String text)
@@ -79,6 +79,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             {
                 element.Click();
             }
+        }
+
+        public static void SelectCheckBox(By locator)
+        {
+            IWebElement element = webDriver.FindElement(locator);
+            SelectCheckBox(element);
         }
 
         public static void SelectRadioOptionByForAttribute(By locator, String forAttribute)

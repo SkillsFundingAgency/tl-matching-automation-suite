@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
@@ -29,5 +25,5 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyPageURL(webDriver.Url, _expectedPageURL);
             return this;
         }
-     }
+    }
 }
