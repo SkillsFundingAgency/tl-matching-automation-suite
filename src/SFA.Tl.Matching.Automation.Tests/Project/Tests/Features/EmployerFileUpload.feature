@@ -6,7 +6,7 @@ Background:
 	Given I have navigated to the IDAMS login page
 	And I have logged in as an "Admin User"
 
-@regression
+
 Scenario: Upload Employer Data
 	Given I Navigate to File Upload Page
 	And I have cleared down the Employer table first

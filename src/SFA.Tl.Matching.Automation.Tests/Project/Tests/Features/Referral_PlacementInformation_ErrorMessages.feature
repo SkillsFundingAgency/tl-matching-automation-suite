@@ -1,5 +1,5 @@
 ﻿Feature: Referral - Placement Information - Error Messages
-	     This feature is used to confirm the error messages on the Placement information page in the Referral journey. 
+	     This feature is used to confirm the error messages on the Placement information page in the Referral journey
 
 Background: 
 	Given I have navigated to the IDAMS login page
@@ -40,7 +40,8 @@ Scenario Outline: Referral-Placement Information - Number of placements entered 
     When I enter Invalid number of Students <Number> and Continue	
 	Then the <ErrorMessage> for Invalid Number of Students is displayed for <Number>
 Examples:
-| Number | ErrorMessage                                                                         |
-| 0      | The number of students must be 1 or more                                             |
-| 1000   | The number of students must be 999 or less                                           |
-|        | You must estimate how many students the employer wants for this job at this location |
+| Number      | ErrorMessage                                                                         |
+|             | You must estimate how many students the employer wants for this job at this location |
+| 0           | The number of students must be 1 or more                                             |
+| 1000        | The number of students must be 999 or less                                           |
+| 10000000000 | The value 10000000000 is not valid for Placements                                    |

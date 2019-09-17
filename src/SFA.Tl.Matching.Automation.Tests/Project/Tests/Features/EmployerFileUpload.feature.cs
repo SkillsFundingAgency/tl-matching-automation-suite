@@ -82,11 +82,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Upload Employer Data")]
-        [NUnit.Framework.CategoryAttribute("regression")]
         public virtual void UploadEmployerData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Upload Employer Data", null, new string[] {
-                        "regression"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Upload Employer Data", null, ((string[])(null)));
 #line 10
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();

@@ -176,10 +176,11 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Placement Information - Number of Students must be between 1 and 999")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        [NUnit.Framework.TestCaseAttribute("0", "The number of students must be 1 or more", null)]
-        [NUnit.Framework.TestCaseAttribute("1000", "The number of students must be 999 or less", null)]
         [NUnit.Framework.TestCaseAttribute("", "You must estimate how many students the employer wants for this job at this locat" +
             "ion", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "The number of students must be 1 or more", null)]
+        [NUnit.Framework.TestCaseAttribute("1000", "The number of students must be 999 or less", null)]
+        [NUnit.Framework.TestCaseAttribute("10000000000", "The value 10000000000 is not valid for Placements", null)]
         public virtual void PlacementInformation_NumberOfStudentsMustBeBetween1And999(string number, string errorMessage, string[] exampleTags)
         {
             string[] @__tags = new string[] {

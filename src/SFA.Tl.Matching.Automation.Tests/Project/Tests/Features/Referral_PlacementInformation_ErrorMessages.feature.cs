@@ -32,7 +32,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Referral - Placement Information - Error Messages", "\t     This feature is used to confirm the error messages on the Placement informa" +
-                    "tion page in the Referral journey. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "tion page in the Referral journey", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -172,10 +172,11 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Referral-Placement Information - Number of placements entered must be greater tha" +
             "n 0")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        [NUnit.Framework.TestCaseAttribute("0", "The number of students must be 1 or more", null)]
-        [NUnit.Framework.TestCaseAttribute("1000", "The number of students must be 999 or less", null)]
         [NUnit.Framework.TestCaseAttribute("", "You must estimate how many students the employer wants for this job at this locat" +
             "ion", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "The number of students must be 1 or more", null)]
+        [NUnit.Framework.TestCaseAttribute("1000", "The number of students must be 999 or less", null)]
+        [NUnit.Framework.TestCaseAttribute("10000000000", "The value 10000000000 is not valid for Placements", null)]
         public virtual void Referral_PlacementInformation_NumberOfPlacementsEnteredMustBeGreaterThan0(string number, string errorMessage, string[] exampleTags)
         {
             string[] @__tags = new string[] {

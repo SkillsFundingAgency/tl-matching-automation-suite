@@ -41,7 +41,8 @@ Scenario Outline: Placement Information - Number of Students must be between 1 a
 	When I enter Invalid number of Students <Number> and Continue	
 	Then the <ErrorMessage> for Invalid Number of Students is displayed for <Number>
 Examples:
-| Number | ErrorMessage                                                                         |
-| 0      | The number of students must be 1 or more                                             |
-| 1000   | The number of students must be 999 or less                                           |
-|        | You must estimate how many students the employer wants for this job at this location |
+| Number      | ErrorMessage                                                                         |
+|             | You must estimate how many students the employer wants for this job at this location |
+| 0           | The number of students must be 1 or more                                             |
+| 1000        | The number of students must be 999 or less                                           |
+| 10000000000 | The value 10000000000 is not valid for Placements                                    |

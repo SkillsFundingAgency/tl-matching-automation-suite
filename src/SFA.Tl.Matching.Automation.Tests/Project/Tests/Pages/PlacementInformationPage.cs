@@ -181,16 +181,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }        
 
         //Assertions        
-        public void VerifyNumberOfPLacementsIsVisibile()
+        public bool VerifyNumberOfPLacementsIsVisibile()
         {
-            bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
-            Console.WriteLine(Displayed);
-
-            if (Displayed == false)
-            {
-                throw new Exception("Element verification failed: "
-               + "\n Expected element to be visible: " );              
-            }
+            return PageInteractionHelper.IsElementDisplayed(PlacementsField);            
         }
 
         public void VerifyNumberOfPLacementsIsNotVisibile()
