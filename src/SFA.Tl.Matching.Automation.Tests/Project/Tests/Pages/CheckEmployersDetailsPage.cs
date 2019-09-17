@@ -66,6 +66,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             EnterEmployerEmail(email);
             EnterEmployerPhoneNumber(number);
             ClickConfirmAndContinueButton();
+            ScenarioContext.Current["_EmployerContactName"] = name;
+            ScenarioContext.Current["_EmployerContactEmail"] = email;
+            ScenarioContext.Current["_EmployerContactNumber"] = number;
             return new ReferralCheckAnswersPage(webDriver);
         }
 

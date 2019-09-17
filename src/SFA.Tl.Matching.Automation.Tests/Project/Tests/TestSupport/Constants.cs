@@ -14,14 +14,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String jobTitle = "Builder";
         public const String employerName = "Abacus Childrens Nurseries";
         public const String testEmployerNameForVerification = "Test Account DO NOT USE";
-        public const String testName = "Shalini 123";
+        public const String testName = "Shalini-ABC";
         public const String testEmail = "testEmail@fhgygy.com";
         public const String testPhoneNumber = "01234567890";
         public const String NoofPlacements = "at least 1";
         public const String expectedCount = "1";
         public const String ProvisionGapOptInFalse = "False";
         public const String ProvisionGapOptInNo = "Null";
-        public const String NoofPlacementEntered = "at least 1";
+        public const String NoofPlacementEntered = "At least 1";
         public const String InvalidUser = "InvalidUser";
         public const String InvalidPass = "InvalidPass";
         public const String postcodeNoResults = "G63 0AR";
@@ -35,11 +35,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String queryToGetQualificationNotMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarsID WHERE q.LarsID IS NULL order by lar.Id desc";
         public const String Opportunity1Postcode = "B43 6JN";
         public const String Opportunity1JobRole = "None given";
-        public const String Opportunity1StudentsWanted = "at least 1";
+        public const String Opportunity1StudentsWanted = "At least 1";
         public const String Opportunity1Providers = "1";
         public const String opportunity2Postcode = "B43 6JN";
         public const String opportunity2JobRole = "None given";
-        public const String opportunity2StudentsWanted = "at least 1";
+        public const String opportunity2StudentsWanted = "At least 1";
         public const String opportunity2Providers = "1";
         public const String opportunity2SkillArea = "Care services";
 

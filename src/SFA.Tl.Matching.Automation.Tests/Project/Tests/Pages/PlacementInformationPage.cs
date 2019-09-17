@@ -82,7 +82,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private void SelectNoRadioButton()
         {
             FormCompletionHelper.ClickElement(NoRadioButton);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = "at least 1";
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = "At least 1";
         }        
 
         private void ClickContinueButton()
@@ -113,10 +113,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             {
                 SelectYesRadioButton();
                 EnterNumberOfStudents();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
+
             }
             else
             {
                 SelectNoRadioButton();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
             }
             ClickContinueButton();
             return new WhoIsTheEmployerPage(webDriver);
@@ -178,13 +181,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacements;
             FormCompletionHelper.ClickElement(ContinueButton);
             return new ReferralCheckAnswersPage(webDriver);
-        }        
+        }
 
         //Assertions        
         public bool VerifyNumberOfPLacementsIsVisibile()
         {
-            return PageInteractionHelper.IsElementDisplayed(PlacementsField);            
+            return PageInteractionHelper.IsElementDisplayed(PlacementsField);
         }
+        //    bool Displayed = PageInteractionHelper.IsElementDisplayed(PlacementsField);
+        //    Console.WriteLine(Displayed);
+
+        //    if (Displayed == false)
+        //    {
+        //        throw new Exception("Element verification failed: "
+        //       + "\n Expected element to be visible: " );              
+        //    }
+        //}
 
         public void VerifyNumberOfPLacementsIsNotVisibile()
         {
@@ -238,9 +250,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.VerifyText(ActualJobTypeTooLongError, expectedError);
         }
 
-        public void VerifyErrorJobRoleTooShort(string expectedError)
+        public bool VerifyErrorJobRoleTooShort(string expectedError)
         {
-            FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);            
+            return FormCompletionHelper.VerifyText(ActualJobTypeTooShortError, expectedError);            
         }
     }
 }

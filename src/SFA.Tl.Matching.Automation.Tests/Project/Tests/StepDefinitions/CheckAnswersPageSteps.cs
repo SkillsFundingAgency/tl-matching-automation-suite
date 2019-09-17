@@ -11,7 +11,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void ThenTheProvidersSelectedWillBeDisplayedOnTheReferralCheckAnswersScreen()
         {
             ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
-            referralCheckAnswersPage.VerifyProvidersAreDisplayed();
+            referralCheckAnswersPage.VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen();
         }
 
         [Then(@"the referral Check answers screen will display the referral details entered")]
@@ -19,13 +19,14 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
             referralCheckAnswersPage.VerifyEmployersAnswers();
-            referralCheckAnswersPage.VerifyProvidersAreDisplayed();
+            referralCheckAnswersPage.VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen();
         }
 
         [Given(@"I Confirm details on the Check answers page")]
         public void GivenIConfirmDetailsOnTheCheckAnswersPage()
         {
             ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
+            referralCheckAnswersPage.VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen();
             referralCheckAnswersPage.ConfirmAndSendOpportunity();
         }
     }
