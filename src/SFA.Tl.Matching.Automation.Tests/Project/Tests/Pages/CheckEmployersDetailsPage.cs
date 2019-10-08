@@ -72,13 +72,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             return new ReferralCheckAnswersPage(webDriver);
         }
 
-        internal OpportunitiesBasketReferralPage EnterEmployerContactDetailsAndContinueForAProvisionGapJourney(string name, string email, string number) //ForAReferralJourney
+        internal OpportunityBasketProvisionGapPage EnterEmployerContactDetailsAndContinueForAProvisionGapJourney(string name, string email, string number) //ForAReferralJourney
         {
             EnterEmployerContactName(name);
             EnterEmployerEmail(email);
             EnterEmployerPhoneNumber(number);
             ClickConfirmAndContinueButton();
-            return new OpportunitiesBasketReferralPage(webDriver);
+            ScenarioContext.Current["_EmployerContactName"] = name;
+            ScenarioContext.Current["_EmployerContactEmail"] = email;
+            ScenarioContext.Current["_EmployerContactNumber"] = number;
+            return new OpportunityBasketProvisionGapPage(webDriver);
         }
 
         internal CheckEmployersDetailsPage ClearEmployerContactDetailsAndContinue()

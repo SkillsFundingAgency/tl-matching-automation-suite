@@ -8,19 +8,24 @@ Background:
 @regression
 Scenario: A provision gap record is created where the user does not enter the number of placements required	
 	Given I navigate to Who is the employer page Provision Gap with unknown Number of students	
-	And I enter an Employer business name "testNameForGeneralFlow" and Continue
-	Then Enter the Employer Details and continue for Provision Gap Journey
+	When I enter an Employer business name "testNameForGeneralFlow" and Continue
+	And Enter the Employer Details and continue for Provision Gap Journey
     Then a Provision gap record will be created
-	When I Finish the Provision Gap Journey
-	Then the Opportunity record will record OPT IN has not been selected
+	And I Finish the Provision Gap Journey
+
 	
 @regression
-Scenario: A provision gap record is created where the user enters the number of placements required and opts in to share their details
-   Given I entered new search criteria and press Search again button on the Select Providers Page
-	And I press the report provision gap link
-	And I navigate to Who is the employer page Provision Gap with known Number of students    
-	And I enter an Employer business name "testNameForGeneralFlow" and Continue
-	Then Enter the Employer Details and continue for Provision Gap Journey
+Scenario: A provision gap record is created where the user enters the number of placements and a job title on the placement info screen
+   Given I navigate to Who is the employer page Provision Gap with known Number of students
+  # Given I entered new search criteria and press Search again button on the Select Providers Page
+	#And I press the report provision gap link
+	#And I navigate to Who is the employer page Provision Gap with known Number of students    
+	#And I enter an Employer business name "testNameForGeneralFlow" and Continue
+	#Then Enter the Employer Details and continue for Provision Gap Journey
+    #Then a Provision gap record will be created
+	#When I Finish the Provision Gap Journey
+	#Then the Opportunity record will record OPT IN has not been selected
+	When I enter an Employer business name "testNameForGeneralFlow" and Continue
+	And Enter the Employer Details and continue for Provision Gap Journey
     Then a Provision gap record will be created
-	When I Finish the Provision Gap Journey
-	Then the Opportunity record will record OPT IN has not been selected
+	And I Finish the Provision Gap Journey

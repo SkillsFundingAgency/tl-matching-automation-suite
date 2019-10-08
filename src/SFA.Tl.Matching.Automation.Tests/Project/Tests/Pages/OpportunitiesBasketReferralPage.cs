@@ -51,11 +51,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         //Assertions
         public void VerifyOpportunityDetailsAreDisplayedforOpportunity1()
         {
-            string StudentsWanted = "At least 1";
+            //string StudentsWanted = "At least 1";
             string NoOfProviders = "1";
+            string StudentsWanted = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
+            string JobRole = (string)ScenarioContext.Current["_provisionGapJobType"];
 
             PageInteractionHelper.VerifyText(Opportunity1WorkPlace, Constants.postCode);
-            PageInteractionHelper.VerifyText(Opportunity1JobRole, "None given");
+            // PageInteractionHelper.VerifyText(Opportunity1JobRole, "None given");
+            PageInteractionHelper.VerifyText(Opportunity1JobRole, JobRole);
             PageInteractionHelper.VerifyText(Opportunity1StudentsWanted, StudentsWanted);
             // PageInteractionHelper.VerifyText(Opportunity1NoOfProviders, NoOfProviders);
         }
@@ -69,7 +72,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             string _opportunityType = "Referral";
             string _searchPostcode = (string)ScenarioContext.Current["_SearchPostcode"];
             string _placementsRequired = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
-            string _placementsKnown;
+            string _placementsKnown = (string)ScenarioContext.Current["_provisionGapplacementsKnown"];
 
             string query = ("select oi.id, o.EmployerContact, o.EmployerContactEmail, o.EmployerContactPhone, OI.OpportunityType, oi.CreatedBy, oi.JobRole, oi.Postcode, oi.PlacementsKnown, oi.Placements, e.CompanyName, oi.SearchRadius from Employer E, Opportunity O, OpportunityItem OI where o.EmployerId = e.Id and o.Id = OI.OpportunityId and oi.id in (select max (oi.id) from Employer E, Opportunity O, OpportunityItem OI where o.EmployerId = e.Id and o.Id = OI.OpportunityId and e.CompanyName  = '" + EmployerName + "')");
             var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
@@ -87,28 +90,33 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
                 string searchPostcode = fieldNo[7].ToString();
                 string placementsKnown = fieldNo[8].ToString();
                 string numberofPlacements = fieldNo[9].ToString();
-                //OpportunityId = Convert.ToInt32(fieldNo[7]);
 
-                if (numberofPlacements == "1")
-                {
-                    _placementsKnown = "False";
-                    _placementsRequired = "1";
 
-                }
-                else
-                {
-                    _placementsKnown = "True";
-                }
+                //if (numberofPlacements == "1")
+                //{
+                //    _placementsKnown = "False";
+                //    _placementsRequired = "1";
 
-                // Console.WriteLine("Placements Known: " + placementsKnown);
+                //}
+                //else
+                //{
+                //    _placementsKnown = "True";
+                //}
 
                 //Assert the variables above to the actual values displayed on the screen
-                PageInteractionHelper.VerifyText(employercontact, _employercontact);
+                Console.WriteLine("1");
+                PageInteractionHelper.VerifyText(employercontact.ToUpper(), _employercontact.ToUpper());
+                Console.WriteLine("2");
                 PageInteractionHelper.VerifyText(employercontactemail, _employercontactemail);
+                Console.WriteLine("3");
                 PageInteractionHelper.VerifyText(employercontactphone, _employercontactphone);
+                Console.WriteLine("4");
                 PageInteractionHelper.VerifyText(OpportunityType, _opportunityType);
+                Console.WriteLine("5");
                 PageInteractionHelper.VerifyText(searchPostcode, _searchPostcode);
+                Console.WriteLine("6");
                 PageInteractionHelper.VerifyText(placementsKnown, _placementsKnown);
+                Console.WriteLine("7");
                 PageInteractionHelper.VerifyText(numberofPlacements, _placementsRequired);
 
             }
@@ -127,7 +135,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             string actualProviders = "";
             string expectedWorkPlace = (string)ScenarioContext.Current["_SearchPostcode"];
             string expectedJobRole = (string)ScenarioContext.Current["_provisionGapJobType"];
-            string expectedStudentsWanted = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
+            string expectedStudentsWanted = (string)ScenarioContext.Current["_provisionGapNumberofPlacementsDisplayed"];
             string expectedProviders = (string)ScenarioContext.Current["_Provider1"];
 
             for (int k = 0; k < rowTds.Count; k++)

@@ -12,12 +12,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String skillArea = "Construction";
         public const String radius = "25 miles";
         public const String jobTitle = "Builder";
+        public const String noOfPlacementsRequired = "3";
         public const String employerName = "Abacus Childrens Nurseries";
         public const String testEmployerNameForVerification = "Test Account DO NOT USE";
         public const String testName = "Shalini-ABC";
         public const String testEmail = "testEmail@fhgygy.com";
         public const String testPhoneNumber = "01234567890";
-        public const String NoofPlacements = "at least 1";
+        public const String NoofPlacements = "At least 1";
         public const String expectedCount = "1";
         public const String ProvisionGapOptInFalse = "False";
         public const String ProvisionGapOptInNo = "Null";

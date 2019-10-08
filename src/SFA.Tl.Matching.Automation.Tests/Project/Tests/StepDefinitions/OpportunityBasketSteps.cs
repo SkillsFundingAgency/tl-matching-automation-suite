@@ -27,18 +27,24 @@ namespace SFA.Tl.Matching.Automation.Tests
   
         }
 
+        [Then(@"I Finish the Provision Gap Journey")]
         [When(@"I Finish the Provision Gap Journey")]
         public void WhenIFinishTheProvisionGapJourney()
         {
             OpportunityBasketProvisionGapPage oppBasketPage = new OpportunityBasketProvisionGapPage(webDriver);
+            oppBasketPage.VerifyOpportunityDetailsAreDisplayedforOpportunity1();
+            oppBasketPage.VerifyLatestReferralRecordValues();
+            oppBasketPage.VerifyLatestOpportunityValuesDisplayedOnScreen();
             oppBasketPage.FinishProvisionGapJourney();
+
         }
 
         [Then(@"a Provision gap record will be created")]
         public void ThenAProvisionGapRecordWillBeCreated()
         {
             OpportunityBasketProvisionGapPage opportunityBasketPage = new OpportunityBasketProvisionGapPage(webDriver);
-            opportunityBasketPage.VerifyProvisionGapRecordCreated();
+            //opportunityBasketPage.VerifyProvisionGapRecordCreated();
+            //opportunityBasketPage.VerifyLatestProvisionGapRecordValues();
         }
 
         //Find out from Mayur what is this step actually doing

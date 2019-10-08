@@ -78,10 +78,6 @@ Please note, these tests are using hardcoded values to select the first two prov
  testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
  testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
- testRunner.And("I navigate to Who is the employer page Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -98,40 +94,51 @@ Please note, these tests are using hardcoded values to select the first two prov
 #line 6
 this.FeatureBackground();
 #line 14
- testRunner.Then("Enter the Employer Details and continue for Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I navigate to Who is the employer page Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
-    testRunner.Then("the referral Check answers screen will display the referral details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 16
+ testRunner.Then("Enter the Employer Details and continue for Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 17
- testRunner.Given("I Confirm details on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 18
- testRunner.And("I Continue with Single Opportunity on the Opportunity Basket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.Then("the referral Check answers screen will display the referral details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 19
+ testRunner.Given("I Confirm details on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 20
+ testRunner.And("I Continue with Single Opportunity on the Opportunity Basket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
  testRunner.And("I opt in to send emails and press Confirm and Send Opportunity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create a referral - A single referral")]
+        [NUnit.Framework.DescriptionAttribute("Create a referral - A single referral with no of placements and job role specifie" +
+            "d")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void CreateAReferral_ASingleReferral()
+        public virtual void CreateAReferral_ASingleReferralWithNoOfPlacementsAndJobRoleSpecified()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a referral - A single referral", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a referral - A single referral with no of placements and job role specifie" +
+                    "d", null, new string[] {
                         "regression"});
-#line 26
+#line 28
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 27
-    testRunner.Then("Enter the Employer Details and continue for Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 28
-    testRunner.Then("the referral Check answers screen will display the referral details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 29
- testRunner.Given("I Confirm details on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.And("I navigate to Who is the employer page Referral Journey by entering placement inf" +
+                    "ormation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 30
+ testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 31
+ testRunner.Then("Enter the Employer Details and continue for Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 32
+    testRunner.Then("the referral Check answers screen will display the referral details entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 33
+ testRunner.Given("I Confirm details on the Check answers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 37
  testRunner.And("I Continue with Single Opportunity on the Opportunity Basket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 34
+#line 38
  testRunner.And("I opt in to send emails and press Confirm and Send Opportunity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -146,16 +153,20 @@ this.FeatureBackground();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a referral - The user will not be asked to select the Employer again when " +
                     "they add more than one opportunity to a referral", null, new string[] {
                         "regression"});
-#line 37
+#line 41
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 38
-    testRunner.Given("I have added a single opportunity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
+#line 42
+    testRunner.And("I navigate to Who is the employer page Referral Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 43
+ testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 44
+ testRunner.Given("I have added a single opportunity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 45
  testRunner.When("I start Adding another Opportunity from Opportunity Basket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 40
+#line 46
  testRunner.Then("I will not be asked to select the Employer name again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

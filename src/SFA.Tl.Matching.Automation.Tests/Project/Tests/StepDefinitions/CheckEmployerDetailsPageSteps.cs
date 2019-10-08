@@ -26,6 +26,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             checkEmployerDetailsPage.EnterEmployerContactDetailsAndContinueForAReferralJourney(Constants.testName, Constants.testEmail, Constants.testPhoneNumber);
         }
 
+        [When(@"Enter the Employer Details and continue for Provision Gap Journey")]
         [Then(@"Enter the Employer Details and continue for Provision Gap Journey")]
         public void ThenEnterTheEmployerDetailsAndContinueForProvisionGapJourney()
         {
