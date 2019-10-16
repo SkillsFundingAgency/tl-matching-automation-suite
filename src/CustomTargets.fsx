@@ -11,7 +11,7 @@ Target "Run Automation Suite Tests" (fun _ ->
     
     let mutable shouldRunTests = false
 
-    let testDlls = !! ("./**/bin/" + testDirectory + "/*-Automation-Suite.dll") 
+    let testDlls = !! ("./**/bin/" + testDirectory + "/*SFA.Tl.Matching.Automation.Tests.dll") 
     
     for testDll in testDlls do
         shouldRunTests <- true
