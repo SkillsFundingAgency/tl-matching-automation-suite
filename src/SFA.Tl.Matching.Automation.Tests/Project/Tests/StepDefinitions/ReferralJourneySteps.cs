@@ -1,4 +1,5 @@
-﻿using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
+﻿using System;
+using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
 
@@ -33,7 +34,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             FindLocalProvidersPage findLocalProvidersPage = new FindLocalProvidersPage(webDriver);
             findLocalProvidersPage.EnterOpportunityDetailsAndSearchForProvidersSecondPass(Constants.skillArea, Constants.postCode)
                                   .SelectProvidersAndContinue()
-                                  .ClickContinueMoreThanOneOpportunityExists()
+                                  .EnterPlacementInformationClickContinueMoreThanOneOpportunityExists()
                                   .VerifyChosenProvidersAreDisplayedOnCheckAnswersScreen();
             ReferralCheckAnswersPage referralCheckAnswersPage = new ReferralCheckAnswersPage(webDriver);
             referralCheckAnswersPage.ConfirmAndSendOpportunity()

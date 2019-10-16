@@ -98,27 +98,25 @@ this.FeatureBackground();
  testRunner.Given("I navigate to Who is the employer page Provision Gap with unknown Number of stude" +
                     "nts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
- testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Then("Enter the Employer Details and continue for Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("Enter the Employer Details and continue for Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
     testRunner.Then("a Provision gap record will be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 14
- testRunner.When("I Finish the Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 15
- testRunner.Then("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I Finish the Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("A provision gap record is created where the user enters the number of placements " +
-            "required and opts in to share their details")]
+            "and a job title on the placement info screen")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void AProvisionGapRecordIsCreatedWhereTheUserEntersTheNumberOfPlacementsRequiredAndOptsInToShareTheirDetails()
+        public virtual void AProvisionGapRecordIsCreatedWhereTheUserEntersTheNumberOfPlacementsAndAJobTitleOnThePlacementInfoScreen()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A provision gap record is created where the user enters the number of placements " +
-                    "required and opts in to share their details", null, new string[] {
+                    "and a job title on the placement info screen", null, new string[] {
                         "regression"});
 #line 18
 this.ScenarioInitialize(scenarioInfo);
@@ -126,23 +124,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line 19
-   testRunner.Given("I entered new search criteria and press Search again button on the Select Provide" +
-                    "rs Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 20
- testRunner.And("I press the report provision gap link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
- testRunner.And("I navigate to Who is the employer page Provision Gap with known Number of student" +
-                    "s", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 22
- testRunner.And("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.Then("Enter the Employer Details and continue for Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 24
+   testRunner.Given("I navigate to Who is the employer page Provision Gap with known Number of student" +
+                    "s", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 28
+ testRunner.When("I enter an Employer business name \"testNameForGeneralFlow\" and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 29
+ testRunner.And("Enter the Employer Details and continue for Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 30
     testRunner.Then("a Provision gap record will be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 25
- testRunner.When("I Finish the Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 26
- testRunner.Then("the Opportunity record will record OPT IN has not been selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 31
+ testRunner.And("I Finish the Provision Gap Journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

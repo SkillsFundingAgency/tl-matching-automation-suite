@@ -65,12 +65,16 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private void SelectYesRadioButton()
         {
            FormCompletionHelper.ClickElement(YesRadioButton);
+            ScenarioContext.Current["_provisionGapplacementsKnown"] = "True";
+            
         }
 
         private void EnterNumberOfStudents()
         {
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacementEntered;
-            FormCompletionHelper.EnterText(PlacementsField, Constants.NoofPlacementEntered);
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.noOfPlacementsRequired;
+            ScenarioContext.Current["_provisionGapNumberofPlacementsDisplayed"] = Constants.noOfPlacementsRequired;
+            FormCompletionHelper.EnterText(PlacementsField, Constants.noOfPlacementsRequired);
+           
         }        
 
         private void EnterInvalidNumberOfStudents(string invalidNumberOfStudents)
@@ -82,7 +86,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private void SelectNoRadioButton()
         {
             FormCompletionHelper.ClickElement(NoRadioButton);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = "At least 1";
+            ScenarioContext.Current["_provisionGapplacementsKnown"] = "False";
+            ScenarioContext.Current["_provisionGapNumberofPlacements"] = "1";
+            ScenarioContext.Current["_provisionGapNumberofPlacementsDisplayed"] = "At least 1";
         }        
 
         private void ClickContinueButton()
@@ -102,6 +108,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             else
             {
                 SelectNoRadioButton();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
             }
             ClickContinueButton();            
             return new WhoIsTheEmployerPage(webDriver);
@@ -113,8 +120,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             {
                 SelectYesRadioButton();
                 EnterNumberOfStudents();
-                ScenarioContext.Current["_provisionGapJobType"] = "None given";
-
+                
             }
             else
             {
@@ -135,6 +141,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             else
             {
                 SelectNoRadioButton();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
             }
             ClickContinueButton();
             return new WhoIsTheEmployerPage(webDriver);
@@ -143,6 +150,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         internal PlacementInformationPage EnterNoPlacementInformationAndContinue()    //SelectYesContinue    //ClickContinue(No)
         {            
             ClickContinueButton();
+            return this;
+        }
+
+
+        internal PlacementInformationPage EnterValidJobRole(string JobRole)
+        {
+            EnterJobRole(JobRole);
+            ScenarioContext.Current["_provisionGapJobType"] = Constants.jobTitle;
             return this;
         }
 
@@ -171,14 +186,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             else
             {
                 SelectNoRadioButton();
+                ScenarioContext.Current["_provisionGapJobType"] = "None given";
             }
         }
 
-        public ReferralCheckAnswersPage ClickContinueMoreThanOneOpportunityExists()
+        public ReferralCheckAnswersPage EnterPlacementInformationClickContinueMoreThanOneOpportunityExists()
         {
             FormCompletionHelper.EnterText(JobTypeField, Constants.jobTitle);
-            FormCompletionHelper.ClickElement(NoRadioButton);
-            ScenarioContext.Current["_provisionGapNumberofPlacements"] = Constants.NoofPlacements;
+            SelectNoRadioButton();
+            ScenarioContext.Current["_provisionGapJobType"] = "None given";
             FormCompletionHelper.ClickElement(ContinueButton);
             return new ReferralCheckAnswersPage(webDriver);
         }

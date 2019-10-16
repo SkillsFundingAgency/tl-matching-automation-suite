@@ -18,6 +18,19 @@ namespace SFA.Tl.Matching.Automation.Tests
                 .EnterMandatoryPlacementInformationForChosenProvidersAndContinue("No");
         }
 
+        [Given(@"I navigate to Who is the employer page Referral Journey by entering placement information")]
+        public void GivenINavigateToWhoIsTheEmployerPageReferralJourneyByEnteringPlacementInformation()
+        {
+            StartPage startPage = new StartPage(webDriver);
+            startPage.StartANewOpportunity()
+                .EnterOpportunityDetailsAndSearchForProviders(Constants.skillArea, Constants.postCode)
+                .SelectProvidersAndContinue()
+                .EnterValidJobRole(Constants.jobTitle)
+                .EnterMandatoryPlacementInformationForChosenProvidersAndContinue("Yes");
+                
+        }
+
+
         [Given(@"I navigate to Who is the employer page Provision Gap with unknown Number of students")]
         public void GivenINavigateToWhoIsTheEmployerPageProvisionGapWithUnknownNumberOfStudents()
         {
@@ -33,11 +46,13 @@ namespace SFA.Tl.Matching.Automation.Tests
         {
             StartPage startPage = new StartPage(webDriver);
             startPage.StartANewOpportunity()
-                .EnterOpportunityDetailsAndSearchForProviders(Constants.postCode, Constants.skillArea)
+                .EnterOpportunityDetailsAndSearchForProviders(Constants.skillArea, Constants.postCode)
                 .SelectNoSuitableProviers()
+                .EnterValidJobRole(Constants.jobTitle)
                 .EnterMandatoryPlacementInformationForNoSuitableProvidersAndContinue("Yes");
         }
 
+        [When(@"I enter an Employer business name ""(.*)"" and Continue")]
         [Given(@"I enter an Employer business name ""(.*)"" and Continue")]
         public void GivenIEnterAnEmployerBusinessNameAndContinue(string typeOfEmployer)
         {
