@@ -237,11 +237,6 @@
     <Compile Include="Project\Framework\Repositories\Data\RoutePath.cs" />
     <Compile Include="Project\Framework\Repositories\EmployerRepository.cs" />
     <Compile Include="Project\Framework\Repositories\MatchingDbContext.cs" />
-    <Compile Include="Project\Tests\Features\EmployerFileUpload.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmployerFileUpload.feature</DependentUpon>
-    </Compile>
     <Compile Include="Project\Tests\Features\UploadFilePageErrorMessages.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -313,10 +308,6 @@
     <None Include="Project\Tests\Features\AddQualification.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddQualification.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Project\Tests\Features\EmployerFileUpload.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>EmployerFileUpload.feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\FindLocalProviders_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
