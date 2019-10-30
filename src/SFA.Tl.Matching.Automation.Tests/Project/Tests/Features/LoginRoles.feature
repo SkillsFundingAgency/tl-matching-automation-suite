@@ -23,7 +23,7 @@ Scenario: Standard users should not see a link to upload Employer data
 	Then I should be on the Start Page
 	And I should not see a link to upload Employer Data
 	
-@regression
-Scenario: IDAMS users not authorised to use the Matching Service will be denied login
-	Given I have logged in as an "Non Authorised User"
-	Then I should be on the Invalid Role Page
+#@regression
+#Scenario: IDAMS users not authorised to use the Matching Service will be denied login
+#	Given I have logged in as an "Non Authorised User"
+#	Then I should be on the Invalid Role Page

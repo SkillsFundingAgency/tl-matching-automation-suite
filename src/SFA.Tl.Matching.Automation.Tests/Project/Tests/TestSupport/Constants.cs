@@ -10,7 +10,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
     {
         public const String postCode = "B43 6JN";
         public const String skillArea = "Construction";
-        public const String radius = "25 miles";
+        public const String radius = "30 miles";
         public const String jobTitle = "Builder";
         public const String noOfPlacementsRequired = "3";
         public const String employerName = "Abacus Childrens Nurseries";
@@ -26,11 +26,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String InvalidUser = "InvalidUser";
         public const String InvalidPass = "InvalidPass";
         public const String postcodeNoResults = "G63 0AR";
+        public const String postCodeNoResultInSpecifiedRoute = "TR1 1AF";
         public const String skillAreaNoResults = "Agriculture, environmental and animal care";
+        public const String skillAreaNoResult = "Transport and logistics";
         public const String expectedskillAreaForNoResultsInAnySkillset = "any skill area";
         public const String radiusNoResults = "5 miles" ;
-        public const String oneResultpostCode = "B43 6JN";
-        public const String oneResultskillArea = "Protective services";
+        public const String oneResultpostCode = "TR1 1AF";
+        public const String oneResultskillArea = "Care services";
         public const String oneResultradius = "5 miles";
         public const String queryToGetQualificationMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarsID WHERE q.LarsID = lar.LarId";
         public const String queryToGetQualificationNotMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarsID WHERE q.LarsID IS NULL order by lar.Id desc";

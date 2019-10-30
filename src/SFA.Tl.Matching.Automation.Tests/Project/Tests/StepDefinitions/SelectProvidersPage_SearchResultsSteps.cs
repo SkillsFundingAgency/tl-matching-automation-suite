@@ -10,25 +10,31 @@ namespace SFA.Tl.Matching.Automation.Tests
     [Binding]
     public class SelectProvidersPage_SearchResultsSteps : BaseTest
     {
+        [Then(@"I have run the method to return all providers within (.*) miles")]
+        public void ThenIHaveRunTheMethodToReturnAllProvidersWithinMiles(int p0)
+        {
+            ProviderResultsHelper.ValidateProvidersDisplayed();
+        }
+
         [Given(@"I entered new search criteria and press Search again button on the Select Providers Page")]
         public void GivenIenteredNewSearchAndPressSearch()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillArea, Constants.postCode, Constants.radius);
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillArea, Constants.postCode);
         }
 
         [When(@"I have filled in the search form on the Search Providers page with criteria which returns no results")]
         public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnNoResults()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResults, Constants.postcodeNoResults, Constants.radiusNoResults);
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResults, Constants.postcodeNoResults);
         }
 
         [When(@"I have filled in the search form on the Search Providers page with criteria which returns no results in only selected skill area")]
         public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichReturnsNoResultsInOnlySelectedSkillArea()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-               .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResults, Constants.postCode, Constants.radiusNoResults);
+               .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillAreaNoResult, Constants.postCodeNoResultInSpecifiedRoute);
         }
 
 
@@ -37,7 +43,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnSomeResults()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillArea, Constants.postCode, Constants.radius);
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.skillArea, Constants.postCode);
         }
 
         //one
@@ -45,7 +51,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void WhenIHaveFilledInTheSearchFormOnTheSearchProvidersPageWithCriteriaWhichWillReturnResult(String p0)
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver)
-                .EnterNewOpportunityDetailsAndSearchAgain(Constants.oneResultskillArea, Constants.oneResultpostCode, Constants.oneResultradius);
+                .EnterNewOpportunityDetailsAndSearchAgain(Constants.oneResultskillArea, Constants.oneResultpostCode);
         }
 
         [Then(@"the Select Providers page will display the postcode and skill area selected on the Find Providers page")]
@@ -54,7 +60,7 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.skillArea);
-            selectProvidersPage.VerifySearchRadius(Constants.radius);
+            //selectProvidersPage.VerifySearchRadius(Constants.radius);
         }
         
         [Then(@"the Select Providers page will display (.*) results, skill area, postcode and radius in the H(.*) heading")]
@@ -64,28 +70,28 @@ namespace SFA.Tl.Matching.Automation.Tests
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.postCode);
             selectProvidersPage.VerifyZeroResultsCount();
-            selectProvidersPage.VerifySearchRadius(Constants.postCode);
+            //selectProvidersPage.VerifySearchRadius(Constants.postCode);
         }
 
         
-        [Then(@"the Select Providers page will display a H(.*) heading for zero results")]
-        public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResults(int p0)
+        [Then(@"the Select Providers page will display a H2 heading for zero results")]
+        public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResults()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.postcodeNoResults);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.expectedskillAreaForNoResultsInAnySkillset);
-            selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
+            //selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
             selectProvidersPage.VerifyZeroResultsCount();
             selectProvidersPage.VerifysHeadingShowsResults();
         }
 
-        [Then(@"the Select Providers page will display a H(.*) heading for zero results for the selected skill area")]
-        public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResultsForTheSelectedSkillArea(int p0)
+        [Then(@"the Select Providers page will display a H2 heading for zero results for the selected skill area")]
+        public void ThenTheSelectProvidersPageWillDisplayAHHeadingForZeroResultsForTheSelectedSkillArea()
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
-            selectProvidersPage.VerifySkillsetDisplayed(Constants.skillAreaNoResults);
-            selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
+            selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCodeNoResultInSpecifiedRoute);
+            selectProvidersPage.VerifySkillsetDisplayed(Constants.skillAreaNoResult);
+            //selectProvidersPage.VerifySearchRadius(Constants.radiusNoResults);
             selectProvidersPage.VerifyZeroResultsCount();
             selectProvidersPage.VerifysHeadingShowsResults();
         }
@@ -97,7 +103,7 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.skillArea);
-            selectProvidersPage.VerifySearchRadius(Constants.radius);
+            //selectProvidersPage.VerifySearchRadius(Constants.radius);
             selectProvidersPage.VerifyResultsCount();
             selectProvidersPage.VerifysHeadingShowsResults();
         }
@@ -108,7 +114,7 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.oneResultpostCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.oneResultskillArea);
-            selectProvidersPage.VerifySearchRadius(Constants.oneResultradius);
+            //selectProvidersPage.VerifySearchRadius(Constants.oneResultradius);
             selectProvidersPage.VerifysHeadingShowsResult();
         }
 
@@ -119,7 +125,7 @@ namespace SFA.Tl.Matching.Automation.Tests
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.oneResultpostCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.oneResultskillArea);
-            selectProvidersPage.VerifySearchRadius(Constants.oneResultradius);
+            //selectProvidersPage.VerifySearchRadius(Constants.oneResultradius);
             selectProvidersPage.VerifysHeadingShowsResult();
         }
 
@@ -130,7 +136,7 @@ namespace SFA.Tl.Matching.Automation.Tests
             selectProvidersPage.VerifyPostcodeDisplayed(Constants.postCode);
             selectProvidersPage.VerifySkillsetDisplayed(Constants.skillArea);
             selectProvidersPage.VerifyResultsCount();
-            selectProvidersPage.VerifySearchRadius(Constants.radius);
+            //selectProvidersPage.VerifySearchRadius(Constants.radius);
             selectProvidersPage.VerifysHeadingShowsResult();
         }
 

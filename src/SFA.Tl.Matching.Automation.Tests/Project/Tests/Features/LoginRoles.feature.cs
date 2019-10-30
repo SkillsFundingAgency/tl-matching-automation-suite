@@ -145,26 +145,6 @@ this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("IDAMS users not authorised to use the Matching Service will be denied login")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void IDAMSUsersNotAuthorisedToUseTheMatchingServiceWillBeDeniedLogin()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("IDAMS users not authorised to use the Matching Service will be denied login", null, new string[] {
-                        "regression"});
-#line 27
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 5
-this.FeatureBackground();
-#line 28
- testRunner.Given("I have logged in as an \"Non Authorised User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
- testRunner.Then("I should be on the Invalid Role Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
     }
 }
 #pragma warning restore

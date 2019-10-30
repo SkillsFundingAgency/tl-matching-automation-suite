@@ -27,8 +27,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By ActualInvalidPostcodeError = By.LinkText("You must enter a real postcode");
         private By ActualNumberResultsDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[1]");
         private By ActualSkillsetDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[2]");
-        private By ActualPostcodeDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[4]");
-        private By ActualSearchRadiusDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[3]");
+        private By ActualPostcodeDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2/span[4]");        
         private By ActualResultsCount = By.Id("tl-search-count");
         private By ActualResultHeadingDisplayed = By.XPath("//*[@id='main-content']/div[2]/div/h2");
 
@@ -60,11 +59,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             FormCompletionHelper.ClearText(PostcodeField);
         }
 
-        private void SelectPostcodeRadius(String dropdownValue)
+        /*private void SelectPostcodeRadius(String dropdownValue)
         {
             FormCompletionHelper.SelectFromDropDownByText(PostcodeRadius, dropdownValue);
             ScenarioContext.Current["_provisionGapPostcodeRadius"] = dropdownValue;
-        }
+        }*/
 
         private void ClickSearchAgain()
         {
@@ -88,11 +87,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         }
 
         //Behaviour
-        public SelectProvidersPage EnterNewOpportunityDetailsAndSearchAgain(string skillArea, string postCode, string radius)
+        public SelectProvidersPage EnterNewOpportunityDetailsAndSearchAgain(string skillArea, string postCode)
         {
             SelectSkillArea(skillArea);
             EnterPostcode(postCode);
-            SelectPostcodeRadius(radius);
+            //SelectPostcodeRadius(radius);
             ClickSearchAgain();
             return new SelectProvidersPage(webDriver);
         }        
@@ -166,21 +165,23 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         public void VerifysHeadingShowsResults()
         {
             String ExpectedResultsHeading = "results in";
-            PageInteractionHelper.VerifyText(ActualResultHeadingDisplayed, ExpectedResultsHeading);
+            String ActualResultHeading = webDriver.FindElement(ActualResultHeadingDisplayed).Text;
+            PageInteractionHelper.VerifyText(ActualResultHeading, ExpectedResultsHeading);
         }
 
         public void VerifysHeadingShowsResult()
         {
             String ExpectedResultsHeading = "result in";
-            PageInteractionHelper.VerifyText(ActualResultHeadingDisplayed, ExpectedResultsHeading);
+            String ActualResultHeading = webDriver.FindElement(ActualResultHeadingDisplayed).Text;
+            PageInteractionHelper.VerifyText(ActualResultHeading, ExpectedResultsHeading);
         }
 
-        public void VerifySearchRadius(String SearchRadius)
+        /*public void VerifySearchRadius(String SearchRadius)
         {
             //String expSearchRadius = (String)ScenarioContext.Current["_provisionGapPostcodeRadius"];
             String expSearchRadius = SearchRadius;
             PageInteractionHelper.VerifyText(ActualSearchRadiusDisplayed, expSearchRadius);
-        }                
+        }    */            
 
         public void VerifyProviderNotSelectedError(string ExpectedErrorMessage)
         {
