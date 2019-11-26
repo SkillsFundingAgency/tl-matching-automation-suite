@@ -12,9 +12,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         //Page Locators
         private static String PAGE_TITLE = "Confirm contact details for industry placements";
         private By ConfirmAndContinueButton = By.ClassName("govuk-button");
-        private By ContactField = By.Name("EmployerContact");
-        private By PhoneNumberField = By.Id("EmployerContactPhone");
-        private By EmailField = By.Id("EmployerContactEmail");
+        private By ContactField = By.Name("PrimaryContact"); //EmployerContact
+        private By PhoneNumberField = By.Id("Phone");  //EmployerContactPhone
+        private By EmailField = By.Id("Email"); //EmployerContactEmail
 
         //Error Message Locators
         private By EnterContactNameError = By.LinkText("You must enter a contact name for placements");

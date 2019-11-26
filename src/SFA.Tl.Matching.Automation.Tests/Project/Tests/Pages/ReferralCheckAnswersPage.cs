@@ -12,13 +12,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By PageHeading = By.XPath("//*[@id='main-content']/div/div/h1");
         private By ConfirmAndSendButton = By.ClassName("govuk-button");
         private By ConfirmationSelected = By.Name("ConfirmationSelected");
-        private By TypeOfPlacement = By.XPath("//tr[1]/td[1]");
-        private By Postcode = By.XPath("//tr[2]/td[1]");
+        private By TypeOfPlacement = By.XPath("//*[@id='tl-placement-table']/div[1]/dd[1]");
+        private By Postcode = By.XPath("//*[@id='tl-placement-table']/div[2]/dd[1]");  
         private By Radius = By.XPath("//*[@id='main-content']/div/div/table/tbody/tr[3]/td");
-        private By JobRole = By.XPath("//tr[3]/td[1]");
-        private By NumberOfPlacements = By.XPath("//tr[4]/td[1]");
+        private By JobRole = By.XPath("//*[@id='tl-placement-table']/div[3]/dd[1]");
+        private By NumberOfPlacements = By.XPath("//*[@id='tl-placement-table']/div[4]/dd[1]");
         //private By provider1Name = By.XPath("//*[@id='main-content']/div/div/p[1]");
-        private By provider1Name = By.XPath("//table[2]//tr[1]/th"); //updated for new changes
+        private By provider1Name = By.XPath("//*[@id='tl-providers-table']/div/dt"); //updated for new changes
         //private By provider2Name = By.XPath("//table[2]//tr[2]/th");
 
         //Variables to store values from the database
@@ -91,7 +91,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public void VerifyEmployersAnswers()
         {
-            String query = ("Select oi.Postcode, oi.SearchRadius, oi.JobRole, oi.PlacementsKnown, oi.Placements, e.CompanyName from opportunity o, OpportunityItem OI, employer e where o.id = oi.OpportunityId and o.EmployerId = e.Id and o.ID in (select max(id) from opportunity)");
+            String query = ("Select oi.Postcode, oi.SearchRadius, oi.JobRole, oi.PlacementsKnown, oi.Placements, e.CompanyName from opportunity o, OpportunityItem OI, employer e where o.id = oi.OpportunityId and o.EmployerCrmId = e.CrmId and o.ID in (select max(id) from opportunity)");
             var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
 
             foreach (object[] fieldNo in queryResults)

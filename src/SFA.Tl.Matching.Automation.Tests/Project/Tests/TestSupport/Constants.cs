@@ -34,8 +34,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String oneResultpostCode = "TR1 1AF";
         public const String oneResultskillArea = "Care services";
         public const String oneResultradius = "5 miles";
-        public const String queryToGetQualificationMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarsID WHERE q.LarsID = lar.LarId";
-        public const String queryToGetQualificationNotMappedToService = "SELECT LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarsID WHERE q.LarsID IS NULL order by lar.Id desc";
+        public const String queryToGetQualificationMappedToService = "SELECT lar.LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarID WHERE q.LarID = lar.LarId";
+        public const String queryToGetQualificationNotMappedToService = "SELECT lar.LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarID WHERE q.LarID IS NULL order by lar.Id desc";
         public const String Opportunity1Postcode = "B43 6JN";
         public const String Opportunity1JobRole = "None given";
         public const String Opportunity1StudentsWanted = "At least 1";
