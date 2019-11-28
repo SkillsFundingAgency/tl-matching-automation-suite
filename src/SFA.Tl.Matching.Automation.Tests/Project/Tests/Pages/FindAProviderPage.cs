@@ -11,6 +11,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private By ProviderUkprnSearchField = By.Id("UkPrn");
         private By Search = By.ClassName("button");
         private By ProviderEditLink = By.PartialLinkText("Edit"); //provider-overview/977
+        private By BlankUkprnError = By.XPath("//div[1]/div/div/div/ul/li/a");
+        private By InvalidUkprnError = By.XPath("//div[1]/div/div/div/ul/li/a");
 
         public FindAProviderPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -32,6 +34,28 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         {
             FormCompletionHelper.ClickElement(ProviderEditLink);
             return new ProviderAndVenuesDetailsPage(webDriver);
-        }        
+        }
+
+        public void SearchForAProviderUkprnWithNoTextEntered()
+        {
+            FormCompletionHelper.ClearText(ProviderUkprnSearchField);
+            FormCompletionHelper.ClickElement(Search);
+        }
+
+        public void SearchForAnInvalidUkprn()
+        {
+            FormCompletionHelper.EnterText(ProviderUkprnSearchField, Constants.invalidUkprn);
+            FormCompletionHelper.ClickElement(Search);
+        }
+
+        public void VerifyNullSearchErrorMessage(String expectedErrorMessage)
+        {
+            PageInteractionHelper.VerifyText(BlankUkprnError, expectedErrorMessage);
+        }
+
+        public void VerifyInvalidUkprnErrorMessage(String expectedErrorMessage)
+        {
+            PageInteractionHelper.VerifyText(InvalidUkprnError, expectedErrorMessage);
+        }
     }
 }
