@@ -45,6 +45,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String opportunity2StudentsWanted = "At least 1";
         public const String opportunity2Providers = "1";
         public const String opportunity2SkillArea = "Care services";
-
+        public const string invalidUkprn = "Invalid";
     }
 }
