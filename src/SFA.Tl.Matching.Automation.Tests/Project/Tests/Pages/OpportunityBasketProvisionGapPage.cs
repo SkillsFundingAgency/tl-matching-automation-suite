@@ -179,7 +179,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             string _placementsRequired = (string)ScenarioContext.Current["_provisionGapNumberofPlacements"];
             string _placementsKnown;
 
-            string query = ("select oi.id, o.EmployerContact, o.EmployerContactEmail, o.EmployerContactPhone, OI.OpportunityType, oi.CreatedBy, oi.JobRole, oi.Postcode, oi.PlacementsKnown, oi.Placements, e.CompanyName, oi.SearchRadius from Employer E, Opportunity O, OpportunityItem OI where o.EmployerId = e.Id and o.Id = OI.OpportunityId and oi.id in (select max (oi.id) from Employer E, Opportunity O, OpportunityItem OI where o.EmployerId = e.Id and o.Id = OI.OpportunityId and e.CompanyName  = '" + EmployerName + "')");
+            string query = ("select oi.id, o.EmployerContact, o.EmployerContactEmail, o.EmployerContactPhone, OI.OpportunityType, oi.CreatedBy, oi.JobRole, oi.Postcode, oi.PlacementsKnown, oi.Placements, e.CompanyName, oi.SearchRadius from Employer E, Opportunity O, OpportunityItem OI where o.EmployerCrmId = e.CrmId and o.Id = OI.OpportunityId and oi.id in (select max(oi.id) from Employer E, Opportunity O, OpportunityItem OI where o.EmployerCrmId = e.CrmId and o.Id = OI.OpportunityId and e.CompanyName = '" + EmployerName + "')");
             var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
 
             foreach (object[] fieldNo in queryResults)
