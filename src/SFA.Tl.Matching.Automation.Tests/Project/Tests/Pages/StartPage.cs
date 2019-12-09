@@ -10,9 +10,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     {
         String ExpectedPageURL = "https://test.industryplacementmatching.education.gov.uk/Start";
         private static String PAGE_TITLE = "Match employers with providers for industry placements";
-        private By StartANewOpportunityButton = By.Id("tl-start-now");        
-        private By UploadLink = By.Id("tl-upload-link");
-        private By AddOrEditProviderDataLink = By.Id("tl-Add-edit-provider-link");
+        private By StartANewOpportunityLink = By.PartialLinkText("Create and refer new opportunities");
+        private By UploadLink = By.Id("tl-dash-uploaddata");
+        private By ManageProviderDataLink = By.Id("tl-dash-manageprovider");
         private By SignOutLink = By.LinkText("Sign out");
 
         public StartPage(IWebDriver webDriver) : base(webDriver)
@@ -30,14 +30,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             PageInteractionHelper.VerifyPageURL(webDriver.Url, ExpectedPageURL);
         }        
 
+        //Actions
         private void ClickUploadLink()
         {
             FormCompletionHelper.ClickElement(UploadLink);
-        }        
+        }
 
-        private void ClickAddOrEditProviderDataLink()
+        private void ClickManageProviderDataLink()
         {
-            FormCompletionHelper.ClickElement(AddOrEditProviderDataLink);
+            FormCompletionHelper.ClickElement(ManageProviderDataLink);
         }
 
         private void SignOut()
@@ -48,7 +49,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         //Behaviour        
         public FindLocalProvidersPage StartANewOpportunity()
         {
-            FormCompletionHelper.ClickElement(StartANewOpportunityButton);
+            FormCompletionHelper.ClickElement(StartANewOpportunityLink);
             return new FindLocalProvidersPage(webDriver);
         }
 
@@ -60,7 +61,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
         public FindAProviderPage StartAddingProviderData()
         {
-            ClickAddOrEditProviderDataLink();
+            ClickManageProviderDataLink();
             return new FindAProviderPage(webDriver);
         }        
 

@@ -9,13 +9,13 @@ Background:
 Scenario: Admin users should see a link to upload Employer data
 	Given I have logged in as an "Admin User"
 	Then I should be on the Start Page
-	And I should see an option stating "Upload employer and provider data"
+	And I should see an option stating "Manually upload data"
 
 @regression
 Scenario: Users with both Admin and Standard user access should see a link to upload Employer data
 	Given I have logged in as an "Dual User"
 	Then I should be on the Start Page
-	And I should see an option stating "Upload employer and provider data"
+	And I should see an option stating "Manually upload data"
 
 @regression
 Scenario: Standard users should not see a link to upload Employer data
