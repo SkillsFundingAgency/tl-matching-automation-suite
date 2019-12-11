@@ -12,16 +12,16 @@ Background:
 	When I press Upload
 	Then I should see an Error for no file selected 
 
-@regression
-    Scenario: Attempt to upload a Word document
-	Given I select "Employer" from the dropdown
-	And I select a Word document
-	When I press Upload
-	Then I should see an Error for invalid file selected
-
-@regression
-    Scenario: Attempt to upload a JPEG
-	Given I select "Employer" from the dropdown
-	And I select a JPEG image
-	When I press Upload
-	Then I should see an Error for invalid file selected
+#@regression
+#    Scenario: Attempt to upload a Word document
+#	Given I select "Employer" from the dropdown
+#	And I select a Word document
+#	When I press Upload
+#	Then I should see an Error for invalid file selected
+#
+#@regression
+#    Scenario: Attempt to upload a JPEG
+#	Given I select "Employer" from the dropdown
+#	And I select a JPEG image
+#	When I press Upload
+#	Then I should see an Error for invalid file selected
