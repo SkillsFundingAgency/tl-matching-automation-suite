@@ -18,21 +18,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Upload file page errors")]
-    public partial class UploadFilePageErrorsFeature
+    [NUnit.Framework.DescriptionAttribute("This feature is not a regression test. It is used for returning all providers wit" +
+        "hin a given number of miles.")]
+    public partial class ThisFeatureIsNotARegressionTest_ItIsUsedForReturningAllProvidersWithinAGivenNumberOfMiles_Feature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UploadFilePageErrorMessages.feature"
+#line 1 "Providers_Within_X_Miles.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Upload file page errors", "\tVerification of the correct errors being displayed when a file upload is attempt" +
-                    "ed ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "This feature is not a regression test. It is used for returning all providers wit" +
+                    "hin a given number of miles.", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,36 +71,18 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 4
-#line 5
- testRunner.Given("I have navigated to the IDAMS login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 6
- testRunner.And("I have logged in as an \"Admin User\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 7
- testRunner.And("I Navigate to File Upload Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-        }
-        
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Attempt to upload a file without selecting a file")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void AttemptToUploadAFileWithoutSelectingAFile()
+        [NUnit.Framework.DescriptionAttribute("Return all providers within 30 miles")]
+        [NUnit.Framework.CategoryAttribute("Functionality")]
+        public virtual void ReturnAllProvidersWithin30Miles()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Attempt to upload a file without selecting a file", null, new string[] {
-                        "regression"});
-#line 10
-    this.ScenarioInitialize(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Return all providers within 30 miles", null, new string[] {
+                        "Functionality"});
+#line 5
+this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line 11
- testRunner.Given("I select \"Employer\" from the dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
- testRunner.When("I press Upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
- testRunner.Then("I should see an Error for no file selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 6
+ testRunner.Given("I have entered a postcode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }

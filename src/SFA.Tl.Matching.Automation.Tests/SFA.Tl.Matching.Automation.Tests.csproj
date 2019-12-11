@@ -170,6 +170,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginRoles.feature</DependentUpon>
     </Compile>
+    <Compile Include="Project\Tests\Features\Providers_Within_X_Miles.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Providers_Within_X_Miles.feature</DependentUpon>
+    </Compile>
     <Compile Include="Project\Tests\StepDefinitions\Admin_FindAProviderPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\BeforeYouSendEmailsPageSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\EmailsSentPageSteps.cs" />
@@ -289,6 +294,7 @@
     <Compile Include="Project\Tests\StepDefinitions\ProviderFileUploadSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\SelectProvidersPage_SearchResultsSteps.cs" />
     <Compile Include="Project\Tests\StepDefinitions\WhoIsTheEmployerPageSteps.cs" />
+    <Compile Include="Project\Tests\StepDefinitions\Providers_Within_X_MilesSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -326,6 +332,10 @@
     <None Include="Project\Tests\Features\LoginRoles.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoginRoles.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Project\Tests\Features\Providers_Within_X_Miles.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Providers_Within_X_Miles.feature.cs</LastGenOutput>
     </None>
     <None Include="Project\Tests\Features\ProvisionGap_PlacementInformation_ErrorMessages.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
