@@ -1,6 +1,6 @@
 pool:
-    name: 'Azure Pipelines'
-    vmImage: 'windows-2019'
+  name: 'Azure Pipelines'
+  vmImage: 'windows-2019'
   demands:
   - Cmd
 
