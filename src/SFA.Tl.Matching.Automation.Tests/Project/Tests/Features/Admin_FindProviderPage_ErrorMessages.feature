@@ -11,7 +11,7 @@ Scenario: The Search button is pressed when the text field is null
 	When I clear the UKPRN search field and press Search
 	Then the user will be shown he following message "You must enter a UKPRN"
 
-	@regression
+@regression
 Scenario: A UKPRN entered in the wrong format is searched for
 	When I enter an invalid UKPRN and press Search
 	Then the user will be shown the following message for invalid Ukprn "The value 'Invalid' is not valid for UKPRN."

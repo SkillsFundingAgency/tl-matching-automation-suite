@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
 {
@@ -10,6 +7,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
     {
         public const String postCode = "B43 6JN";
         public const String skillArea = "Construction";
+        public const String skillAreaFilter1 = "Agriculture, environmental and animal care";
+        public const String skillAreaFilter2 = "Business and administration";
         public const String radius = "30 miles";
         public const String jobTitle = "Builder";
         public const String noOfPlacementsRequired = "3";
@@ -45,6 +44,6 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String opportunity2StudentsWanted = "At least 1";
         public const String opportunity2Providers = "1";
         public const String opportunity2SkillArea = "Care services";
-        public const string invalidUkprn = "Invalid";
+        public const String invalidUkprn = "Invalid";
     }
 }

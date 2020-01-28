@@ -1,5 +1,4 @@
-﻿using System;
-using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
+﻿using SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using TechTalk.SpecFlow;
 
@@ -29,13 +28,11 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             findAProviderPage.VerifyInvalidUkprnErrorMessage(errorMessage);
         }
 
-
         [When(@"I enter an invalid UKPRN and press Search")]
         public void WhenIEnterAnInvalidUKPRNAndPressSearch()
         {
             FindAProviderPage findAProviderPage = new FindAProviderPage(webDriver);
             findAProviderPage.SearchForAnInvalidUkprn();
         }
-
     }
 }
