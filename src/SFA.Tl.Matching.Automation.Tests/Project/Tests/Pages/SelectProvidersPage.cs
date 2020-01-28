@@ -161,7 +161,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
             int expResultsCount = 0;
             PageInteractionHelper.VerifyText(ActualNumberResultsDisplayed, expResultsCount);
         }
-
+        
         public void VerifysHeadingShowsResults()
         {
             String ExpectedResultsHeading = "results in";

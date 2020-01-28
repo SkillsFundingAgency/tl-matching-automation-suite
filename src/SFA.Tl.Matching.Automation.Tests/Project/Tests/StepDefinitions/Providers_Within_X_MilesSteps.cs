@@ -1,5 +1,4 @@
-﻿using System;
-using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
+﻿using SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers;
 using TechTalk.SpecFlow;
 
 namespace SFA.Tl.Matching.Automation.Tests
@@ -10,8 +9,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         [Given(@"I have entered a postcode")]
         public void GivenIHaveEnteredAPostcode()
         {
-            ProviderResultsHelper.AllProviders_AllSkillAreas();              
-
+            ProviderResultsHelper.AllProviders_AllSkillAreas();
         }
      }
 }

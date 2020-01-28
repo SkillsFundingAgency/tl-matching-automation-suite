@@ -196,7 +196,7 @@ namespace SFA.Tl.Matching.Automation.Tests
         public void ThenIAmShownAnErrorForInvalidPostcodeStating(string expectedErrorMessage)
         {
             SelectProvidersPage selectProvidersPage = new SelectProvidersPage(webDriver);
-            selectProvidersPage.VerifyInvalidPostcodeError(expectedErrorMessage); 
+            selectProvidersPage.VerifyInvalidPostcodeError(expectedErrorMessage);
         }
     }
 }
