@@ -95,10 +95,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Features
 #line 4
 this.FeatureBackground();
 #line 11
- testRunner.Given("I select \"Employer\" from the dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
  testRunner.When("I press Upload", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
+#line 12
  testRunner.Then("I should see an Error for no file selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
