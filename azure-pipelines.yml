@@ -1,14 +1,10 @@
-pool:
-  name: 'Azure Pipelines'
-  vmImage: 'vs2017-win2016'
-  demands:
-  - Cmd
-
-name: $(Build.MajorNumber).$(Build.MinorNumber)$(Rev:.r)
+resources:
+  repositories:
+    - repository: self
+      persistCredentials: true
+      clean: true
 
 variables:
-  Build.MajorNumber: '0'
-  Build.MinorNumber: '1'
   BuildConfiguration: 'Release'
   BuildPlatform: 'Release'
 stages:
