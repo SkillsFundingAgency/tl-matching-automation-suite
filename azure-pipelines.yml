@@ -11,47 +11,6 @@ variables:
   Build.MinorNumber: '1'
   BuildConfiguration: 'Release'
   BuildPlatform: 'Release'
-
-steps:
-  - task: BatchScript@1
-    displayName: 'Run script src/RunBuild.bat'
-    inputs:
-      filename: src/RunBuild.bat
-      arguments: '"Release"'
-      workingFolder: src
-
-  - task: CopyPublishBuildArtifacts@1
-    displayName: 'Copy Publish Artifact: Publish'
-    inputs:
-      CopyRoot: src/
-      Contents: |
-        SFA.Tl.Matching.Automation.Tests/bin/Release/**/*.*
-        *.fsx
-        *.bat
-        Tools\Nuget\NuGet.exe
-      ArtifactName: Publish
-      ArtifactType: Container
-
-  - task: Tokenization@2
-    displayName: 'Tokenization: Transform file *.config'
-    inputs:
-      SourcePath: '$(System.DefaultWorkingDirectory)'
-      TargetFileNames: '*.config'
-      RequireVariable: true
-
-      
-  - task: BatchScript@1
-    displayName: 'Run script $(System.DefaultWorkingDirectory)/tl-matching-automation-suite/Publish/RunBuild.bat'
-    inputs:
-      filename: '$(System.DefaultWorkingDirectory)/tl-matching-automation-suite/Publish/RunBuild.bat'
-      arguments: '"Release" "Run Automation Suite Tests"'
-      workingFolder: '$(System.DefaultWorkingDirectory)/tl-matching-automation-suite/Publish'
-    continueOnError: true
-    
-  - task: PublishTestResults@2
-    displayName: 'Publish Test Results **\Test*.xml'
-    inputs:
-      testResultsFormat: NUnit
-      testResultsFiles: '**\Test*.xml'
-      mergeTestResults: true
-      testRunTitle: 'T-Levels Matching Automation Suite TEST'
+stages:
+  - template: ./yaml/stages/build.yml
+  - template: ./yaml/stages/runtests.yml
