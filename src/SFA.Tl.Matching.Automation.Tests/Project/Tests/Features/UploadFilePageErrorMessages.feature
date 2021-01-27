@@ -8,7 +8,6 @@ Background:
 
 @regression
     Scenario: Attempt to upload a file without selecting a file
-	Given I select "Employer" from the dropdown
 	When I press Upload
 	Then I should see an Error for no file selected 
 
