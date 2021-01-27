@@ -4,6 +4,12 @@ resources:
       persistCredentials: true
       clean: true
 
+pool:
+  name: 'Azure Pipelines'
+  vmImage: 'windows-latest'
+  demands:
+  - Cmd
+
 variables:
   BuildConfiguration: 'Release'
   BuildPlatform: 'Release'
