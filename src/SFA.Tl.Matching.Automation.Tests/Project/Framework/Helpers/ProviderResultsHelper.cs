@@ -73,7 +73,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             postcodeRadius = Regex.Replace(postcodeRadius, "[^.0-9]", "");
             int _postcodeRadius = Convert.ToInt32(postcodeRadius);
 
-            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude from ProviderQualification pq, Qualification q, QualificationRouteMapping qrpm, provider p, ProviderVenue pv, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.RouteId = r.Id and r.Name = '" + skillArea + "' and pv.Latitude is not null and pv.Longitude is not null and pv.isenabledforreferral = 1 and p.iscdfprovider=1 and p.isenabledforreferral=1");
+            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude from ProviderQualification pq, Qualification q, QualificationRouteMapping qrpm, provider p, ProviderVenue pv, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.RouteId = r.Id and r.Name = '" + skillArea + "' and pv.Latitude is not null and pv.Longitude is not null and pv.isenabledforreferral = 1 and p.iscdfprovider=1 and p.isenabledforreferral=1 and Q.IsDeleted = '0'");
 
             var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
 
@@ -127,7 +127,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
         {
             int _postcodeRadius = 30;
 
-            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude,PV.ID from ProviderQualification pq, Qualification q, QualificationRouteMapping qrpm, provider p, ProviderVenue pv, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.RouteId = r.Id and pv.Latitude is not null and pv.Longitude is not null and pv.isenabledforreferral = 1 and p.iscdfprovider=1 and p.isenabledforreferral=1");
+            String query = ("select DISTINCT(p.Name), pv.Postcode, PV.Latitude, PV.Longitude,PV.ID from ProviderQualification pq, Qualification q, QualificationRouteMapping qrpm, provider p, ProviderVenue pv, route r where p.Id = pv.ProviderId and pv.Id = pq.ProviderVenueId and pq.QualificationId = q.Id and q.id = qrpm.QualificationId and qrpm.RouteId = r.Id and q.IsDeleted = '0' and pv.Latitude is not null and pv.Longitude is not null and pv.isenabledforreferral = 1 and p.iscdfprovider=1 and p.isenabledforreferral=1");
 
             var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
 

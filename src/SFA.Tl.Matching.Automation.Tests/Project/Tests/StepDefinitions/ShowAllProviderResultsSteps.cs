@@ -102,7 +102,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             ProviderResultsOnlyPage providerResultsOnlyPage = new ProviderResultsOnlyPage(webDriver);
             providerResultsOnlyPage.VerifyOneResultCount();
             providerResultsOnlyPage.VerifysHeadingShowsResultFor();
-            providerResultsOnlyPage.VerifySkillsetDisplayed("Care services");
+            providerResultsOnlyPage.VerifySkillsetDisplayed(Constants.oneResultskillArea);
         }
     }
 }
