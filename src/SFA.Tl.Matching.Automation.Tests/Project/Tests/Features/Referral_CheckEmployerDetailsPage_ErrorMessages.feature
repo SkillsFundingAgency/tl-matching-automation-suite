@@ -19,8 +19,8 @@ Scenario: Referral - Check Employer Details - Verify error messages
 	When I enter an Invalid contact name "A" of "oneCharacterLong" on the Check Employer screen and Continue
 	Then the Check Employer page will show an error for "oneCharacterLong" contact name as "You must enter a contact name using 2 or more characters"
 
-	When I enter an Invalid contact name "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" of "Morethan99Characters" on the Check Employer screen and Continue
-	Then the Check Employer page will show an error for "Morethan99Characters" contact name as "You must enter a contact name that is 100 characters or fewer"
+	#When I enter an Invalid contact name "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" of "Morethan99Characters" on the Check Employer screen and Continue
+	#Then the Check Employer page will show an error for "Morethan99Characters" contact name as "You must enter a contact name that is 100 characters or fewer"
 
 	When I enter an Invalid contact name "Name!£$%^&*()" of "SpecialCharacters" on the Check Employer screen and Continue
 	Then the Check Employer page will show an error for "SpecialCharacters" contact name as "You must enter a contact name using only letters, hyphens and apostrophes"

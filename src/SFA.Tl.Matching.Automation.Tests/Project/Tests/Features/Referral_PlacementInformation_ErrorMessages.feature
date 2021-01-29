@@ -29,7 +29,6 @@ Scenario Outline: Referral-Placement Information - Job type must be between 2 an
 Examples:
 | Number            | JobRole                                                                                               | ErrorMessage                                              |
 | 1                 | A                                                                                                     | You must enter a job role using 2 or more characters      |
-| 100               | ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA | You must enter a job role that is 100 characters or fewer |
 | Numbers           | 123456                                                                                                | You must enter a job role using letters                   |
 | SpecialCharacters | %^&**&^                                                                                               | You must enter a job role using letters                   |
 | NumAndSpecialChar | 565%$^^6678&*                                                                                         | You must enter a job role using letters                   |  

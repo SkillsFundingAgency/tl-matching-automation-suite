@@ -144,8 +144,6 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Placement Information - Job type must be between 2 and 99 characters")]
         [NUnit.Framework.CategoryAttribute("regression")]
         [NUnit.Framework.TestCaseAttribute("1", "A", "You must enter a job role using 2 or more characters", null)]
-        [NUnit.Framework.TestCaseAttribute("100", "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" +
-            "BCDEFGHIJABCDEFGHIJA", "You must enter a job role that is 100 characters or fewer", null)]
         [NUnit.Framework.TestCaseAttribute("Numbers", "123456", "You must enter a job role using letters", null)]
         [NUnit.Framework.TestCaseAttribute("SpecialCharacters", "%^&**&^", "You must enter a job role using letters", null)]
         [NUnit.Framework.TestCaseAttribute("NumAndSpecialChar", "565%$^^6678&*", "You must enter a job role using letters", null)]
@@ -190,16 +188,16 @@ this.FeatureBackground();
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placement Information - Number of Students must be between 1 and 999", null, @__tags);
-#line 39
+#line 38
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 40
+#line 39
  testRunner.Given("I navigate to the Provision Gap Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 41
+#line 40
  testRunner.When(string.Format("I enter Invalid number of Students {0} and Continue", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 42
+#line 41
  testRunner.Then(string.Format("the {0} for Invalid Number of Students is displayed for {1}", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
