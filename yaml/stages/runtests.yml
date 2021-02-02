@@ -3,7 +3,15 @@ stages:
   jobs:
   - job: tests
     steps:
+    
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'appdrop'
+        downloadPath: '$(System.ArtifactsDirectory)'
     - pwsh: Get-ChildItem -Recurse
+    
     # - task: Tokenization@2
     #   displayName: 'Tokenization: Transform file *.json'
     #   inputs:
