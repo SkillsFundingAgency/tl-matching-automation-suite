@@ -3,9 +3,7 @@ stages:
   jobs:
   - job: tests
     steps:
-    - pwsh: |
-        Set-Location $(System.ArtifactsDirectory)
-        Get-ChildItem -Recurse
+    - pwsh: Get-ChildItem -Recurse
     # - task: Tokenization@2
     #   displayName: 'Tokenization: Transform file *.json'
     #   inputs:
