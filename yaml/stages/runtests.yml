@@ -11,26 +11,23 @@ stages:
         downloadType: 'single'
         artifactName: 'appdrop'
         downloadPath: '$(System.ArtifactsDirectory)'
+
     - pwsh: Get-ChildItem -Recurse
 
-    # - task: Tokenization@2
-    #   displayName: 'Tokenization: Transform file *.json'
-    #   inputs:
-    #     SourcePath: '$(System.ArtifactsDirectory)/appdrop/tests'
-    #     TargetFileNames: '*.json'
-    
-    
+    - task: Tokenization@2
+      displayName: 'Tokenization: Transform file *.config'
+      inputs:
+        SourcePath: '$(System.ArtifactsDirectory)/appdrop/tests'
+        TargetFileNames: '*.config'
 
-    # - task: VSTest@2
-    #   inputs:
-    #     testSelector: 'testAssemblies'
-    #     testAssemblyVer2: |
-    #       **\*test*.dll
-    #       !**\*TestAdapter.dll
-    #       !**\obj\**
-    #     searchFolder: '$(System.ArtifactStagingDirectory)'
-    #     platform: '$(buildPlatform)'
-    #     configuration: '$(buildConfiguration)'
+    - task: VSTest@2
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\*test*.dll
+        searchFolder: '$(System.ArtifactStagingDirectory)'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
 # stages:
 #   - stage: tests
 #     jobs:
