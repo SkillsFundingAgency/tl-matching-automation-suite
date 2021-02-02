@@ -1,32 +1,30 @@
 stages:
-  - stage: tests
-    jobs:
-    - job: tests
-      steps:
-      - task: DownloadBuildArtifacts@0
-        inputs:
-          buildType: 'current'
-          downloadType: 'single'
-          artifactName: 'Publish'
-          downloadPath: '$(System.ArtifactsDirectory)'
+- stage: tests
+  dependsOn: build
+  jobs:
+  - job: tests
+    steps:
+    
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'appdrop'
+        downloadPath: '$(System.ArtifactsDirectory)'
 
-      - task: Tokenization@2
-        displayName: 'Tokenization: Transform file *.config'
-        inputs:
-          SourcePath: '$(System.ArtifactsDirectory)/Publish'
-          TargetFileNames: '*.config'
-          RequireVariable: true
-      - task: BatchScript@1
-        displayName: 'Run script $(System.ArtifactsDirectory)/Publish/RunBuild.bat'
-        inputs:
-          filename: '$(System.ArtifactsDirectory)/Publish/RunBuild.bat'
-          arguments: '"Release" "Run Automation Suite Tests"'
-          workingFolder: '$(System.ArtifactsDirectory)/Publish'
-        continueOnError: true
-      - task: PublishTestResults@2
-        displayName: 'Publish Test Results **\Test*.xml'
-        inputs:
-          testResultsFormat: NUnit
-          testResultsFiles: '**\Test*.xml'
-          mergeTestResults: true
-          testRunTitle: 'T-Levels Matching Automation Suite TEST'
+    - pwsh: Get-ChildItem -Recurse
+
+    - task: Tokenization@2
+      displayName: 'Tokenization: Transform file *.config'
+      inputs:
+        SourcePath: '$(System.ArtifactsDirectory)/appdrop/tests'
+        TargetFileNames: '*.config'
+
+    - task: VSTest@2
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\*test*.dll
+        searchFolder: '$(System.ArtifactsDirectory)/appdrop/tests'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'

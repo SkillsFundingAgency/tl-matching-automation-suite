@@ -1,18 +1,21 @@
-resources:
-  repositories:
-    - repository: self
-      persistCredentials: true
-      clean: true
+schedules:
+  - cron: "0 0 * * *"
+    displayName: Daily midnight build
+    branches:
+      include:
+        - master
+        - feature/*
+trigger:
+- '*'
 
 pool:
-  name: 'Azure Pipelines'
   vmImage: 'windows-latest'
-  demands:
-  - Cmd
 
 variables:
-  BuildConfiguration: 'Release'
-  BuildPlatform: 'Release'
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
 stages:
   - template: ./yaml/stages/build.yml
   - template: ./yaml/stages/runtests.yml
