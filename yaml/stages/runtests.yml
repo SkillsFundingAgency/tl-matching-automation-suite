@@ -25,7 +25,7 @@ stages:
         testSelector: 'testAssemblies'
         testAssemblyVer2: |
           **\*test*.dll
-        searchFolder: '$(System.ArtifactStagingDirectory)'
+        searchFolder: '$(System.ArtifactsDirectory)/appdrop/tests'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
 # stages:
