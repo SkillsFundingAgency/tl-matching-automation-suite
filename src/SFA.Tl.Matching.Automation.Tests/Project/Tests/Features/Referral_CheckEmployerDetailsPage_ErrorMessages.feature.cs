@@ -115,13 +115,6 @@ this.FeatureBackground();
 #line 20
  testRunner.Then("the Check Employer page will show an error for \"oneCharacterLong\" contact name as" +
                     " \"You must enter a contact name using 2 or more characters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 22
- testRunner.When("I enter an Invalid contact name \"ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGH" +
-                    "IJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA\" of \"Morethan99Characters\"" +
-                    " on the Check Employer screen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
- testRunner.Then("the Check Employer page will show an error for \"Morethan99Characters\" contact nam" +
-                    "e as \"You must enter a contact name that is 100 characters or fewer\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 25
  testRunner.When("I enter an Invalid contact name \"Name!£$%^&*()\" of \"SpecialCharacters\" on the Che" +
                     "ck Employer screen and Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

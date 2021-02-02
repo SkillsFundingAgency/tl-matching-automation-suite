@@ -139,8 +139,6 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Referral-Placement Information - Job type must be between 2 and 99 characters")]
         [NUnit.Framework.CategoryAttribute("regression")]
         [NUnit.Framework.TestCaseAttribute("1", "A", "You must enter a job role using 2 or more characters", null)]
-        [NUnit.Framework.TestCaseAttribute("100", "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA" +
-            "BCDEFGHIJABCDEFGHIJA", "You must enter a job role that is 100 characters or fewer", null)]
         [NUnit.Framework.TestCaseAttribute("Numbers", "123456", "You must enter a job role using letters", null)]
         [NUnit.Framework.TestCaseAttribute("SpecialCharacters", "%^&**&^", "You must enter a job role using letters", null)]
         [NUnit.Framework.TestCaseAttribute("NumAndSpecialChar", "565%$^^6678&*", "You must enter a job role using letters", null)]
@@ -187,16 +185,16 @@ this.FeatureBackground();
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Referral-Placement Information - Number of placements entered must be greater tha" +
                     "n 0", null, @__tags);
-#line 38
+#line 37
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
 this.FeatureBackground();
-#line 39
+#line 38
  testRunner.Given("I navigate to the Referral Journey Placement Information page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 40
+#line 39
     testRunner.When(string.Format("I enter Invalid number of Students {0} and Continue", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 41
+#line 40
  testRunner.Then(string.Format("the {0} for Invalid Number of Students is displayed for {1}", errorMessage, number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

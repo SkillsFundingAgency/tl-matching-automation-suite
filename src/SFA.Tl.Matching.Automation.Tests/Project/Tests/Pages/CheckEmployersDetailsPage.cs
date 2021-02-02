@@ -10,7 +10,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
     public class CheckEmployersDetailsPage : BasePage
     {
         //Page Locators
-        private static String PAGE_TITLE = "Confirm contact details for industry placements";
+        private static String PAGE_TITLE = "Confirm that the employer’s contact details for industry placements are accurate and up-to-date";
         private By ConfirmAndContinueButton = By.ClassName("govuk-button");
         private By ContactField = By.Name("PrimaryContact"); //EmployerContact
         private By PhoneNumberField = By.Id("Phone");  //EmployerContactPhone

@@ -28,14 +28,14 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
         public void WhenIFilterProviderResultsForOneRoute()
         {
             ProviderResultsOnlyPage providerResultsOnlyPage = new ProviderResultsOnlyPage(webDriver)
-                .SelectRouteAndFilterResults("Agriculture");
+                .SelectRouteAndFilterResults("Agriculture, environmental and animal care");
         }
 
         [When(@"I Filter Provider results for One more route")]
         public void WhenIFilterProviderResultsForOneMoreRoute()
         {
             ProviderResultsOnlyPage providerResultsOnlyPage = new ProviderResultsOnlyPage(webDriver)
-                .SelectRouteAndFilterResults("Business");
+                .SelectRouteAndFilterResults("Business and administration");
         }
 
         [Then(@"I should see provider results displayed only for One route")]
@@ -102,7 +102,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.StepDefinitions
             ProviderResultsOnlyPage providerResultsOnlyPage = new ProviderResultsOnlyPage(webDriver);
             providerResultsOnlyPage.VerifyOneResultCount();
             providerResultsOnlyPage.VerifysHeadingShowsResultFor();
-            providerResultsOnlyPage.VerifySkillsetDisplayed("Care services");
+            providerResultsOnlyPage.VerifySkillsetDisplayed(Constants.oneResultskillArea);
         }
     }
 }
