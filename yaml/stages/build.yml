@@ -20,7 +20,7 @@ stages:
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
       inputs:
         Contents: |     
-          src/**/release
+          src\**\Release\*.*
         TargetFolder: '$(build.artifactstagingdirectory)'
         OverWrite: true
 
