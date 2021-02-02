@@ -3,15 +3,16 @@ stages:
   jobs:
   - job: tests
     steps:
-    - task: Tokenization@2
-      displayName: 'Tokenization: Transform file *.json'
-      inputs:
-        SourcePath: '$(System.ArtifactsDirectory)/appdrop/tests'
-        TargetFileNames: '*.json'
-    
     - pwsh: |
         Set-Location $(System.ArtifactsDirectory)
         Get-ChildItem -Recurse
+    # - task: Tokenization@2
+    #   displayName: 'Tokenization: Transform file *.json'
+    #   inputs:
+    #     SourcePath: '$(System.ArtifactsDirectory)/appdrop/tests'
+    #     TargetFileNames: '*.json'
+    
+    
 
     # - task: VSTest@2
     #   inputs:
