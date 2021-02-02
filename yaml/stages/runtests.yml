@@ -9,16 +9,20 @@ stages:
         SourcePath: '$(System.ArtifactsDirectory)/appdrop/tests'
         TargetFileNames: '*.json'
     
-    - task: VSTest@2
-      inputs:
-        testSelector: 'testAssemblies'
-        testAssemblyVer2: |
-          **\*test*.dll
-          !**\*TestAdapter.dll
-          !**\obj\**
-        searchFolder: '$(System.ArtifactStagingDirectory)'
-        platform: '$(buildPlatform)'
-        configuration: '$(buildConfiguration)'
+    - pwsh: |
+        Set-Location $(System.ArtifactsDirectory)
+        Get-ChildItem -Recurse
+
+    # - task: VSTest@2
+    #   inputs:
+    #     testSelector: 'testAssemblies'
+    #     testAssemblyVer2: |
+    #       **\*test*.dll
+    #       !**\*TestAdapter.dll
+    #       !**\obj\**
+    #     searchFolder: '$(System.ArtifactStagingDirectory)'
+    #     platform: '$(buildPlatform)'
+    #     configuration: '$(buildConfiguration)'
 # stages:
 #   - stage: tests
 #     jobs:
