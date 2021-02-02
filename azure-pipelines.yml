@@ -16,4 +16,4 @@ variables:
 
 stages:
   - template: ./yaml/stages/build.yml
-  - template: ./yaml/stages/runtests.yml
+  # - template: ./yaml/stages/runtests.yml
