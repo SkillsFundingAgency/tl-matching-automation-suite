@@ -1,23 +1,48 @@
 stages:
-  - stage: build
-    jobs:
-    - job: build
-      steps:  
-      - task: BatchScript@1
-        displayName: 'Run script src/RunBuild.bat'
-        inputs:
-          filename: src/RunBuild.bat
-          arguments: '"Release"'
-          workingFolder: src
+- stage: build
+  jobs:
+  - job: build
+    steps:
+    - task: NuGetToolInstaller@1
 
-      - task: CopyPublishBuildArtifacts@1
-        displayName: 'Copy Publish Artifact: Publish'
-        inputs:
-          CopyRoot: src/
-          Contents: |
-            SFA.Tl.Matching.Automation.Tests/bin/Release/**/*.*
-            *.fsx
-            *.bat
-            Tools\Nuget\NuGet.exe            
-          ArtifactName: Publish
-          ArtifactType: Container
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '$(solution)'
+
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solution)'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.ArtifactStagingDirectory)"'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+    
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'appdrop'
+        publishLocation: 'Container'
+
+# stages:
+#   - stage: build
+#     jobs:
+#     - job: build
+#       steps:  
+#       - task: BatchScript@1
+#         displayName: 'Run script src/RunBuild.bat'
+#         inputs:
+#           filename: src/RunBuild.bat
+#           arguments: '"Release"'
+#           workingFolder: src
+
+#       - task: CopyPublishBuildArtifacts@1
+#         displayName: 'Copy Publish Artifact: Publish'
+#         inputs:
+#           CopyRoot: src/
+#           Contents: |
+#             SFA.Tl.Matching.Automation.Tests/bin/Release/**/*.*
+#             *.fsx
+#             *.bat
+#             Tools\Nuget\NuGet.exe            
+#           ArtifactName: Publish
+#           ArtifactType: Container
