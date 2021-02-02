@@ -15,4 +15,4 @@ variables:
   buildConfiguration: 'Release'
 
 stages:
-  - template: ./yaml/build.yml
+  - template: ./yaml/stages/build.yml
