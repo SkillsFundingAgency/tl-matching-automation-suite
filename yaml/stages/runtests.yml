@@ -1,5 +1,6 @@
 stages:
 - stage: tests
+  dependsOn: build
   jobs:
   - job: tests
     steps:
@@ -11,7 +12,7 @@ stages:
         artifactName: 'appdrop'
         downloadPath: '$(System.ArtifactsDirectory)'
     - pwsh: Get-ChildItem -Recurse
-    
+
     # - task: Tokenization@2
     #   displayName: 'Tokenization: Transform file *.json'
     #   inputs:
