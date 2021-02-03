@@ -112,6 +112,8 @@ _TeamCity*
 _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
+*.ncrunchsolution
+*.ncrunchproject
 
 # MightyMoose
 *.mm.*
@@ -241,3 +243,4 @@ _Pvt_Extensions
 SFA.DAS.CookieService/Tools/PhantomJS/tools/phantomjs/ChangeLog
 SFA.DAS.Learners/Tools/PhantomJS/tools/phantomjs/ChangeLog
 Messaging/SFA.DAS.Messaging.v3.ncrunchsolution
+src/SFA.Tl.Matching.Automation.Tests/App.Debug.config

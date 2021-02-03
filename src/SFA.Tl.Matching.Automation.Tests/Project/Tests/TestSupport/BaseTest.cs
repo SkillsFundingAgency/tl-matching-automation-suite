@@ -32,7 +32,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArguments(new List<string>()
                         {
-                            "--no-sandbox",
+                            "--no-sandbox,", "--incognito", "headless",
                         });
                     webDriver = new ChromeDriver(chromeOptions);
                     break;
@@ -56,7 +56,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     break;
 
                 default:
-                    throw new Exception("Driver name - " + browser + "does not match OR this framework does not support the webDriver specified");
+                    throw new Exception(
+                        $"Driver name - {browser}does not match OR this framework does not support the webDriver specified");
             }
 
             webDriver.Manage().Window.Maximize();
@@ -92,15 +93,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     DateTime dateTime = DateTime.Now;
                     String featureTitle = FeatureContext.Current.FeatureInfo.Title;
                     String scenarioTitle = ScenarioContext.Current.ScenarioInfo.Title;
-                    String failureImageName = dateTime.ToString("HH-mm-ss")
-                        + "_"
-                        + scenarioTitle
-                        + ".png";
-                    String screenshotsDirectory = AppDomain.CurrentDomain.BaseDirectory
-                        + "../../"
-                        + "\\Project\\Screenshots\\"
-                        + dateTime.ToString("dd-MM-yyyy")
-                        + "\\";
+                    String failureImageName = $"{dateTime:HH-mm-ss}_{scenarioTitle}.png";
+                    String screenshotsDirectory = $"{AppDomain.CurrentDomain.BaseDirectory}../../\\Project\\Screenshots\\{dateTime:dd-MM-yyyy}\\";
                     if (!Directory.Exists(screenshotsDirectory))
                     {
                         Directory.CreateDirectory(screenshotsDirectory);
@@ -110,13 +104,12 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     Screenshot screenshot = screenshotHandler.GetScreenshot();
                     String screenshotPath = Path.Combine(screenshotsDirectory, failureImageName);
                     screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Png);
-                    Console.WriteLine(scenarioTitle
-                        + " -- Sceario failed and the screenshot is available at -- "
-                        + screenshotPath);
+                    Console.WriteLine(
+                        $"{scenarioTitle} -- Sceario failed and the screenshot is available at -- {screenshotPath}");
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine("Exception occurred while taking screenshot - " + exception);
+                    Console.WriteLine($"Exception occurred while taking screenshot - {exception}");
                 }
             }
         }
