@@ -117,5 +117,41 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
 
             PageInteractionHelper.VerifyText(ActualWhatHappensNextText, expectedWhatHappensNextText);
         }
+
+        public int GetIsCompleted(String query)
+        {
+            var queryResults = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
+
+            String OpportunityItemId = null;
+            foreach (object[] OppItemId in queryResults)
+            {
+                OpportunityItemId = OppItemId[0].ToString();
+            }
+            int IsCompleted = 0;
+            for (int i = 0; i < 90000; i++)
+            {
+                if (IsCompleted == 0)
+                {
+                    var query2 = ("select IsCompleted from OpportunityItem where Id = '" + OpportunityItemId + "'");
+                    var queryResults2 = SqlDatabaseConncetionHelper.ReadDataFromDataBase(query2, Configurator.GetConfiguratorInstance().GetMatchingServiceConnectionString());
+
+                    foreach (object[] Value in queryResults2)
+                    {
+                        IsCompleted = Convert.ToInt32(Value[0]);
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return IsCompleted;
+        }
+
+        public void VerifyIsCompletedIsTrue(int actualValue)
+        {
+            int expectedValue = 1;
+            PageInteractionHelper.VerifyValue(actualValue, expectedValue);
+        }
     }
 }

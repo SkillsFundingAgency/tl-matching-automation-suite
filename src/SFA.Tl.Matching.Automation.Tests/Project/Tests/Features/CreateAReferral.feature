@@ -18,7 +18,8 @@ Background:
     #And the providers selected will be displayed on the Referral Check Answers screen
 	Given I Confirm details on the Check answers page
 	And I Continue with Single Opportunity on the Opportunity Basket
-	And I opt in to send emails and press Confirm and Send Opportunity	
+	And I opt in to send emails and press Confirm and Send Opportunity
+	Then I check that the emails are sent successfully
 	#Then referral records are created
 	#And the Opportunity record will record OPT IN has been selected
 	#And the Emails Sent Page is displayed with the correct text
@@ -35,7 +36,9 @@ Background:
 	#And the Opportunity record will record OPT IN has been selected
 	#And the Emails Sent Page is displayed with the correct text
 	And I Continue with Single Opportunity on the Opportunity Basket
-	And I opt in to send emails and press Confirm and Send Opportunity	
+	And I opt in to send emails and press Confirm and Send Opportunity
+	Then I check that the emails are sent successfully
+
 
 	@regression
     Scenario: Create a referral - The user will not be asked to select the Employer again when they add more than one opportunity to a referral 

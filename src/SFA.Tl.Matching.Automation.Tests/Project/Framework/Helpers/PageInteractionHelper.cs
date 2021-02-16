@@ -101,6 +101,17 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
             return VerifyText(locator, expectedText);
         }
 
+        public static bool VerifyValue(int actual, int expected)
+        {
+            if (actual == expected)
+            {
+                return true;
+            }
+            throw new Exception("Text verification failed: "
+                + "\n Expected: " + expected
+                + "\n Found: " + actual);
+        }
+
         public static Boolean VerifyText(By locator, String expected)
         {
             String actual = webDriver.FindElement(locator).Text;
