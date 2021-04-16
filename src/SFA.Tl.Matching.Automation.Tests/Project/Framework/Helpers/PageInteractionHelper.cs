@@ -5,6 +5,7 @@ using OpenQA.Selenium.Support.UI;
 using SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 using TechTalk.SpecFlow;
 
@@ -27,9 +28,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("Page URL verification failed:"
-                + "\n Expected URL: " + expected 
-                + "\n Found URL: " + actual);
+            throw new Exception($"Page URL verification failed:\n Expected URL: {expected}\n Found URL: {actual}");
         }
 
 
@@ -41,9 +40,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("The following link was not found: "
-                + "\n Expected: " + expected
-                + "\n Found: " + actual);
+            throw new Exception($"The following link was not found: \n Expected: {expected}\n Found: {actual}");
         }
 
         public static Boolean VerifyPageHeading(String actual, String expected)
@@ -53,9 +50,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("Page verification failed:"
-                + "\n Expected page: " + expected
-                + "\n Found page: " + actual);
+            throw new Exception($"Page verification failed:\n Expected page: {expected}\n Found page: {actual}");
         }
 
         public static Boolean VerifyPageHeading(By locator, String expected)
@@ -66,9 +61,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("Page verification failed:"
-                + "\n Expected page: " + expected 
-                + "\n Found page: " + actual);
+            throw new Exception($"Page verification failed:\n Expected page: {expected}\n Found page: {actual}");
         }
 
         public static Boolean VerifyPageHeading(String actual, String expected1, String expected2)
@@ -78,9 +71,8 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("Page verification failed: "
-                + "\n Expected: " + expected1 + " or " + expected2 + " pages"
-                + "\n Found: " + actual + " page");
+            throw new Exception(
+                $"Page verification failed: \n Expected: {expected1} or {expected2} pages\n Found: {actual} page");
         }
 
         public static Boolean VerifyText(String actual, String expected)
@@ -90,15 +82,22 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("Text verification failed: "
-                + "\n Expected: " + expected
-                + "\n Found: " + actual);
+            throw new Exception($"Text verification failed: \n Expected: {expected}\n Found: {actual}");
         }
 
         public static Boolean VerifyText(By locator, int expected)
         {
             String expectedText = Convert.ToString(expected);
             return VerifyText(locator, expectedText);
+        }
+
+        public static bool VerifyValue(int actual, int expected)
+        {
+            if (actual == expected)
+            {
+                return true;
+            }
+            throw new Exception($"Text verification failed: \n Expected: {expected}\n Found: {actual}");
         }
 
         public static Boolean VerifyText(By locator, String expected)
@@ -115,9 +114,7 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
                 return true;
             }
 
-            throw new Exception("Value verification failed: "
-                + "\n Expected: " + expected
-                + "\n Found: " + actual);
+            throw new Exception($"Value verification failed: \n Expected: {expected}\n Found: {actual}");
         }
 
         public static void WaitForPageToLoad(int implicitWaitTime = implicitWaitTimeInSeconds)
