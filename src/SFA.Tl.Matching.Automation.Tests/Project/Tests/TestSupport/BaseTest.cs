@@ -29,12 +29,15 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
                     break;
 
                 case "chrome":
-                    var chromeOptions = new ChromeOptions();
+                    /*var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArguments(new List<string>()
                         {
                             "--no-sandbox,", "--incognito", "headless",
                         });
                     webDriver = new ChromeDriver(chromeOptions);
+                    break;*/
+                    webDriver = new ChromeDriver();
+                    webDriver.Manage().Window.Maximize();
                     break;
 
                 case "ie":

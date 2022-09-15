@@ -117,8 +117,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Framework.Helpers
 
         private static String GetProviderName(By locator)
         {
-            String text = PageInteractionHelper.GetText(locator).Split('\r')[0];
+            String text = PageInteractionHelper.GetText(locator).Split('\r')[1];
             text = text.TrimEnd();
+            text = text.Trim('\n');
             Console.WriteLine("MAYUR PROVIDER:" + text);
             return text;
         }

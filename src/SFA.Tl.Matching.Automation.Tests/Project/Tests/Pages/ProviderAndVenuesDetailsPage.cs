@@ -10,13 +10,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private static String PAGE_TITLE = "Abingdon And Witney College";
         private By PostCodeTextField = By.XPath("//*[@id='main-content']/div/div/form/table/tbody/tr[1]/th");
         private By VenueEditLink = By.PartialLinkText("Edit");
-        private By ProviderUkprnSearchField = By.Id("UkPrn");        
+        private By ProviderUkprnSearchField = By.Id("UkPrn");
 
         public ProviderAndVenuesDetailsPage(IWebDriver webDriver) : base(webDriver)
         {
             SelfVerify();
         }
-
+        
         protected override bool SelfVerify()
         {
             return PageInteractionHelper.VerifyPageHeading(this.GetPageHeading(), PAGE_TITLE);

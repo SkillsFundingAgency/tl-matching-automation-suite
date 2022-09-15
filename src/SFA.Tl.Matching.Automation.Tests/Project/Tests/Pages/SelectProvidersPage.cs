@@ -12,7 +12,9 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.Pages
         private static String PAGE_TITLE = "Select providers";
         private By Provider1Checkbox = By.Name("SelectedProvider[0].IsSelected");
         private By Provider2Checkbox = By.Name("SelectedProvider[1].IsSelected");
-        private By providerName1 = By.XPath("//*[@id='main-content']//li[1]/div/div/label");
+        //private By providerName = By.XPath("//*[@id='main-content']//li[1]/div/div/label");
+        private By providerName1 = By.XPath("//*[@id='tl-result-form']/div/ol/li[1]/div/div/label");
+        
         private By providerName2 = By.XPath("//*[@id='main-content']//li[2]/div/div/label");
         private By ContinueButton = By.Id("tl-continue");
         private By SearchAgainButton = By.Name("resultsAction");

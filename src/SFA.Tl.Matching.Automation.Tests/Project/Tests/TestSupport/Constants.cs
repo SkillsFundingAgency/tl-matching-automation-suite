@@ -27,13 +27,13 @@ namespace SFA.Tl.Matching.Automation.Tests.Project.Tests.TestSupport
         public const String postcodeNoResults = "G63 0AR";
         public const String postCodeNoResultInSpecifiedRoute = "TR1 1AF";
         public const String skillAreaNoResults = "Agriculture, environmental and animal care";
-        public const String skillAreaNoResult = "Legal, financial and accounting";
+        public const String skillAreaNoResult = "Agriculture, environmental and animal care";
         public const String expectedskillAreaForNoResultsInAnySkillset = "any skill area";
         public const String radiusNoResults = "5 miles" ;
         public const String oneResultpostCode = "TR1 1AF";
-        public const String oneResultskillArea = "Health and science";
+        public const String oneResultskillArea = "Catering and hospitality";
         public const String oneResultradius = "5 miles";
-        public const String queryToGetQualificationMappedToService = "SELECT lar.LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarID WHERE q.LarID = lar.LarId";
+        public const String queryToGetQualificationMappedToService = "SELECT LarId FROM [dbo].[Qualification] where IsDeleted = '0' order by LarId desc"; //"SELECT lar.LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID = q.LarID WHERE q.LarID = lar.LarId";
         public const String queryToGetQualificationNotMappedToService = "SELECT lar.LarId FROM LearningAimReference lar LEFT JOIN Qualification q ON lar.LarID=q.LarID WHERE q.LarID IS NULL order by lar.Id desc";
         public const String Opportunity1Postcode = "B43 6JN";
         public const String Opportunity1JobRole = "None given";
